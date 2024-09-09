@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Manajemenmodul;
 use App\Models\User;
-use App\Models\Usermodul;
+use App\Models\UserModul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -20,7 +20,7 @@ class ManajemenuserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request):View
+    public function index(Request $request): View
     {
         //
         // $search = $request->search;
@@ -49,16 +49,16 @@ class ManajemenuserController extends Controller
         $users = $query->paginate(10);
 
         $levels = User::select('level')
-                    ->groupBy('level')
-                    ->get();
+            ->groupBy('level')
+            ->get();
 
         return view('administrator.manajemenuser.index', compact(['users', 'levels']));
     }
 
-    public function delete_akses(string $id_umod, string $user_id):RedirectResponse
+    public function delete_akses(string $id_umod, string $user_id): RedirectResponse
     {
         // Hapus akses modul pengguna
-        Usermodul::where('id_umod', $id_umod)->delete();
+        UserModul::where('id_umod', $id_umod)->delete();
 
         // Redirect kembali ke halaman edit pengguna
         return redirect()->route('administrator.manajemenuser.edit', $user_id)
@@ -68,7 +68,7 @@ class ManajemenuserController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create():View
+    public function create(): View
     {
         //
         $moduls = Manajemenmodul::all();
@@ -101,10 +101,10 @@ class ManajemenuserController extends Controller
             $foto->move("./foto_user/", $fotoName);
         }
 
-        if ($request->nama_modul !=''){
+        if ($request->nama_modul != '') {
             $link = $request->nama_modul;
-            $nama_modul=implode(',',$link);
-        }else{
+            $nama_modul = implode(',', $link);
+        } else {
             $nama_modul = '';
         }
 
@@ -118,7 +118,7 @@ class ManajemenuserController extends Controller
             "no_telp" => $no_telp,
             "nama_modul" => $nama_modul,
             "blokir" => 'N',
-            "id_session" => md5($username.'-'.date('YmdHis')),
+            "id_session" => md5($username . '-' . date('YmdHis')),
         ]);
 
         // $mod=count($this->input->post('modul'));
@@ -132,10 +132,10 @@ class ManajemenuserController extends Controller
 
         $mod = count($request->modul);
         $modul = $request->modul;
-        $sess = md5($username.'-'.date('YmdHis'));
-        for($i = 0; $i < $mod; $i++){
-            Usermodul::create([
-                'id_session' =>$sess,
+        $sess = md5($username . '-' . date('YmdHis'));
+        for ($i = 0; $i < $mod; $i++) {
+            UserModul::create([
+                'id_session' => $sess,
                 'id_modul' => $modul[$i]
             ]);
         }
@@ -217,7 +217,7 @@ class ManajemenuserController extends Controller
 
         // $validated['password'] = bcrypt($validated['password']);
 
-            // Jika password diisi, enkripsi password baru
+        // Jika password diisi, enkripsi password baru
         if ($request->filled('password')) {
             $validated['password'] = bcrypt($request->password);
         } else {
@@ -239,10 +239,10 @@ class ManajemenuserController extends Controller
             $users->foto = $fotoName;
         }
 
-        if ($request->nama_modul !=''){
+        if ($request->nama_modul != '') {
             $link = $request->nama_modul;
-            $nama_modul=implode(',',$link);
-        }else{
+            $nama_modul = implode(',', $link);
+        } else {
             $nama_modul = '';
         }
 
@@ -262,11 +262,11 @@ class ManajemenuserController extends Controller
 
         // Proses tambah akses baru
         if ($request->has('modul')) {
-            $existingModuls = Usermodul::where('id_session', $users->id_session)->pluck('id_modul')->toArray();
+            $existingModuls = UserModul::where('id_session', $users->id_session)->pluck('id_modul')->toArray();
             $newModuls = array_diff($request->modul, $existingModuls);
 
             foreach ($newModuls as $modulId) {
-                Usermodul::create([
+                UserModul::create([
                     'id_session' => $users->id_session,
                     'id_modul' => $modulId
                 ]);
@@ -290,6 +290,4 @@ class ManajemenuserController extends Controller
         $users->delete();
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }
-
-
 }

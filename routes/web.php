@@ -212,6 +212,10 @@ Route::get('/e-learning/program', function () {
     return view('./myskill/pages/e-learning/program');
 })->name('Program');
 
+Route::get('/e-learning/materi', function () {
+    return view('./myskill/pages/e-learning/materi');
+})->name('Materi');
+
 // bootcamp
 Route::get('/bootcamp', function () {
     return view('./myskill/pages/program/bootcamp');
