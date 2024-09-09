@@ -82,8 +82,8 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
     Route::resource('halamanbaru', HalamanbaruController::class)
         ->middleware('checkModul:halamanbaru');
-    // Route::get('identitaswebsite', [IdentitaswebsiteController::class, 'edit'])->name('identitaswebsite.edit');
-    // Route::put('identitaswebsite', [IdentitaswebsiteController::class, 'update'])->name('identitaswebsite.update');
+    Route::get('identitaswebsite', [IdentitaswebsiteController::class, 'edit'])->name('identitaswebsite.edit');
+    Route::put('identitaswebsite', [IdentitaswebsiteController::class, 'update'])->name('identitaswebsite.update');
     Route::get('identitaswebsite', [IdentitaswebsiteController::class, 'edit'])
         ->middleware('checkModul:identitaswebsite')
         ->name('identitaswebsite.edit');

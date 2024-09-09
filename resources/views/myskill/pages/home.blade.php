@@ -61,8 +61,11 @@
 <div class="grid grid-flow-col ps-6 gap-8 overflow-x-auto no-scrollbar ">
     <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
         <div class="flex justify-center">
-            <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28"
-                src="{{ asset('assets/home/Rectangle51.svg') }}" alt="" />
+            {{-- <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28"
+                src="{{ asset('assets/home/Rectangle51.svg') }}" alt="" /> --}}
+            @foreach($testimonis as $testimoni )
+                <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28" src="{{ url('foto_testimoni/' . $testimoni->gambar) }} }}" alt="" />
+            @endforeach
         </div>
         <div class="p-5 flex justify-center">
             <button class="bg-yellow-400 text-white px-7 py-2 rounded-md">Baca Cerita</button>

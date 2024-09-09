@@ -173,10 +173,14 @@ class TrainerController extends Controller
 
         if ($request->has('program')) {
             // Hapus program lama
-            Trainerprogramgroup::where('id_trainer', $trainers->id_trainer)->delete();
+            // Trainerprogramgroup::where('id_trainer', $trainers->id_trainer)->delete();
+            $existingPrograms = Trainerprogramgroup::where('id_trainer', $trainers->id_trainer)->pluck('id_trainer')->toArray();
+
+            // Pastikan $request->modul adalah array
+            $newPrograms = array_diff($request->input('modul', []), $existingPrograms);
 
             // Tambahkan program baru
-            foreach ($request->program as $programId) {
+            foreach ($newPrograms as $programId) {
                 Trainerprogramgroup::create([
                     'id_trainer' => $trainers->id_trainer,
                     'id_kategori' => $programId
