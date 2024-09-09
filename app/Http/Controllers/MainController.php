@@ -15,6 +15,7 @@ use App\Models\Menuwebsite;
 use App\Models\Poling;
 use App\Models\Sekilasinfo;
 use App\Models\Template;
+use App\Models\Testimoni;
 use App\Models\Video;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -27,7 +28,8 @@ class MainController extends Controller
     public function index(Request $request)
     {
         $banners = Bannerslider::all();
-        $album = Album::orderBy('tgl_posting', 'DESC');
+        $album = Album::all();
+        $testimonis = Testimoni::all();
         $logo = Logo::orderBy('id_logo', 'DESC')->first();
         $links = Bannerhome::orderBy('id_iklantengah', 'ASC')->limit(10)->get();
         // dd($menus);
@@ -46,7 +48,7 @@ class MainController extends Controller
 
         if ($templateDinas4 && $templateDinas4->aktif === 'Y') {
             // Jika 'dinas-4' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-4'
-            return view('myskill.pages.home', compact('logo', 'banners', 'links','album'));
+            return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis'));
         } elseif ($templateDinas3 && $templateDinas3->aktif === 'Y') {
             // Jika 'dinas-3' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-3'
             return view('dinas-3.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));

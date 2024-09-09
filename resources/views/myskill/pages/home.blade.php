@@ -64,14 +64,14 @@
             {{-- <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28"
                 src="{{ asset('assets/home/Rectangle51.svg') }}" alt="" /> --}}
             @foreach($testimonis as $testimoni )
-                <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28" src="{{ url('foto_testimoni/' . $testimoni->gambar) }} }}" alt="" />
+                <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28" src="{{ url('foto_testimoni/'. $testimoni->gambar) }} }}" alt="" />
             @endforeach
         </div>
         <div class="p-5 flex justify-center">
             <button class="bg-yellow-400 text-white px-7 py-2 rounded-md">Baca Cerita</button>
         </div>
     </div>
-    <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
+    {{-- <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
         <div class="flex justify-center">
             <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28"
                 src="{{ asset('assets/home/Rectangle51.svg') }}" alt="" />
@@ -106,7 +106,7 @@
         <div class="p-5 flex justify-center">
             <button class="bg-yellow-400 text-white px-7 py-2 rounded-md">Baca Cerita</button>
         </div>
-    </div>
+    </div> --}}
 </div>
 <div>
     <h3 class="py-12 text-center font-bold text-2xl text-black">Berbagai Macam Program di Pandai Digital</h3>
