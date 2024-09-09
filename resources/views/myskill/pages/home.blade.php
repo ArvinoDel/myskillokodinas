@@ -204,76 +204,15 @@
     style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
     ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
     onmouseup="this.classList.remove('touching')">
+    @foreach($album as $album)
     <div
         class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
+        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('img_album/' . $album->gbr_album) }}" alt="gvsdfcfs" />
         <div>
             <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
         </div>
     </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
-        </div>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
-        </div>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
-        </div>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
-        </div>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
-        </div>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
-        </div>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
-        </div>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
-        </div>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('assets/home/Rectangle25.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
-        </div>
-    </div>
+    @endforeach
 </div>
 <h3 class="text-2xl text-center font-bold py-20">Belajar Bersama Senior Operator Langsung di Kantor</h3>
 <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar ps-6 gap-11"

@@ -11,23 +11,23 @@ class MetodepembayaranController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request):view
+    public function index(Request $request): view
     {
         //
         $search = $request->search;
         $tanggal = $request->tanggal;
 
-        $metodes = Metodepembayaran::query();
+        $query = Metodepembayaran::query();
 
         if (!empty($search)) {
-            $metodes->where('nama_program', 'like', "%$search%")->orWhere('harga', 'like', "%$search%")->orWhere('judul', 'like', "%$search%")->orWhere('keterangan', 'like', "%$search%");
+            $query->where('nama_program', 'like', "%$search%")->orWhere('harga', 'like', "%$search%")->orWhere('judul', 'like', "%$search%")->orWhere('keterangan', 'like', "%$search%");
         }
 
         if (!empty($judul)) {
-            $metodes->where('judul', $judul);
+            $query->where('judul', $judul);
         }
 
-        $programs = $metodes->paginate(10);
+        $metodes = $query->paginate(10);
 
         return view('administrator.metodepembayaran.index', compact(['metodes']));
     }
@@ -35,10 +35,10 @@ class MetodepembayaranController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create():View
+    public function create(): View
     {
         //
-        return view('administrator.mitra.create');
+        return view('administrator.metodepembayaran.create');
     }
 
     /**
@@ -47,6 +47,24 @@ class MetodepembayaranController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file("gambar");
+            $gambarName = $gambar->getClientOriginalName();
+            $gambar->move("./foto_metode/", $gambarName);
+        }
+        Metodepembayaran::create([
+            "gambar" => $gambarName,
+        ]);
+
+        return response()->json([
+            'url' => route('administrator.metodepembayaran.index'),
+            'success' => true,
+            'message' => 'Data Banner Home Berhasil Ditambah'
+        ]);
     }
 
     /**

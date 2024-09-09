@@ -14,21 +14,17 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="mb-0">Metode Pembayaran</h3>
-                <a href="{{ route('administrator.kategoriprogram.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <a href="{{ route('administrator.metodepembayaran.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
             <!-- Tambahkan form pencarian -->
             <div class="card-body">
-                <form action="{{ route('administrator.kategoriprogram.index') }}" method="GET" class="mb-1">
+                <!-- <form action="{{ route('administrator.kategoriprogram.index') }}" method="GET" class="mb-1">
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
                             <select class="form-control" name="judul">
                                 <option value="">Pilih Pembayaran</option>
-                                @foreach ($nama_kategoris as $nama_kategori)
-                                    <option value="{{ $nama_kategori->nama_kategori }}" {{ request('nama_kategori') == $nama_kategori->nama_kategori ? 'selected' : '' }}>
-                                        {{ $nama_kategori->nama_kategori }}
-                                    </option>
-                                @endforeach
+                               
                             </select>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Filter</button>
@@ -46,7 +42,7 @@
                         <a href="{{ route('administrator.kategoriprogram.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
                     </div>
                     @endif
-                </form>
+                </form> -->
 
                 <div class="table-responsive py-4">
                     <table class="table table-bordered" id="datatable-basic">
@@ -64,10 +60,10 @@
                                 <td>{{ $metode->gambar }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('administrator.kategoriprogram.edit', $katprogram->id_kat) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                        <a href="{{ route('administrator.metodepembayaran.edit', $metode->id) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button data-url="{{ route('administrator.kategoriprogram.destroy', $katprogram->id_kat) }}"
+                                        <button data-url="{{ route('administrator.kategoriprogram.destroy', $metode->id) }}"
                                             type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -159,7 +155,7 @@
 
         // Fungsi untuk memperbarui nomor urut
         function updateRowNumbers() {
-            let startingIndex = {{ $kategoriprogram->firstItem() - 1 }};
+            let startingIndex = {{ $metodes->firstItem() - 1 }};
             $('table tbody tr').each(function(index) {
                 $(this).find('td:first-child').text(startingIndex + index + 1);
             });
