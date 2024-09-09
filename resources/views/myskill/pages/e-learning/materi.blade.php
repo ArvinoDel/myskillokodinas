@@ -59,227 +59,217 @@
             </div>
         </section>
 
-        <!-- Section 2: Testimonials -->
-        <section class="bg-white p-4 md:p-8">
-            <div class="grid grid-flow-row gap-4">
-                <div class="flex flex-wrap items-center space-x-2">
-                    <button class="border border-teal-600 text-teal-600 px-3 py-1 text-sm rounded-lg mb-2 sm:mb-0">
+        <section class="md:p-8">
+            <div class="container mx-auto px-4">
+                <!-- Button Group -->
+                <div class="flex flex-wrap items-center space-x-2 mb-4 pt-4 md:pt-4 lg:pt-0">
+                    <button class="border border-teal-600 text-teal-600 px-3 py-1 text-xs sm:text-sm rounded-lg mb-2">
                         Digital Marketing
                     </button>
-                    <i class="fa-solid fa-chevron-right text-xs hidden sm:inline"></i>
-                    <button class="border border-teal-600 text-teal-600 px-3 py-1 text-sm rounded-lg mb-2 sm:mb-0">
+                    <i class="fa-solid fa-chevron-right text-xs -mt-3 md:-mt-0 lg:-mt-0"></i>
+                    <button class="border border-teal-600 text-teal-600 px-3 py-1 text-xs sm:text-sm rounded-lg mb-2">
                         Digital Marketing
                     </button>
-                    <i class="fa-solid fa-chevron-right text-xs hidden sm:inline"></i>
-                    <button class="text-teal-600 px-3 text-sm mb-2 sm:mb-0">
+                    <i class="fa-solid fa-chevron-right text-xs -mt-3 md:-mt-0 lg:-mt-0"></i>
+                    <button class="text-teal-600 px-3 py-1 text-xs sm:text-sm mb-2">
                         Digital Marketing
                     </button>
                 </div>
-                <div class="text-start py-4 md:pr-96">
-                    <h3 class="text-2xl md:text-4xl font-bold py-2">Copywriting Introduction</h3>
-                    <h3 class="text-base md:text-lg font-semibold py-1">Veronica Gabriella - Senior Copywriter SATU Dental
-                        Group</h3>
-                    <p class="text-sm md:text-md py-1">Copywriting menjadi bagian dalam digital marketing sebagai sarana
-                        untuk
-                        berkomunikasi dengan audiens mengenai produk supaya pada akhirnya akan menjadi keputusan dalam
-                        pembelian. Dalam materi ini kita akan mempelajari pengertian copywriting serta perkembangan dalam
-                        copywriting. Kita juga akan mempelajari kedudukan dari copywriting.
-                    </p>
+
+                <!-- Text Content -->
+                <div class="text-start py-4">
+                    <h3 class="text-xl sm:text-2xl md:text-4xl font-bold py-2">Copywriting Introduction</h3>
+                    <h3 class="text-sm sm:text-base md:text-lg font-semibold py-1">Veronica Gabriella - Senior Copywriter
+                        SATU Dental Group</h3>
+                    <p class="text-xs sm:text-sm md:text-md py-1">Copywriting menjadi bagian dalam digital marketing sebagai
+                        sarana untuk berkomunikasi dengan audiens mengenai produk supaya pada akhirnya akan menjadi
+                        keputusan dalam pembelian. Dalam materi ini kita akan mempelajari pengertian copywriting serta
+                        perkembangan dalam copywriting. Kita juga akan mempelajari kedudukan dari copywriting.</p>
                 </div>
+
                 <hr class="py-4">
+
+                <!-- Achievements Section -->
                 <div>
-                    <h3 class="font-bold text-xl md:text-2xl">Akan Didapatkan</h3>
-                    <div class="py-4 flex flex-wrap space-x-2 space-y-2">
-                        <button class="bg-blue-600 px-4 py-2 flex items-center rounded-lg">
+                    <h3 class="font-bold text-lg sm:text-xl md:text-2xl">Akan Didapatkan</h3>
+                    <div class="py-4 flex flex-wrap gap-2">
+                        <button class="bg-blue-600 px-4 py-2 flex items-center rounded-lg text-xs sm:text-sm">
                             <i class="fa-solid fa-medal text-white text-sm mr-2"></i>
-                            <span class="text-white font-semibold text-sm">Sertifikat</span>
+                            <span class="text-white font-semibold">Sertifikat</span>
                         </button>
-                        <button class="bg-blue-600 px-4 py-2 flex items-center rounded-lg">
+                        <button class="bg-blue-600 px-4 py-2 flex items-center rounded-lg text-xs sm:text-sm">
                             <i class="fa-regular fa-file-lines text-white text-sm mr-2"></i>
-                            <span class="text-white font-semibold text-sm">Modul Praktik</span>
+                            <span class="text-white font-semibold">Modul Praktik</span>
                         </button>
-                        <button class="bg-blue-600 px-4 py-2 flex items-center rounded-lg">
+                        <button class="bg-blue-600 px-4 py-2 flex items-center rounded-lg text-xs sm:text-sm">
                             <i class="fa-solid fa-book-bookmark text-white text-sm mr-2"></i>
-                            <span class="text-white font-semibold text-sm">Bahan Bacaan</span>
+                            <span class="text-white font-semibold">Bahan Bacaan</span>
                         </button>
-                        <button class="bg-blue-600 px-4 py-2 flex items-center rounded-lg">
+                        <button class="bg-blue-600 px-4 py-2 flex items-center rounded-lg text-xs sm:text-sm">
                             <i class="fa-solid fa-users text-white text-sm mr-2"></i>
-                            <span class="text-white font-semibold text-sm">Grup Diskusi</span>
+                            <span class="text-white font-semibold">Grup Diskusi</span>
                         </button>
                     </div>
                     <hr class="py-4">
                 </div>
+            </div>
+        </section>
 
-                <div class="container mx-auto">
-                    <h2 class="text-xl md:text-2xl font-bold mb-6 text-start">Rating Materi</h2>
-                    <div class="flex overflow-x-auto pb-4 no-scrollbar">
-                        <!-- Rating Card -->
-                        <div class="bg-white p-4 rounded-2xl shadow-md max-w-xs mx-3 flex-shrink-0">
-                            <div class="flex flex-col items-start">
-                                <h3 class="font-bold text-sm sm:text-base mb-2 break-words">Sukisworo Nurrudin Rizky</h3>
-                                <div class="flex flex-row space-x-1 mb-2">
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
+        <!-- Section 2: Testimonials -->
+        <h2 class="text-xl md:text-2xl font-bold mb-6 text-start px-4 md:px-14">Rating Materi</h2>
+        <section class="overflow-x-auto bg-white p-4 md:p-4">
+            <div class="grid grid-flow-row gap-4">
+                <div class="container mx-auto px-4">                    
+                    <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
+                        <div id="card-container" class="flex space-x-4">
+                            <!-- Rating Card -->
+                            <div
+                                class="overflow-x-auto bg-white p-4 rounded-2xl shadow-md max-w-[150px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] flex-shrink-0 mx-2">
+                                <div class="flex flex-col items-start">
+                                    <h3 class="font-bold text-xs sm:text-sm md:text-base mb-2 break-words">Sukisworo
+                                        Nurrudin Rizky</h3>
+                                    <div class="flex flex-row space-x-1 mb-2">
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                    </div>
+                                    <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
+                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <span>9 Sep 2024</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm md:text-base break-words">Informasi terkait copywriting
+                                        sangat bisa dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                                 </div>
-                                <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span>9 Sep 2024</span>
-                                </div>
-                                <p class="text-xs sm:text-sm break-words">Informasi terkait copywriting sangat bisa
-                                    dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                             </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-2xl shadow-md max-w-xs mx-3 flex-shrink-0">
-                            <div class="flex flex-col items-start">
-                                <h3 class="font-bold text-sm sm:text-base mb-2 break-words">Sukisworo Nurrudin Rizky</h3>
-                                <div class="flex flex-row space-x-1 mb-2">
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
+                            <!-- Repeat Rating Card as needed -->
+                            <div
+                                class="overflow-x-auto bg-white p-4 rounded-2xl shadow-md max-w-[150px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] flex-shrink-0 mx-2">
+                                <div class="flex flex-col items-start">
+                                    <h3 class="font-bold text-xs sm:text-sm md:text-base mb-2 break-words">Sukisworo
+                                        Nurrudin Rizky</h3>
+                                    <div class="flex flex-row space-x-1 mb-2">
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                    </div>
+                                    <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
+                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <span>9 Sep 2024</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm md:text-base break-words">Informasi terkait copywriting
+                                        sangat bisa dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                                 </div>
-                                <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span>9 Sep 2024</span>
-                                </div>
-                                <p class="text-xs sm:text-sm break-words">Informasi terkait copywriting sangat bisa
-                                    dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                             </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-2xl shadow-md max-w-xs mx-3 flex-shrink-0">
-                            <div class="flex flex-col items-start">
-                                <h3 class="font-bold text-sm sm:text-base mb-2 break-words">Sukisworo Nurrudin Rizky</h3>
-                                <div class="flex flex-row space-x-1 mb-2">
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
+                            <!-- Additional Cards -->
+                            <div
+                                class="overflow-x-auto bg-white p-4 rounded-2xl shadow-md max-w-[150px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] flex-shrink-0 mx-2">
+                                <div class="flex flex-col items-start">
+                                    <h3 class="font-bold text-xs sm:text-sm md:text-base mb-2 break-words">Sukisworo
+                                        Nurrudin Rizky</h3>
+                                    <div class="flex flex-row space-x-1 mb-2">
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                    </div>
+                                    <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
+                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <span>9 Sep 2024</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm md:text-base break-words">Informasi terkait copywriting
+                                        sangat bisa dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                                 </div>
-                                <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span>9 Sep 2024</span>
-                                </div>
-                                <p class="text-xs sm:text-sm break-words">Informasi terkait copywriting sangat bisa
-                                    dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                             </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-2xl shadow-md max-w-xs mx-3 flex-shrink-0">
-                            <div class="flex flex-col items-start">
-                                <h3 class="font-bold text-sm sm:text-base mb-2 break-words">Sukisworo Nurrudin Rizky</h3>
-                                <div class="flex flex-row space-x-1 mb-2">
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
+                            <div
+                                class="overflow-x-auto bg-white p-4 rounded-2xl shadow-md max-w-[150px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] flex-shrink-0 mx-2">
+                                <div class="flex flex-col items-start">
+                                    <h3 class="font-bold text-xs sm:text-sm md:text-base mb-2 break-words">Sukisworo
+                                        Nurrudin Rizky</h3>
+                                    <div class="flex flex-row space-x-1 mb-2">
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                    </div>
+                                    <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
+                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <span>9 Sep 2024</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm md:text-base break-words">Informasi terkait copywriting
+                                        sangat bisa dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                                 </div>
-                                <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span>9 Sep 2024</span>
-                                </div>
-                                <p class="text-xs sm:text-sm break-words">Informasi terkait copywriting sangat bisa
-                                    dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                             </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-2xl shadow-md max-w-xs mx-3 flex-shrink-0">
-                            <div class="flex flex-col items-start">
-                                <h3 class="font-bold text-sm sm:text-base mb-2 break-words">Sukisworo Nurrudin Rizky</h3>
-                                <div class="flex flex-row space-x-1 mb-2">
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
+                            <div
+                                class="overflow-x-auto bg-white p-4 rounded-2xl shadow-md max-w-[150px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] flex-shrink-0 mx-2">
+                                <div class="flex flex-col items-start">
+                                    <h3 class="font-bold text-xs sm:text-sm md:text-base mb-2 break-words">Sukisworo
+                                        Nurrudin Rizky</h3>
+                                    <div class="flex flex-row space-x-1 mb-2">
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                    </div>
+                                    <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
+                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <span>9 Sep 2024</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm md:text-base break-words">Informasi terkait copywriting
+                                        sangat bisa dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                                 </div>
-                                <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span>9 Sep 2024</span>
-                                </div>
-                                <p class="text-xs sm:text-sm break-words">Informasi terkait copywriting sangat bisa
-                                    dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                             </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-2xl shadow-md max-w-xs mx-3 flex-shrink-0">
-                            <div class="flex flex-col items-start">
-                                <h3 class="font-bold text-sm sm:text-base mb-2 break-words">Sukisworo Nurrudin Rizky</h3>
-                                <div class="flex flex-row space-x-1 mb-2">
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
+                            <div
+                                class="overflow-x-auto bg-white p-4 rounded-2xl shadow-md max-w-[150px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] flex-shrink-0 mx-2">
+                                <div class="flex flex-col items-start">
+                                    <h3 class="font-bold text-xs sm:text-sm md:text-base mb-2 break-words">Sukisworo
+                                        Nurrudin Rizky</h3>
+                                    <div class="flex flex-row space-x-1 mb-2">
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                    </div>
+                                    <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
+                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <span>9 Sep 2024</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm md:text-base break-words">Informasi terkait copywriting
+                                        sangat bisa dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                                 </div>
-                                <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span>9 Sep 2024</span>
-                                </div>
-                                <p class="text-xs sm:text-sm break-words">Informasi terkait copywriting sangat bisa
-                                    dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                             </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-2xl shadow-md max-w-xs mx-3 flex-shrink-0">
-                            <div class="flex flex-col items-start">
-                                <h3 class="font-bold text-sm sm:text-base mb-2 break-words">Sukisworo Nurrudin Rizky</h3>
-                                <div class="flex flex-row space-x-1 mb-2">
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
+                            <div
+                                class="overflow-x-auto bg-white p-4 rounded-2xl shadow-md max-w-[150px] sm:max-w-[200px] md:max-w-[250px] lg:max-w-[300px] flex-shrink-0 mx-2">
+                                <div class="flex flex-col items-start">
+                                    <h3 class="font-bold text-xs sm:text-sm md:text-base mb-2 break-words">Sukisworo
+                                        Nurrudin Rizky</h3>
+                                    <div class="flex flex-row space-x-1 mb-2">
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                        <i class="fa-solid fa-star text-yellow-300"></i>
+                                    </div>
+                                    <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
+                                        <i class="fa-regular fa-calendar-days"></i>
+                                        <span>9 Sep 2024</span>
+                                    </div>
+                                    <p class="text-xs sm:text-sm md:text-base break-words">Informasi terkait copywriting
+                                        sangat bisa dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                                 </div>
-                                <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span>9 Sep 2024</span>
-                                </div>
-                                <p class="text-xs sm:text-sm break-words">Informasi terkait copywriting sangat bisa
-                                    dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
                             </div>
+                            <!-- Add more cards if needed -->
                         </div>
-                        <!-- Repeat Rating Card as needed -->
-                        <div class="bg-white p-4 rounded-2xl shadow-md max-w-xs mx-3 flex-shrink-0">
-                            <div class="flex flex-col items-start">
-                                <h3 class="font-bold text-sm sm:text-base mb-2 break-words">Sukisworo Nurrudin Rizky</h3>
-                                <div class="flex flex-row space-x-1 mb-2">
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                </div>
-                                <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span>9 Sep 2024</span>
-                                </div>
-                                <p class="text-xs sm:text-sm break-words">Informasi terkait copywriting sangat bisa
-                                    dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
-                            </div>
-                        </div>
-                        <div class="bg-white p-4 rounded-2xl shadow-md max-w-xs mx-3 flex-shrink-0">
-                            <div class="flex flex-col items-start">
-                                <h3 class="font-bold text-sm sm:text-base mb-2 break-words">Sukisworo Nurrudin Rizky</h3>
-                                <div class="flex flex-row space-x-1 mb-2">
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                    <i class="fa-solid fa-star text-yellow-300"></i>
-                                </div>
-                                <div class="flex flex-row space-x-2 mb-2 text-xs text-gray-400">
-                                    <i class="fa-regular fa-calendar-days"></i>
-                                    <span>9 Sep 2024</span>
-                                </div>
-                                <p class="text-xs sm:text-sm break-words">Informasi terkait copywriting sangat bisa
-                                    dipahami. Serta penyampaian materi yang sangat mudah didengar.</p>
-                            </div>
-                        </div>
-                        <!-- Add more cards if needed -->
                     </div>
                 </div>
+
             </div>
         </section>
 
@@ -287,7 +277,7 @@
 
 
         {{-- Section 4: Skills --}}
-        <section class="bg-white p-4 md:p-8">
+        <section class="overflow-x-auto bg-white p-4 md:p-8">
             <div class="container mx-auto text-start sm:text-center">
                 <h2 class="text-2xl font-bold mb-4">Rekomendasi Kelas Lainnya</h2>
                 <p class="mb-4 text-gray-600">

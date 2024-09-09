@@ -14,8 +14,8 @@ class Manajemenmodul extends Model
     protected $table = 'modul';
     protected $fillable = ['id_modul', 'nama_modul', 'username', 'link', 'publish', 'status', 'aktif', 'urutan', 'static_content', 'gambar', 'link_seo']; // Kolom yang dapat diisi
 
-    public function user_modul()  
+    public function user_modul()
     {
-        return $this->hasMany(Usermodul::class, 'id_modul', 'id_modul');
+        return $this->hasMany(UserModul::class, 'id_modul', 'id_modul');
     }
 }
