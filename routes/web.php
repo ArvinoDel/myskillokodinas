@@ -41,6 +41,7 @@ use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\KategoriprogramController;
+use App\Http\Controllers\MetodepembayaranController;
 use App\Http\Controllers\TemplatewebsiteController;
 use App\Models\Agenda;
 use App\Models\Berita;
@@ -81,8 +82,8 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
     Route::resource('halamanbaru', HalamanbaruController::class)
         ->middleware('checkModul:halamanbaru');
-    // Route::get('identitaswebsite', [IdentitaswebsiteController::class, 'edit'])->name('identitaswebsite.edit');
-    // Route::put('identitaswebsite', [IdentitaswebsiteController::class, 'update'])->name('identitaswebsite.update');
+    Route::get('identitaswebsite', [IdentitaswebsiteController::class, 'edit'])->name('identitaswebsite.edit');
+    Route::put('identitaswebsite', [IdentitaswebsiteController::class, 'update'])->name('identitaswebsite.update');
     Route::get('identitaswebsite', [IdentitaswebsiteController::class, 'edit'])
         ->middleware('checkModul:identitaswebsite')
         ->name('identitaswebsite.edit');
@@ -168,6 +169,8 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->middleware('checkModul:program');
     Route::resource('kategoriprogram', KategoriprogramController::class)
         ->middleware('checkModul:kategoriprogram');
+    Route::resource('metodepembayaran', MetodepembayaranController::class)
+        ->middleware('checkModul:metodepembayaran');
 
     // Rute untuk backup database
     // Rute untuk backup database

@@ -31,7 +31,7 @@ if($testimonis->gambar != NULL){
                                     <div class="d-flex align-items-center">
                                         <img id="preview" src="{{ url('foto_testimoni/'.$testimonis->gambar) }}" alt="Preview" style="max-width: 100px; margin-top: 5px;" class="mr-3">
                                         <div class="flex-grow-1">
-                                            <input type="file" class="form-control" onchange="previewImage(event)" name="gbr_playlist" id="gbr_playlist">
+                                            <input type="file" class="form-control" onchange="previewImage(event)" name="gambar" id="gambar">
                                             <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah cover.</small>
                                         </div>
                                     </div>

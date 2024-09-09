@@ -14,7 +14,7 @@ if($trainers->gambar != NULL){
                 <h3 class="mb-0">Edit Trainer</h3>
             </div>
             <div class="card-body">
-                <form action="{{ route('administrator.trainer.update', $trainers->id_trainer) }}" method="POST" enctype="multipart/form-data" class="form-ajax">
+                <form action="{{ route('administrator.trainer.update', $trainers->id_tra) }}" method="POST" enctype="multipart/form-data" class="form-ajax">
                     @csrf
                     @method('PUT')
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
@@ -53,17 +53,9 @@ if($trainers->gambar != NULL){
                                 <th style="padding: 5px; border: 1px solid #ddd;">Nama Program</th>
                                 <td style="padding: 5px; border: 1px solid #ddd;">
                                     <div style="max-height: 200px; overflow-y: auto;">
-                                        {{-- @foreach($programs as $program)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="{{ $program->id_pro }}" id="program" name="program[]">
-                                            <label class="form-check-label" for="program_{{ $program->id_pro }}">
-                                                {{ $program->nama_program }}
-                                            </label>
-                                        </div>
-                                        @endforeach --}}
                                         @foreach($programs as $program)
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="{{ $program->id_program }}"
+                                            <input class="form-check-input" type="checkbox" value="{{ $program->id_pro }}"
                                                    id="program_{{ $program->id_program }}" name="program[]"
                                                    @if(in_array($program->id_program, $akses_program)) checked @endif>
                                             <label class="form-check-label" for="program_{{ $program->id_program }}">
@@ -72,7 +64,6 @@ if($trainers->gambar != NULL){
                                         </div>
                                         @endforeach
                                     </div>
-                                </td>
                                 </td>
                             </tr>
                         </tbody>

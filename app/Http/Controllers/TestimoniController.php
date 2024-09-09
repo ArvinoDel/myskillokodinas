@@ -58,7 +58,7 @@ class TestimoniController extends Controller
         //
         $validated = $request->validate([
             'link' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $link = $request->link;
@@ -110,18 +110,18 @@ class TestimoniController extends Controller
 
         $link = $request->link;
 
-        $updateData = [
-            'link' => $link,
-        ];
+        $gambarName = null;
 
         if ($request->hasFile('gambar')) {
             $gambar = $request->file("gambar");
-            $gambarName = $gambar->getClientOriginalName();
+            $gambarName = $gambar->getClientOriginalName(); // Menggunakan nama file asli
             $gambar->move("./foto_testimoni/", $gambarName);
-            $updateData['gambar'] = $gambarName;
         }
 
-        $testimonis->update($updateData);
+        $testimonis->update([
+            "link" => $link,
+            "gambar" => $gambarName
+        ]);
 
         return response()->json([
             'url' => route('administrator.testimoni.index'),
