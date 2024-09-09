@@ -254,20 +254,22 @@
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 <div
                     class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                    <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                        class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                    <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                    <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <span>5 Video</span>
-                        <span class="mx-1">•</span>
-                        <span>21.403</span>
-                    </div>
-                    <div class="flex items-center mt-6">
-                        <span class="text-yellow-400 text-sm">★★★★★</span>
-                        <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                        <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
-                    </div>
+                    <a href="/e-learning/program">
+                        <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
+                            class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
+                        <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
+                        <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <span>5 Video</span>
+                            <span class="mx-1">•</span>
+                            <span>21.403</span>
+                        </div>
+                        <div class="flex items-center mt-6">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="ml-1 text-xs text-gray-600">4.7/5</span>
+                            <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
+                        </div>
+                    </a>
                 </div>
                 <div
                     class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
@@ -857,4 +859,3 @@
     </section>
 
 </section>
-@endsection
