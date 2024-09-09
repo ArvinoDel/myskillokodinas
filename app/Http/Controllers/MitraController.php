@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mitra;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class MitraController extends Controller
@@ -11,7 +12,7 @@ class MitraController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request):View
+    public function index(Request $request): View
     {
         //
         $search = $request->search;
@@ -35,7 +36,7 @@ class MitraController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create():View
+    public function create(): View
     {
         //
         return view('administrator.mitra.create');
@@ -47,6 +48,24 @@ class MitraController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file("gambar");
+            $gambarName = $gambar->getClientOriginalName();
+            $gambar->move("./mitra/", $gambarName);
+        }
+        Mitra::create([
+            "gambar" => $gambarName,
+        ]);
+
+        return response()->json([
+            'url' => route('administrator.mitra.index'),
+            'success' => true,
+            'message' => 'Data Banner Home Berhasil Ditambah'
+        ]);
     }
 
     /**

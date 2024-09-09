@@ -81,6 +81,7 @@ class MetodepembayaranController extends Controller
     public function edit(string $id)
     {
         //
+        
     }
 
     /**
@@ -89,6 +90,32 @@ class MetodepembayaranController extends Controller
     public function update(Request $request, string $id)
     {
         //
+    $metodepembayaran = Metodepembayaran::find($id);
+    if (!$metodepembayaran) {
+        return response()->json([
+            'success' => false,
+            'message' => 'Metode Pembayaran tidak ditemukan.'
+        ], 404);
+    }
+
+    $request->validate([
+        'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    if ($request->hasFile('gambar')) {
+        $gambar = $request->file("gambar");
+        $gambarName = $gambar->getClientOriginalName();
+        $gambar->move("./foto_metode/", $gambarName);
+        $metodepembayaran->update([
+            "gambar" => $gambarName,
+        ]);
+    }
+
+    return response()->json([
+        'url' => route('administrator.metodepembayaran.index'),
+        'success' => true,
+        'message' => 'Data Metode Pembayaran Berhasil Diubah'
+    ]);
     }
 
     /**
