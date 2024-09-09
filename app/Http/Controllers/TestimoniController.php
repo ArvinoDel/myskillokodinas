@@ -2,16 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Testimoni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Redirect;
 
 class TestimoniController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $search = $request->search;
+        $link = $request->link;
+
+        $query = Testimoni::query();
+
+        if (!empty($search)) {
+            $query->where('link', 'like', "%$search%");
+        }
+
+        if (!empty($tagvid)) {
+            $query->where('sidebar', $tagvid);
+        }
+
+        $testimonis = $query->paginate(10);
+
+        $links = Testimoni::select('link')
+                    ->groupBy('link')
+                    ->get();
+
+        return view('administrator.testimoni.index', compact(['testimonis', 'links']));
     }
 
     /**
@@ -20,6 +47,7 @@ class TestimoniController extends Controller
     public function create()
     {
         //
+        return view('administrator.testimoni.create');
     }
 
     /**
@@ -28,6 +56,30 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         //
+        $validated = $request->validate([
+            'link' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $link = $request->link;
+        $gambarName = null;
+
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file("gambar");
+            $gambarName = $gambar->getClientOriginalName(); // Menggunakan nama file asli
+            $gambar->move("./foto_testimoni/", $gambarName);
+        }
+
+        Testimoni::create([
+            'link' => $validated['link'],
+            'gambar' => $gambarName
+        ]);
+
+        return response()->json([
+            'url' => route('administrator.testimoni.index'),
+            'success' => true,
+            'message' => 'Data Testimoni Berhasil Ditambah'
+        ]);
     }
 
     /**
@@ -44,6 +96,8 @@ class TestimoniController extends Controller
     public function edit(string $id)
     {
         //
+        $testimonis = Testimoni::findOrFail($id);
+        return view('administrator.testimoni.edit', compact('testimonis'));
     }
 
     /**
@@ -52,6 +106,28 @@ class TestimoniController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $testimonis = Testimoni::findOrFail($id);
+
+        $link = $request->link;
+
+        $updateData = [
+            'link' => $link,
+        ];
+
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file("gambar");
+            $gambarName = $gambar->getClientOriginalName();
+            $gambar->move("./foto_testimoni/", $gambarName);
+            $updateData['gambar'] = $gambarName;
+        }
+
+        $testimonis->update($updateData);
+
+        return response()->json([
+            'url' => route('administrator.testimoni.index'),
+            'success' => true,
+            'message' => 'Data Testimoni Berhasil Diperbarui'
+        ]);
     }
 
     /**
@@ -60,5 +136,9 @@ class TestimoniController extends Controller
     public function destroy(string $id)
     {
         //
+        $testimonis = Testimoni::findOrFail($id);
+        $testimonis->delete();
+
+        return response()->json(['message' => 'Data berhasil dihapus.']);
     }
 }

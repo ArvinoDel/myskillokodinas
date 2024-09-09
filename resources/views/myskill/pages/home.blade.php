@@ -12,7 +12,7 @@
         @endforeach
     </div>
     <div>
-        <h2 class="text-xl md:text-2xl text-center py-14 font-bold text-black">Mari Merintis Karir Bersama Pandai Digital</h2>
+        <h2 class="text-xl md:text-2xl text-center py-14 font-bold text-black">Mari Merintis Karir Bersama GMT</h2>
     </div>
 
 
@@ -106,7 +106,7 @@
     </div>
 </div>
 <div>
-    <h3 class="py-12 text-center font-bold text-2xl text-black">Berbagai Macam Program di Pandai Digital</h3>
+    <h3 class="py-12 text-center font-bold text-2xl text-black">Berbagai Macam Program di GMT</h3>
 </div>
 
 <div class="grid md:grid-cols-2 lg:py-10">
@@ -383,56 +383,41 @@
 </div>
 <p class="py-20 sm:mx-8 text-center text-2xl font-bold">Bersama Experts dan Case Study dari Beberapa Company</p>
 <div class="grid grid-cols-4 gap-4 px-16">
-    @foreach($links as $link)
     <div class="flex justify-center items-center">
         <img class="w-56 h-auto" src="{{ asset('assets/home/gojek.svg') }}" alt="">
     </div>
-    @endforeach
+    <div class="flex justify-center items-center">
+        <img class="w-56 h-auto" src="{{ asset('assets/home/shopee.svg') }}" alt="">
+    </div>
+    <div class="flex justify-center items-center">
+        <img class="w-56 h-auto" src="{{ asset('assets/home/astra.svg') }}" alt="">
+    </div>
+    <div class="flex justify-center items-center">
+        <img class="w-56 h-auto" src="{{ asset('assets/home/efishery.svg') }}" alt="">
+    </div>
+    <div class="flex justify-center items-center">
+        <img class="w-56 h-auto" src="{{ asset('assets/home/halodoc.svg') }}" alt="">
+    </div>
+    <div class="flex justify-center items-center">
+        <img class="w-56 h-auto" src="{{ asset('assets/home/kitabisa.svg') }}" alt="">
+    </div>
+    <div class="flex justify-center items-center">
+        <img class="w-56 h-auto" src="{{ asset('assets/home/idn.svg') }}" alt="">
+    </div>
+    <div class="flex justify-center items-center">
+        <img class="w-56 h-auto" src="{{ asset('assets/home/dentsu.svg') }}" alt="">
+    </div>
 </div>
 <h3 class="text-center text-2xl font-bold py-16">Investors dan Affiliations</h3>
 <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar ps-6 gap-5 lg:gap-11"
     style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
     ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
     onmouseup="this.classList.remove('touching')">
+    @foreach($links as $link)
     <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center p-8" src="{{ asset('assets/home/east.svg') }}" alt="" />
+        <img class="flex justify-center mx-auto mt-4 w-16" src="{{ asset('foto_bannerhome/' . $link->gambar) }}" alt="" />
     </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-4 w-16" src="{{ asset('assets/home/aws.svg') }}" alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center my-4 mx-auto w-20" src="{{ asset('assets/home/linkedin.svg') }}"
-            alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-4 w-16" src="{{ asset('assets/home/kominfo.svg') }}"
-            alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-3 w-40" src="{{ asset('assets/home/startup.svg') }}"
-            alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-2" src="{{ asset('assets/home/asia.svg') }}" alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-2" src="{{ asset('assets/home/asia.svg') }}" alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-2" src="{{ asset('assets/home/asia.svg') }}" alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-2" src="{{ asset('assets/home/asia.svg') }}" alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-2" src="{{ asset('assets/home/asia.svg') }}" alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-2" src="{{ asset('assets/home/asia.svg') }}" alt="" />
-    </div>
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-2" src="{{ asset('assets/home/asia.svg') }}" alt="" />
-    </div>
+    @endforeach
 </div>
 <h3 class="py-16 text-center text-2xl font-bold">Most Featured in</h3>
 <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar ps-6 gap-5 lg:gap-11"

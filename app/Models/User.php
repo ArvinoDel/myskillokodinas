@@ -57,7 +57,7 @@ class User extends Authenticatable
         ];
     }
 
-    public function user_modul()  
+    public function user_modul()
     {
         return $this->belongsTo(Usermodul::class, 'id_session', 'id_session');
     }

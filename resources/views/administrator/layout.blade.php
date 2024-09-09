@@ -402,7 +402,14 @@
                                         $userModul = new \App\Models\UserModul;
                                         $cekLogowebsite = $userModul->umenu_akses("logowebsite", session('id_session'));
                                         $cekTemplatewebsite = $userModul->umenu_akses("templatewebsite", session('id_session'));
-                                        $cekBackgroundwebsite = $userModul->umenu_akses("backgroundwebsite", session('id_session'));
+                                        $cekTestimoni = $userModul->umenu_akses("testimoni", session('id_session'));
+                                        $cekTrainer = $userModul->umenu_akses("trainer", session('id_session'));
+                                        $cekProgram = $userModul->umenu_akses("program", session('id_session'));
+                                        $cekMateri = $userModul->umenu_akses("materi", session('id_session'));
+                                        $cekMember = $userModul->umenu_akses("member", session('id_session'));
+                                        $cekRating = $userModul->umenu_akses("rating", session('id_session'));
+                                        $cekKategoriprogram = $userModul->umenu_akses("kategoriprogram", session('id_session'));
+                                        $cekMetodepembayaran = $userModul->umenu_akses("metodepembayaran", session('id_session'));
                                     @endphp
 
                                     @if($cekLogowebsite == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
@@ -410,6 +417,30 @@
                                     @endif
                                     @if($cekTemplatewebsite == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/templatewebsite') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Template Website</a></li>
+                                    @endif
+                                    @if($cekTestimoni == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/testimoni') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Testimoni</a></li>
+                                    @endif
+                                    @if($cekTrainer == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/trainer') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Trainer</a></li>
+                                    @endif
+                                    @if($cekProgram == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/program') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Program</a></li>
+                                    @endif
+                                    @if($cekMateri == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/materi') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Materi</a></li>
+                                    @endif
+                                    @if($cekMember == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/member') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Member</a></li>
+                                    @endif
+                                    @if($cekRating == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/rating') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Rating</a></li>
+                                    @endif
+                                    @if($cekKategoriprogram == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/kategoriprogram') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Kategori Program</a></li>
+                                    @endif
+                                    @if($cekMetodepembayaran == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/metodepembayaran') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Metode Pembayaran</a></li>
                                     @endif
                                 </ul>
                             </div>
@@ -632,7 +663,7 @@
                                     @endif
                                 </ul>
                             </div>
-                        </li>   
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('administrator/database') }}">
                                 <i class="ni ni-map-big text-primary"></i>

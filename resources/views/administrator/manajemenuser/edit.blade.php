@@ -84,7 +84,7 @@ if($users->foto != NULL){
                                             </label>
                                         </div>
                                             @endforeach --}}
-                                        @foreach($moduls as $modul)
+                                        @foreach($moduls as $modul)  
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="{{ $modul->id_modul }}"
                                                    id="modul_{{ $modul->id_modul }}" name="modul[]"

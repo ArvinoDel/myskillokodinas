@@ -29,7 +29,7 @@ class Usermodul extends Model
     // {
     //     return $this->whereHas('modul', function ($query) use ($link) {
     //         $query->where('link', $link);
-    //     })->where('id_session', $id)->count();  
+    //     })->where('id_session', $id)->count();
     // }
 
     public function umenu_akses($modul, $id_session)

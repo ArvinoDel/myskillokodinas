@@ -31,17 +31,17 @@ class ManajemenuserController extends Controller
         //     ->paginate(10);
         // } else {
         //     $users = User::orderBy('username', 'desc')->paginate(10);
-        // }    
+        // }
 
         $search = $request->search;
-        $level = $request->level;  
+        $level = $request->level;
 
         $query = User::query();
 
         if (!empty($search)) {
             $query->where('username', 'like', "%$search%")->orWhere('nama_lengkap', 'like', "%$search%")->orWhere('email', 'like', "%$search%")->orWhere('no_telp', 'like', "%$search%");
         }
-  
+
         if (!empty($level)) {
             $query->where('level', $level);
         }
@@ -73,7 +73,7 @@ class ManajemenuserController extends Controller
         //
         $moduls = Manajemenmodul::all();
         return view('administrator.manajemenuser.create', compact(['moduls']));
-    }  
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -193,10 +193,10 @@ class ManajemenuserController extends Controller
             ->where('users.id', $id)
             ->orderBy('users_modul.id_umod', 'DESC')
             ->get();
-    
+
         $moduls = Manajemenmodul::all();
         $akses_user = $akses->pluck('id_modul')->toArray();
-    
+
         return view('administrator.manajemenuser.edit', compact('users', 'akses', 'moduls', 'akses_user'));
     }
 
@@ -278,7 +278,7 @@ class ManajemenuserController extends Controller
             'success' => true,
             'message' => 'Data User Berhasil Diperbarui'
         ]);
-    }  
+    }
 
     /**
      * Remove the specified resource from storage.

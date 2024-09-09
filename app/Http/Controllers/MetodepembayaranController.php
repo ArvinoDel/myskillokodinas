@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Metodepembayaran;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class MetodepembayaranController extends Controller
@@ -10,7 +11,7 @@ class MetodepembayaranController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request):view
     {
         //
         $search = $request->search;
@@ -34,9 +35,10 @@ class MetodepembayaranController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create():View
     {
         //
+        return view('administrator.mitra.create');
     }
 
     /**
