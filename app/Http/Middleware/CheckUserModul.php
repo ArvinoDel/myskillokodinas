@@ -2,13 +2,13 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\UserModul;
+use App\Models\Usermodul;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Log; // Tambahkan ini
 
-class CheckUserModul
+class CheckUsermodul
 {
     /**
      * Handle an incoming request.
@@ -22,7 +22,7 @@ class CheckUserModul
         $user = $request->user();
         Log::info('Memeriksa akses middleware untuk modul: ' . $modul . ' dan user session ID: ' . $user->id_session);
 
-        $akses = UserModul::where('id_session', $user->id_session)->whereHas('modul', function ($query) use ($modul) {
+        $akses = Usermodul::where('id_session', $user->id_session)->whereHas('modul', function ($query) use ($modul) {
                 $query->where('link', $modul);
             })->get();
 
