@@ -42,6 +42,7 @@ use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\KategoriprogramController;
 use App\Http\Controllers\MetodepembayaranController;
+use App\Http\Controllers\MitraController;
 use App\Http\Controllers\TemplatewebsiteController;
 use App\Models\Agenda;
 use App\Models\Berita;
@@ -171,6 +172,8 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->middleware('checkModul:kategoriprogram');
     Route::resource('metodepembayaran', MetodepembayaranController::class)
         ->middleware('checkModul:metodepembayaran');
+    Route::resource('mitra', MitraController::class)
+        ->middleware('checkModul:mitra');
 
     // Rute untuk backup database
     // Rute untuk backup database

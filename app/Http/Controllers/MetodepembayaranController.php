@@ -63,7 +63,7 @@ class MetodepembayaranController extends Controller
         return response()->json([
             'url' => route('administrator.metodepembayaran.index'),
             'success' => true,
-            'message' => 'Data Banner Home Berhasil Ditambah'
+            'message' => 'Data metode Berhasil Ditambah'
         ]);
     }
 
@@ -81,6 +81,8 @@ class MetodepembayaranController extends Controller
     public function edit(string $id)
     {
         //
+        $metod = Metodepembayaran::findorfail($id);
+        return view('administrator.metodepembayaran.edit', compact('metod'));
         
     }
 
@@ -90,17 +92,11 @@ class MetodepembayaranController extends Controller
     public function update(Request $request, string $id)
     {
         //
-    $metodepembayaran = Metodepembayaran::find($id);
-    if (!$metodepembayaran) {
-        return response()->json([
-            'success' => false,
-            'message' => 'Metode Pembayaran tidak ditemukan.'
-        ], 404);
-    }
-
     $request->validate([
         'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     ]);
+
+    $metodepembayaran = Metodepembayaran::find($id);
 
     if ($request->hasFile('gambar')) {
         $gambar = $request->file("gambar");
@@ -114,7 +110,7 @@ class MetodepembayaranController extends Controller
     return response()->json([
         'url' => route('administrator.metodepembayaran.index'),
         'success' => true,
-        'message' => 'Data Metode Pembayaran Berhasil Diubah'
+        'message' => 'Data Menu Website Berhasil Diperbaharui'
     ]);
     }
 
@@ -124,5 +120,8 @@ class MetodepembayaranController extends Controller
     public function destroy(string $id)
     {
         //
+        $menuwebs = Metodepembayaran::findOrFail($id);
+        $menuwebs->delete();
+        return response()->json(['message' => 'Data berhasil dihapus.']);
     }
 }

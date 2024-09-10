@@ -18,17 +18,17 @@ class MitraController extends Controller
         $search = $request->search;
         $tanggal = $request->tanggal;
 
-        $mitras = Mitra::query();
+        $query = Mitra::query();
 
         if (!empty($search)) {
-            $mitras->where('nama_program', 'like', "%$search%")->orWhere('harga', 'like', "%$search%")->orWhere('judul', 'like', "%$search%")->orWhere('keterangan', 'like', "%$search%");
+            $query->where('nama_program', 'like', "%$search%")->orWhere('harga', 'like', "%$search%")->orWhere('judul', 'like', "%$search%")->orWhere('keterangan', 'like', "%$search%");
         }
 
         if (!empty($judul)) {
-            $mitras->where('judul', $judul);
+            $query->where('judul', $judul);
         }
 
-        $programs = $mitras->paginate(10);
+        $mitras = $query->paginate(10);
 
         return view('administrator.mitra.index', compact(['mitras']));
     }
@@ -64,7 +64,7 @@ class MitraController extends Controller
         return response()->json([
             'url' => route('administrator.mitra.index'),
             'success' => true,
-            'message' => 'Data Banner Home Berhasil Ditambah'
+            'message' => 'Data Mitra Berhasil Ditambah'
         ]);
     }
 
@@ -82,6 +82,8 @@ class MitraController extends Controller
     public function edit(string $id)
     {
         //
+        $mit = Mitra::findorfail($id);
+        return view('administrator.mitra.edit', compact('mit'));
     }
 
     /**
@@ -90,6 +92,26 @@ class MitraController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    
+        $mitra = Mitra::find($id);
+    
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file("gambar");
+            $gambarName = $gambar->getClientOriginalName();
+            $gambar->move("./mitra/", $gambarName);
+            $mitra->update([
+                "gambar" => $gambarName,
+            ]);
+        }
+    
+        return response()->json([
+            'url' => route('administrator.mitra.index'),
+            'success' => true,
+            'message' => 'Data Menu Website Berhasil Diperbaharui'
+        ]);
     }
 
     /**
@@ -98,5 +120,8 @@ class MitraController extends Controller
     public function destroy(string $id)
     {
         //
+        $mitra = Mitra::findOrFail($id);
+        $mitra->delete();
+        return response()->json(['message' => 'Data berhasil dihapus.']);
     }
 }
