@@ -56,11 +56,6 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         //
-        $validated = $request->validate([
-            'link' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-
         $link = $request->link;
         $gambarName = null;
 
@@ -71,7 +66,7 @@ class TestimoniController extends Controller
         }
 
         Testimoni::create([
-            'link' => $validated['link'],
+            'link' => $link,
             'gambar' => $gambarName
         ]);
 
@@ -99,7 +94,7 @@ class TestimoniController extends Controller
         $testimonis = Testimoni::findOrFail($id);
         return view('administrator.testimoni.edit', compact('testimonis'));
     }
-
+  
     /**
      * Update the specified resource in storage.
      */

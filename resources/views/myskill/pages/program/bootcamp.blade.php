@@ -40,44 +40,17 @@
 
 
     <!-- Horizontal Scrollable Section -->
+
     <p class="mt-4 font-bold text-2xl flex justify-center px-14">Testimoni Alumni Bootcamp MySkill</p>
     <section class="mt-8 overflow-x-auto whitespace-nowrap px-8 md:px-2 py-4 mb-12 no-scrollbar">
+        @foreach($testimonis as $testimoni)
         <div class="inline-block px-4">
             <div class="bg-white rounded-lg shadow-md p-4 md:p-2 w-64 md:-mt-28">
-                <img src="{{ asset('./assets/bootcamp/dummy.png') }}" class="h-34 w-64 rounded-sm">
+                <img class="h-34 w-64 rounded-sm" src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}"/>
                 <button class="w-full p-2 mt-2 bg-teal-500 text-white py-2 px-4 rounded">Baca Cerita</button>
             </div>
         </div>
-        <div class="inline-block px-4">
-            <div class="bg-white rounded-lg shadow-md p-4 md:p-2 w-64">
-                <img src="{{ asset('./assets/bootcamp/dummy.png') }}" class="h-34 w-64 rounded-sm">
-                <button class="w-full p-2 mt-2 bg-teal-500 text-white py-2 px-4 rounded">Baca Cerita</button>
-            </div>
-        </div>
-        <div class="inline-block px-2">
-            <div class="bg-white rounded-lg shadow-md p-4 md:p-2 w-64">
-                <img src="{{ asset('./assets/bootcamp/dummy.png') }}" class="h-34 w-64 rounded-sm">
-                <button class="w-full p-2 mt-2 bg-teal-500 text-white py-2 px-4 rounded">Baca Cerita</button>
-            </div>
-        </div>
-        <div class="inline-block px-4">
-            <div class="bg-white rounded-lg shadow-md p-4 md:p-2 w-64">
-                <img src="{{ asset('./assets/bootcamp/dummy.png') }}" class="h-34 w-64 rounded-sm">
-                <button class="w-full p-2 mt-2 bg-teal-500 text-white py-2 px-4 rounded">Baca Cerita</button>
-            </div>
-        </div>
-        <div class="inline-block px-4">
-            <div class="bg-white rounded-lg shadow-md p-4 md:p-2 w-64">
-                <img src="{{ asset('./assets/bootcamp/dummy.png') }}" class="h-34 w-64 rounded-sm">
-                <button class="w-full p-2 mt-2 bg-teal-500 text-white py-2 px-4 rounded">Baca Cerita</button>
-            </div>
-        </div>
-        <div class="inline-block px-4">
-            <div class="bg-white rounded-lg shadow-md p-4 md:p-2 w-64">
-                <img src="{{ asset('./assets/bootcamp/dummy.png') }}" class="h-34 w-64 rounded-sm">
-                <button class="w-full p-2 mt-2 bg-teal-500 text-white py-2 px-4 rounded">Baca Cerita</button>
-            </div>
-        </div>
+        @endforeach
     </section>
 
 
