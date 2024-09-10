@@ -411,6 +411,8 @@
                                         $cekKategoriprogram = $Usermodul->umenu_akses("kategoriprogram", session('id_session'));
                                         $cekMetodepembayaran = $Usermodul->umenu_akses("metodepembayaran", session('id_session'));
                                         $cekMitra = $Usermodul->umenu_akses("mitra", session('id_session'));
+                                        $cekBerlangganan = $Usermodul->umenu_akses("berlangganan", session('id_session'));
+                                      
                                     @endphp
 
                                     @if($cekLogowebsite == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
@@ -446,6 +448,9 @@
                                     @if($cekMitra == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/mitra') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
                                     @endif
+                                    @if($cekBerlangganan == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link" href="{{ url('administrator/berlangganan') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a></li>
+                                @endif
                                 </ul>
                             </div>
                             {{-- <div class="collapse" id="modul-web">
