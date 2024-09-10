@@ -116,7 +116,7 @@
     </div>
 
 <div class="grid md:grid-cols-2 lg:py-10">
-    <img class="lg:w-96 w-80 h-80 ms-10 lg:ms-48 max-sm:ms-auto" src="{{ asset('img/image1.svg') }}" alt="" />
+    <img class="lg:w-96 w-80 h-80 ms-10 lg:ms-48 max-sm:ms-auto max-sm:mr-10" src="{{ asset('img/image1.svg') }}" alt="" />
     <div class="text-start px-10 lg:px-20 lg:py-4">
         <h2 class="font-bold text-black text-2xl">E-learning</h2>
         <h1 class="text-black text-lg pt-7 font-semibold">Pelajari Ratusan Skill Sekali Bayar. Praktik dan
@@ -156,11 +156,11 @@
         <div class="mt-8"></div>
         <a href="/bootcamp" class="font-semibold px-5 py-2.5 rounded-xl mt-4 bg-orange-400 max-sm:text-xs">Lihat Ragam Bootcamp</a>
     </div>
-    <img class="w-80 lg:w-96 h-80 ms-10 max-sm:ms-auto" src="{{ asset('img/image2.svg') }}" alt="" />
+    <img class="w-80 lg:w-96 h-80 ms-10 max-sm:ms-auto max-sm:mr-10" src="{{ asset('img/image2.svg') }}" alt="" />
 </div>
 
 <div class="grid md:grid-cols-2 md:py-10">
-    <img class="ms-10 w-80 lg:w-96 h-80 lg:ps-20 max-sm:ms-auto" src="{{ asset('img/image3.svg') }}" alt="" />
+    <img class="ms-10 w-80 lg:w-96 h-80 lg:ps-20 max-sm:ms-auto max-sm:mr-10" src="{{ asset('img/image3.svg') }}" alt="" />
     <div class="text-start px-10 lg:px-20  lg:py-4">
         <h2 class="font-bold text-black text-2xl">Review CV</h2>
         <h1 class="text-black text-lg pt-7 font-semibold">Dapatkan review dan dokumen persiapan karir dari HRD</h1>
@@ -198,13 +198,13 @@
             </div>
             <div class="grid grid-cols-2 gap-4 text-center">
                 <a href="/corporate-service"
-                    class="font-semibold rounded-xl  mt-4 max-sm:text-left px-5 py-2.5 bg-orange-400 ">Corporate
+                    class="font-semibold rounded-xl  mt-4 max-sm:text-sm px-2.5 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5   bg-orange-400 ">Corporate
                     Service</a>
-                <a href="/experience" class="font-semibold px-5 py-2.5 rounded-xl  mt-4 bg-orange-400 ">Sofware HRIS</a>
+                <a href="/experience" class="font-semibold px-2.5 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5  rounded-xl max-sm:text-sm mt-4 bg-orange-400 ">Sofware HRIS</a>
             </div>
         </div>
+        <img class="lg:w-96 w-80 h-80 ms-10 max-sm:ms-auto max-sm:mr-10" src="{{ asset('img/image88.svg') }}" alt="" />
     </div>
-    <img class="lg:w-96 w-80 h-80 ms-10 max-sm:ms-auto" src="{{ asset('img/image88.svg') }}" alt="" />
 </div>
 <h2 class="text-center font-bold text-2xl mx-3 lg:px-80 py-24">Rasanya Gabung Dengan Komunitas GM Official #Sipaling
     Ngoding
@@ -216,7 +216,7 @@
     @foreach($album as $album)
     <div
         class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('img_album/' . $album->gbr_album) }}" alt="gvsdfcfs" />
+        <img class="rounded-t-lg pt-2 px-2 max-sm:mr-10" src="{{ asset('img_album/' . $album->gbr_album) }}" alt="gvsdfcfs" />
         <div>
             <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
         </div>
@@ -356,7 +356,7 @@
     @foreach($metod as $k)
     <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
         <img class="w-32" src="{{ asset('foto_metode/'. $k->gambar) }}" alt="" />
-    </div>    
+    </div>
     @endforeach
 </div>
 <h3 class="py-20 text-center text-2xl font-bold ">Yang Sering Ditanyakan</h3>
