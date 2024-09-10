@@ -41,11 +41,15 @@ use App\Http\Controllers\TrainerController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\KategoriprogramController;
+use App\Http\Controllers\MateriController;
+use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MetodepembayaranController;
+use App\Http\Controllers\MitraController;
 use App\Http\Controllers\TemplatewebsiteController;
 use App\Models\Agenda;
 use App\Models\Berita;
 use App\Models\Halamanbaru;
+use App\Models\Testimoni;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -169,8 +173,16 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->middleware('checkModul:program');
     Route::resource('kategoriprogram', KategoriprogramController::class)
         ->middleware('checkModul:kategoriprogram');
+    Route::resource('materi', MateriController::class)
+        ->middleware('checkModul:materi');
+    Route::resource('materi', MateriController::class)
+        ->middleware('checkModul:materi');
+    Route::resource('member', MemberController::class)
+        ->middleware('checkModul:member');
     Route::resource('metodepembayaran', MetodepembayaranController::class)
         ->middleware('checkModul:metodepembayaran');
+    Route::resource('mitra', MitraController::class)
+        ->middleware('checkModul:mitra');
 
     // Rute untuk backup database
     // Rute untuk backup database
@@ -198,6 +210,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 // })->name('Home');
 
 Route::get('/home', [MainController::class, 'index']);
+Route::get('/bootcamp', [MainController::class, 'bootcamp']);
 
 
 Route::get('/', [MainController::class, 'index']);
@@ -205,7 +218,9 @@ Route::get('/', [MainController::class, 'index']);
 
 // e-learning
 Route::get('/e-learning', function () {
-    return view('./myskill/pages/e-learning/e-learning');
+    $testimonis = Testimoni::all();
+
+    return view('./myskill/pages/e-learning/e-learning', compact('testimonis'));
 })->name('E-learning');
 
 Route::get('/e-learning/program', function () {
@@ -218,7 +233,9 @@ Route::get('/e-learning/materi', function () {
 
 // bootcamp
 Route::get('/bootcamp', function () {
-    return view('./myskill/pages/program/bootcamp');
+    $testimonis = Testimoni::all();
+
+    return view('./myskill/pages/program/bootcamp', compact('testimonis'));
 })->name('Program & Bootcamp');
 
 Route::get('/bootcamp/digital-marketing', function () {

@@ -57,13 +57,13 @@
                             @foreach ($metodes as $index => $metode)
                             <tr>
                                 <td>{{ $loop->iteration + $metodes->firstItem() - 1 }}</td>
-                                <td>{{ $metode->gambar }}</td>
+                                <td><img src="{{ asset('foto_metode/' . $metode->gambar) }}" alt="Gambar" class="img-fluid"></td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('administrator.metodepembayaran.edit', $metode->id) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button data-url="{{ route('administrator.kategoriprogram.destroy', $metode->id) }}"
+                                        <button data-url="{{ route('administrator.metodepembayaran.destroy', $metode->id) }}"
                                             type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                             <i class="fa fa-trash"></i>
                                         </button>

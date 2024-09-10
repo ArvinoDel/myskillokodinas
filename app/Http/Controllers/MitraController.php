@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mitra;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class MitraController extends Controller
@@ -11,23 +12,23 @@ class MitraController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request):View
+    public function index(Request $request): View
     {
         //
         $search = $request->search;
         $tanggal = $request->tanggal;
 
-        $mitras = Mitra::query();
+        $query = Mitra::query();
 
         if (!empty($search)) {
-            $mitras->where('nama_program', 'like', "%$search%")->orWhere('harga', 'like', "%$search%")->orWhere('judul', 'like', "%$search%")->orWhere('keterangan', 'like', "%$search%");
+            $query->where('nama_program', 'like', "%$search%")->orWhere('harga', 'like', "%$search%")->orWhere('judul', 'like', "%$search%")->orWhere('keterangan', 'like', "%$search%");
         }
 
         if (!empty($judul)) {
-            $mitras->where('judul', $judul);
+            $query->where('judul', $judul);
         }
 
-        $programs = $mitras->paginate(10);
+        $mitras = $query->paginate(10);
 
         return view('administrator.mitra.index', compact(['mitras']));
     }
@@ -35,7 +36,7 @@ class MitraController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create():View
+    public function create(): View
     {
         //
         return view('administrator.mitra.create');
@@ -47,6 +48,24 @@ class MitraController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file("gambar");
+            $gambarName = $gambar->getClientOriginalName();
+            $gambar->move("./mitra/", $gambarName);
+        }
+        Mitra::create([
+            "gambar" => $gambarName,
+        ]);
+
+        return response()->json([
+            'url' => route('administrator.mitra.index'),
+            'success' => true,
+            'message' => 'Data Mitra Berhasil Ditambah'
+        ]);
     }
 
     /**
@@ -63,6 +82,8 @@ class MitraController extends Controller
     public function edit(string $id)
     {
         //
+        $mit = Mitra::findorfail($id);
+        return view('administrator.mitra.edit', compact('mit'));
     }
 
     /**
@@ -71,6 +92,26 @@ class MitraController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    
+        $mitra = Mitra::find($id);
+    
+        if ($request->hasFile('gambar')) {
+            $gambar = $request->file("gambar");
+            $gambarName = $gambar->getClientOriginalName();
+            $gambar->move("./mitra/", $gambarName);
+            $mitra->update([
+                "gambar" => $gambarName,
+            ]);
+        }
+    
+        return response()->json([
+            'url' => route('administrator.mitra.index'),
+            'success' => true,
+            'message' => 'Data Menu Website Berhasil Diperbaharui'
+        ]);
     }
 
     /**
@@ -79,5 +120,8 @@ class MitraController extends Controller
     public function destroy(string $id)
     {
         //
+        $mitra = Mitra::findOrFail($id);
+        $mitra->delete();
+        return response()->json(['message' => 'Data berhasil dihapus.']);
     }
 }

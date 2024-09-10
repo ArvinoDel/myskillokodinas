@@ -16,7 +16,7 @@
                             <tr>
                                 <th style="padding: 5px;">Gambar Testimoni</th>
                                 <td style="padding: 5px;">
-                                    <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*">
+                                    <input type="file" class="form-control" id="gambar" name="gambar">
                                 </td>
                             </tr>
                             <tr>
