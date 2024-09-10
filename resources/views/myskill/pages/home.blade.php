@@ -216,9 +216,11 @@
     @foreach($album as $album)
     <div
         class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2 max-sm:mr-10" src="{{ asset('img_album/' . $album->gbr_album) }}" alt="gvsdfcfs" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
+        <div class="flex flex-col justify-center items-center">
+            <img class="rounded-xl pt-2 w-32 h-32 object-cover" src="{{ asset('img_album/' . $album->gbr_album) }}" alt="Album Image" />
+            <div>
+                <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
+            </div>
         </div>
     </div>
     @endforeach
