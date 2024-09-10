@@ -354,10 +354,9 @@
     ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
     onmouseup="this.classList.remove('touching')">
     @foreach($metod as $k)
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-3 w-20" src="{{ asset('foto_metode/'. $k->gambar) }}"
-            alt="" />
-    </div>
+    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
+        <img class="w-32" src="{{ asset('foto_metode/'. $k->gambar) }}" alt="" />
+    </div>    
     @endforeach
 </div>
 <h3 class="py-20 text-center text-2xl font-bold ">Yang Sering Ditanyakan</h3>

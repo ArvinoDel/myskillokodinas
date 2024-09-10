@@ -54,7 +54,7 @@ class MainController extends Controller
 
         if ($templateDinas4 && $templateDinas4->aktif === 'Y') {
             // Jika 'dinas-4' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-4'
-            return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis'));
+            return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod'));
         } elseif ($templateDinas3 && $templateDinas3->aktif === 'Y') {
             // Jika 'dinas-3' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-3'
             return view('dinas-3.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));

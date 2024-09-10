@@ -54,7 +54,7 @@
     <div class="max- hidden lg:block space-x-2 justify-items-end mt-1.5">
         <a href="/login">
             <button type="button"
-                class="text-white hover:text-white border border-pink-500 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 text-center me-2 mb-2 dark:border-pink-300 dark:text-white dark:hover:text-white dark:hover:bg-pink-400 dark:focus:ring-pink-900">Login</button>
+                class="text-pink-500 hover:text-white border border-pink-500 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 text-center me-2 mb-2 dark:border-pink-300 dark:hover:text-white dark:hover:bg-pink-400 dark:focus:ring-pink-900">Login</button>
 
         </a>
         <a href="/register">
