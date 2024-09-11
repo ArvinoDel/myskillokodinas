@@ -12,6 +12,7 @@ use App\Models\Berita;
 use App\Models\Identitaswebsite;
 use App\Models\Logo;
 use App\Models\Menuwebsite;
+use App\Models\Metode;
 use App\Models\Metodepembayaran;
 use App\Models\Mitra;
 use App\Models\Poling;
@@ -31,7 +32,8 @@ class MainController extends Controller
     public function index(Request $request)
     {
         $mitra = Mitra::orderBy('id', 'ASC')->get();
-        $metod = Metodepembayaran::all();
+        $metod = Metode::all();
+        $logo_bawah = Metodepembayaran::all();
         // dd($mitra);
         $trainer = Trainer::all();
         $banners = Bannerslider::all();
@@ -54,7 +56,7 @@ class MainController extends Controller
         $templateDinas2 = Template::where('folder', 'dinas-2')->first();
         $templateDinas1 = Template::where('folder', '')->first();
 
-        return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod', 'trainer'));
+        return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod', 'logo_bawah', 'trainer'));
     }
 
     public function bootcamp(Request $request)

@@ -258,11 +258,12 @@
         style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
         ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
         onmouseup="this.classList.remove('touching')">
-
+        @foreach ($logo_bawah as $lb)
         <div
             class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
-            <img class="w-32" src="" alt="" />
+            <img class="w-32" src="{{ asset('foto_metode/' . $lb->gambar) }}" alt="" />
         </div>
+        @endforeach
 
     </div>
     <h3 class="py-20 text-center text-2xl font-bold ">Yang Sering Ditanyakan</h3>

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Controllers\PesanmasukController;
+use App\Models\Metode;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Metodepembayaran;
@@ -24,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Share metode pembayaran dengan semua view
         View::composer('*', function ($view) {
-            $metod = Metodepembayaran::all();
+            $metod = Metode::all();
             $view->with('metod', $metod);
         });
 
