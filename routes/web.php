@@ -7,6 +7,7 @@ use App\Http\Controllers\BannerhomeController;
 use App\Http\Controllers\BannersliderController;
 use App\Http\Controllers\BenefitController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\BerlanggananController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DownloadareaController;
 use App\Http\Controllers\GalleryController;
@@ -44,6 +45,7 @@ use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\KategoriprogramController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MetodeController;
 use App\Http\Controllers\MetodepembayaranController;
 use App\Http\Controllers\MitraController;
 use App\Http\Controllers\TemplatewebsiteController;
@@ -201,6 +203,9 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
     Route::resource('metodepembayaran', MetodepembayaranController::class)
         ->middleware('checkModul:metodepembayaran');
+
+    Route::resource('metode', MetodeController::class)
+        ->middleware('checkModul:metode');
 
     Route::resource('mitra', MitraController::class)
         ->middleware('checkModul:mitra');

@@ -267,41 +267,43 @@
 </div>
 <h3 class="py-20 text-center text-2xl font-bold ">Yang Sering Ditanyakan</h3>
 
-<div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
-    <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
-        onclick="toggleDropdown('dropdown1', this)">
-        Apakah ProSkill bagus ?
-        <i id="icon2" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5"></i>
-    </button>
-    <div id="dropdown1" class="hidden p-2 bg-white transition-opacity duration-300 ease-in-out opacity-0">
-        <p class="text-gray-700 block text-sm" role="menuitem">Proskill memiliki tiga fitur utama
-            e-learning untuk belajar Mandiri via video modul belajar dan webinar series bulanan bootcamp
-            untuk belajar intensif fokus pada praktik via Zoom barang ekspor mentoring untuk dapat template
-            dan review CV hingga persiapan wawancara bersama HRD</p>
+<div class="sm:mx-0 lg:mx-8">
+    <div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
+        <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
+            onclick="toggleDropdown('dropdown1', this)">
+            Apakah ProSkill bagus ?
+            <i id="icon2" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5 transition-transform duration-300"></i>
+        </button>
+        <div id="dropdown1" class="hidden p-2 bg-white transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+            <p class="text-gray-700 block text-sm" role="menuitem">Proskill memiliki tiga fitur utama
+                e-learning untuk belajar Mandiri via video modul belajar dan webinar series bulanan bootcamp
+                untuk belajar intensif fokus pada praktik via Zoom barang ekspor mentoring untuk dapat template
+                dan review CV hingga persiapan wawancara bersama HRD</p>
+        </div>
     </div>
-</div>
 
-<div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
-    <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
-        onclick="toggleDropdown('dropdown2', this)">
-        Apakah ProSkill Berbayar ?
-        <i id="icon3" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5"></i>
-    </button>
-    <div id="dropdown2" class="hidden p-2 bg-white transition-opacity duration-300 ease-in-out opacity-0">
-        <p class="text-gray-700 block text-sm" role="menuitem">Ya, setiap peserta akan mendapatkan
-            sertifikat setelah menyelesaikan kursus.</p>
+    <div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
+        <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
+            onclick="toggleDropdown('dropdown2', this)">
+            Apakah ProSkill Berbayar ?
+            <i id="icon3" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5 transition-transform duration-300"></i>
+        </button>
+        <div id="dropdown2" class="hidden p-2 bg-white transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+            <p class="text-gray-700 block text-sm" role="menuitem">Ya, setiap peserta akan mendapatkan
+                sertifikat setelah menyelesaikan kursus.</p>
+        </div>
     </div>
-</div>
 
-<div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
-    <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
-        onclick="toggleDropdown('dropdown3', this)">
-        Platform Pembayaran apa saja yang digunakan pada SkillPro ?
-        <i id="icon4" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5"></i>
-    </button>
-    <div id="dropdown3" class="hidden p-2 bg-white transition-opacity duration-300 ease-in-out opacity-0">
-        <p class="text-gray-700 block text-sm" role="menuitem">Pembayaran bisa menggunakan
-            berbagai e-wallet, QRIS, transfer bank hingga melalui swalayan terdekat</p>
+    <div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
+        <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
+            onclick="toggleDropdown('dropdown3', this)">
+            Platform Pembayaran apa saja yang digunakan pada SkillPro ?
+            <i id="icon4" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5 transition-transform duration-300"></i>
+        </button>
+        <div id="dropdown3" class="hidden p-2 bg-white transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
+            <p class="text-gray-700 block text-sm" role="menuitem">Pembayaran bisa menggunakan
+                berbagai e-wallet, QRIS, transfer bank hingga melalui swalayan terdekat</p>
+        </div>
     </div>
 </div>
 
@@ -310,17 +312,16 @@
 <script>
     function toggleDropdown(id, button) {
         const dropdown = document.getElementById(id);
-        const isHidden = dropdown.classList.contains('hidden');
-        if (isHidden) {
+        const arrow = button.querySelector('i');
+
+        if (dropdown.classList.contains('hidden')) {
             dropdown.classList.remove('hidden');
-            setTimeout(() => {
-                dropdown.classList.remove('opacity-0');
-                dropdown.classList.add('opacity-100');
-            }, 10); // Delay to allow the transition to take effect
+            dropdown.style.maxHeight = dropdown.scrollHeight + "px";
+            arrow.style.transform = 'rotate(180deg)';
         } else {
-            dropdown.classList.remove('opacity-100');
-            dropdown.classList.add('opacity-0');
-            dropdown.addEventListener('transitionend', function() {
+            dropdown.style.maxHeight = '0px';
+            arrow.style.transform = 'rotate(0deg)';
+            setTimeout(() => {
                 dropdown.classList.add('hidden');
             }, {
                 once: true
