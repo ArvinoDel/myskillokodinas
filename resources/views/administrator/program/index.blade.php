@@ -13,69 +13,65 @@
     <div class="col">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="mb-0">Daftar Berlangganan</h3>
-                <a href="{{ route('administrator.berlangganan.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <h3 class="mb-0">Program</h3>
+                <a href="{{ route('administrator.program.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
             <!-- Tambahkan form pencarian -->
             <div class="card-body">
-                <form action="{{ route('administrator.berlangganan.index') }}" method="GET" class="mb-1">
+                <form action="{{ route('administrator.program.index') }}" method="GET" class="mb-1">
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
-                            <select class="form-control" name="masa_berlangganan">
-                                <option value="">Pilih Berlangganan</option>
-                                @foreach ($masa_berlangganans as $masa_berlangganan)
-                                    <option value="{{ $masa_berlangganan->masa_berlangganan }}" {{ request('masa_berlangganan') == $masa_berlangganan->masa_berlangganan ? 'selected' : '' }}>
-                                        {{ $masa_berlangganan->masa_berlangganan }}
+                            <select class="form-control" name="judul">
+                                <option value="">Pilih Program</option>
+                                @foreach ($tanggals as $tanggal)
+                                    <option value="{{ $tanggal->tanggal }}" {{ request('tanggal') == $tanggal->tanggal ? 'selected' : '' }}>
+                                        {{ $tanggal->tanggal }}
                                     </option>
-                                @endforeach  
+                                @endforeach
                             </select>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Filter</button>
                             </div>
                         </div>
                         <div class="input-group" style="max-width: 300px;">
-                            <input type="text" class="form-control" placeholder="Cari Berlangganan..." name="search" value="{{ request('search') }}">
+                            <input type="text" class="form-control" placeholder="Cari Program..." name="search" value="{{ request('program') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Cari</button>
-                            </div> 
+                            </div>
                         </div>
                     </div>
-                    @if(request('search') || request('masa_berlangganan'))
+                    @if(request('search') || request('tanggal'))
                     <div class="mt-2 d-flex justify-content-center">
-                        <a href="{{ route('administrator.berlangganan.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
+                        <a href="{{ route('administrator.trainer.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
                     </div>
                     @endif
-                </form>  
+                </form>
 
                 <div class="table-responsive py-4">
                     <table class="table table-bordered" id="datatable-basic">
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Masa Berlangganan</th>
-                                <th class="text-center">Harga Berlangganan</th>
-                                <th class="text-center">Harga Diskon</th>
-                                <th class="text-center">Is Active</th>
-                                <th class="text-center">Is Populer</th>
-                                <th class="text-center">Aksi</th>
+                                <th class="text-center">Judul</th>
+                                <th class="text-center">Harga</th>
+                                <th class="text-center">Keterangan</th>
+                                <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($berlangganans as $index => $berlangganan)
+                            @foreach ($programs as $index => $program)
                             <tr>
-                                <td>{{ $loop->iteration + $berlangganans->firstItem() - 1 }}</td>
-                                <td>{{ $berlangganan->masa_berlangganan }}</td>
-                                <td class="harga">{{ $berlangganan->harga_berlangganan }}</td>
-                                <td class="harga">{{ $berlangganan->harga_diskon }}</td>
-                                <td>{{ $berlangganan->is_active ? 'Yes' : 'No' }}</td>
-                                <td>{{ $berlangganan->is_populer ? 'Yes' : 'No' }}</td>
+                                <td>{{ $loop->iteration + $programs->firstItem() - 1 }}</td>
+                                <td>{{ $program->judul_program }}</td>
+                                <td>{{ $program->harga }}</td>
+                                <td>{{ strip_tags($program->keterangan) }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('administrator.berlangganan.edit', $berlangganan->id_berlangganan) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                        <a href="{{ route('administrator.program.edit', $program->id_program) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button data-url="{{ route('administrator.berlangganan.destroy', $berlangganan->id_berlangganan) }}"
+                                        <button data-url="{{ route('administrator.program.destroy', $program->id_program) }}"
                                             type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -86,7 +82,7 @@
                         </tbody>
                     </table>
                     <br>
-                    {{ $berlangganans->links('vendor.pagination.bootstrap-4') }}
+                    {{ $programs->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
         </div>
@@ -167,21 +163,11 @@
 
         // Fungsi untuk memperbarui nomor urut
         function updateRowNumbers() {
-            let startingIndex = {{ $berlangganans->firstItem() - 1 }};
+            let startingIndex = {{ $programs->firstItem() - 1 }};
             $('table tbody tr').each(function(index) {
                 $(this).find('td:first-child').text(startingIndex + index + 1);
             });
         }
-
-        // Format angka dengan titik sebagai pemisah ribuan
-        // function formatNumber(input) {
-        //     return input.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        // }
-
-        // // Terapkan format angka pada kolom harga
-        // $('.harga').each(function() {
-        //     $(this).text(formatNumber($(this).text()));
-        // });
     });
 </script>
 @endsection
