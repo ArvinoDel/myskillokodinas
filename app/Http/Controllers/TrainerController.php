@@ -64,7 +64,7 @@ class TrainerController extends Controller
     {
         $validated = $request->validate([
             'nama_trainer' => 'required|string|max:255',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'link' => 'nullable|string|max:9999',
         ]);
 
