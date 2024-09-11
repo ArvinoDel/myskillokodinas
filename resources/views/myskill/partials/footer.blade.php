@@ -55,11 +55,9 @@
             <p class="flex lg:mx-32 lg:justify-start max-lg:justify-center">Metode Pembayaran</p>
             <div class="flex lg:mx-32 lg:justify-start max-lg:justify-center space-x-1 mt-2">
                 <!-- Payment Method Icons -->
-                <img src="https://img.icons8.com/color/38/000000/bank.png" alt="Bank">
-                <img src="https://img.icons8.com/color/38/000000/mastercard.png" alt="Mastercard">
-                <img src="https://img.icons8.com/color/38/000000/visa.png" alt="Visa">
-                <img src="https://img.icons8.com/color/38/000000/amex.png" alt="Amex">
-                <img src="https://img.icons8.com/color/38/000000/paypal.png" alt="Paypal">
+                @foreach ($metod as $pay)
+                <img src="{{ asset('foto_metode/' . $pay->gambar) }}" alt="Bank">
+                @endforeach
                 <!-- Add more payment icons as needed -->
             </div>
         </div>

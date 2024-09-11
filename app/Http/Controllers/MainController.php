@@ -31,7 +31,7 @@ class MainController extends Controller
     public function index(Request $request)
     {
         $mitra = Mitra::orderBy('id', 'ASC')->get();
-        $metod = Metodepembayaran::orderBy('id', 'ASC')->get();
+        $metod = Metodepembayaran::all();
         // dd($mitra);
         $trainer = Trainer::all();
         $banners = Bannerslider::all();

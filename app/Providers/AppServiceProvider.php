@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\Controllers\PesanmasukController;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Metodepembayaran;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,14 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         //
+    }
+
+    public function metod()
+    {
+        View::composer('*', function ($view) {
+            $metod = Metodepembayaran::all();
+            $view->with('metod', $metod);
+        });
     }
 
     /**
