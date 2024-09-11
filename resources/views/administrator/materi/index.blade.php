@@ -35,13 +35,26 @@
                             </div>
                         </div>
                         <div class="input-group" style="max-width: 300px;">
+                            <select class="form-control" name="id_program">
+                                <option value="">Pilih Program</option>
+                                @foreach ($programs as $program)
+                                    <option value="{{ $program->id_program }}" {{ request('id_program') == $program->id_program ? 'selected' : '' }}>
+                                        {{ $program->judul_program }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary" type="submit">Filter</button>
+                            </div>
+                        </div>
+                        <div class="input-group" style="max-width: 300px;">
                             <input type="text" class="form-control" placeholder="Cari Materi..." name="search" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Cari</button>
                             </div>
                         </div>
                     </div>
-                    @if(request('search') || request('judul_materi'))
+                    @if(request('search') || request('judul_materi') || request('id_program'))
                     <div class="mt-2 d-flex justify-content-center">
                         <a href="{{ route('administrator.materi.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
                     </div>
@@ -54,6 +67,7 @@
                             <tr>
                                 <th class="text-center">No</th>
                                 <th class="text-center">Judul Materi</th>
+                                <th class="text-center">Program</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -62,6 +76,7 @@
                             <tr>
                                 <td>{{ $loop->iteration + $materis->firstItem() - 1 }}</td>
                                 <td>{{ $materi->judul_materi }}</td>
+                                <td>{{ optional($materi->program)->judul_program }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('administrator.materi.edit', $materi->id_materi) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">

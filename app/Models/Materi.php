@@ -12,5 +12,11 @@ class Materi extends Model
     public $timestamps = false;
     protected $primaryKey = 'id_materi';
     protected $table = 'materi';
-    protected $fillable = ['id_materi', 'judul_materi'];
+    protected $fillable = ['id_materi', 'judul_materi', 'id_program'];
+
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class, 'id_program', 'id_program');
+    }
 }
