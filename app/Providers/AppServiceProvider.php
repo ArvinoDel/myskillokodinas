@@ -17,20 +17,18 @@ class AppServiceProvider extends ServiceProvider
         //
     }
 
-    public function metod()
-    {
-        View::composer('*', function ($view) {
-            $metod = Metodepembayaran::all();
-            $view->with('metod', $metod);
-        });
-    }
-
     /**
      * Bootstrap any application services.
      */
     public function boot()
     {
-        // Share latest messages with all views
+        // Share metode pembayaran dengan semua view
+        View::composer('*', function ($view) {
+            $metod = Metodepembayaran::all();
+            $view->with('metod', $metod);
+        });
+
+        // Share latest messages dengan semua view
         View::composer('*', function ($view) {
             $pesanmasukController = new PesanmasukController();
             $latestMessages = $pesanmasukController->getLatestMessages();
