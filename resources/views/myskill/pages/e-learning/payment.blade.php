@@ -2,9 +2,9 @@
 @section('container')
 <div class="payment bg-gray-50 font-inter w-screen">
     <div class="max-w-5xl mx-auto py-10 px-4 md:px-10">
+
         <!-- Main Container -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Left Section -->
             <div class="lg:col-span-2">
                 <!-- eLearning Banner -->
                 <div
@@ -191,7 +191,6 @@
 
 <script>
     document.getElementById('dropdownButton').addEventListener('click', function() {
-        // Menampilkan dropdown
         var dropdownMenu = document.getElementById('dropdownMenu');
         dropdownMenu.classList.toggle('hidden');
     });
@@ -208,10 +207,7 @@
     });
 
     document.getElementById('payButton').addEventListener('click', function() {
-        // Menampilkan modal
         document.getElementById('paymentModal').classList.remove('hidden');
-
-        // Mengisi informasi tanggal dan waktu lokal Indonesia
         var now = new Date();
         var options = {
             year: 'numeric',
@@ -231,21 +227,17 @@
     });
 
     document.getElementById('closeModal').addEventListener('click', function() {
-        // Menyembunyikan modal
         document.getElementById('paymentModal').classList.add('hidden');
     });
 
-    // Fungsi untuk download QR sebagai PDF
     document.getElementById('downloadQR').addEventListener('click', function() {
         var modal = document.querySelector('#paymentModal .bg-white'); // Ambil modal yang ingin di-download
         var downloadButton = document.getElementById('downloadQR'); // Ambil button Download QR
 
-        // Sembunyikan button sebelum membuat gambar
         downloadButton.style.display = 'none';
 
-        // Pastikan QR code terlihat dan berikan padding
         var qrCode = document.getElementById('qrCode');
-        qrCode.style.margin = '20px auto'; // Menambah margin agar QR code terlihat di PDF
+        qrCode.style.margin = '20px auto';
         qrCode.style.display = 'block';
 
         html2canvas(modal).then(function(canvas) {
@@ -259,17 +251,11 @@
                 format: 'a4'
             });
 
-            // Menghitung ukuran gambar agar sesuai dengan PDF
-            var imgWidth = 190; // Lebar PDF (A4) adalah 210mm, sisakan margin 10mm di kedua sisi
+            var imgWidth = 190;
             var imgHeight = (canvas.height * imgWidth) / canvas.width;
 
-            // Menambahkan gambar hasil tangkapan modal ke PDF
             pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
-
-            // Download PDF
             pdf.save('Pembayaran.pdf');
-
-            // Tampilkan kembali button setelah PDF di-download
             downloadButton.style.display = 'block';
         });
     });
