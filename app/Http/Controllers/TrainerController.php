@@ -65,6 +65,7 @@ class TrainerController extends Controller
         $validated = $request->validate([
             'nama_trainer' => 'required|string|max:255',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'link' => 'nullable|string',
         ]);
 
         $gambarName = null;
@@ -79,6 +80,7 @@ class TrainerController extends Controller
             // 'id_trainer' => Str::uuid(),
             'nama_trainer' => $validated['nama_trainer'],
             'foto' => $gambarName,
+            'link' => $validated['link'],
         ]);
 
 
@@ -116,6 +118,7 @@ class TrainerController extends Controller
         $trainers = Trainer::findOrFail($id_trainer);
 
         $nama_trainer = $request->nama_trainer;
+        $link = $request->link;
 
         if ($request->hasFile('foto')) {
             $gambar = $request->file("foto");
@@ -126,6 +129,7 @@ class TrainerController extends Controller
 
         $trainers->update([
             "nama_trainer" => $nama_trainer,
+            "link" => $link,
         ]);
 
         return response()->json([

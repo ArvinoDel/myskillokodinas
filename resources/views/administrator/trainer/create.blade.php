@@ -25,6 +25,12 @@
                                     <input type="text" class="form-control" id="nama_trainer" name="nama_trainer" placeholder="Masukkan Nama" required>
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="padding: 5px;">Link Trainer</th>
+                                <td style="padding: 5px;">
+                                    <input type="text" class="form-control" id="link" name="link" placeholder="Masukkan Link" required>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
