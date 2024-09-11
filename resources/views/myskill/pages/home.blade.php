@@ -323,19 +323,16 @@
             if (dropdown.classList.contains('hidden')) {
                 dropdown.classList.remove('hidden');
                 dropdown.style.maxHeight = dropdown.scrollHeight + "px";
-                arrow.style.transform = 'rotate(180deg)';
+                arrow.classList.remove('fa-chevron-down');
+                arrow.classList.add('fa-chevron-up');
             } else {
                 dropdown.style.maxHeight = '0px';
-                arrow.style.transform = 'rotate(0deg)';
+                arrow.classList.remove('fa-chevron-up');
+                arrow.classList.add('fa-chevron-down');
                 setTimeout(() => {
                     dropdown.classList.add('hidden');
-                }, {
-                    once: true
-                });
+                }, 300);
             }
-            const arrow = button.querySelector('i');
-            arrow.classList.toggle('fa-chevron-down');
-            arrow.classList.toggle('fa-chevron-up');
         }
     </script>
 @endsection
