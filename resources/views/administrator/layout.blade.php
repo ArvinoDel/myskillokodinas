@@ -74,32 +74,32 @@
                                         <a href="{{ url('administrator/halamanbaru') }}" class="nav-link">Halaman Baru</a>
                                     </li> --}}
                                     {{-- @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("identitaswebsite", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("identitaswebsite", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/identitaswebsite') }}"><i class='fa fa-circle-o'></i> Identitas Website</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("menuwebsite", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("menuwebsite", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/menuwebsite') }}"><i class='fa fa-circle-o'></i> Menu Website</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("halamanbaru", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("halamanbaru", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/halamanbaru') }}"><i class='fa fa-circle-o'></i> Halaman Baru</a></li>
                                     @endif --}}
 
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cekIdentitaswebsite = $userModul->umenu_akses("identitaswebsite", session('id_session'));
-                                        $cekMenuwebsite = $userModul->umenu_akses("menuwebsite", session('id_session'));
-                                        $cekHalamanbaru = $userModul->umenu_akses("halamanbaru", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cekIdentitaswebsite = $Usermodul->umenu_akses("identitaswebsite", session('id_session'));
+                                        $cekMenuwebsite = $Usermodul->umenu_akses("menuwebsite", session('id_session'));
+                                        $cekHalamanbaru = $Usermodul->umenu_akses("halamanbaru", session('id_session'));
                                     @endphp
 
                                     @if($cekIdentitaswebsite == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
@@ -143,12 +143,12 @@
                             </div> --}}
                         </li>
                         @php
-                            $userModul = new \App\Models\UserModul;
+                            $Usermodul = new \App\Models\Usermodul;
                             $hasAccess = false;
 
-                            $cekBerita = $userModul->umenu_akses("berita", session('id_session'));
-                            $cekKategoriBerita = $userModul->umenu_akses("kategoriberita", session('id_session'));
-                            $cekTagBerita = $userModul->umenu_akses("tagberita", session('id_session'));
+                            $cekBerita = $Usermodul->umenu_akses("berita", session('id_session'));
+                            $cekKategoriBerita = $Usermodul->umenu_akses("kategoriberita", session('id_session'));
+                            $cekTagBerita = $Usermodul->umenu_akses("tagberita", session('id_session'));
 
                             if ($cekBerita == 1 || $cekKategoriBerita == 1 || $cekTagBerita == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor') {
                                 $hasAccess = true;
@@ -198,32 +198,32 @@
                                             class="nav-link">Tag Video</a>
                                     </li> --}}
                                     {{-- @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("playlistvideo", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("playlistvideo", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/playlistvideo') }}"><i class='fa fa-circle-o'></i> Playlist Video</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("video", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("video", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/video') }}"><i class='fa fa-circle-o'></i> Video</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("tagvideo", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("tagvideo", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/tagvideo') }}"><i class='fa fa-circle-o'></i> Tag Video</a></li>
                                     @endif --}}
 
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cekPlaylistvideo = $userModul->umenu_akses("playlistvideo", session('id_session'));
-                                        $cekVideo = $userModul->umenu_akses("video", session('id_session'));
-                                        $cekTagvideo = $userModul->umenu_akses("tagvideo", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cekPlaylistvideo = $Usermodul->umenu_akses("playlistvideo", session('id_session'));
+                                        $cekVideo = $Usermodul->umenu_akses("video", session('id_session'));
+                                        $cekTagvideo = $Usermodul->umenu_akses("tagvideo", session('id_session'));
                                     @endphp
 
                                     @if($cekPlaylistvideo == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
@@ -286,32 +286,32 @@
                                             class="nav-link">Iklan Sidebar</a>
                                     </li> --}}
                                     {{-- @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("bannerslider", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("bannerslider", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/bannerslider') }}"><i class='fa fa-circle-o'></i> Banner Slider</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("bannerhome", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("bannerhome", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/bannerhome') }}"><i class='fa fa-circle-o'></i> Banner Home</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("iklansidebar", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("iklansidebar", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/iklansidebar') }}"><i class='fa fa-circle-o'></i> Iklan Sidebar</a></li>
                                     @endif --}}
 
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cekBannerslider = $userModul->umenu_akses("bannerslider", session('id_session'));
-                                        $cekBannerhome = $userModul->umenu_akses("bannerhome", session('id_session'));
-                                        $cekIklansidebar = $userModul->umenu_akses("iklansidebar", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cekBannerslider = $Usermodul->umenu_akses("bannerslider", session('id_session'));
+                                        $cekBannerhome = $Usermodul->umenu_akses("bannerhome", session('id_session'));
+                                        $cekIklansidebar = $Usermodul->umenu_akses("iklansidebar", session('id_session'));
                                     @endphp
 
                                     @if($cekBannerslider == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
@@ -375,22 +375,22 @@
                                             class="nav-link">Background Website</a>
                                     </li> --}}
                                     {{-- @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("logowebsite", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("logowebsite", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/logowebsite') }}"><i class='fa fa-circle-o'></i> Logo Website</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("templatewebsite", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("templatewebsite", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/templatewebsite') }}"><i class='fa fa-circle-o'></i> Template Website</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("backgroundwebsite", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("backgroundwebsite", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/backgroundwebsite') }}"><i class='fa fa-circle-o'></i> Background Website</a></li>
@@ -412,6 +412,7 @@
                                         $cekKategoriprogram = $userModul->umenu_akses("kategoriprogram", session('id_session'));
                                         $cekMetodepembayaran = $userModul->umenu_akses("metodepembayaran", session('id_session'));
                                         $cekMitra = $userModul->umenu_akses("mitra", session('id_session'));
+                                        $cekBerlangganan = $userModul->umenu_akses("berlangganan", session('id_session'));
                                     @endphp
 
                                     @if($cekLogowebsite == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
@@ -449,6 +450,9 @@
                                     @endif
                                     @if($cekMitra == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/mitra') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
+                                    @endif
+                                    @if($cekBerlangganan == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/berlangganan') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a></li>
                                     @endif
                                 </ul>
                             </div>
@@ -560,36 +564,36 @@
                                         </li>
                                     @endif --}}
                                      {{-- @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("agenda", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("agenda", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/agenda') }}"><i class='fa fa-circle-o'></i> Agenda</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("sekilasinfo", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("sekilasinfo", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/sekilasinfo') }}"><i class='fa fa-circle-o'></i> Sekilas Info</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("jejakpendapat", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("jejakpendapat", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/jejakpendapat') }}"><i class='fa fa-circle-o'></i> Jajak Pendapat</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("downloadarea", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("downloadarea", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/downloadarea') }}"><i class='fa fa-circle-o'></i> Download Area</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("pesanmasuk", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("pesanmasuk", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/pesanmasuk') }}"><i class='fa fa-circle-o'></i> Pesan Masuk</a></li>
@@ -598,12 +602,12 @@
 
 
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cekAgenda = $userModul->umenu_akses("agenda", session('id_session'));
-                                        $cekSekilasinfo = $userModul->umenu_akses("sekilasinfo", session('id_session'));
-                                        $cekJejakpendapat = $userModul->umenu_akses("jejakpendapat", session('id_session'));
-                                        $cekDownloadarea = $userModul->umenu_akses("downloadarea", session('id_session'));
-                                        $cekPesanmasuk = $userModul->umenu_akses("pesanmasuk", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cekAgenda = $Usermodul->umenu_akses("agenda", session('id_session'));
+                                        $cekSekilasinfo = $Usermodul->umenu_akses("sekilasinfo", session('id_session'));
+                                        $cekJejakpendapat = $Usermodul->umenu_akses("jejakpendapat", session('id_session'));
+                                        $cekDownloadarea = $Usermodul->umenu_akses("downloadarea", session('id_session'));
+                                        $cekPesanmasuk = $Usermodul->umenu_akses("pesanmasuk", session('id_session'));
                                     @endphp
 
                                     @if($cekAgenda == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
@@ -642,15 +646,15 @@
                                     </li> --}}
 
                                     {{-- @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("manajemenuser", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("manajemenuser", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/manajemenuser') }}"><i class='fa fa-circle-o'></i> Manajemen User</a></li>
                                     @endif
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cek = $userModul->umenu_akses("manajemenmodul", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cek = $Usermodul->umenu_akses("manajemenmodul", session('id_session'));
                                     @endphp
                                     @if($cek == 1 || session('level') == 'admin')
                                         <li><a href="{{ url('administrator/manajemenmodul') }}"><i class='fa fa-circle-o'></i> Manajemen Modul</a></li>
@@ -658,9 +662,9 @@
 
 
                                     @php
-                                        $userModul = new \App\Models\UserModul;
-                                        $cekManajemenuser = $userModul->umenu_akses("manajemenuser", session('id_session'));
-                                        $cekManajemenmodul = $userModul->umenu_akses("manajemenmodul", session('id_session'));
+                                        $Usermodul = new \App\Models\Usermodul;
+                                        $cekManajemenuser = $Usermodul->umenu_akses("manajemenuser", session('id_session'));
+                                        $cekManajemenmodul = $Usermodul->umenu_akses("manajemenmodul", session('id_session'));
                                     @endphp
 
                                     @if($cekManajemenuser == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')

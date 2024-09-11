@@ -77,65 +77,18 @@ class MainController extends Controller
         $templateDinas2 = Template::where('folder', 'dinas-2')->first();
         $templateDinas1 = Template::where('folder', '')->first();
 
-        return view('myskill.pages.program.bootcamp', compact('testimonis', 'logo', 'banners', 'links', 'album'));
-    }
-
-    public function review(Request $request)
-    {
-        $testimonis = Testimoni::all();
-        $banners = Bannerslider::all();
-        $album = Album::all();
-        // dd($testimonis);
-        $logo = Logo::orderBy('id_logo', 'DESC')->first();
-        $links = Bannerhome::orderBy('id_iklantengah', 'ASC')->limit(10)->get();
-        // dd($menus);
-        $gambar = $request->query('gambar', 'default'); // Mengambil parameter 'gambar' dari query string
-        // $background = Background::where('gambar', $gambar)->first();
-
-        // if ($background) {
-        //     return response()->json(['color' => $background->gambar]);
-        // } else {
-        //     return response()->json(['color' => 'darkslateblue']); // Warna default jika tidak ditemukan
-        // }
-        $templateDinas4 = Template::where('folder', 'myskill')->first();
-        $templateDinas3 = Template::where('folder', 'dinas-3')->first();
-        $templateDinas2 = Template::where('folder', 'dinas-2')->first();
-        $templateDinas1 = Template::where('folder', '')->first();
-
-        return view('myskill.pages.program.bootcamp', compact('testimonis', 'logo', 'banners', 'links', 'album'));
-    }
-
-    public function companyprofile(Request $request)
-    {
-        $identitas = Identitaswebsite::all();
-        $banners = Bannerslider::all();
-        $alamat = Alamatkontak::first();
-        $logo = Logo::orderBy('id_logo', 'DESC')->first();
-        $links = Bannerhome::orderBy('id_iklantengah', 'ASC')->limit(10)->get();
-        $beritau = Berita::where('id_kategori', 63)->orderBy('id_berita', 'DESC')->limit(5)->get();
-        $beritao = Berita::where('id_kategori', 62)->orderBy('id_berita', 'DESC')->limit(5)->get();
-        $beritad = Berita::where('id_kategori', 61)->orderBy('id_berita', 'DESC')->limit(5)->get();
-        $beritas = Berita::orderBy('id_berita', 'DESC')->limit(5)->get();
-        $infos = Sekilasinfo::all();
-        $videos = Video::all();
-        $polings = Poling::where('id_poling');
-        $agendas = Agenda::all();
-        $pilihan = Poling::where('status', 'Pertanyaan')->get();
-        $jawaban = Poling::where('status', 'Jawaban')->get();
-        $menus = Menuwebsite::where('id_parent', 0)
-            ->with('children.children') // Menyertakan children hingga 2 level
-            ->orderBy('position', 'asc')
-            ->get();
-
-        $aktifTemplate = Template::where('aktif', 'Y')->first();
-        if ($aktifTemplate) {
-            if ($aktifTemplate->folder == 'dinas-2') {
-                return view('dinas-2.dashboard', compact('aktifTemplate', 'banners', 'alamat', 'logo', 'links', 'beritau', 'beritao', 'beritad', 'beritas', 'infos', 'videos', 'polings', 'agendas', 'pilihan', 'jawaban', 'menus','identitas'));
-            } elseif ($aktifTemplate->folder == 'dinas-3') {
-                return view('dinas-3.dashboard', compact('aktifTemplate', 'banners', 'alamat', 'logo', 'links', 'beritau', 'beritao', 'beritad', 'beritas', 'infos', 'videos', 'polings', 'agendas', 'pilihan', 'jawaban', 'menus','identitas'));
-            } else {
-                return view('myskill.pages.profile.my-profile', compact('aktifTemplate', 'banners', 'alamat', 'logo', 'links', 'beritau', 'beritao', 'beritad', 'beritas', 'infos', 'videos', 'polings', 'agendas', 'pilihan', 'jawaban', 'menus'));
-            }
+        if ($templateDinas4 && $templateDinas4->aktif === 'Y') {
+            // Jika 'dinas-4' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-4'
+            return view('myskill.pages.program.bootcamp', compact('testimonis', 'logo', 'banners', 'links', 'album'));
+        } elseif ($templateDinas3 && $templateDinas3->aktif === 'Y') {
+            // Jika 'dinas-3' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-3'
+            return view('dinas-3.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
+        } elseif ($templateDinas2 && $templateDinas2->aktif === 'Y') {
+            // Jika 'dinas-2' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-2'
+            return view('dinas-2.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
+        } elseif ($templateDinas1 && $templateDinas1->aktif === 'Y') {
+            // Jika 'dinas-1' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-1'
+            return view('myskill.pages.program.bootcamp', compact('logo', 'banners','links', 'testimonis'));
         } else {
             return view('myskill.pages.profile.my-profile', ['aktifTemplate' => null, 'banners', 'alamat', 'logo', 'links', 'beritau', 'beritao', 'beritad', 'beritas', 'infos', 'videos', 'polings', 'agendas', 'pilihan', 'jawaban', 'menus']);
         }

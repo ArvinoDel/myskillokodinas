@@ -150,28 +150,40 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->middleware('checkModul:logowebsite');
     Route::resource('album', AlbumController::class)
         ->middleware('checkModul:album');
+        
     Route::resource('iklanatas', IklanatasController::class)
         ->middleware('checkModul:iklanatas');
+
     Route::resource('sensorkomentar', SensorkomentarController::class)
         ->middleware('checkModul:sensorkomentar');
+
     Route::resource('komentarberita', KomentarberitaController::class)
         ->middleware('checkModul:komentarberita');
+
     Route::resource('komentarvideo', KomentarvideoController::class)
         ->middleware('checkModul:komentarvideo');
+
     Route::resource('gallery', GalleryController::class)
         ->middleware('checkModul:gallery');
+
     Route::resource('ym', YmController::class)
         ->middleware('checkModul:ym');
+
     Route::resource('templatewebsite', TemplatewebsiteController::class);
+
     Route::get('templatewebsite/active/{id_templates}', [TemplatewebsiteController::class, 'active'])
         ->name('templatewebsite.active')
         ->middleware('checkModul:templatewebsite.active');
+
     Route::resource('testimoni', TestimoniController::class)
         ->middleware('checkModul:testimoni');
+
     Route::resource('trainer', TrainerController::class)
         ->middleware('checkModul:trainer');
+
     Route::resource('program', ProgramController::class)
         ->middleware('checkModul:program');
+
     Route::resource('kategoriprogram', KategoriprogramController::class)
         ->middleware('checkModul:kategoriprogram');
     Route::resource('benefit', BenefitController::class)
@@ -180,14 +192,23 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->middleware('checkModul:berlangganan');
     Route::resource('materi', MateriController::class)
         ->middleware('checkModul:materi');
+
     Route::resource('materi', MateriController::class)
         ->middleware('checkModul:materi');
+
     Route::resource('member', MemberController::class)
         ->middleware('checkModul:member');
+
     Route::resource('metodepembayaran', MetodepembayaranController::class)
         ->middleware('checkModul:metodepembayaran');
+
     Route::resource('mitra', MitraController::class)
         ->middleware('checkModul:mitra');
+
+        //ini dari sini diganti
+    Route::resource('berlangganan', MitraController::class)
+        ->middleware('checkModul:berlangganan');
+
 
     // Rute untuk backup database
     // Rute untuk backup database

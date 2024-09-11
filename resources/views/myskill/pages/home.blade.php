@@ -1,19 +1,21 @@
 @extends('./myskill/layouts.main')
 @section('container')
-<div class="w-screen h-auto  rounded-b-3xl bg-gradient-to-b from-orange-400 to-red-500">
-    <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar gap-6 mx-4 lg:mx-4"
-        style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
-        ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
-        onmouseup="this.classList.remove('touching')">
-        @foreach($banners as $link )
-        <div class="snap-always snap-center flex-shrink-0">
-            <img src="{{ url('foto_banner/' . $link->gambar) }}" alt="" class="h-32 lg:h-80 md:h-60 w-auto mx-auto rounded-2xl">
+    <div class="w-screen h-auto  rounded-b-3xl bg-gradient-to-b from-orange-400 to-red-500">
+        <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar gap-6 mx-4 lg:mx-4"
+            style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
+            ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
+            onmouseup="this.classList.remove('touching')">
+            @foreach ($banners as $link)
+                <div class="snap-always snap-center flex-shrink-0">
+                    <img src="{{ url('foto_banner/' . $link->gambar) }}" alt=""
+                        class="h-32 lg:h-80 md:h-60 w-auto mx-auto rounded-2xl">
+                </div>
+            @endforeach
         </div>
-        @endforeach
-    </div>
-    <div>
-        <h2 class="text-xl md:text-2xl text-center py-14 font-bold text-black">Mari Merintis Karir Bersama Pandai Digital</h2>
-    </div>
+        <div>
+            <h2 class="text-xl md:text-2xl text-center py-14 font-bold text-black">Mari Merintis Karir Bersama Pandai
+                Digital</h2>
+        </div>
 
 
     <div class="grid grid-flow-col lg:grid-cols-5 ps-6 gap-8 overflow-x-auto no-scrollbar no-scrollbar ">
@@ -108,13 +110,13 @@
             <button class="bg-yellow-400 text-white px-7 py-2 rounded-md">Baca Cerita</button>
         </div>
     </div> --}}
-</div>
-<div>
-    <h3 class="py-12 text-center font-bold text-2xl text-black">Berbagai Macam Program di Pandai Digital</h3>
-</div>
+    </div>
+    <div>
+        <h3 class="py-12 text-center font-bold text-2xl text-black">Berbagai Macam Program di Pandai Digital</h3>
+    </div>
 
 <div class="grid md:grid-cols-2 lg:py-10">
-    <img class="lg:w-96 w-80 h-80 ms-10 lg:ms-48 max-sm:ms-auto" src="{{ asset('img/image1.svg') }}" alt="" />
+    <img class="lg:w-96 w-80 h-80 ms-10 lg:ms-48 max-sm:ms-auto max-sm:mr-10" src="{{ asset('img/image1.svg') }}" alt="" />
     <div class="text-start px-10 lg:px-20 lg:py-4">
         <h2 class="font-bold text-black text-2xl">E-learning</h2>
         <h1 class="text-black text-lg pt-7 font-semibold">Pelajari Ratusan Skill Sekali Bayar. Praktik dan
@@ -154,11 +156,11 @@
         <div class="mt-8"></div>
         <a href="/bootcamp" class="font-semibold px-5 py-2.5 rounded-xl mt-4 bg-orange-400 max-sm:text-xs">Lihat Ragam Bootcamp</a>
     </div>
-    <img class="w-80 lg:w-96 h-80 ms-10 max-sm:ms-auto" src="{{ asset('img/image2.svg') }}" alt="" />
+    <img class="w-80 lg:w-96 h-80 ms-10 max-sm:ms-auto max-sm:mr-10" src="{{ asset('img/image2.svg') }}" alt="" />
 </div>
 
 <div class="grid md:grid-cols-2 md:py-10">
-    <img class="ms-10 w-80 lg:w-96 h-80 lg:ps-20 max-sm:ms-auto" src="{{ asset('img/image3.svg') }}" alt="" />
+    <img class="ms-10 w-80 lg:w-96 h-80 lg:ps-20 max-sm:ms-auto max-sm:mr-10" src="{{ asset('img/image3.svg') }}" alt="" />
     <div class="text-start px-10 lg:px-20  lg:py-4">
         <h2 class="font-bold text-black text-2xl">Review CV</h2>
         <h1 class="text-black text-lg pt-7 font-semibold">Dapatkan review dan dokumen persiapan karir dari HRD</h1>
@@ -178,28 +180,31 @@
     </div>
 </div>
 
-<div class="md:grid md:grid-cols-2 flex flex-col-reverse md:py-10">
-    <div class="text-start px-12 lg:px-20 lg:py-4">
-        <h2 class="font-bold text-black text-2xl">Bootcamp</h2>
-        <h1 class="text-black text-lg pt-7 font-semibold">Intensive Live Class bersama Experts. Praktikal & Mendalam
-        </h1>
-        <div class="ms-3">
-            <li class="font-semibold">
-                Belajar fleksibel via Video Materi, Bahan Bacaan, Project dan Studi Kasus
-            </li>
-            <li class="font-semibold">
-                Praktikal & Actionable. Bertahap dari level Dasar hingga Lanjut
-            </li>
-            <li class="font-semibold">
-                Grup Komunitas Diskusi Lifetime. Kelas Gratis Tiap Bulannya
-            </li>
+    <div class="md:grid md:grid-cols-2 flex flex-col-reverse md:py-10">
+        <div class="text-start px-12 lg:px-20 lg:py-4">
+            <h2 class="font-bold text-black text-2xl">Bootcamp</h2>
+            <h1 class="text-black text-lg pt-7 font-semibold">Intensive Live Class bersama Experts. Praktikal & Mendalam
+            </h1>
+            <div class="ms-3">
+                <li class="font-semibold">
+                    Belajar fleksibel via Video Materi, Bahan Bacaan, Project dan Studi Kasus
+                </li>
+                <li class="font-semibold">
+                    Praktikal & Actionable. Bertahap dari level Dasar hingga Lanjut
+                </li>
+                <li class="font-semibold">
+                    Grup Komunitas Diskusi Lifetime. Kelas Gratis Tiap Bulannya
+                </li>
+            </div>
+            <div class="grid grid-cols-2 gap-4 text-center">
+                <a href="/corporate-service"
+                    class="font-semibold rounded-xl  mt-4 max-sm:text-sm px-2.5 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5   bg-orange-400 ">Corporate
+                    Service</a>
+                <a href="/experience" class="font-semibold px-2.5 py-2.5 md:px-5 md:py-2.5 lg:px-5 lg:py-2.5  rounded-xl max-sm:text-sm mt-4 bg-orange-400 ">Sofware HRIS</a>
+            </div>
         </div>
-        <div class="grid grid-cols-2 gap-4 text-center">
-            <a href="/corporate-service" class="font-semibold rounded-xl  mt-4 max-sm:text-left px-5 py-2.5 bg-orange-400 ">Corporate Service</a>
-            <a href="/experience" class="font-semibold px-5 py-2.5 rounded-xl  mt-4 bg-orange-400 ">Sofware HRIS</a>
-        </div>
+        <img class="lg:w-96 w-80 h-80 ms-10 max-sm:ms-auto max-sm:mr-10" src="{{ asset('img/image88.svg') }}" alt="" />
     </div>
-    <img class="lg:w-96 w-80 h-80 ms-10 max-sm:ms-auto" src="{{ asset('img/image88.svg') }}" alt="" />
 </div>
 <h2 class="text-center font-bold text-2xl mx-3 lg:px-80 py-24">Rasanya Gabung Dengan Komunitas GM Official #Sipaling
     Ngoding
@@ -211,9 +216,11 @@
     @foreach($album as $album)
     <div
         class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-gradient-to-b from-orange-400 to-red-500 border rounded-lg">
-        <img class="rounded-t-lg pt-2 px-2" src="{{ asset('img_album/' . $album->gbr_album) }}" alt="gvsdfcfs" />
-        <div>
-            <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
+        <div class="flex flex-col justify-center items-center">
+            <img class="rounded-xl pt-2 w-32 h-32 object-cover" src="{{ asset('img_album/' . $album->gbr_album) }}" alt="Album Image" />
+            <div>
+                <h5 class="text-lg font-semibold text-white text-center py-2">Main di Perusahaan</h5>
+            </div>
         </div>
     </div>
     @endforeach
@@ -349,76 +356,75 @@
     ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
     onmouseup="this.classList.remove('touching')">
     @foreach($metod as $k)
-    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl">
-        <img class="flex justify-center mx-auto mt-3 w-20" src="{{ asset('foto_metode/'. $k->gambar) }}"
-            alt="" />
+    <div class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
+        <img class="w-32" src="{{ asset('foto_metode/'. $k->gambar) }}" alt="" />
     </div>
     @endforeach
 </div>
 <h3 class="py-20 text-center text-2xl font-bold ">Yang Sering Ditanyakan</h3>
 
-<div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
-    <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
-        onclick="toggleDropdown('dropdown1', this)">
-        Apakah ProSkill bagus ?
-        <i id="icon2" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5"></i>
-    </button>
-    <div id="dropdown1" class="hidden p-2 bg-white transition-opacity duration-300 ease-in-out opacity-0">
-        <p class="text-gray-700 block text-sm" role="menuitem">Proskill memiliki tiga fitur utama
-            e-learning untuk belajar Mandiri via video modul belajar dan webinar series bulanan bootcamp
-            untuk belajar intensif fokus pada praktik via Zoom barang ekspor mentoring untuk dapat template
-            dan review CV hingga persiapan wawancara bersama HRD</p>
+    <div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
+        <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
+            onclick="toggleDropdown('dropdown1', this)">
+            Apakah ProSkill bagus ?
+            <i id="icon2" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5"></i>
+        </button>
+        <div id="dropdown1" class="hidden p-2 bg-white transition-opacity duration-300 ease-in-out opacity-0">
+            <p class="text-gray-700 block text-sm" role="menuitem">Proskill memiliki tiga fitur utama
+                e-learning untuk belajar Mandiri via video modul belajar dan webinar series bulanan bootcamp
+                untuk belajar intensif fokus pada praktik via Zoom barang ekspor mentoring untuk dapat template
+                dan review CV hingga persiapan wawancara bersama HRD</p>
+        </div>
     </div>
-</div>
 
-<div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
-    <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
-        onclick="toggleDropdown('dropdown2', this)">
-        Apakah ProSkill Berbayar ?
-        <i id="icon3" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5"></i>
-    </button>
-    <div id="dropdown2" class="hidden p-2 bg-white transition-opacity duration-300 ease-in-out opacity-0">
-        <p class="text-gray-700 block text-sm" role="menuitem">Ya, setiap peserta akan mendapatkan
-            sertifikat setelah menyelesaikan kursus.</p>
+    <div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
+        <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
+            onclick="toggleDropdown('dropdown2', this)">
+            Apakah ProSkill Berbayar ?
+            <i id="icon3" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5"></i>
+        </button>
+        <div id="dropdown2" class="hidden p-2 bg-white transition-opacity duration-300 ease-in-out opacity-0">
+            <p class="text-gray-700 block text-sm" role="menuitem">Ya, setiap peserta akan mendapatkan
+                sertifikat setelah menyelesaikan kursus.</p>
+        </div>
     </div>
-</div>
 
-<div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
-    <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
-        onclick="toggleDropdown('dropdown3', this)">
-        Platform Pembayaran apa saja yang digunakan pada SkillPro ?
-        <i id="icon4" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5"></i>
-    </button>
-    <div id="dropdown3" class="hidden p-2 bg-white transition-opacity duration-300 ease-in-out opacity-0">
-        <p class="text-gray-700 block text-sm" role="menuitem">Pembayaran bisa menggunakan
-            berbagai e-wallet, QRIS, transfer bank hingga melalui swalayan terdekat</p>
+    <div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
+        <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
+            onclick="toggleDropdown('dropdown3', this)">
+            Platform Pembayaran apa saja yang digunakan pada SkillPro ?
+            <i id="icon4" class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5"></i>
+        </button>
+        <div id="dropdown3" class="hidden p-2 bg-white transition-opacity duration-300 ease-in-out opacity-0">
+            <p class="text-gray-700 block text-sm" role="menuitem">Pembayaran bisa menggunakan
+                berbagai e-wallet, QRIS, transfer bank hingga melalui swalayan terdekat</p>
+        </div>
     </div>
-</div>
 
 
-<!-- script dropdown -->
-<script>
-    function toggleDropdown(id, button) {
-        const dropdown = document.getElementById(id);
-        const isHidden = dropdown.classList.contains('hidden');
-        if (isHidden) {
-            dropdown.classList.remove('hidden');
-            setTimeout(() => {
-                dropdown.classList.remove('opacity-0');
-                dropdown.classList.add('opacity-100');
-            }, 10); // Delay to allow the transition to take effect
-        } else {
-            dropdown.classList.remove('opacity-100');
-            dropdown.classList.add('opacity-0');
-            dropdown.addEventListener('transitionend', function() {
-                dropdown.classList.add('hidden');
-            }, {
-                once: true
-            });
+    <!-- script dropdown -->
+    <script>
+        function toggleDropdown(id, button) {
+            const dropdown = document.getElementById(id);
+            const isHidden = dropdown.classList.contains('hidden');
+            if (isHidden) {
+                dropdown.classList.remove('hidden');
+                setTimeout(() => {
+                    dropdown.classList.remove('opacity-0');
+                    dropdown.classList.add('opacity-100');
+                }, 10); // Delay to allow the transition to take effect
+            } else {
+                dropdown.classList.remove('opacity-100');
+                dropdown.classList.add('opacity-0');
+                dropdown.addEventListener('transitionend', function() {
+                    dropdown.classList.add('hidden');
+                }, {
+                    once: true
+                });
+            }
+            const arrow = button.querySelector('i');
+            arrow.classList.toggle('fa-chevron-down');
+            arrow.classList.toggle('fa-chevron-up');
         }
-        const arrow = button.querySelector('i');
-        arrow.classList.toggle('fa-chevron-down');
-        arrow.classList.toggle('fa-chevron-up');
-    }
-</script>
+    </script>
 @endsection

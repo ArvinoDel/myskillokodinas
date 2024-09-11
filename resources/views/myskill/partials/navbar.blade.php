@@ -1,7 +1,7 @@
 <nav id="navbar"
     class="sticky top-0 px-8 flex justify-between items-center bg-orange-400 z-10 w-screen transition-all duration-300 ease-in-out">
     <a class="text-2xl font-bold leading-none" href="#">
-        <img class="max-w-xs max-md:w-20 h-auto" src="{{ asset('assets/logo-company.svg') }}" alt="logo-company">
+        <img class="max-w-20 max-md:w-20 mx-10 h-auto" src="{{ asset('assets/logo.png') }}" alt="logo-company">
     </a>
     <div class="lg:hidden">
         <button class="navbar-burger flex items-center p-3 focus:outline-none hover:text-white focus:text-gray-900">
@@ -54,7 +54,7 @@
     <div class="max- hidden lg:block space-x-2 justify-items-end mt-1.5">
         <a href="/login">
             <button type="button"
-                class="text-white hover:text-white border border-pink-500 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 text-center me-2 mb-2 dark:border-pink-300 dark:text-white dark:hover:text-white dark:hover:bg-pink-400 dark:focus:ring-pink-900">Login</button>
+                class="text-pink-500 hover:text-white border border-pink-500 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 text-center me-2 mb-2 dark:border-pink-300 dark:hover:text-white dark:hover:bg-pink-400 dark:focus:ring-pink-900">Login</button>
 
         </a>
         <a href="/register">

@@ -28,7 +28,7 @@
                                     <option value="{{ $masa_berlangganan->masa_berlangganan }}" {{ request('masa_berlangganan') == $masa_berlangganan->masa_berlangganan ? 'selected' : '' }}>
                                         {{ $masa_berlangganan->masa_berlangganan }}
                                     </option>
-                                @endforeach  
+                                @endforeach
                             </select>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Filter</button>
@@ -38,7 +38,7 @@
                             <input type="text" class="form-control" placeholder="Cari Berlangganan..." name="search" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Cari</button>
-                            </div> 
+                            </div>
                         </div>
                     </div>
                     @if(request('search') || request('masa_berlangganan'))
@@ -46,7 +46,7 @@
                         <a href="{{ route('administrator.berlangganan.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
                     </div>
                     @endif
-                </form>  
+                </form>
 
                 <div class="table-responsive py-4">
                     <table class="table table-bordered" id="datatable-basic">
@@ -66,8 +66,8 @@
                             <tr>
                                 <td>{{ $loop->iteration + $berlangganans->firstItem() - 1 }}</td>
                                 <td>{{ $berlangganan->masa_berlangganan }}</td>
-                                <td class="harga">{{ $berlangganan->harga_berlangganan }}</td>
-                                <td class="harga">{{ $berlangganan->harga_diskon }}</td>
+                                <td>{{ $berlangganan->harga_berlangganan }}</td>
+                                <td>{{ $berlangganan->harga_diskon }}</td>
                                 <td>{{ $berlangganan->is_active ? 'Yes' : 'No' }}</td>
                                 <td>{{ $berlangganan->is_populer ? 'Yes' : 'No' }}</td>
                                 <td class="text-center">
@@ -173,15 +173,6 @@
             });
         }
 
-        // Format angka dengan titik sebagai pemisah ribuan
-        // function formatNumber(input) {
-        //     return input.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-        // }
-
-        // // Terapkan format angka pada kolom harga
-        // $('.harga').each(function() {
-        //     $(this).text(formatNumber($(this).text()));
-        // });
     });
 </script>
 @endsection

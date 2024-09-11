@@ -38,9 +38,12 @@
                 @foreach($testimonis as $testimoni)
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                     <div class="flex items-center mb-4">
-                        <img class="rounded-lg" src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}"/>
+                        <img class="rounded-lg max-w-[200px]" src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}"/>
                     </div>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Baca Cerita</button>
+                    <a href="{{ $testimoni->link }}">
+                        <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Baca Cerita</button>
+                    </a>
+                    
                 </div>
                 @endforeach
             </div>

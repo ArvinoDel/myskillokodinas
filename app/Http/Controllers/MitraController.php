@@ -48,9 +48,9 @@ class MitraController extends Controller
     public function store(Request $request)
     {
         //
-        $request->validate([
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
+        // $request->validate([
+        //     'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
 
         if ($request->hasFile('gambar')) {
             $gambar = $request->file("gambar");
