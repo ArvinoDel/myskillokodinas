@@ -1,77 +1,31 @@
 @extends('administrator.layout')
 
 @section('content')
-<?php
-$gambar = "profile.png";
-if($trainers->gambar != NULL){
-    $gambar = $trainers->gambar;
-}
-?>
 <div class="row">
     <div class="col">
-        <div class="card shadow">
-            <div class="card-header">
-                <h3 class="mb-0">Edit Trainer</h3>
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h3 class="mb-0">Edit Benefit</h3>
             </div>
             <div class="card-body">
-                <form action="{{ route('administrator.trainer.update', $trainers->id_trainer) }}" method="POST" enctype="multipart/form-data" class="form-ajax">
+                <form action="{{ route('administrator.benefit.update', $bene->id_benefit) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
-                        <tbody>
-                            <tr>
-                                <th style="padding: 5px;">Nama Trainer</th>
-                                <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="nama_trainer" name="nama_trainer" value="{{ $trainers->nama_trainer }}" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="padding: 5px;">Link Trainer</th>
-                                <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="link" name="link" value="{{ $trainers->link }}" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="padding: 5px;">Foto saat ini:</th>
-                                <td style="padding: 5px;">
-                                    <div class="d-flex align-items-center">
-                                        <img id="preview" src="{{ url('foto_trainer/'.$trainers->foto) }}" alt="Preview" style="max-width: 100px; margin-top: 5px;" class="mr-3">
-                                        <div class="flex-grow-1">
-                                            <input type="file" class="form-control" onchange="previewImage(event)" name="foto" id="gbr_playlist">
-                                            <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah cover.</small>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="mt-4 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Perbarui</button>
-                        <a href="{{ route('administrator.trainer.index')}}" class="btn btn-danger">Batal</a>
+                    <div class="form-group">
+                        <label for="gambar">Benefit</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" id="gambar" name="nama_benefit" value="{{ $bene->nama_benefit }}" required>
+                            </div>
+                        </div>
                     </div>
+                    <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-<script>
-    function previewImage(event) {
-        var preview = document.getElementById('preview');
-        var file = event.target.files[0];
-        var reader = new FileReader();
-
-        reader.onload = function(){
-            preview.src = reader.result;
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    }
-</script>
 @endsection
-
 @section('script')
 <script>
     $(function() {

@@ -10,12 +10,13 @@ class Kategoriprogram extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $primaryKey = 'id_kat';
+    protected $primaryKey = 'id_kategori_program';
     protected $table = 'kategori_program';
-    protected $fillable = ['id_kat', 'id_kategori', 'nama_kategori'];
+    protected $fillable = ['id_kategori_program', 'nama_kategori'];
 
-    public function kategori_program_group()
+    // Relasi ke Program
+    public function programs()
     {
-        return $this->belongsTo(Kategoriprogramgroup::class, 'id_kategori', 'id_kategori');
+        return $this->hasMany(Program::class, 'id_kategori_program', 'id_kategori_program');
     }
 }
