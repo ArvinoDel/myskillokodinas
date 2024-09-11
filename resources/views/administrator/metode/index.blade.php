@@ -61,7 +61,7 @@
                                 <td>{{ $loop->iteration + $methods->firstItem() - 1 }}</td>
                                 <td>{{ $method->nama_pembayaran }}</td>
                                 <td><img src="{{ asset('foto_metode/' . $method->gambar) }}" alt="Gambar Metode" style="width: 50px; height: 50px;"></td>
-                                <td><img src="{{ asset('foto_metode/' . $method->pembayaran) }}" alt="Gambar Metode" style="width: 50px; height: 50px;"></td>
+                                <td><img src="{{ asset('foto_pembayaran/' . $method->pembayaran) }}" alt="Gambar Metode" style="width: 50px; height: 50px;"></td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('administrator.metode.edit', $method->id_metode) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">

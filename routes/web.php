@@ -3,6 +3,7 @@
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AlamatkontakController;
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\AppController;
 use App\Http\Controllers\BannerhomeController;
 use App\Http\Controllers\BannersliderController;
 use App\Http\Controllers\BenefitController;
@@ -248,7 +249,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 Route::get('/home', [MainController::class, 'index'])->name('home');
 Route::get('/bootcamp', [MainController::class, 'bootcamp']);
 Route::get('/review', [MainController::class, 'review']);
-Route::get('/company-profile', [MainController::class, 'companyprofile']);
+Route::get('/company-profile', [AppController::class, 'companyprofile']);
 
 
 Route::get('/', [MainController::class, 'index']);
