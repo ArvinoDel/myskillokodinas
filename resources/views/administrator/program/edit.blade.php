@@ -14,24 +14,43 @@
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                         <tbody>
                             <tr>
-                                <th style="padding: 5px;">Nama Program</th>
+                                <th style="padding: 5px;">Judul Program</th>
                                 <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="nama_program" name="nama_program" value="{{ $programs->nama_program }}" required>
+                                    <input type="text" class="form-control" id="judul_program" name="judul_program" placeholder="Masukkan Nama Program" value="{{ $programs->judul_program }}" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Judul Program</th>
+                                <th style="padding: 5px;">Gambar</th>
                                 <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="judul_program" name="judul_program" placeholder="Masukkan Nama Program" value="{{ $programs->judul }}" required>
+                                    <div class="d-flex align-items-center">
+                                    {{-- <input type="file" class="form-control" id="gambar" name="gambar" value="{{ $programs->gambar }}"> --}}
+                                        <img id="preview" src="{{ url('foto_program/'.$programs->gambar) }}" alt="Preview" style="max-width: 100px; margin-top: 5px;" class="mr-3">
+                                        <div class="flex-grow-1">
+                                            <input type="file" class="form-control" onchange="previewImage(event)" name="gambar" id="gambar">
+                                            <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah gambar.</small>
+                                        </div>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
                                 <th style="padding: 5px;">Kategori</th>
                                 <td style="padding: 5px;">
-                                    <select class="form-control" id="id_kat" name="id_kat" required>
-                                        @foreach($kategoriprogram as $kat)
-                                        <option value="{{ $kat->id_kat }}" {{ $programs->id_kat == $kat->id_kat ? 'selected' : '' }}>
+                                    <select class="form-control" id="id_kategori_program" name="id_kategori_program" required>
+                                        @foreach($kategoriprograms as $kat)
+                                        <option value="{{ $kat->id_kategori_program }}" {{ $programs->id_kategori_program == $kat->id_kategori_program ? 'selected' : '' }}>
                                             {{ $kat->nama_kategori }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </td>  
+                            </tr>
+                            <tr>
+                                <th style="padding: 5px;">Trainer</th>
+                                <td style="padding: 5px;">
+                                    <select class="form-control" id="id_trainer" name="id_trainer" required>
+                                        @foreach($trainers as $trainer)
+                                        <option value="{{ $trainer->id_trainer }}" {{ $programs->id_trainer == $kat->id_trainer ? 'selected' : '' }}>
+                                            {{ $trainer->nama_trainer }}
                                         </option>
                                         @endforeach
                                     </select>

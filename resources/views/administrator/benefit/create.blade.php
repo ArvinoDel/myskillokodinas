@@ -6,30 +6,24 @@
     <div class="col">
         <div class="card card-shadow">
             <div class="card-header">
-                <h3 class="mb-0">Tambah Trainer</h3>
+                <h3 class="mb-0">Tambah Benefit</h3>
             </div>
-        <div class="card-body">
-                <form action="{{ route('administrator.trainer.store') }}" method="POST" enctype="multipart/form-data" class="form-ajax">
+            <div class="card-body">
+                <form action="{{ route('administrator.benefit.store') }}" method="POST" enctype="multipart/form-data" class="form-ajax">
                     @csrf
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                         <tbody>
                             <tr>
-                                <th style="padding: 5px;">Foto Trainer</th>
+                                <th style="padding: 5px;">Benefit</th>
                                 <td style="padding: 5px;">
-                                    <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="padding: 5px;">Nama Trainer</th>
-                                <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="nama_trainer" name="nama_trainer" placeholder="Masukkan Nama" required>
+                                    <input type="text" class="form-control" id="gambar" name="nama_benefit" required>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="{{ route('administrator.trainer.index') }}" class="btn btn-danger">Batal</a>
+                        <a href="{{ route('administrator.benefit.index') }}" class="btn btn-danger">Batal</a>
                     </div>
                 </form>
             </div>

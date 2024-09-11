@@ -210,7 +210,7 @@
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
         <div class="col-lg-8">
             <div class="image-container">
-                <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{{ $identitas->maps }}"></iframe>
+                <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=""></iframe>
             </div>
         </div>
         <div class="col-lg-4">

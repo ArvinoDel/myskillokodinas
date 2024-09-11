@@ -1,4 +1,4 @@
-  @extends('administrator.layout')
+@extends('administrator.layout')
 
 @section('content')
 
@@ -53,7 +53,6 @@
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Nama Program</th>
                                 <th class="text-center">Judul</th>
                                 <th class="text-center">Harga</th>
                                 <th class="text-center">Keterangan</th>
@@ -64,16 +63,15 @@
                             @foreach ($programs as $index => $program)
                             <tr>
                                 <td>{{ $loop->iteration + $programs->firstItem() - 1 }}</td>
-                                <td>{{ $program->nama_program }}</td>
-                                <td>{{ $program->judul }}</td>
+                                <td>{{ $program->judul_program }}</td>
                                 <td>{{ $program->harga }}</td>
                                 <td>{{ strip_tags($program->keterangan) }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('administrator.program.edit', $program->id_pro) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                        <a href="{{ route('administrator.program.edit', $program->id_program) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button data-url="{{ route('administrator.program.destroy', $program->id_pro) }}"
+                                        <button data-url="{{ route('administrator.program.destroy', $program->id_program) }}"
                                             type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                             <i class="fa fa-trash"></i>
                                         </button>
