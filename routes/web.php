@@ -48,6 +48,7 @@ use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MetodeController;
 use App\Http\Controllers\MetodepembayaranController;
 use App\Http\Controllers\MitraController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\TemplatewebsiteController;
 use App\Models\Agenda;
 use App\Models\Berita;
@@ -194,6 +195,8 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->middleware('checkModul:benefit');
     Route::resource('berlangganan', BerlanggananController::class)
         ->middleware('checkModul:berlangganan');
+    Route::resource('rating', RatingController::class)
+        ->middleware('checkModul:rating');
     Route::resource('materi', MateriController::class)
         ->middleware('checkModul:materi');
 
