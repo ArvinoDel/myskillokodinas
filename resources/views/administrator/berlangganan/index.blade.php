@@ -13,57 +13,69 @@
     <div class="col">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="mb-0">Mitra Terkait</h3>
-                <a href="{{ route('administrator.mitra.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <h3 class="mb-0">Daftar Berlangganan</h3>
+                <a href="{{ route('administrator.berlangganan.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
             <!-- Tambahkan form pencarian -->
             <div class="card-body">
-                <!-- <form action="{{ route('administrator.kategoriprogram.index') }}" method="GET" class="mb-1">
+                <form action="{{ route('administrator.berlangganan.index') }}" method="GET" class="mb-1">
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
-                            <select class="form-control" name="judul">
-                                <option value="">Pilih Pembayaran</option>
-                               
+                            <select class="form-control" name="masa_berlangganan">
+                                <option value="">Pilih Berlangganan</option>
+                                @foreach ($masa_berlangganans as $masa_berlangganan)
+                                    <option value="{{ $masa_berlangganan->masa_berlangganan }}" {{ request('masa_berlangganan') == $masa_berlangganan->masa_berlangganan ? 'selected' : '' }}>
+                                        {{ $masa_berlangganan->masa_berlangganan }}
+                                    </option>
+                                @endforeach
                             </select>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Filter</button>
                             </div>
                         </div>
                         <div class="input-group" style="max-width: 300px;">
-                            <input type="text" class="form-control" placeholder="Cari Kategori..." name="search" value="{{ request('kategoriprogram') }}">
+                            <input type="text" class="form-control" placeholder="Cari Berlangganan..." name="search" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Cari</button>
                             </div>
                         </div>
                     </div>
-                    @if(request('search') || request('nama_kategori'))
+                    @if(request('search') || request('masa_berlangganan'))
                     <div class="mt-2 d-flex justify-content-center">
-                        <a href="{{ route('administrator.kategoriprogram.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
+                        <a href="{{ route('administrator.berlangganan.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
                     </div>
                     @endif
-                </form> -->
+                </form>
 
                 <div class="table-responsive py-4">
                     <table class="table table-bordered" id="datatable-basic">
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Gambar</th>
-                                <th class="text-center">Action</th>
+                                <th class="text-center">Masa Berlangganan</th>
+                                <th class="text-center">Harga Berlangganan</th>
+                                <th class="text-center">Harga Diskon</th>
+                                <th class="text-center">Is Active</th>
+                                <th class="text-center">Is Populer</th>
+                                <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($mitras as $index => $mitra)
+                            @foreach ($berlangganans as $index => $berlangganan)
                             <tr>
-                                <td>{{ $loop->iteration + $mitras->firstItem() - 1 }}</td>
-                                <td><img src="{{ asset('mitra/' . $mitra->gambar) }}" alt="Gambar" class="img-fluid"></td>
+                                <td>{{ $loop->iteration + $berlangganans->firstItem() - 1 }}</td>
+                                <td>{{ $berlangganan->masa_berlangganan }}</td>
+                                <td>{{ $berlangganan->harga_berlangganan }}</td>
+                                <td>{{ $berlangganan->harga_diskon }}</td>
+                                <td>{{ $berlangganan->is_active ? 'Yes' : 'No' }}</td>
+                                <td>{{ $berlangganan->is_populer ? 'Yes' : 'No' }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('administrator.mitra.edit', $mitra->id) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                        <a href="{{ route('administrator.berlangganan.edit', $berlangganan->id_berlangganan) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button data-url="{{ route('administrator.mitra.destroy', $mitra->id) }}"
+                                        <button data-url="{{ route('administrator.berlangganan.destroy', $berlangganan->id_berlangganan) }}"
                                             type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -74,7 +86,7 @@
                         </tbody>
                     </table>
                     <br>
-                    {{ $mitras->links('vendor.pagination.bootstrap-4') }}
+                    {{ $berlangganans->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
         </div>
@@ -155,12 +167,12 @@
 
         // Fungsi untuk memperbarui nomor urut
         function updateRowNumbers() {
-            let startingIndex = {{ $mitras->firstItem() - 1 }};
+            let startingIndex = {{ $berlangganans->firstItem() - 1 }};
             $('table tbody tr').each(function(index) {
                 $(this).find('td:first-child').text(startingIndex + index + 1);
             });
         }
+
     });
 </script>
 @endsection
-

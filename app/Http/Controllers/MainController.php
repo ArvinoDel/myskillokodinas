@@ -31,7 +31,7 @@ class MainController extends Controller
     {
         $mitra = Mitra::orderBy('id','ASC')->get();
         $metod = Metodepembayaran::orderBy('id','ASC')->get();
-        // dd($mitra);
+        // dd($metod);
         $banners = Bannerslider::all();
         $album = Album::all();
         $testimonis = Testimoni::all();
@@ -54,14 +54,14 @@ class MainController extends Controller
 
         if ($templateDinas4 && $templateDinas4->aktif === 'Y') {
             // Jika 'dinas-4' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-4'
-            return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod'));
+            return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra','metod'));
         } elseif ($templateDinas3 && $templateDinas3->aktif === 'Y') {
             // Jika 'dinas-3' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-3'
             return view('dinas-3.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
         } elseif ($templateDinas2 && $templateDinas2->aktif === 'Y') {
             // Jika 'dinas-2' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-2'
             return view('dinas-2.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
-        } elseif ($templateDinas1 && $templateDinas1->aktif === 'Y') {  
+        } elseif ($templateDinas1 && $templateDinas1->aktif === 'Y') {
             // Jika 'dinas-1' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-1'
             return view('myskill.pages.home', compact('logo', 'banners','links'));
         } else {
@@ -101,7 +101,7 @@ class MainController extends Controller
         } elseif ($templateDinas2 && $templateDinas2->aktif === 'Y') {
             // Jika 'dinas-2' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-2'
             return view('dinas-2.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
-        } elseif ($templateDinas1 && $templateDinas1->aktif === 'Y') {  
+        } elseif ($templateDinas1 && $templateDinas1->aktif === 'Y') {
             // Jika 'dinas-1' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-1'
             return view('myskill.pages.program.bootcamp', compact('logo', 'banners','links', 'testimonis'));
         } else {

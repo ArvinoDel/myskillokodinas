@@ -399,20 +399,19 @@
 
 
                                     @php
-                                        $Usermodul = new \App\Models\Usermodul;
-                                        $cekLogowebsite = $Usermodul->umenu_akses("logowebsite", session('id_session'));
-                                        $cekTemplatewebsite = $Usermodul->umenu_akses("templatewebsite", session('id_session'));
-                                        $cekTestimoni = $Usermodul->umenu_akses("testimoni", session('id_session'));
-                                        $cekTrainer = $Usermodul->umenu_akses("trainer", session('id_session'));
-                                        $cekProgram = $Usermodul->umenu_akses("program", session('id_session'));
-                                        $cekMateri = $Usermodul->umenu_akses("materi", session('id_session'));
-                                        $cekMember = $Usermodul->umenu_akses("member", session('id_session'));
-                                        $cekRating = $Usermodul->umenu_akses("rating", session('id_session'));
-                                        $cekKategoriprogram = $Usermodul->umenu_akses("kategoriprogram", session('id_session'));
-                                        $cekMetodepembayaran = $Usermodul->umenu_akses("metodepembayaran", session('id_session'));
-                                        $cekMitra = $Usermodul->umenu_akses("mitra", session('id_session'));
-                                        $cekBerlangganan = $Usermodul->umenu_akses("berlangganan", session('id_session'));
-                                      
+                                        $userModul = new \App\Models\UserModul;
+                                        $cekLogowebsite = $userModul->umenu_akses("logowebsite", session('id_session'));
+                                        $cekTemplatewebsite = $userModul->umenu_akses("templatewebsite", session('id_session'));
+                                        $cekTestimoni = $userModul->umenu_akses("testimoni", session('id_session'));
+                                        $cekTrainer = $userModul->umenu_akses("trainer", session('id_session'));
+                                        $cekProgram = $userModul->umenu_akses("program", session('id_session'));
+                                        $cekMateri = $userModul->umenu_akses("materi", session('id_session'));
+                                        $cekMember = $userModul->umenu_akses("member", session('id_session'));
+                                        $cekRating = $userModul->umenu_akses("rating", session('id_session'));
+                                        $cekKategoriprogram = $userModul->umenu_akses("kategoriprogram", session('id_session'));
+                                        $cekMetodepembayaran = $userModul->umenu_akses("metodepembayaran", session('id_session'));
+                                        $cekMitra = $userModul->umenu_akses("mitra", session('id_session'));
+                                        $cekBerlangganan = $userModul->umenu_akses("berlangganan", session('id_session'));
                                     @endphp
 
                                     @if($cekLogowebsite == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
@@ -449,8 +448,8 @@
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/mitra') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
                                     @endif
                                     @if($cekBerlangganan == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                    <li class="nav-item"><a class="nav-link" href="{{ url('administrator/berlangganan') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a></li>
-                                @endif
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/berlangganan') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a></li>
+                                    @endif
                                 </ul>
                             </div>
                             {{-- <div class="collapse" id="modul-web">

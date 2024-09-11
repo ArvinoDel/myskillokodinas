@@ -96,7 +96,7 @@
                                     <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah gambar.</small>
                                 </div>
                             </div>
-                        </td>
+                        </td>  
                     </tr>
                     <tr>
                         <th style="padding: 5px;">Ket. Gambar</th>

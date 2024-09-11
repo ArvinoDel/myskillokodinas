@@ -8,7 +8,7 @@
             <div class="card-header">
                 <h3 class="mb-0">Tambah Trainer</h3>
             </div>
-            <div class="card-body">
+        <div class="card-body">
                 <form action="{{ route('administrator.trainer.store') }}" method="POST" enctype="multipart/form-data" class="form-ajax">
                     @csrf
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
@@ -23,36 +23,6 @@
                                 <th style="padding: 5px;">Nama Trainer</th>
                                 <td style="padding: 5px;">
                                     <input type="text" class="form-control" id="nama_trainer" name="nama_trainer" placeholder="Masukkan Nama" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="padding: 5px;">Kategori</th>
-                                <td style="padding: 5px;">
-                                    <select class="form-control" id="id_kategori" name="id_kategori" required>
-                                        <option value="">-- Pilih Kategori --
-                                        @foreach($kategoriprogram as $kat)
-                                        <option value="{{ $kat->id_kategori }}">
-                                            {{ $kat->nama_kategori }}
-                                        </option>
-                                        @endforeach
-                                        </option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="padding: 5px; border: 1px solid #ddd;">Nama Program</th>
-                                <td style="padding: 5px; border: 1px solid #ddd;">
-                                    <div style="max-height: 200px; overflow-y: auto;">
-                                        @foreach($programs as $program)
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="{{ $program->id_pro }}" id="program" name="program[]">
-                                            <label class="form-check-label" for="modul">
-                                                {{ $program->nama_program }}
-                                            </label>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </td>
                                 </td>
                             </tr>
                         </tbody>

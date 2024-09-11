@@ -73,10 +73,10 @@
                                 <td>{{ $trainer->nama_trainer }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('administrator.trainer.edit', $trainer->id_tra) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                        <a href="{{ route('administrator.trainer.edit', $trainer->id_trainer) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button data-url="{{ route('administrator.trainer.destroy', $trainer->id_tra) }}"
+                                        <button data-url="{{ route('administrator.trainer.destroy', $trainer->id_trainer) }}"
                                             type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                             <i class="fa fa-trash"></i>
                                         </button>

@@ -6,75 +6,62 @@
     <div class="col">
         <div class="card card-shadow">
             <div class="card-header">
-                <h3 class="mb-0">Tambah Program</h3>
+                <h3 class="mb-0">Tambah Berlangganan</h3>
             </div>
             <div class="card-body">
-                <form action="{{ route('administrator.program.store') }}" method="POST" enctype="multipart/form-data" class="form-ajax">
+                <form action="{{ route('administrator.berlangganan.store') }}" method="POST" enctype="multipart/form-data" class="form-ajax">
                     @csrf
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                         <tbody>
                             <tr>
-                                <th style="padding: 5px;">Nama Program</th>
+                                <th style="padding: 5px;">Masa Berlangganan</th>
                                 <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="nama_program" name="nama_program" placeholder="Masukkan Nama Program" required>
+                                    <input type="text" class="form-control" id="masa_berlangganan" name="masa_berlangganan" placeholder="Masukkan Masa Berlangganan" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Gambar</th>
+                                <th style="padding: 5px;">Harga Berlangganan</th>
                                 <td style="padding: 5px;">
-                                    <input type="file" class="form-control" id="gambar" name="gambar">
+                                    <input type="text" class="form-control" name="harga_berlangganan" placeholder="Masukkan Harga Berlangganan" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Kategori</th>
+                                <th style="padding: 5px;">Harga Diskon</th>
                                 <td style="padding: 5px;">
-                                    <select class="form-control" id="id_kategori_program" name="id_kategori_program" required>
-                                        <option value="">-- Pilih Kategori --
-                                        @foreach($kategoriprograms as $kat)
-                                        <option value="{{ $kat->id_kategori_program }}">
-                                            {{ $kat->nama_kategori }}
-                                        </option>
-                                        @endforeach
-                                        </option>
-                                    </select>
+                                    <input type="text" class="form-control" name="harga_diskon" placeholder="Masukkan Harga Diskon">
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Trainer</th>
+                                <th style="padding: 5px;">Is Active</th>
                                 <td style="padding: 5px;">
-                                    <select class="form-control" id="id_trainer" name="id_trainer" required>
-                                        <option value="">-- Pilih Trainer --
-                                        @foreach($trainers as $train)
-                                        <option value="{{ $train->id_trainer }}">
-                                            {{-- {{ $train->id_trainer }} --}}
-                                            {{ $train->nama_trainer }}
-                                        </option>
-                                        @endforeach
-                                        </option>
-                                    </select>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="is_active" value="1" required> Yes
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="is_active" value="0" required> No
+                                        </label>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Judul Program</th>
+                                <th style="padding: 5px;">Is Populer</th>
                                 <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="judul_program" name="judul_program" placeholder="Masukkan Nama Program" required>
-                                </td>
-                            </tr>
-                            <th style="padding: 5px;">Harga</th>
-                            <td style="padding: 5px;">
-                                <input type="text" class="form-control" id="harga" name="harga" placeholder="Masukkan Harga" required>
-                            </td>
-                            <tr>
-                                <th style="padding: 5px;">Keterangan</th>
-                                <td style="padding: 5px;">
-                                    <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="is_populer" value="1" required> Yes
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="is_populer" value="0" required> No
+                                        </label>
+                                    </div>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="{{ route('administrator.program.index') }}" class="btn btn-danger">Batal</a>
+                        <a href="{{ route('administrator.berlangganan.index') }}" class="btn btn-danger">Batal</a>
                     </div>
                 </form>
             </div>
@@ -97,7 +84,7 @@
             let btn = $(this);
             Swal.fire({
                 icon: 'warning',
-                text: 'Data yang sudah di hapus tidak dapat dikembalikan!',
+                text: 'Data yang sudah dihapus tidak dapat dikembalikan!',
                 title: 'Apakah Anda yakin ingin menghapus data ini?',
                 showCancelButton: true,
                 confirmButtonColor: '#D33',
@@ -107,7 +94,7 @@
                 if (result.isConfirmed) {
                     Swal.fire({
                         title: "Deleted!",
-                        text: "Your file has been deleted.",
+                        text: "Data Anda telah dihapus.",
                         icon: "success"
                     });
                     document.location = btn.data('url');
@@ -120,11 +107,6 @@
                 e.preventDefault();
 
                 let form = $(this);
-
-                // Menyinkronkan data dari CKEditor ke textarea
-                for (var instance in CKEDITOR.instances) {
-                    CKEDITOR.instances[instance].updateElement();
-                }
 
                 $.ajax({
                     url: form.prop('action'),

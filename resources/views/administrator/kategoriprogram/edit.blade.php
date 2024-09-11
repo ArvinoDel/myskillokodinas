@@ -9,15 +9,15 @@
                 <h3 class="mb-0">Edit Kategori</h3>
             </div>
             <div class="card-body">
-                <form action="{{ route('administrator.kategoriprogram.update', $kategoriprogram->id_kat) }}" method="POST" enctype="multipart/form-data" class="form-ajax">
+                <form action="{{ route('administrator.kategoriprogram.update', $kategoriprograms->id_kategori_program) }}" method="POST" enctype="multipart/form-data" class="form-ajax">
                     @csrf
                     @method('PUT')
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
-                        <tbody>
+                        <tbody> 
                             <tr>
                                 <th style="padding: 5px;">Nama Kategori</th>
                                 <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Nama kategori" value="{{ $kategoriprogram->nama_kategori }}" required>
+                                    <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Nama kategori" value="{{ $kategoriprograms->nama_kategori }}" required>
                                 </td>
                             </tr>
                         </tbody>
