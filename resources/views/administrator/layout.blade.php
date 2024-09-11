@@ -407,10 +407,11 @@
                                         $cekTrainer = $userModul->umenu_akses("trainer", session('id_session'));
                                         $cekProgram = $userModul->umenu_akses("program", session('id_session'));
                                         $cekMateri = $userModul->umenu_akses("materi", session('id_session'));
+                                        $cekMetode = $userModul->umenu_akses("metode", session('id_session'));
                                         $cekMember = $userModul->umenu_akses("member", session('id_session'));
                                         $cekRating = $userModul->umenu_akses("rating", session('id_session'));
                                         $cekKategoriprogram = $userModul->umenu_akses("kategoriprogram", session('id_session'));
-                                        $cekMetodepembayaran = $userModul->umenu_akses("metodepembayaran", session('id_session'));
+                                        $cekLogo = $userModul->umenu_akses("metodepembayaran", session('id_session'));
                                         $cekMitra = $userModul->umenu_akses("mitra", session('id_session'));
                                         $cekBerlangganan = $userModul->umenu_akses("berlangganan", session('id_session'));
                                     @endphp
@@ -433,6 +434,9 @@
                                     @if($cekMateri == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/materi') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Materi</a></li>
                                     @endif
+                                    @if($cekMetode == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/metode') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Metode</a></li>
+                                    @endif
                                     @if($cekBenefit == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/benefit') }}"><i class='ni ni-badge text-blue'></i>Benefit</a></li>
                                     @endif
@@ -442,11 +446,14 @@
                                     @if($cekRating == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/rating') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Rating</a></li>
                                     @endif
+                                    @if($cekBerlangganan == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/berlangganan') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a></li>
+                                    @endif
                                     @if($cekKategoriprogram == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/kategoriprogram') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Kategori Program</a></li>
                                     @endif
-                                    @if($cekMetodepembayaran == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/metodepembayaran') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Metode Pembayaran</a></li>
+                                    @if($cekLogo == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/metodepembayaran') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Logo Bawah</a></li>
                                     @endif
                                     @if($cekMitra == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/mitra') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
