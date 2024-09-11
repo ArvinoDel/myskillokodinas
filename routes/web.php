@@ -152,7 +152,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->middleware('checkModul:logowebsite');
     Route::resource('album', AlbumController::class)
         ->middleware('checkModul:album');
-        
+
     Route::resource('iklanatas', IklanatasController::class)
         ->middleware('checkModul:iklanatas');
 
@@ -237,7 +237,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
 // index
 // Route::get('/home', function () {
-//     return view('./myskill/pages/home');
+//     return view('./myskill/pages/hotrame');
 // })->name('Home');
 
 Route::get('/home', [MainController::class, 'index']);

@@ -19,6 +19,19 @@
                                     <input type="text" class="form-control" id="judul_materi" name="judul_materi" value="{{ $materis->judul_materi }}" required>
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="padding: 5px;">Program</th>
+                                <td style="padding: 5px;">
+                                    <select class="form-control" name="id_program" required>
+                                        <option value="">-- Pilih Program --</option>
+                                        @foreach ($programs as $program)
+                                            <option value="{{ $program->id_program }}" {{ $program->id_program == $materis->id_program ? 'selected' : '' }}>
+                                                {{ $program->judul_program }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
@@ -57,17 +70,17 @@
             }
         });
         $(document).on('click', '.btn-delete', function() {
-            let btn =$(this);
+            let btn = $(this);
             Swal.fire({
-               icon:'warning',
-               text:'Data yang sudah di hapus tidak dapat dikembalikan!',
-               title:'Apakah Anda yakin ingin menghapus data ini?',
+               icon: 'warning',
+               text: 'Data yang sudah dihapus tidak dapat dikembalikan!',
+               title: 'Apakah Anda yakin ingin menghapus data ini?',
                showCancelButton: true,
-               confirmButtonColor:'#D33',
-               confirmButtonText:'Yakin hapus?',
-               cancelButtonText:'Batal'
-            }).then((result)=>{
-                if (result.isConfirmed){
+               confirmButtonColor: '#D33',
+               confirmButtonText: 'Yakin hapus?',
+               cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",
@@ -77,24 +90,25 @@
                 }
             });
         });
+
         $('.form-ajax').each(function() {
-                $(this).bind('submit', function(e) {
-                    e.preventDefault();
+            $(this).bind('submit', function(e) {
+                e.preventDefault();
 
-                    for (instance in CKEDITOR.instances) {
-                        CKEDITOR.instances[instance].updateElement();
-                    }
+                for (instance in CKEDITOR.instances) {
+                    CKEDITOR.instances[instance].updateElement();
+                }
 
-                    let form = $(this);
-                    $.ajax({
-                        url: form.prop('action'),
-                        data: new FormData(this),
-                        cache: false,
-                        async: false,
-                        type: 'post',
-                        contentType: false,
-                        processData: false,
-                        success: function(data) {
+                let form = $(this);
+                $.ajax({
+                    url: form.prop('action'),
+                    data: new FormData(this),
+                    cache: false,
+                    async: false,
+                    type: 'post',
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
                         if (data.success === false) {
                             Swal.fire({
                                 icon: 'error',
@@ -104,17 +118,15 @@
                             });
                         } else {
                             Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: data.message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                }).then((result)=>{
-                                    console.log(result);
-                                    document.location = data.url;
-                                });
-
-
+                                position: "center",
+                                icon: "success",
+                                title: data.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then((result) => {
+                                console.log(result);
+                                document.location = data.url;
+                            });
                         }
                     }
                 });

@@ -18,6 +18,7 @@ use App\Models\Poling;
 use App\Models\Sekilasinfo;
 use App\Models\Template;
 use App\Models\Testimoni;
+use App\Models\Trainer;
 use App\Models\Video;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -32,6 +33,7 @@ class MainController extends Controller
         $mitra = Mitra::orderBy('id', 'ASC')->get();
         $metod = Metodepembayaran::orderBy('id', 'ASC')->get();
         // dd($mitra);
+        $trainer = Trainer::all();
         $banners = Bannerslider::all();
         $album = Album::all();
         $testimonis = Testimoni::all();
@@ -52,7 +54,7 @@ class MainController extends Controller
         $templateDinas2 = Template::where('folder', 'dinas-2')->first();
         $templateDinas1 = Template::where('folder', '')->first();
 
-        return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod'));
+        return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod', 'trainer'));
     }
 
     public function bootcamp(Request $request)
