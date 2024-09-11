@@ -20,7 +20,7 @@
 
     <div class="grid grid-flow-col lg:grid-cols-5 ps-6 gap-8 overflow-x-auto no-scrollbar no-scrollbar ">
         <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28" src="{{ asset('../home-myskill/alumny.webp') }}"
+            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28" src="{{ asset('../home-myskill/alumny.webp') }}"
                 alt="" />
             <div class="p-5">
                 <h5 class="text-sm text-center font-bold text-gray-900">Noteworthy Lebih dari 1.5 Juta+ Member Belajar
@@ -28,28 +28,28 @@
             </div>
         </div>
         <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28" src="{{ asset('../home-myskill/existing-member.webp') }}"
+            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28" src="{{ asset('../home-myskill/existing-member.webp') }}"
                 alt="" />
             <div class="p-5">
                 <h5 class="text-sm text-center font-bold text-gray-900">Ribuan Alumni Bekerja di National & Global Company</h5>
             </div>
         </div>
         <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28" src="{{ asset('../home-myskill/new-member.webp') }}"
+            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28" src="{{ asset('../home-myskill/new-member.webp') }}"
                 alt="" />
             <div class="p-5">
                 <h5 class="text-sm text-center font-bold text-gray-900">Praktikal & Bersertifikat. Bangun Skill dan Portfolio</h5>
             </div>
         </div>
         <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28" src="{{ asset('../home-myskill/practical.webp') }}"
+            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28" src="{{ asset('../home-myskill/practical.webp') }}"
                 alt="" />
             <div class="p-5">
                 <h5 class="text-sm text-center font-bold text-gray-900">4.9 Rating di Course Report & Award LinkedIn Top Startup</h5>
             </div>
         </div>
         <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28" src="{{ asset('../home-myskill/rating.webp') }}"
+            <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28" src="{{ asset('../home-myskill/rating.webp') }}"
                 alt="" />
             <div class="p-5">
                 <h5 class="text-sm text-center font-bold text-gray-900">50k++ New Member Ikut Belajar Bulan</h5>
@@ -230,106 +230,18 @@
     style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
     ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
     onmouseup="this.classList.remove('touching')">
+    @foreach ($trainer as $train)
     <div
         class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
+        <img class="rounded-2xl pt-2 px-2" src="{{ asset('foto_trainer/' . $train->foto) }}" alt="" />
         <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
+            <h5 class="text-lg font-semibold text-black text-center py-1">{{$train->nama_trainer}}</h5>
             <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
         </div>
         <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
             Operator</button>
     </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
-        </div>
-        <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
-            Operator</button>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
-        </div>
-        <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
-            Operator</button>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
-        </div>
-        <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
-            Operator</button>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
-        </div>
-        <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
-            Operator</button>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
-        </div>
-        <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
-            Operator</button>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
-        </div>
-        <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
-            Operator</button>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
-        </div>
-        <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
-            Operator</button>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
-        </div>
-        <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
-            Operator</button>
-    </div>
-    <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-96 bg-gradient-to-b from-orange-400 to-red-500 border rounded-xl">
-        <img class="rounded-2xl pt-2 px-2" src="{{ asset('assets/home/image91.svg') }}" alt="" />
-        <div>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Udin LinkedIn</h5>
-            <h5 class="text-lg font-semibold text-black text-center py-1">Fullstack Development</h5>
-        </div>
-        <button class="flex justify-bottom rounded-xl bg-black text-white font-semibold mt-10 ms-5 px-7 py-2">Lihat
-            Operator</button>
-    </div>
+    @endforeach
 </div>
 <p class="py-20 sm:mx-8 text-center text-2xl font-bold">Bersama Experts dan Case Study dari Beberapa Company</p>
 <div class="grid grid-cols-4 gap-4 px-16">
