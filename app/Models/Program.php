@@ -18,11 +18,16 @@ class Program extends Model
     public function trainer()
     {
         return $this->belongsTo(Trainer::class, 'id_trainer', 'id_trainer');
-    }
+    }  
 
     // Relasi ke KategoriProgram
     public function kategoriProgram()
     {
         return $this->belongsTo(KategoriProgram::class, 'id_kategori_program', 'id_kategori_program');
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'id_program', 'id_program');
     }
 }
