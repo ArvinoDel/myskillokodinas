@@ -18,6 +18,7 @@ use App\Models\Poling;
 use App\Models\Sekilasinfo;
 use App\Models\Template;
 use App\Models\Testimoni;
+use App\Models\Trainer;
 use App\Models\Video;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -29,9 +30,10 @@ class MainController extends Controller
      */
     public function index(Request $request)
     {
-        $mitra = Mitra::orderBy('id','ASC')->get();
-        $metod = Metodepembayaran::orderBy('id','ASC')->get();
+        $mitra = Mitra::orderBy('id', 'ASC')->get();
+        $metod = Metodepembayaran::orderBy('id', 'ASC')->get();
         // dd($mitra);
+        $trainer = Trainer::all();
         $banners = Bannerslider::all();
         $album = Album::all();
         $testimonis = Testimoni::all();
@@ -52,22 +54,7 @@ class MainController extends Controller
         $templateDinas2 = Template::where('folder', 'dinas-2')->first();
         $templateDinas1 = Template::where('folder', '')->first();
 
-        if ($templateDinas4 && $templateDinas4->aktif === 'Y') {
-            // Jika 'dinas-4' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-4'
-            return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod'));
-        } elseif ($templateDinas3 && $templateDinas3->aktif === 'Y') {
-            // Jika 'dinas-3' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-3'
-            return view('dinas-3.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
-        } elseif ($templateDinas2 && $templateDinas2->aktif === 'Y') {
-            // Jika 'dinas-2' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-2'
-            return view('dinas-2.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
-        } elseif ($templateDinas1 && $templateDinas1->aktif === 'Y') {  
-            // Jika 'dinas-1' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-1'
-            return view('myskill.pages.home', compact('logo', 'banners','links'));
-        } else {
-            // Jika tidak ada template yang aktif, tampilkan view default
-            return view('administrator.dashboard', compact('identitas','polings','logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
-        }
+        return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod', 'trainer'));
     }
 
     public function bootcamp(Request $request)
@@ -101,14 +88,14 @@ class MainController extends Controller
         } elseif ($templateDinas2 && $templateDinas2->aktif === 'Y') {
             // Jika 'dinas-2' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-2'
             return view('dinas-2.dashboard', compact('identitas','polings', 'logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
-        } elseif ($templateDinas1 && $templateDinas1->aktif === 'Y') {  
+        } elseif ($templateDinas1 && $templateDinas1->aktif === 'Y') {
             // Jika 'dinas-1' aktif (aktif = 'Y'), tampilkan view dari folder 'dinas-1'
             return view('myskill.pages.program.bootcamp', compact('logo', 'banners','links', 'testimonis'));
         } else {
-            // Jika tidak ada template yang aktif, tampilkan view default
-            return view('administrator.dashboard', compact('identitas','polings','logo', 'banners', 'pilihan', 'jawaban', 'links', 'menus', 'alamat', 'beritas', 'infos', 'agendas', 'beritau', 'beritao', 'beritad', 'videos'));
+            return view('myskill.pages.profile.my-profile', ['aktifTemplate' => null, 'banners', 'alamat', 'logo', 'links', 'beritau', 'beritao', 'beritad', 'beritas', 'infos', 'videos', 'polings', 'agendas', 'pilihan', 'jawaban', 'menus']);
         }
     }
+
 
     /**
      * Show the form for creating a new resource.

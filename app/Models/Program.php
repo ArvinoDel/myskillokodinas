@@ -10,17 +10,19 @@ class Program extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $primaryKey = 'id_pro';
+    protected $primaryKey = 'id_program';
     protected $table = 'program';
-    protected $fillable = ['id_pro', 'id_program', 'nama_program', 'tanggal', 'harga', 'keterangan', 'judul'];
+    protected $fillable = ['id_program', 'id_trainer', 'judul_program', 'keterangan', 'harga', 'gambar', 'tanggal', 'id_kategori_program'];
 
-    public function kategori_program_group()
+    // Relasi ke Trainer
+    public function trainer()
     {
-        return $this->hasMany(Kategoriprogramgroup::class, 'id_program', 'id_program');
+        return $this->belongsTo(Trainer::class, 'id_trainer', 'id_trainer');
     }
 
-    public function kategoriprogram()
+    // Relasi ke KategoriProgram
+    public function kategoriProgram()
     {
-        return $this->belongsToMany(Kategoriprogram::class, 'kategori_program_group', 'id_program', 'id_kategori');
+        return $this->belongsTo(KategoriProgram::class, 'id_kategori_program', 'id_kategori_program');
     }
 }

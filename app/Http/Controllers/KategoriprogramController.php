@@ -33,13 +33,13 @@ class KategoriprogramController extends Controller
             $query->where('nama_kategori', $nama_kategori);
         }
 
-        $kategoriprogram = $query->paginate(10);
+        $kategoriprograms = $query->paginate(10);
 
         $nama_kategoris = Kategoriprogram::select('nama_kategori')
                     ->groupBy('nama_kategori')
                     ->get();
 
-        return view('administrator.kategoriprogram.index', compact(['kategoriprogram', 'nama_kategoris']));
+        return view('administrator.kategoriprogram.index', compact(['kategoriprograms', 'nama_kategoris']));
     }
 
     /**
@@ -47,8 +47,8 @@ class KategoriprogramController extends Controller
      */
     public function create():View
     {
-        $kategoriprogram = Kategoriprogram::all();
-        return view('administrator.kategoriprogram.create', compact(['kategoriprogram']));
+        $kategoriprograms = Kategoriprogram::all();
+        return view('administrator.kategoriprogram.create', compact(['kategoriprograms']));
     }
 
     /**
@@ -59,8 +59,7 @@ class KategoriprogramController extends Controller
         $nama_kategori = $request->nama_kategori;
 
         Kategoriprogram::create([
-            "nama_kategori" => $nama_kategori,
-            "id_kategori" => md5($nama_kategori.'-'.date('YmdHis'))
+            "nama_kategori" => $nama_kategori
         ]);
 
         return response()->json([
@@ -81,20 +80,20 @@ class KategoriprogramController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id_kategori_program)
     {
         //
-        $kategoriprogram = Kategoriprogram::findOrFail($id);
+        $kategoriprograms = Kategoriprogram::findOrFail($id_kategori_program);
 
-        return view('administrator.kategoriprogram.edit', compact('kategoriprogram'));
+        return view('administrator.kategoriprogram.edit', compact('kategoriprograms'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id_kategori_program)
     {
-        $kategoriprogram = Kategoriprogram::findOrFail($id);
+        $kategoriprograms = Kategoriprogram::findOrFail($id_kategori_program);
 
         $nama_kategori = $request->nama_kategori;
 
@@ -102,7 +101,7 @@ class KategoriprogramController extends Controller
             'nama_kategori' => $nama_kategori,
         ];
 
-        $kategoriprogram->update($updateData);
+        $kategoriprograms->update($updateData);
 
         return response()->json([
             'url' => route('administrator.kategoriprogram.index'),
@@ -114,10 +113,10 @@ class KategoriprogramController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id_kategori_program)
     {
-        $kategoriprogram = Kategoriprogram::findOrFail($id);
-        $kategoriprogram->delete();
+        $kategoriprograms = Kategoriprogram::findOrFail($id_kategori_program);
+        $kategoriprograms->delete();
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }
 }

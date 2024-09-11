@@ -5,6 +5,7 @@ use App\Http\Controllers\AlamatkontakController;
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\BannerhomeController;
 use App\Http\Controllers\BannersliderController;
+use App\Http\Controllers\BenefitController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DownloadareaController;
@@ -185,7 +186,10 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
     Route::resource('kategoriprogram', KategoriprogramController::class)
         ->middleware('checkModul:kategoriprogram');
-
+    Route::resource('benefit', BenefitController::class)
+        ->middleware('checkModul:benefit');
+    Route::resource('berlangganan', BerlanggananController::class)
+        ->middleware('checkModul:berlangganan');
     Route::resource('materi', MateriController::class)
         ->middleware('checkModul:materi');
 
@@ -233,6 +237,8 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
 Route::get('/home', [MainController::class, 'index']);
 Route::get('/bootcamp', [MainController::class, 'bootcamp']);
+Route::get('/review', [MainController::class, 'review']);
+Route::get('/company-profile', [MainController::class, 'companyprofile']);
 
 
 Route::get('/', [MainController::class, 'index']);
@@ -254,11 +260,11 @@ Route::get('/e-learning/materi', function () {
 })->name('Materi');
 
 // bootcamp
-Route::get('/bootcamp', function () {
-    $testimonis = Testimoni::all();
+// Route::get('/bootcamp', function () {
+//     $testimonis = Testimoni::all();
 
-    return view('./myskill/pages/program/bootcamp', compact('testimonis'));
-})->name('Program & Bootcamp');
+//     return view('./myskill/pages/program/bootcamp', compact('testimonis'));
+// })->name('Program & Bootcamp');
 
 Route::get('/bootcamp/digital-marketing', function () {
     return view('./myskill/pages/program/digital-marketing');
