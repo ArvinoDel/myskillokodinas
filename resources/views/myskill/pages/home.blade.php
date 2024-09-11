@@ -210,7 +210,7 @@
                 pengalaman, case study & best practices.</p>
 
             <div
-                class="flex flex-nowrap md:mx-24 justify-start md:justify-between overflow-x-auto pb-6 space-x-4 md:space-x-2 snap-x no-scrollbar">
+                class="flex flex-nowrap md:mx-24 justify-start md:justify-center overflow-x-auto pb-6 space-x-4 snap-x no-scrollbar">
                 <!-- Repeat this card structure for each professional -->
                 @foreach ($trainer as $train)
                     <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
