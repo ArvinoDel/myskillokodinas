@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Middleware\CheckUsermodul;
+use App\Http\Middleware\CheckUserModul;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -13,7 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'checkModul' => CheckUsermodul::class,
+            'checkModul' => CheckUserModul::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

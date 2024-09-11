@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log; // Tambahkan ini
 
-class Usermodul extends Model
+class UserModul extends Model
 {
     use HasFactory;
 
@@ -36,7 +36,7 @@ class Usermodul extends Model
     {
         Log::info('Memeriksa akses modul: ' . $modul . ' untuk sesi: ' . $id_session);
 
-        $akses = Usermodul::where('id_session', $id_session)
+        $akses = UserModul::where('id_session', $id_session)
                     ->whereHas('modul', function ($query) use ($modul) {
                         $query->where('link', $modul);
                     })

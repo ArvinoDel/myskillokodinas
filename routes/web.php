@@ -58,7 +58,9 @@ Route::get('/register', function () {
     return view('auth.register');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard'); // Mengarahkan ke halaman register Laravel Breeze
+Route::get('/home', [DashboardController::class, 'home'])->middleware(['auth', 'verified'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::get('/login', function () {
     return view('auth.login'); // Mengarahkan ke halaman login Laravel Breeze
@@ -150,7 +152,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->middleware('checkModul:logowebsite');
     Route::resource('album', AlbumController::class)
         ->middleware('checkModul:album');
-        
+
     Route::resource('iklanatas', IklanatasController::class)
         ->middleware('checkModul:iklanatas');
 
@@ -205,7 +207,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('mitra', MitraController::class)
         ->middleware('checkModul:mitra');
 
-        //ini dari sini diganti
+    //ini dari sini diganti
     Route::resource('berlangganan', MitraController::class)
         ->middleware('checkModul:berlangganan');
 
@@ -235,7 +237,7 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 //     return view('./myskill/pages/home');
 // })->name('Home');
 
-Route::get('/home', [MainController::class, 'index']);
+Route::get('/home', [MainController::class, 'index'])->name('home');
 Route::get('/bootcamp', [MainController::class, 'bootcamp']);
 Route::get('/review', [MainController::class, 'review']);
 Route::get('/company-profile', [MainController::class, 'companyprofile']);

@@ -52,16 +52,99 @@
         </li>
     </ul>
     <div class="max- hidden lg:block space-x-2 justify-items-end mt-1.5">
-        <a href="/login">
-            <button type="button"
-                class="text-pink-500 hover:text-white border border-pink-500 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 text-center me-2 mb-2 dark:border-pink-300 dark:hover:text-white dark:hover:bg-pink-400 dark:focus:ring-pink-900">Login</button>
+        @if (Auth::check())
+            <div class="bg-transparent flex justify-center items-center mx-5">
+                <div x-data="{ open: false }" class="bg-transparent w-40 shadow flex justify-center items-center">
+                    <div @click="open = !open" class="relative border-b-4 border-transparent py-1"
+                        :class="{ 'border-indigo-700 transform transition duration-300 ': open }"
+                        x-transition:enter-end="transform opacity-100 scale-100"
+                        x-transition:leave="transition ease-in duration-75"
+                        x-transition:leave-start="transform opacity-100 scale-100">
+                        <div class="flex justify-center items-center space-x-3 cursor-pointer">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-900">
+                                <img src="https://images.unsplash.com/photo-1610397095767-84a5b4736cbd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                                    alt="" class="w-full h-full object-cover">
+                            </div>
+                            <div class="font-semibold text-gray-900 text-lg">
 
-        </a>
-        <a href="/register">
-            <button type="button"
-                class="focus:outline-none text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 me-2 mb-2 dark:bg-pink-600 dark:hover:bg-pink-600 dark:focus:ring-pink-500">Sign
-                Up</button>
-        </a>
+                                <div class="cursor-pointer"> {{ Auth::user()->username }}</div>
+                            </div>
+                        </div>
+                        <div x-show="open" x-transition:enter="transition ease-out duration-100"
+                            x-transition:enter-start="transform opacity-0 scale-95"
+                            x-transition:enter-end="transform opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-75"
+                            x-transition:leave-start="transform opacity-100 scale-100"
+                            x-transition:leave-end="transform opacity-0 scale-95"
+                            class="absolute w-40 px-5 py-3 rounded-lg bg-white shadow border dark:border-transparent mt-5">
+                            <ul class="space-y-3">
+                                <li class="font-medium">
+                                    <a href="#"
+                                        class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
+                                        <div class="mr-3">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        Account
+                                    </a>
+                                </li>
+                                <li class="font-medium">
+                                    <a href="#"
+                                        class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
+                                        <div class="mr-3">
+                                            <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                                </path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                            </svg>
+                                        </div>
+                                        Setting
+                                    </a>
+                                </li>
+                                <hr class="dark:border-gray-700">
+                                <li class="font-medium">
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); this.closest('form').submit();"
+                                            class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-red-600">
+                                            <div class="mr-3 text-red-600">
+                                                <svg class="w-6 h-6" fill="none" stroke="currentColor"
+                                                    viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                                                    </path>
+                                                </svg>
+                                            </div>
+                                            Logout
+                                        </a>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @else
+            <a href="/login">
+                <button type="button"
+                    class="text-pink-500 hover:text-white border border-pink-500 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 text-center me-2 mb-2 dark:border-pink-300 dark:hover:text-white dark:hover:bg-pink-400 dark:focus:ring-pink-900">Login</button>
+
+            </a>
+            <a href="/register">
+                <button type="button"
+                    class="focus:outline-none text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 me-2 mb-2 dark:bg-pink-600 dark:hover:bg-pink-600 dark:focus:ring-pink-500">Sign
+                    Up</button>
+            </a>
+        @endif
     </div>
 </nav>
 <div class="navbar-menu relative z-50 hidden">
@@ -70,7 +153,7 @@
         class="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white bg-opacity-75 border-r border-white border-opacity-50 shadow-lg backdrop-blur-lg">
         <div class="flex items-center mb-8">
             <a class="mr-auto text-3xl font-bold leading-none hover:text-green-600" href="#">
-                <img class="w-23" src="{{ asset('assets/logo-company.svg') }}" alt="logo-company">
+                <img class="w-20" src="{{ asset('assets/logo.png') }}" alt="logo-company">
             </a>
             <button class="navbar-close focus:outline-none">
                 <svg class="h-6 w-6 text-gray-400 cursor-pointer hover:text-green-500 "
@@ -87,51 +170,60 @@
                         <div
                             class="flex w-1 scale-y-0 transition-transform origin-top rounded-full duration-400 ease-in">
                         </div>
-                        <a class="flex p-4 text-sm font-semibold {{ request()->is('home') ? 'text-teal-400' : 'text-black' }}" href="/home">Home</a>
+                        <a class="flex p-4 text-sm font-semibold {{ request()->is('home') ? 'text-teal-400' : 'text-black' }}"
+                            href="/home">Home</a>
                     </li>
                     <li class="mb-1 inline-flex group rounded w-full">
                         <div
                             class="flex w-1 group0 scale-y-0 transition-transform origin-top rounded-full duration-400 ease-in">
                         </div>
-                        <a class="block p-4 text-sm font-semibold {{ request()->is('e-learning') ? 'text-teal-400' : 'text-black' }}" href="/e-learning">E-learning</a>
+                        <a class="block p-4 text-sm font-semibold {{ request()->is('e-learning') ? 'text-teal-400' : 'text-black' }}"
+                            href="/e-learning">E-learning</a>
                     </li>
                     <li class="mb-1 inline-flex group rounded w-full">
                         <div
                             class="flex w-1 group0 scale-y-0 transition-transform origin-top rounded-full duration-400 ease-in">
                         </div>
-                        <a class="block p-4 text-sm font-semibold {{ request()->is('bootcamp') ? 'text-teal-400' : 'text-black' }}" href="/bootcamp">Program & Bootcamp</a>
+                        <a class="block p-4 text-sm font-semibold {{ request()->is('bootcamp') ? 'text-teal-400' : 'text-black' }}"
+                            href="/bootcamp">Program & Bootcamp</a>
                     </li>
                     <li class="mb-1 inline-flex group rounded w-full">
                         <div
                             class="flex w-1 group0 scale-y-0 transition-transform origin-top rounded-full duration-400 ease-in">
                         </div>
-                        <a class="block p-4 text-sm font-semibold {{ request()->is('review') ? 'text-teal-400' : 'text-black' }}" href="/review">Review CV</a>
+                        <a class="block p-4 text-sm font-semibold {{ request()->is('review') ? 'text-teal-400' : 'text-black' }}"
+                            href="/review">Review CV</a>
                     </li>
                     <li class="mb-1 inline-flex group rounded w-full">
                         <div
                             class="flex w-1 scale-y-0 transition-transform origin-top rounded-full duration-400 ease-in">
                         </div>
-                        <a class="block p-4 text-sm font-semibold {{ request()->is('corporate-service') ? 'text-teal-400' : 'text-black' }}" href="/corporate-service">Corporate
+                        <a class="block p-4 text-sm font-semibold {{ request()->is('corporate-service') ? 'text-teal-400' : 'text-black' }}"
+                            href="/corporate-service">Corporate
                             Service</a>
                     </li>
                     <li class="mb-1 inline-flex group rounded w-full">
                         <div
                             class="flex w-1 scale-y-0 transition-transform origin-top rounded-full duration-400 ease-in">
                         </div>
-                        <a class="block p-4 text-sm font-semibold {{ request()->is('company-profile') ? 'text-teal-400' : 'text-black' }}" href="/company-profile">Company Profile</a>
+                        <a class="block p-4 text-sm font-semibold {{ request()->is('company-profile') ? 'text-teal-400' : 'text-black' }}"
+                            href="/company-profile">Company Profile</a>
                     </li>
                 </ul>
             </div>
         </div>
         <div class="mt-auto flex justify-end">
-            <a href="/login" type="button"
-                class="text-pink-500 hover:text-pink-500 border border-pink-400 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 text-center me-2 mb-2 dark:border-pink-300">
-                Login
-            </a>
-            <a href="/register" type="button"
-                class="focus:outline-none text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 me-2 mb-2">
-                Sign Up
-            </a>
+            @if (Auth::check())
+            @else
+                <a href="/login" type="button"
+                    class="text-pink-500 hover:text-pink-500 border border-pink-400 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 text-center me-2 mb-2 dark:border-pink-300">
+                    Login
+                </a>
+                <a href="/register" type="button"
+                    class="focus:outline-none text-white bg-pink-500 hover:bg-pink-600 focus:ring-4 focus:ring-pink-300 font-medium rounded-lg text-sm px-6 py-2 me-2 mb-2">
+                    Sign Up
+                </a>
+            @endif
         </div>
 
     </nav>

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Manajemenmodul;
 use App\Models\User;
-use App\Models\Usermodul;
+use App\Models\UserModul;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -58,7 +58,7 @@ class ManajemenuserController extends Controller
     public function delete_akses(string $id_umod, string $user_id): RedirectResponse
     {
         // Hapus akses modul pengguna
-        Usermodul::where('id_umod', $id_umod)->delete();
+        UserModul::where('id_umod', $id_umod)->delete();
 
         // Redirect kembali ke halaman edit pengguna
         return redirect()->route('administrator.manajemenuser.edit', $user_id)
@@ -134,7 +134,7 @@ class ManajemenuserController extends Controller
         $modul = $request->modul;
         $sess = md5($username . '-' . date('YmdHis'));
         for ($i = 0; $i < $mod; $i++) {
-            Usermodul::create([
+            UserModul::create([
                 'id_session' => $sess,
                 'id_modul' => $modul[$i]
             ]);
@@ -142,7 +142,7 @@ class ManajemenuserController extends Controller
 
         // if ($request->has('modul')) {
         //     foreach ($request->modul as $modulId) {
-        //         Usermodul::create([
+        //         UserModul::create([
         //             'id_session' => $user->id_session,
         //             'id_modul' => $modulId
         //         ]);
@@ -262,11 +262,11 @@ class ManajemenuserController extends Controller
 
         // Proses tambah akses baru
         if ($request->has('modul')) {
-            $existingModuls = Usermodul::where('id_session', $users->id_session)->pluck('id_modul')->toArray();
+            $existingModuls = UserModul::where('id_session', $users->id_session)->pluck('id_modul')->toArray();
             $newModuls = array_diff($request->modul, $existingModuls);
 
             foreach ($newModuls as $modulId) {
-                Usermodul::create([
+                UserModul::create([
                     'id_session' => $users->id_session,
                     'id_modul' => $modulId
                 ]);

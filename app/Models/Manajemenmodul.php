@@ -16,6 +16,6 @@ class Manajemenmodul extends Model
 
     public function user_modul()
     {
-        return $this->hasMany(Usermodul::class, 'id_modul', 'id_modul');
+        return $this->hasMany(UserModul::class, 'id_modul', 'id_modul');
     }
 }
