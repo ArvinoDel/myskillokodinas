@@ -65,6 +65,7 @@ class TrainerController extends Controller
         $validated = $request->validate([
             'nama_trainer' => 'required|string|max:255',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'link' => 'nullable|string|max:9999',
         ]);
 
         $gambarName = null;
@@ -79,6 +80,7 @@ class TrainerController extends Controller
             // 'id_trainer' => Str::uuid(),
             'nama_trainer' => $validated['nama_trainer'],
             'foto' => $gambarName,
+            'link' => $validated['link'],
         ]);
 
 
@@ -112,21 +114,21 @@ class TrainerController extends Controller
      */
     public function update(Request $request, string $id_trainer)
     {
-        //
         $trainers = Trainer::findOrFail($id_trainer);
 
-        $nama_trainer = $request->nama_trainer;
+        $updateData = [
+            "nama_trainer" => $request->nama_trainer,
+            "link" => $request->link,
+        ];
 
         if ($request->hasFile('foto')) {
             $gambar = $request->file("foto");
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./foto_trainer/", $gambarName);
-            $updateData['gambar'] = $gambarName;
+            $updateData['foto'] = $gambarName;
         }
 
-        $trainers->update([
-            "nama_trainer" => $nama_trainer,
-        ]);
+        $trainers->update($updateData);
 
         return response()->json([
             'url' => route('administrator.trainer.index'),

@@ -20,7 +20,7 @@
 
         <div class="grid grid-flow-col lg:grid-cols-5 ps-6 gap-8 overflow-x-auto no-scrollbar no-scrollbar ">
             <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28"
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/alumny.webp') }}" alt="" />
                 <div class="p-5">
                     <h5 class="text-sm text-center font-bold text-gray-900">Noteworthy Lebih dari 1.5 Juta+ Member Belajar
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28"
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/existing-member.webp') }}" alt="" />
                 <div class="p-5">
                     <h5 class="text-sm text-center font-bold text-gray-900">Ribuan Alumni Bekerja di National & Global
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28"
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/new-member.webp') }}" alt="" />
                 <div class="p-5">
                     <h5 class="text-sm text-center font-bold text-gray-900">Praktikal & Bersertifikat. Bangun Skill dan
@@ -44,7 +44,7 @@
                 </div>
             </div>
             <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28"
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/practical.webp') }}" alt="" />
                 <div class="p-5">
                     <h5 class="text-sm text-center font-bold text-gray-900">4.9 Rating di Course Report & Award LinkedIn Top
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-24 lg:h-28"
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/rating.webp') }}" alt="" />
                 <div class="p-5">
                     <h5 class="text-sm text-center font-bold text-gray-900">50k++ New Member Ikut Belajar Bulan</h5>
@@ -78,42 +78,7 @@
                 </div>
             </div>
         @endforeach
-        {{-- <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-        <div class="flex justify-center">
-            <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28"
-                src="{{ asset('assets/home/Rectangle51.svg') }}" alt="" />
-        </div>
-        <div class="p-5 flex justify-center">
-            <button class="bg-yellow-400 text-white px-7 py-2 rounded-md">Baca Cerita</button>
-        </div>
-    </div>
-    <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-        <div class="flex justify-center">
-            <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28"
-                src="{{ asset('assets/home/Rectangle51.svg') }}" alt="" />
-        </div>
-        <div class="p-5 flex justify-center">
-            <button class="bg-yellow-400 text-white px-7 py-2 rounded-md">Baca Cerita</button>
-        </div>
-    </div>
-    <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-        <div class="flex justify-center">
-            <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28"
-                src="{{ asset('assets/home/Rectangle51.svg') }}" alt="" />
-        </div>
-        <div class="p-5 flex justify-center">
-            <button class="bg-yellow-400 text-white px-7 py-2 rounded-md">Baca Cerita</button>
-        </div>
-    </div>
-    <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-        <div class="flex justify-center">
-            <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28"
-                src="{{ asset('assets/home/Rectangle51.svg') }}" alt="" />
-        </div>
-        <div class="p-5 flex justify-center">
-            <button class="bg-yellow-400 text-white px-7 py-2 rounded-md">Baca Cerita</button>
-        </div>
-    </div> --}}
+
     </div>
     <div>
         <h3 class="py-12 text-center font-bold text-2xl text-black">Berbagai Macam Program di Pandai Digital</h3>
@@ -247,137 +212,21 @@
             <div
                 class="flex flex-nowrap md:mx-24 justify-start md:justify-between overflow-x-auto pb-6 space-x-4 md:space-x-2 snap-x no-scrollbar">
                 <!-- Repeat this card structure for each professional -->
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
+                @foreach ($trainer as $train)
 
+                @endforeach
                 <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors2.webp') }}" alt="Professional"
+                    <img src="{{ asset('foto_trainer/' . $train->foto) }}" alt="Professional"
                         class="w-full h-full object-cover rounded-lg">
                     <div
                         class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
-
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors3.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
-
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors4.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
-
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors5.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
+                        <button href="{{$train->link}}"
                             class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
                             Materi</button>
                     </div>
                 </div>
 
 
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors6.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
-
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors7.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
-
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors8.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
-
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors9.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
-
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors10.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
-
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
-                </div>
-
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('assets/e-learning/mentors2.webp') }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <button
-                            class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                            Materi</button>
-                    </div>
                 </div>
 
                 <!-- Repeat the above card structure for each professional (total of 7 cards) -->

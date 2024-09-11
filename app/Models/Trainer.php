@@ -12,7 +12,7 @@ class Trainer extends Model
     public $timestamps = false;
     protected $primaryKey = 'id_trainer';
     protected $table = 'trainer';
-    protected $fillable = ['id_trainer', 'nama_trainer', 'foto'];
+    protected $fillable = ['id_trainer', 'nama_trainer', 'foto', 'link'];
 
     // Relasi ke Program
     public function programs()

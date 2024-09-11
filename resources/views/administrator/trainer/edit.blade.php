@@ -26,6 +26,12 @@ if($trainers->gambar != NULL){
                                 </td>
                             </tr>
                             <tr>
+                                <th style="padding: 5px;">Link Trainer</th>
+                                <td style="padding: 5px;">
+                                    <input type="text" class="form-control" id="link" name="link" value="{{ $trainers->link }}" required>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th style="padding: 5px;">Foto saat ini:</th>
                                 <td style="padding: 5px;">
                                     <div class="d-flex align-items-center">
