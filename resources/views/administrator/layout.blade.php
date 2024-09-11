@@ -401,6 +401,7 @@
                                     @php
                                         $userModul = new \App\Models\UserModul;
                                         $cekLogowebsite = $userModul->umenu_akses("logowebsite", session('id_session'));
+                                        $cekBenefit = $userModul->umenu_akses("benefit", session('id_session'));
                                         $cekTemplatewebsite = $userModul->umenu_akses("templatewebsite", session('id_session'));
                                         $cekTestimoni = $userModul->umenu_akses("testimoni", session('id_session'));
                                         $cekTrainer = $userModul->umenu_akses("trainer", session('id_session'));
@@ -430,6 +431,9 @@
                                     @endif
                                     @if($cekMateri == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/materi') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Materi</a></li>
+                                    @endif
+                                    @if($cekBenefit == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/benefit') }}"><i class='ni ni-badge text-blue'></i>Benefit</a></li>
                                     @endif
                                     @if($cekMember == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/member') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Member</a></li>
