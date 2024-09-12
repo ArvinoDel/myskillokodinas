@@ -117,12 +117,28 @@ class MetodeController extends Controller
         $gambarName = $gambar->getClientOriginalName();
         $gambar->move("./foto_metode/", $gambarName);
         $metode->gambar = $gambarName;
+
+        // Menghapus gambar lama jika ada
+        if ($metode->gambar) {
+            $path = "./foto_metode/" . $metode->gambar;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
     }
     if ($request->hasFile('pembayaran')) {
         $pembayaran = $request->file("pembayaran");
         $pembayaranName = $pembayaran->getClientOriginalName();
-        $pembayaran->move("./foto_metode/", $pembayaranName);
+        $pembayaran->move("./foto_pembayaran/", $pembayaranName);
         $metode->pembayaran = $pembayaranName;
+
+        // Menghapus gambar lama jika ada
+        if ($metode->pembayaran) {
+            $path = "./foto_pembayaran/" . $metode->pembayaran;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
     }
 
     $metode->save();
@@ -141,6 +157,18 @@ class MetodeController extends Controller
     {
         //
         $meto = Metode::findOrFail($id_metode);
+        if ($meto->gambar) {
+            $path = "./foto_metode/" . $meto->gambar;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+        if ($meto->pembayaran) {
+            $path = "./foto_pembayaran/" . $meto->pembayaran;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
         $meto->delete();
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }

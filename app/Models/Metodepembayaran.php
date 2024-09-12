@@ -10,7 +10,7 @@ class Metodepembayaran extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $table = 'metode_pembayaran';
+    protected $table = 'logo_bawah';
     protected $primaryKey = 'id';
     protected $fillable = ['id','gambar'];
 }

@@ -102,6 +102,15 @@ class MetodepembayaranController extends Controller
         $gambar = $request->file("gambar");
         $gambarName = $gambar->getClientOriginalName();
         $gambar->move("./foto_metode/", $gambarName);
+
+        // Menghapus foto lama jika ada
+        if ($metodepembayaran->gambar) {
+            $path = "./foto_metode/" . $metodepembayaran->gambar;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
+
         $metodepembayaran->update([
             "gambar" => $gambarName,
         ]);
@@ -121,6 +130,12 @@ class MetodepembayaranController extends Controller
     {
         //
         $menuwebs = Metodepembayaran::findOrFail($id);
+        if ($menuwebs->gambar) {
+            $path = "./foto_metode/" . $menuwebs->gambar;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
         $menuwebs->delete();
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }
