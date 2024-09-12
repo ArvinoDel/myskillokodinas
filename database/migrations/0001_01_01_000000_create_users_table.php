@@ -12,17 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('username');
-            $table->string('password');
-            $table->string('nama_lengkap');
-            $table->string('email')->unique();
-            $table->string('no_telp');
-            $table->string('foto');
-            $table->string('level');
-            $table->boolean('blokir');
-            $table->string('id_session');
-            $table->timestamps();
+            $table->id(); // kolom id (bigint) auto increment sebagai primary key
+            $table->string('username', 50); // kolom username dengan tipe varchar 50
+            $table->string('password', 255); // kolom password dengan tipe varchar 255
+            $table->string('nama_lengkap', 100); // kolom nama_lengkap dengan tipe varchar 100
+            $table->string('email', 100); // kolom email dengan tipe varchar 100
+            $table->string('no_telp', 20); // kolom no_telp dengan tipe varchar 20
+            $table->string('foto', 100); // kolom foto dengan tipe varchar 100
+            $table->string('level', 20); // kolom level dengan tipe varchar 20
+            $table->enum('blokir', ['Y', 'N']); // kolom blokir dengan tipe enum ('Y', 'N')
+            $table->string('id_session', 255); // kolom id_session dengan tipe varchar 255
+
+            $table->timestamps(); // kolom created_at dan updated_at
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

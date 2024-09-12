@@ -55,7 +55,7 @@
         @if (Auth::check())
             <div class="bg-transparent flex justify-center items-center mx-5">
                 <div x-data="{ open: false }" class="bg-transparent w-40 shadow flex justify-center items-center">
-                    <div @click="open = !open" class="relative border-b-4 border-transparent py-1"
+                    <div @click="open = !open" class="relative py-1"
                         :class="{ 'border-indigo-700 transform transition duration-300 ': open }"
                         x-transition:enter-end="transform opacity-100 scale-100"
                         x-transition:leave="transition ease-in duration-75"
