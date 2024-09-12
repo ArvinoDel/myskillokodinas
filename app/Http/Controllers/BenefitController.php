@@ -12,31 +12,29 @@ class BenefitController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        $search = $request->search;
-        $tanggal = $request->tanggal;
-
+        $search = $request->input('search'); // Retrieve the search query from the request
+    
+        // Initialize the query to get benefits
         $query = Benefit::query();
-
+    
+        // If a search term is provided, filter the results
         if (!empty($search)) {
-            $query->where('nama_program', 'like', "%$search%")->orWhere('harga', 'like', "%$search%")->orWhere('judul', 'like', "%$search%")->orWhere('keterangan', 'like', "%$search%");
+            $query->where('nama_benefit', 'like', "%$search%");
         }
-
-        if (!empty($judul)) {
-            $query->where('judul', $judul);
-        }
-
+    
+        // Execute the query and paginate the results
         $benefits = $query->paginate(10);
-
-        return view('administrator.benefit.index', compact(['benefits']));
+    
+        // Pass the $benefits variable to the view
+        return view('administrator.benefit.index', compact('benefits'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        //
         return view('administrator.benefit.create');
     }
 
@@ -45,17 +43,17 @@ class BenefitController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $validatedData = $request->validate([
             'nama_benefit' => 'required|string|max:255',
         ]);
 
-        $benefit = Benefit::create($validatedData);
+        // Create the new benefit
+        Benefit::create($validatedData);
 
         return response()->json([
             'url' => route('administrator.benefit.index'),
             'success' => true,
-            'message' => 'Data benefit Berhasil Ditambah'
+            'message' => 'Data benefit berhasil ditambah',
         ]);
     }
 
@@ -64,7 +62,7 @@ class BenefitController extends Controller
      */
     public function show(string $id)
     {
-        //
+        // Display specific benefit if needed
     }
 
     /**
@@ -72,9 +70,9 @@ class BenefitController extends Controller
      */
     public function edit(string $id)
     {
-        //
-        $bene = Benefit::findorfail($id);
-        return view('administrator.benefit.edit', compact('bene'));
+        // Find the benefit to edit
+        $benefit = Benefit::findOrFail($id);
+        return view('administrator.benefit.edit', compact('benefit'));
     }
 
     /**
@@ -82,20 +80,19 @@ class BenefitController extends Controller
      */
     public function update(Request $request, string $id_benefit)
     {
-        //
         $validatedData = $request->validate([
             'nama_benefit' => 'required|string|max:255',
         ]);
 
-        $benefit = Benefit::findorfail($id_benefit);
+        // Find and update the benefit
+        $benefit = Benefit::findOrFail($id_benefit);
         $benefit->update($validatedData);
 
         return response()->json([
             'url' => route('administrator.benefit.index'),
             'success' => true,
-            'message' => 'Data benefit Berhasil Diubah'
+            'message' => 'Data benefit berhasil diubah',
         ]);
-        
     }
 
     /**
@@ -103,9 +100,10 @@ class BenefitController extends Controller
      */
     public function destroy(string $id_benefit)
     {
-        //
-        $benef = Benefit::findOrFail($id_benefit);
-        $benef->delete();
-        return response()->json(['message' => 'Data berhasil dihapus.']);
+        // Find and delete the benefit
+        $benefit = Benefit::findOrFail($id_benefit);
+        $benefit->delete();
+
+        return response()->json(['message' => 'Data benefit berhasil dihapus.']);
     }
 }

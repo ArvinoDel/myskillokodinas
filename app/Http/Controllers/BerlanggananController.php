@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Berlangganan;
+use App\Models\Benefit;
 use Illuminate\Http\Request;
 
 class BerlanggananController extends Controller
@@ -15,7 +16,8 @@ class BerlanggananController extends Controller
         $query = Berlangganan::query();
 
         if (!empty($search)) {
-            $query->where('masa_berlangganan', 'like', "%$search%")->orWhere('harga_berlangganan', 'like', "%$search%");
+            $query->where('masa_berlangganan', 'like', "%$search%")
+                ->orWhere('harga_berlangganan', 'like', "%$search%");
         }
 
         if (!empty($masa_berlangganan)) {
@@ -25,15 +27,24 @@ class BerlanggananController extends Controller
         $berlangganans = $query->paginate(10);
 
         $masa_berlangganans = Berlangganan::select('masa_berlangganan')
-                    ->groupBy('masa_berlangganan')
-                    ->get();
+            ->groupBy('masa_berlangganan')
+            ->get();
+
+        foreach ($berlangganans as $berlangganan) {
+            $berlangganan->id_benefits = json_decode($berlangganan->id_benefits); // Decode JSON
+        }
 
         return view('administrator.berlangganan.index', compact(['berlangganans', 'masa_berlangganans']));
     }
 
+
     public function create()
     {
-        return view('administrator.berlangganan.create');
+        // Fetch all benefits to be displayed in the form
+        $benefits = Benefit::all();
+
+        // Return the create view with the benefits data
+        return view('administrator.berlangganan.create', compact('benefits'));
     }
 
     public function store(Request $request)
@@ -44,11 +55,11 @@ class BerlanggananController extends Controller
             'harga_diskon' => 'nullable',
             'is_active' => 'nullable|boolean',
             'is_populer' => 'nullable|boolean',
+            'id_benefits' => 'nullable|array',
         ]);
 
         $data = $request->all();
-        $data['is_active'] = $request->input('is_active');
-        $data['is_populer'] = $request->input('is_populer');
+        $data['id_benefits'] = json_encode($request->input('id_benefits')); // Convert to JSON
 
         Berlangganan::create($data);
 
@@ -59,6 +70,7 @@ class BerlanggananController extends Controller
         ]);
     }
 
+
     public function show($id)
     {
         $berlangganan = Berlangganan::findOrFail($id);
@@ -68,8 +80,14 @@ class BerlanggananController extends Controller
     public function edit($id_berlangganan)
     {
         $berlangganan = Berlangganan::findOrFail($id_berlangganan);
-        return view('administrator.berlangganan.edit', compact('berlangganan'));
+        $berlangganan->id_benefits = json_decode($berlangganan->id_benefits); // Decode JSON if necessary
+    
+        // Fetch all benefits for the view
+        $benefits = Benefit::all();
+    
+        return view('administrator.berlangganan.edit', compact('berlangganan', 'benefits'));
     }
+    
 
     public function update(Request $request, $id)
     {
@@ -79,12 +97,12 @@ class BerlanggananController extends Controller
             'harga_diskon' => 'nullable',
             'is_active' => 'nullable|boolean',
             'is_populer' => 'nullable|boolean',
+            'id_benefits' => 'nullable|array',
         ]);
 
         $berlangganan = Berlangganan::findOrFail($id);
         $data = $request->all();
-        $data['is_active'] = $request->input('is_active');
-        $data['is_populer'] = $request->input('is_populer');
+        $data['id_benefits'] = json_encode($request->input('id_benefits')); // Convert to JSON
 
         $berlangganan->update($data);
 
@@ -94,6 +112,7 @@ class BerlanggananController extends Controller
             'message' => 'Data Berlangganan Berhasil Diperbarui'
         ]);
     }
+
 
     public function destroy($id)
     {

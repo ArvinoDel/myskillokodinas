@@ -12,11 +12,11 @@ class Benefit extends Model
     public $timestamps = false;
     protected $table = 'benefit';
     protected $primaryKey = 'id_benefit';
-    protected $fillable = ['id_benefit','nama_benefit'];
+    protected $fillable = ['id_benefit', 'nama_benefit'];
 
+    // Defining the relationship if needed in the future
     public function berlangganans()
     {
-        return $this->belongsToMany(Berlangganan::class, 'list_benefit', 'id_benefit', 'id_berlangganan');
+        return $this->belongsToMany(Berlangganan::class, 'berlangganan_benefit', 'id_benefit', 'id_berlangganan');
     }
 }
-
