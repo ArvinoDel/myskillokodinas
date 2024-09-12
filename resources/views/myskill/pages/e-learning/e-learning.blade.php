@@ -529,8 +529,10 @@
                         @endif
                         <h3 class="text-white text-lg font-semibold mb-1">{{ $berlangganan->masa_berlangganan }}</h3>
                         <p class="text-blue-100 text-sm mb-2">PAKET VIDEO E-LEARNING</p>
-                        <p class="text-white text-sm line-through mb-1">Rp. {{ $berlangganan->harga_berlangganan }}</p>
-                        <p class="text-white text-2xl font-bold mb-2">Rp. {{ $berlangganan->harga_diskon }}</p>
+                        <p class="text-white text-sm line-through mb-1">Rp.
+                            {{ number_format($berlangganan->harga_berlangganan, 0, ',', '.') }}</p>
+                        <p class="text-white text-2xl font-bold mb-2">Rp.
+                            {{ number_format($berlangganan->harga_diskon, 0, ',', '.') }}</p>
                         <p class="text-white text-sm mb-2">Untuk akses semua, setara Rp 7.250 / minggu.</p>
                 </div>
 

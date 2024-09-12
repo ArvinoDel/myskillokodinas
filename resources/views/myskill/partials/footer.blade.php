@@ -4,7 +4,7 @@
         <div class="text-center">
             <h2 class="text-xl font-bold">Pandai Digital</h2>
             <p class="mt-2">Mari Kejar Impian Bersama Pandai Digital</p>
-            <p class="mt-2">PT. GRAGE MEDIA TECHNOLOGY</p>
+            <p class="mt-2">PT. Pandai Digital</p>
             <p>Kota Baru Keandra, Cluster DrosiaF10</p>
             <p>Sumber - Cirebon</p>
             <p class="mt-2">0882002077497</p>

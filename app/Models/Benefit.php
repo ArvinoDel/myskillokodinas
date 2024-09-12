@@ -19,4 +19,9 @@ class Benefit extends Model
     {
         return $this->belongsToMany(Berlangganan::class, 'berlangganan_benefit', 'id_benefit', 'id_berlangganan');
     }
+
+    public function programcv()
+    {
+        return $this->belongsToMany(Berlangganan::class, 'berlangganan_benefit', 'id_benefit', 'id_programcv');
+    }
 }
