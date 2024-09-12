@@ -458,9 +458,6 @@
                                     @if($cekMitra == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/mitra') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
                                     @endif
-                                    @if($cekBerlangganan == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/berlangganan') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a></li>
-                                    @endif
                                 </ul>
                             </div>
                             {{-- <div class="collapse" id="modul-web">
@@ -838,7 +835,7 @@
       <div class="row align-items-center justify-content-lg-between">
         <div class="col-lg-12">
           <div class="copyright-text text-center">
-            <strong>Copyright &copy;  <?php echo date('Y'); ?> <a target='_BLANK' href="http://www.lokomedia.web.id"> P.T Grage Media Technology</a>.</strong> All rights reserved.
+            <strong>Copyright &copy;  <?php echo date('Y'); ?> <a target='_BLANK' href="http://www.lokomedia.web.id"> PT. Pandai Digital</a>.</strong> All rights reserved.
           </div>
         </div>
       </div>

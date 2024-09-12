@@ -4,7 +4,7 @@
         <div class="text-center">
             <h2 class="text-xl font-bold">Pandai Digital</h2>
             <p class="mt-2">Mari Kejar Impian Bersama Pandai Digital</p>
-            <p class="mt-2">PT. GRAGE MEDIA TECHNOLOGY</p>
+            <p class="mt-2">PT. Pandai Digital</p>
             <p>Kota Baru Keandra, Cluster DrosiaF10</p>
             <p>Sumber - Cirebon</p>
             <p class="mt-2">0882002077497</p>
@@ -25,9 +25,9 @@
             <div class="flex flex-col justify-center max-sm:text-center max-sm:mt-5">
                 <h3 class="font-semibold">Produk</h3>
                 <ul class="mt-2 space-y-2">
-                    <li><a href="#" class="hover:underline">E-learning</a></li>
-                    <li><a href="#" class="hover:underline">Product & Bootcamp</a></li>
-                    <li><a href="#" class="hover:underline">Review CV</a></li>
+                    <li><a href="/e-learning" class="hover:underline">E-learning</a></li>
+                    <li><a href="/bootcamp" class="hover:underline">Product & Bootcamp</a></li>
+                    <li><a href="/review" class="hover:underline">Review CV</a></li>
                 </ul>
             </div>
 
@@ -56,7 +56,7 @@
             <div class="flex lg:mx-32 lg:justify-start max-lg:justify-center space-x-1 mt-2">
                 <!-- Payment Method Icons -->
                 @foreach ($metod as $pay)
-                <img src="{{ asset('foto_pembayaran/' . $pay->gambar) }}" alt="Bank">
+                <img src="{{ asset('foto_metode/' . $pay->gambar) }}" class="max-w-12 mx-3" alt="Bank">
                 @endforeach
                 <!-- Add more payment icons as needed -->
             </div>

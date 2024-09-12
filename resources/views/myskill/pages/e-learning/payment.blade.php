@@ -60,8 +60,8 @@
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-gray-700 font-semibold mb-4">RINGKASAN PRODUK</h3>
                     <div class="border-b border-gray-300 pb-4 mb-4">
-                        <p class="text-gray-800">Paket Video E-Learning 6 Bulan</p>
-                        <p class="text-gray-600">Rp 99.000</p>
+                        <p class="text-gray-800">Paket Video E-Learning {{ $berlanggananss->masa_berlangganan }}</p>
+                        <p class="text-gray-600">Rp {{ $berlanggananss->harga_berlangganan }}</p>
                     </div>
                     <div class="mb-4">
                         <label for="promo" class="text-gray-700 text-sm mb-2 block">Kode Promo / Kupon</label>
@@ -75,15 +75,15 @@
                     <div class="relative mb-4">
                         <button class="w-full bg-teal-600 text-white py-2 rounded-md" id="dropdownButton">Pilih Metode Pembayaran <i class="fa-solid fa-chevron-down ml-2"></i></button>
                         <div class="absolute w-full bg-white shadow-lg rounded-md mt-2 hidden" id="dropdownMenu">
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-method="QRIS">QRIS</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-method="Dana">Dana</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-method="Gopay">Gopay</a>
+                            @foreach ($metod as $met)
+                               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-method="QRIS">{{ $met->nama_pembayaran }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="border-b border-gray-300 pb-4 mb-4">
                         <div class="flex justify-between text-gray-700">
                             <span>Subtotal</span>
-                            <span>Rp 99.000</span>
+                            <span>Rp {{ $berlanggananss->harga_berlangganan }}</span>
                         </div>
                         <div class="flex justify-between text-gray-500 text-sm font-medium">
                             <span>PPN (11%)</span>
@@ -103,9 +103,9 @@
         <div class="mt-9">
             <!-- Header Section -->
             <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan E-Learning</h2>
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Video E-Learning 6 Bulan</h1>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Video E-Learning {{ $berlanggananss->masa_berlangganan }}</h1>
             <div class="text-2xl font-semibold text-gray-700">
-                Rp 99.000 <span class="text-sm line-through text-gray-500">Rp 2.100.000</span>
+                Rp {{ $berlanggananss->harga_berlangganan }} <span class="text-sm line-through text-gray-500">Rp 2.100.000</span>
             </div>
 
             <!-- Product Description -->
@@ -121,22 +121,12 @@
             <div class="mt-6">
                 <h3 class="text-lg font-semibold text-teal-600 mb-2">Benefits</h3>
                 <ul class="text-gray-700 space-y-2">
+                    @foreach ($berlanggananss->benefits() as $benefit)
                     <li class="flex items-start">
                         <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
-                        <span>1400+ Materi Video</span>
+                        <span>{{ $benefit->nama_benefit }}</span>
                     </li>
-                    <li class="flex items-start">
-                        <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
-                        <span>1400+ Modul Praktik Portfolio</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
-                        <span>Sertifikat di Tiap Materi</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
-                        <span>Ratusan Mentor Professional</span>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
 

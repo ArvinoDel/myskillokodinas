@@ -79,8 +79,7 @@ class VideoController extends Controller
             'gbr_video' => 'nullable|file|mimetypes:image/jpeg,image/png,image/jpg,image/gif,video/mp4,video/avi,video/mpeg|max:20480',
             // 'video' => 'nullable',
             'video' => 'required|file|mimetypes:video/mp4,video/avi,video/mpeg|max:20480',
-            'youtube' => 'required|url|max:255',
-            'is_myskill' => 'required|boolean'
+            'youtube' => 'required|url|max:255'
         ]);
 
         $jdl_video = $request->jdl_video;
@@ -121,8 +120,7 @@ class VideoController extends Controller
             "username" => $username,
             "tanggal" => now(),
             "jam" => now(),
-            "hari" => now()->format('l'),
-            "is_myskill" => $validated['is_myskill']
+            "hari" => now()->format('l')
         ]);
 
         return response()->json([
@@ -166,8 +164,7 @@ class VideoController extends Controller
             'gbr_video' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             // 'video' => 'nullable',
             'video' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg|max:20480',
-            'youtube' => 'required|url|max:255',
-            'is_myskill' => 'required|boolean'
+            'youtube' => 'required|url|max:255'
         ]);
 
         $videos = Video::findOrFail($id_video);

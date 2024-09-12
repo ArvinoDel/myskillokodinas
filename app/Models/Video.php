@@ -12,7 +12,7 @@ class Video extends Model
     public $timestamps = false;
     protected $table = 'video';
     protected $primaryKey = 'id_video';
-    protected $fillable = ['id_video', 'id_playlist', 'jdl_video', 'video_seo', 'username', 'keterangan', 'tanggal', 'jam', 'hari', 'gbr_video', 'video', 'dilihat', 'youtube', 'tagvid', 'tanggal', 'is_myskill'];
+    protected $fillable = ['id_video', 'id_playlist', 'jdl_video', 'video_seo', 'username', 'keterangan', 'tanggal', 'jam', 'hari', 'gbr_video', 'video', 'dilihat', 'youtube', 'tagvid', 'tanggal'];
 
     public function scopeLatest($query)
     {
