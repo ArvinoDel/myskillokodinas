@@ -56,7 +56,7 @@
             <div class="flex lg:mx-32 lg:justify-start max-lg:justify-center space-x-1 mt-2">
                 <!-- Payment Method Icons -->
                 @foreach ($metod as $pay)
-                <img src="{{ asset('foto_metode/' . $pay->gambar) }}" alt="Bank">
+                <img src="{{ asset('foto_metode/' . $pay->gambar) }}" class="max-w-10" alt="Bank">
                 @endforeach
                 <!-- Add more payment icons as needed -->
             </div>
