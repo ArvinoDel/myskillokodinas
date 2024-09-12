@@ -58,6 +58,7 @@ use App\Models\Berlangganan;
     use App\Models\Testimoni;
     use App\Models\User;
     use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\PaymentController;
 
     Route::get('/register', function () {
     return view('auth.register');
@@ -317,9 +318,7 @@ use App\Models\Berlangganan;
     // })->name('Register');
 
     //payment
-    Route::get('/payment', function () {
-    return view('./myskill/pages/e-learning/payment');
-    })->name('Payment');
+    Route::get('/payment/{id}', [PaymentController::class, 'show'])->name('payment');
 
 
     //profile
