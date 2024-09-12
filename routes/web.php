@@ -270,6 +270,10 @@ use App\Models\Berlangganan;
     return view('./myskill/pages/e-learning/program');
     })->name('Program');
 
+    Route::get('/my-profile', function () {
+        return view('./myskill/pages/profile/my-profile');
+        })->name('My Profile');
+
     Route::get('/e-learning/materi', function () {
     return view('./myskill/pages/e-learning/materi');
     })->name('Materi');

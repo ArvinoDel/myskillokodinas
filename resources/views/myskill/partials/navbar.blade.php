@@ -54,7 +54,7 @@
     <div class="max- hidden lg:block space-x-2 justify-items-end mt-1.5">
         @if (Auth::check())
             <div class="bg-transparent flex justify-center items-center mx-5">
-                <div x-data="{ open: false }" class="bg-transparent w-40 shadow flex justify-center items-center">
+                <div x-data="{ open: false }" class="bg-transparent w-40 flex justify-center items-center">
                     <div @click="open = !open" class="relative py-1"
                         :class="{ 'border-indigo-700 transform transition duration-300 ': open }"
                         x-transition:enter-end="transform opacity-100 scale-100"
@@ -79,7 +79,7 @@
                             class="absolute w-40 px-5 py-3 rounded-lg bg-white shadow border dark:border-transparent mt-5">
                             <ul class="space-y-3">
                                 <li class="font-medium">
-                                    <a href="#"
+                                    <a href="/my-profile"
                                         class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
                                         <div class="mr-3">
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor"
