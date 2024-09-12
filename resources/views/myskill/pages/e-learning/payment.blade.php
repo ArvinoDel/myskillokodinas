@@ -103,9 +103,9 @@
         <div class="mt-9">
             <!-- Header Section -->
             <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan E-Learning</h2>
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Video E-Learning 6 Bulan</h1>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Video E-Learning {{ $berlanggananss->masa_berlangganan }}</h1>
             <div class="text-2xl font-semibold text-gray-700">
-                Rp 99.000 <span class="text-sm line-through text-gray-500">Rp 2.100.000</span>
+                Rp {{ $berlanggananss->harga_berlangganan }} <span class="text-sm line-through text-gray-500">Rp 2.100.000</span>
             </div>
 
             <!-- Product Description -->
@@ -121,12 +121,12 @@
             <div class="mt-6">
                 <h3 class="text-lg font-semibold text-teal-600 mb-2">Benefits</h3>
                 <ul class="text-gray-700 space-y-2">
-                    {{-- @foreach ($berlanggananss->benefits() as $benefit)
+                    @foreach ($berlanggananss->benefits() as $benefit)
                     <li class="flex items-start">
                         <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
                         <span>{{ $benefit->nama_benefit }}</span>
                     </li>
-                    @endforeach --}}
+                    @endforeach
                 </ul>
             </div>
 
