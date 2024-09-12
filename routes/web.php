@@ -271,7 +271,11 @@ Route::get('/e-learning/program', function () {
     return view('./myskill/pages/e-learning/program');
 })->name('Program');
 
-    Route::get('/e-learning/materi', function () {
+Route::get('/my-profile', function () {
+    return view('./myskill/pages/profile/my-profile');
+})->name('My Profile');
+
+Route::get('/e-learning/materi', function () {
     return view('./myskill/pages/e-learning/materi');
 })->name('Materi');
 
@@ -288,8 +292,7 @@ Route::get('/bootcamp/digital-marketing', function () {
 
 //cv
 Route::get('/review', function () {
-    $testimonis = Testimoni::all();
-    return view('./myskill/pages/cv/review', compact('testimonis'));
+    return view('./myskill/pages/cv/review');
 })->name('Review CV');
 
 //corporate
@@ -329,7 +332,11 @@ Route::get('/profile/my-activity', function () {
 
 Route::get('/profile/my-transaction', function () {
     return view('./myskill/pages/profile/my-transaction');
-    })->name('Transactions');
+})->name('Transactions');
+
+Route::get('/my-profile', function () {
+    return view('./myskill/pages/profile/my-profile');
+})->name(name: 'My Profile');
 
 // Route::get('/', [MainController::class, 'index']);
 Route::get('sejarah-instansi', [HalamanController::class, 'sejarah_instansi']);
@@ -344,9 +351,14 @@ Route::get('video', [HalamanController::class, 'video']);
 Route::get('agenda', [HalamanController::class, 'agenda']);
 Route::get('sliderlogo', [MainController::class, 'create']);
 
-    // Route::get('administrator/layout', [TestingController::class, 'layout']);
-    
-    //Route my-profile
-    Route::get('/my-profile', [ProfileController::class, 'edit'])->name('profile.my-profile');
-    Route::patch('/my-profile', [ProfileController::class, 'update'])->name('profile.update');
-    
+// Route::get('administrator/layout', [TestingController::class, 'layout']);
+
+
+//routes lainnya
+Route::get('/faq', function () {
+    return view('./myskill/pages/lainnya/faq');
+})->name('FAQ');
+
+Route::get('/s&k', function () {
+    return view('./myskill/pages/lainnya/s&k');
+})->name('Syarat dan Ketentuan');
