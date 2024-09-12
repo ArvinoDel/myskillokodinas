@@ -25,9 +25,9 @@
             <div class="flex flex-col justify-center max-sm:text-center max-sm:mt-5">
                 <h3 class="font-semibold">Produk</h3>
                 <ul class="mt-2 space-y-2">
-                    <li><a href="#" class="hover:underline">E-learning</a></li>
-                    <li><a href="#" class="hover:underline">Product & Bootcamp</a></li>
-                    <li><a href="#" class="hover:underline">Review CV</a></li>
+                    <li><a href="/e-learning" class="hover:underline">E-learning</a></li>
+                    <li><a href="/bootcamp" class="hover:underline">Product & Bootcamp</a></li>
+                    <li><a href="/review" class="hover:underline">Review CV</a></li>
                 </ul>
             </div>
 

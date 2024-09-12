@@ -202,14 +202,14 @@
         @endforeach
     </div>
     {{-- Section : Mentors --}}
-    <section class="bg-gray-100 py-12 px-4">
+    <section class="bg-gray-100 py-3 my-3 px-4">
         <div class="container mx-auto">
-            <h3 class="text-2xl text-center font-bold py-5">Belajar Bersama Senior Operator Langsung di Kantor</h3>
+            <h3 class="text-2xl text-center font-bold py-3">Belajar Bersama Senior Operator Langsung di Kantor</h3>
             <p class="text-center text-gray-600 mb-8">Belajar langsung dari experienced professional yang mengajarkan
                 pengalaman, case study & best practices.</p>
 
             <div
-                class="flex flex-nowrap md:mx-24 justify-start md:justify-center overflow-x-auto pb-6 space-x-4 snap-x no-scrollbar">
+                class="flex flex-nowrap md:mx-24 justify-start md:justify-center overflow-x-auto pb-3 space-x-4 snap-x no-scrollbar">
                 <!-- Repeat this card structure for each professional -->
                 @foreach ($trainer as $train)
                     <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
