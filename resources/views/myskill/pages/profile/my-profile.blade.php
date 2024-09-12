@@ -117,15 +117,11 @@
                         <label for="level" class="block text-gray-700">Level</label>
                         <input type="text" id="level" name="level" class="mt-2 p-2 w-full border rounded" value="{{ old('level', $user->level) }}">
                     </div>
-                    <div>
+                    <div class="hidden">
                         <label for="blokir" class="block text-gray-700">Blokir</label>
                         <input type="text" id="blokir" name="blokir" class="mt-2 p-2 w-full border rounded" value="{{ old('blokir', $user->blokir) }}">
                     </div>
-                </div>
-                <div class="mt-6 flex items-center space-x-4 ml-6">
-                    <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ubah Email</button>
-                    <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ubah Password</button>
-                </div>
+            
                 <div class="mt-6 flex items-center ml-6">
                     <input type="checkbox" id="subscribe" class="form-checkbox">
                     <label for="subscribe" class="ml-2 text-gray-700">Saya bersedia menerima update informasi dari MySkill</label>

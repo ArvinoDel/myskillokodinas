@@ -8,6 +8,9 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo.png') }}">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title>Pandai Digital || {{ ucfirst(Route::currentRouteName()) }}</title>
 
     {{-- @vite('resources/css/appskill.css') --}}
