@@ -16,7 +16,7 @@
         class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-5">
         <li>
             <a href="/home"
-                class="text-nowrap {{ request()->is('home') ? 'text-teal-400 before:scale-x-100' : 'text-black before:scale-x-0' }} text-sm lg:text-md font-medium hover:text-teal-400 relative px-2 py-2 rounded transition-all duration-300 before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5 before:bg-teal-400 before:scale-x-0 hover:before:scale-x-100 focus:outline-none focus:ring-0 active:text-teal-400 active:before:bg-teal-400">
+                class="text-nowrap {{ request()->is('home') || request()->is('/') ? 'text-teal-400 before:scale-x-100' : 'text-black before:scale-x-0' }} text-sm lg:text-md font-medium hover:text-teal-400 relative px-2 py-2 rounded transition-all duration-300 before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5 before:bg-teal-400 before:scale-x-0 hover:before:scale-x-100 focus:outline-none focus:ring-0 active:text-teal-400 active:before:bg-teal-400">
                 Home
             </a>
         </li>
@@ -54,7 +54,7 @@
     <div class="max-md:hidden lg:block space-x-2 justify-items-end mt-1.5">
         @if (Auth::check())
             <div class="bg-transparent flex justify-center items-center mx-5">
-                <div x-data="{ open: false }" class="bg-transparent w-40 flex justify-center items-center">
+                <div x-data="{ open: false }" class="bg-transparent w-52 flex justify-center items-center">
                     <div @click="open = !open" class="relative py-1"
                         :class="{ 'border-indigo-700 transform transition duration-300 ': open }"
                         x-transition:enter-end="transform opacity-100 scale-100"
@@ -62,7 +62,7 @@
                         x-transition:leave-start="transform opacity-100 scale-100">
                         <div class="flex justify-center items-center space-x-3 cursor-pointer">
                             <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-900">
-                                <img src="https://images.unsplash.com/photo-1610397095767-84a5b4736cbd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                                <img src="{{ asset('asset/foto_profile/' . Auth::user()->foto) }}"
                                     alt="" class="w-full h-full object-cover">
                             </div>
                             <div class="font-semibold text-gray-900 text-lg">
@@ -93,7 +93,7 @@
                                     </a>
                                 </li>
                                 <li class="font-medium">
-                                    <a href="#"
+                                    <a href="/profile/my-activity"
                                         class="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-indigo-700">
                                         <div class="mr-3">
                                             <svg class="w-6 h-6" fill="none" stroke="currentColor"

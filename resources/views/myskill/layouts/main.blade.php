@@ -6,15 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo.png') }}">
 
-    <title>MySkill</title>
+    <title>Pandai Digital || {{ ucfirst(Route::currentRouteName()) }}</title>
+
     {{-- @vite('resources/css/appskill.css') --}}
 
     <link rel="stylesheet"
         href="https://rawcdn.githack.com/ArvinoDel/MySkill/db1485d305b176ef2fc16baac98bcef23eb790fd/resources/css/app.css">
 
 
-        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 
     {{-- <link rel="stylesheet" href="./resources/css/appskill.css"> --}}
 

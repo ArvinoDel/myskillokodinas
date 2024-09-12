@@ -60,8 +60,8 @@
                 <div class="bg-white p-6 rounded-lg shadow">
                     <h3 class="text-gray-700 font-semibold mb-4">RINGKASAN PRODUK</h3>
                     <div class="border-b border-gray-300 pb-4 mb-4">
-                        <p class="text-gray-800">Paket Video E-Learning {{ $berlanggananss->masa_berlangganan }}</p>
-                        <p class="text-gray-600">Rp {{ $berlanggananss->harga_berlangganan }}</p>
+                        <p class="text-gray-800">Paket Video E-Learning {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}</p>
+                        <p class="text-gray-600">Rp. {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}</p>
                     </div>
                     <div class="mb-4">
                         <label for="promo" class="text-gray-700 text-sm mb-2 block">Kode Promo / Kupon</label>
@@ -75,27 +75,27 @@
                     <div class="relative mb-4">
                         <button class="w-full bg-teal-600 text-white py-2 rounded-md" id="dropdownButton">Pilih Metode Pembayaran <i class="fa-solid fa-chevron-down ml-2"></i></button>
                         <div class="absolute w-full bg-white shadow-lg rounded-md mt-2 hidden" id="dropdownMenu">
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-method="QRIS">QRIS</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-method="Dana">Dana</a>
-                            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-method="Gopay">Gopay</a>
+                            @foreach ($metod as $met)
+                               <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100" data-method="{{ $met->nama_pembayaran }}" data-image="{{ asset('/foto_pembayaran/'. $met->pembayaran) }}">{{ $met->nama_pembayaran }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="border-b border-gray-300 pb-4 mb-4">
                         <div class="flex justify-between text-gray-700">
                             <span>Subtotal</span>
-                            <span>Rp {{ $berlanggananss->harga_berlangganan }}</span>
+                            <span>Rp {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}</span> <!-- Format harga tanpa desimal -->
                         </div>
                         <div class="flex justify-between text-gray-500 text-sm font-medium">
                             <span>PPN (11%)</span>
-                            <span>Rp 10.890</span>
+                            <span>Rp {{ number_format($berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}</span> <!-- Menghitung PPN 11% dari harga -->
                         </div>
                     </div>
                     <div class="flex justify-between font-semibold text-gray-800 text-lg">
                         <span>Total</span>
-                        <span>Rp 109.890</span>
+                        <span>Rp {{ number_format($berlanggananss->harga_diskon + ($berlanggananss->harga_diskon * 0.11), 0, ',', '.') }}</span> <!-- Total = Subtotal + PPN -->
                     </div>
                     <p class="text-gray-500 text-xs mt-2 text-right ml-auto">+ kode unik</p>
-                    <button id="payButton" class="w-full bg-gray-200 text-gray-600 py-2 rounded-md mt-4">Lanjut Bayar</button>
+                    <button id="payButton" class="w-full bg-gray-200 text-gray-600 py-2 rounded-md mt-4" disabled>Lanjut Bayar</button>
                 </div>
             </div>
         </div>
@@ -103,9 +103,9 @@
         <div class="mt-9">
             <!-- Header Section -->
             <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan E-Learning</h2>
-            <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Video E-Learning 6 Bulan</h1>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Video E-Learning {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}</h1>
             <div class="text-2xl font-semibold text-gray-700">
-                Rp 99.000 <span class="text-sm line-through text-gray-500">Rp 2.100.000</span>
+                Rp. {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }} <span class="text-sm line-through text-gray-500">Rp. {{ number_format($berlanggananss->harga_berlangganan, 0, ',', '.') }}</span>
             </div>
 
             <!-- Product Description -->
@@ -121,22 +121,12 @@
             <div class="mt-6">
                 <h3 class="text-lg font-semibold text-teal-600 mb-2">Benefits</h3>
                 <ul class="text-gray-700 space-y-2">
+                    @foreach ($berlanggananss->benefits() as $benefit)
                     <li class="flex items-start">
                         <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
-                        <span>1400+ Materi Video</span>
+                        <span>{{ $benefit->nama_benefit }}</span>
                     </li>
-                    <li class="flex items-start">
-                        <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
-                        <span>1400+ Modul Praktik Portfolio</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
-                        <span>Sertifikat di Tiap Materi</span>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
-                        <span>Ratusan Mentor Professional</span>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -174,14 +164,14 @@
                 <span class="text-gray-600 font-semibold">No. Invoice: INV123456</span>
             </div>
             <ul class="text-gray-600 mb-4">
-                <li><strong>Program:</strong> Paket Video E-Learning 6 Bulan</li>
+                <li><strong>Program:</strong> Paket Video E-Learning {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}</li>
                 <li><strong>Tanggal & Waktu:</strong> <span id="datetime"></span></li>
                 <li><strong>Username:</strong> Dummy User</li>
                 <li><strong>Email:</strong> dummy@example.com</li>
                 <li><strong>Metode Pembayaran:</strong> <span id="selectedMethod"></span></li>
             </ul>
             <div class="flex justify-center mb-4">
-                <img src="{{ asset('assets/logo.png') }}" alt="QR Code" id="qrCode" class="rounded-lg w-48 mx-auto" style="margin: 20px auto;">
+                <img src="{{ asset('/foto_pembayaran/'. $met->pembayaran) }}" alt="paymentImage" id="paymentImage" class="rounded-lg w-48 mx-auto" style="margin: 20px auto;">
             </div>
             <button id="downloadQR" class="bg-teal-600 text-white px-4 py-2 rounded-md">Download Invoice</button>
         </div>
@@ -199,10 +189,13 @@
         item.addEventListener('click', function() {
             // Mengisi metode pembayaran yang dipilih
             var selectedMethod = this.getAttribute('data-method');
+            var paymentImage = this.getAttribute('data-image'); // Ambil URL gambar
             document.getElementById('dropdownButton').textContent = selectedMethod;
+            document.getElementById('paymentImage').src = paymentImage; // Set gambar
             document.getElementById('dropdownMenu').classList.add('hidden');
             document.getElementById('payButton').classList.remove('bg-gray-200', 'text-gray-600');
             document.getElementById('payButton').classList.add('bg-teal-600', 'text-white');
+            document.getElementById('payButton').disabled = false; // Enable button after selecting payment method
         });
     });
 

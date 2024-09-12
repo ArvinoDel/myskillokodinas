@@ -4,7 +4,7 @@
 <!-- header here -->
 <div class="review">
     <section class="w-full h-auto bg-white lg:bg-gradient-to-b from-orange-400 to-red-400 text-white lg:flex">
-
+        <!-- Content can be added here if needed -->
     </section>
 
     <div class="flex flex-col lg:flex-row">
@@ -26,7 +26,7 @@
                     <h2 class="text-gray-700 font-semibold hidden lg:block ml-8 mt-4">Navigasi Profil</h2>
                     <ul class="space-y-1 py-3">
                         <li class="p-1 px-5">
-                            <a href="/my-profile" class="flex items-center text-blue-600 hover:bg-blue-100 rounded-lg p-2">
+                            <a href="{{ route('profile.my-profile') }}" class="flex items-center text-blue-600 hover:bg-blue-100 rounded-lg p-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                                     <path d="M10 2a6 6 0 100 12 6 6 0 000-12zM8 13a4.978 4.978 0 00-3.5 1.5A8.978 8.978 0 0110 16c1.654 0 3.18-.446 4.5-1.5A4.978 4.978 0 0012 13H8z" />
                                 </svg>
@@ -62,7 +62,6 @@
             </div>
         </aside>
 
-
         <style>
             /* Toggle the visibility of the sidebar content */
             #toggle-nav:checked~div #sidebar-content {
@@ -90,50 +89,38 @@
             }
         </style>
 
-
-
         <!-- Profile Form -->
-        <div class="w-full h-full  bg-white p-8 ">
-            <h2 class="text-2xl font-semibold  text-center">Welcome, User!</h2>
+        <div class="w-full h-full bg-white p-8">
+            <h2 class="text-2xl font-semibold text-center">Welcome, {{ $user->nama_lengkap }}!</h2>
             <p class="text-sm text-center mb-6">Informasi mengenai profil dan preferensi kamu di seluruh layanan myskill.</p>
-            <form>
+            <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PATCH')
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-1 px-5">
                     <div class="md:col-span-2">
-                        <label for="link-cv" class="block text-gray-700">Nama Lengkap</label>
-                        <input type="text" id="link-cv" class="mt-2 p-2 w-full border rounded" placeholder="User.......">
+                        <label for="nama_lengkap" class="block text-gray-700">Nama Lengkap</label>
+                        <input type="text" id="nama_lengkap" name="nama_lengkap" class="mt-2 p-2 w-full border rounded" value="{{ old('nama_lengkap', $user->nama_lengkap) }}" required>
                     </div>
                     <div>
-                        <label for="tanggal-lahir" class="block text-gray-700">Tanggal Lahir</label>
-                        <input type="date" id="tanggal-lahir" class="mt-2 p-2 w-full border rounded">
+                        <label for="email" class="block text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-2 p-2 w-full border rounded" value="{{ old('email', $user->email) }}" required>
                     </div>
                     <div>
-                        <label for="nama" class="block text-gray-700">Gender</label>
-                        <input type="text" id="nama" class="mt-2 p-2 w-full border rounded" value="">
-                    </div>
-
-                    <div>
-                        <label for="hp" class="block text-gray-700">No. HP</label>
-                        <input type="text" id="hp" class="mt-2 p-2 w-full border rounded" value="">
+                        <label for="no_telp" class="block text-gray-700">No. Telp</label>
+                        <input type="text" id="no_telp" name="no_telp" class="mt-2 p-2 w-full border rounded" value="{{ old('no_telp', $user->no_telp) }}">
                     </div>
                     <div>
-                        <label for="domisili" class="block text-gray-700">Domisili</label>
-                        <input type="text" id="domisili" class="mt-2 p-2 w-full border rounded">
+                        <label for="foto" class="block text-gray-700">Foto</label>
+                        <input type="file" id="foto" name="foto" class="mt-2 p-2 w-full border rounded">
                     </div>
                     <div>
-                        <label for="profesi" class="block text-gray-700">Profesi</label>
-                        <input type="text" id="profesi" class="mt-2 p-2 w-full border rounded" placeholder="Silahkan pilih salah satu atau ketik langsung disini..">
+                        <label for="level" class="block text-gray-700">Level</label>
+                        <input type="text" id="level" name="level" class="mt-2 p-2 w-full border rounded" value="{{ old('level', $user->level) }}">
                     </div>
                     <div>
-                        <label for="peluang" class="block text-gray-700">Peluang yang Dicari</label>
-                        <input type="text" id="peluang" class="mt-2 p-2 w-full border rounded" placeholder="Silahkan pilih salah satu atau ketik langsung disini..">
+                        <label for="blokir" class="block text-gray-700">Blokir</label>
+                        <input type="text" id="blokir" name="blokir" class="mt-2 p-2 w-full border rounded" value="{{ old('blokir', $user->blokir) }}">
                     </div>
-                    <div class="md:col-span-2">
-                        <label for="link-cv" class="block text-gray-700">Link CV / Profil LinkedIn</label>
-                        <input type="text" id="link-cv" class="mt-2 p-2 w-full border rounded" placeholder="https://drive.google.com/...">
-                    </div>
-                </div>
-                <div>
-                    <p class="text-sm ml-8">MySkill akan menghubungimu jika ada hiring partner yang tertarik dengan skill dan pengalamanmu.</p>
                 </div>
                 <div class="mt-6 flex items-center space-x-4 ml-6">
                     <button type="button" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ubah Email</button>
@@ -143,17 +130,11 @@
                     <input type="checkbox" id="subscribe" class="form-checkbox">
                     <label for="subscribe" class="ml-2 text-gray-700">Saya bersedia menerima update informasi dari MySkill</label>
                 </div>
-
-
                 <div class="mt-8 text-right">
-                    <button type="submit" class="bg-teal-500 text-white px-6 py-2 rounded hover:bg-teal-600 ">Simpan Perubahan</button>
+                    <button type="submit" class="bg-teal-500 text-white px-6 py-2 rounded hover:bg-teal-600">Simpan Perubahan</button>
                 </div>
             </form>
-        </div>
+        </div>        
     </div>
 </div>
-</div>
-
-</div>
-<script src="https://cdn.jsdelivr.net/npm/alpinejs@3" defer></script>
 @endsection
