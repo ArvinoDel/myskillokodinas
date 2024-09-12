@@ -18,7 +18,7 @@ class Program extends Model
     public function trainer()
     {
         return $this->belongsTo(Trainer::class, 'id_trainer', 'id_trainer');
-    }  
+    }
 
     // Relasi ke KategoriProgram
     public function kategoriProgram()

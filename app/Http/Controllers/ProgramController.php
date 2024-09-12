@@ -40,7 +40,7 @@ class ProgramController extends Controller
             $query->where('judul', $judul);
         }
 
-        $programs = $query->with('videos')->paginate(10);
+        $programs = $query->paginate(10);
 
         $tanggals = Program::select('tanggal')
                     ->groupBy('tanggal')

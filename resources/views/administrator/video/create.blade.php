@@ -58,15 +58,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Tipe Video</th>
-                                <td style="padding: 5px;">
-                                    <select class="form-control" id="is_myskill" name="is_myskill" required>
-                                        <option value="1">Myskill</option>
-                                        <option value="0">Lokodinas</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>  
                                 <th style="padding: 5px;">Tag</th>
                                 <td style="padding: 5px; border: 1px solid #ddd;">
                                     <div style="max-height: 200px; overflow-y: auto;">
