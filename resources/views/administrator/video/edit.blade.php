@@ -74,15 +74,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Tipe Video</th>
-                                <td style="padding: 5px;">
-                                    <select class="form-control" id="is_myskill" name="is_myskill" required>
-                                        <option value="1" {{ $videos->is_myskill == 1 ? 'selected' : '' }}>Myskill</option>
-                                        <option value="0" {{ $videos->is_myskill == 0 ? 'selected' : '' }}>Lokodinas</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>  
                                 <th style="padding: 5px;">Tag</th>
                                 <td style="padding: 5px; border: 1px solid #ddd;">
                                     <div style="max-height: 200px; overflow-y: auto;">
