@@ -458,9 +458,6 @@
                                     @if($cekMitra == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/mitra') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
                                     @endif
-                                    @if($cekBerlangganan == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/berlangganan') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a></li>
-                                    @endif
                                 </ul>
                             </div>
                             {{-- <div class="collapse" id="modul-web">
