@@ -63,13 +63,11 @@
                                 <td>{{ $user->nama_lengkap }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    <?php
-                                    if ($user->foto != NULL) {
-                                        $foto = $user->foto;
-                                    }
-                                    ?>
-                                    <img style='width:32px; height:32px' src="{{ url('foto_user/'.$user->foto )}}">
-
+                                    @if($user->foto != NULL)
+                                        <img style='width:32px; height:32px' src="{{ url('foto_user/'.$user->foto )}}">
+                                    @else
+                                        <img style='width:32px; height:32px' src="{{ url('foto_user/default.png') }}">
+                                    @endif
                                 </td>
                                 <td>{{ $user->blokir }}</td>
                                 <td>{{ $user->level }}</td>

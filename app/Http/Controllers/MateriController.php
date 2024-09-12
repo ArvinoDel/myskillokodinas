@@ -12,6 +12,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
+
+
+use Illuminate\Support\Facades\Log; // Tambahkan ini untuk mengatasi undefined type Log
+
 class MateriController extends Controller
 {
     /**
@@ -60,17 +64,27 @@ class MateriController extends Controller
      */
    public function store(Request $request)
 {
-    \Log::info('Request Data:', $request->all());
+    Log::info('Request Data:', $request->all());
 
     $request->validate([
         'judul_materi' => 'required|string|max:255',
         'id_program' => 'nullable|exists:program,id_program',
+        'video_materi' => 'required|file|mimetypes:video/mp4,video/avi,video/mpeg|max:20480',
     ]);
+
+    $videoName = null;
+
+    if($request->hasFile('video_materi')) {
+        $video = $request->file("video_materi");
+        $videoName = $video->getClientOriginalName();
+        $video->move("./video_materi/", $videoName);
+    }
 
     try {
         Materi::create([
             'judul_materi' => $request->judul_materi,
             'id_program' => $request->id_program,
+            "video_materi" => $videoName,
         ]);
 
         return response()->json([
@@ -79,7 +93,7 @@ class MateriController extends Controller
             'message' => 'Data Materi Berhasil Ditambah'
         ]);
     } catch (\Exception $e) {
-        \Log::error('Error:', ['exception' => $e->getMessage()]);
+        Log::error('Error:', ['exception' => $e->getMessage()]);
         return response()->json([
             'success' => false,
             'message' => 'Terjadi kesalahan saat menambah data.'
@@ -115,15 +129,29 @@ class MateriController extends Controller
         $request->validate([
             'judul_materi' => 'required|string|max:255',
             'id_program' => 'nullable|exists:program,id_program', // Validasi id_program
+            'video_materi' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg|max:20480',
         ]);
 
         // Temukan materi yang akan diperbarui
         $materis = Materi::findOrFail($id);
 
+
+         // Hapus video lama jika ada video baru yang diunggah
+        if($request->hasFile('video_materi')) {
+            if ($materis->video_materi && file_exists(public_path("video_materi/" . $materis->video_materi))) {
+                unlink(public_path("video_materi/" . $materis->video_materi));
+            }
+            $video = $request->file("video_materi");
+            $videoName = $video->getClientOriginalName();
+            $video->move(public_path("video_materi"), $videoName);
+            $materis->video_materi = $videoName;
+        }
+
         // Perbarui data materi
         $materis->update([
             'judul_materi' => $request->judul_materi,
             'id_program' => $request->id_program,
+            'video_materi' => $materis->video_materi,
         ]);
 
         return response()->json([
@@ -141,6 +169,11 @@ class MateriController extends Controller
     {
         $materis = Materi::findOrFail($id);
         $materis->delete();
+
+       // Hapus file video dari storage
+        if ($materis->video_materi && file_exists(public_path("video_materi/" . $materis->video_materi))) {
+            unlink(public_path("video_materi/" . $materis->video_materi));
+        }
 
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }

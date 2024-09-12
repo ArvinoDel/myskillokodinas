@@ -9,9 +9,14 @@ class PaymentController extends Controller
 {
     public function show($id)
     {
-        $berlangganan = Berlangganan::all();
+        // Mengambil semua data berlangganan
+        $berlanggananss = Berlangganan::all();
+
+        // Menyaring data berlangganan berdasarkan $id
+        $berlanggananss = $berlanggananss->where('id_berlangganan', $id)->first();
+
         // Logika untuk menampilkan halaman pembayaran
         // Anda bisa mengambil data berlangganan berdasarkan $id di sini
-        return view('myskill.pages.e-learning.payment', compact('id', 'berlangganan'));
+        return view('myskill.pages.e-learning.payment', compact('id', 'berlanggananss'));
     }
 }

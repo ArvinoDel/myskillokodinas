@@ -125,6 +125,15 @@ class TrainerController extends Controller
             $gambar = $request->file("foto");
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./foto_trainer/", $gambarName);
+
+            // Menghapus gambar lama jika ada
+            if ($trainers->foto) {
+                $path = "./foto_trainer/" . $trainers->foto;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+
             $updateData['foto'] = $gambarName;
         }
 
@@ -144,6 +153,12 @@ class TrainerController extends Controller
     {
         //
         $trainers = Trainer::findOrFail($id_trainer);
+        if ($trainers->foto) {
+            $path = "./foto_trainer/" . $trainers->foto;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
         $trainers->delete();
 
         return response()->json(['message' => 'Data berhasil dihapus.']);

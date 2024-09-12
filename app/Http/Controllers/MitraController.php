@@ -102,6 +102,15 @@ class MitraController extends Controller
             $gambar = $request->file("gambar");
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./mitra/", $gambarName);
+
+            // Menghapus gambar lama jika ada
+            if ($mitra->gambar) {
+                $path = "./mitra/" . $mitra->gambar;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+
             $mitra->update([
                 "gambar" => $gambarName,
             ]);
@@ -121,6 +130,12 @@ class MitraController extends Controller
     {
         //
         $mitra = Mitra::findOrFail($id);
+        if ($mitra->gambar) {
+            $path = "./mitra/" . $mitra->gambar;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
         $mitra->delete();
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }
