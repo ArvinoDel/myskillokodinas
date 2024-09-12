@@ -260,8 +260,8 @@
         onmouseup="this.classList.remove('touching')">
         @foreach ($logo_bawah as $lb)
         <div
-            class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
-            <img class="w-32" src="{{ asset('foto_metode/' . $lb->gambar) }}" alt="" />
+            class="snap-always snap-center flex-shrink-0 w-48 h-28 border border-black rounded-xl flex items-center justify-center">
+            <img class="w-28" src="{{ asset('foto_metode/' . $lb->gambar) }}" alt="" />
         </div>
         @endforeach
 
