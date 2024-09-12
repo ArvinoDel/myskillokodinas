@@ -16,7 +16,8 @@
                         dari sekadar nonton rekaman. Belajar fleksibel via • Video Materi • Case Study & Praktik • Bahan
                         Bacaan • Komunitas.</p>
                     <div class="flex justify-center lg:justify-start space-x-4 mb-4">
-                        <a href="#pricing" class="bg-teal-500 lg:text-white px-6 py-2 rounded-md font-semibold text-gray-950">Mulai
+                        <a href="#pricing"
+                            class="bg-teal-500 lg:text-white px-6 py-2 rounded-md font-semibold text-gray-950">Mulai
                             Berlangganan</a>
                         <a href="#learning"
                             class="bg-yellow-500 lg:text-white px-6 py-2 rounded-md font-semibold text-gray-950">Lihat
@@ -35,13 +36,15 @@
             <h2 class="text-2xl font-bold mb-6 text-center">Testimoni Member E-learning MySkill</h2>
 
             <div class="flex overflow-x-auto space-x-4 pb-4 no-scrollbar">
-                @foreach($testimonis as $testimoni)
+                @foreach ($testimonis as $testimoni)
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                     <div class="flex items-center mb-4">
-                        <img class="rounded-lg max-w-[200px]" src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}" />
+                        <img class="rounded-lg max-w-[200px]"
+                            src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}" />
                     </div>
                     <a href="{{ $testimoni->link }}">
-                        <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Baca Cerita</button>
+                        <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Baca
+                            Cerita</button>
                     </a>
 
                 </div>
@@ -496,184 +499,70 @@
             <p class="text-center mb-8 text-gray-600">Langganan bulanan untuk akses semua materi, tanpa batas. Makin
                 lama, makin hemat dan untung banyak.</p>
 
+            @php
+            // Memisahkan item aktif dan mengelompokkan item populer untuk ditempatkan di tengah
+            $activeItems = $berlangganans->filter(fn($item) => $item->is_active); // Hanya item yang aktif
+            $populer = $activeItems->filter(fn($item) => $item->is_populer); // Hanya item populer yang aktif
+            $biasa = $activeItems->reject(fn($item) => $item->is_populer); // Item biasa yang aktif
+
+            // Menempatkan item populer di tengah
+            $sorted = collect($biasa->slice(0, ceil($biasa->count() / 2)))
+            ->merge($populer)
+            ->merge($biasa->slice(ceil($biasa->count() / 2)));
+            @endphp
+
             <div class="flex flex-col mt-9 md:flex-row gap-6">
-                <!-- 12 Bulan Plan -->
-                <div class="">
-                    <!-- Header -->
-                    <div class="bg-blue-500 p-6 rounded-t-lg">
-                        <h3 class="text-white text-lg font-semibold mb-1">12 Bulan</h3>
-                        <p class="text-blue-100 text-sm mb-2">PAKET VIDEO E-LEARNING</p>
-                        <p class="text-white text-sm line-through mb-1">Rp 4.200.000</p>
-                        <p class="text-white text-2xl font-bold mb-2">Rp 179.000</p>
-                        <p class="text-white text-sm mb-2">Untuk akses semua, setara Rp 7.250 / minggu.</p>
-                    </div>
-
-                    <!-- Body -->
-                    <div class="p-6 bg-white rounded-b-lg">
-
-                        <ul class="text-gray-800 text-sm mb-6 space-y-2">
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>1400+ Materi Video</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>1400+ Modul Praktik Portfolio</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>Sertifikat di Tiap Materi</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>Grup Komunitas</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>FREE 6-12x Webinar Series</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>Diskon untuk Bootcamp</li>
-                        </ul>
-                        <a href="/payment">
-                            <button class="w-full bg-blue-500 text-white font-semibold py-2 rounded text-sm hover:bg-blue-600 transition-colors">Mulai
-                                Berlangganan</button>
-                        </a>
-                        <p class="text-gray-800 text-xs mt-2">Segera Habis 🔥</p>
-                        <div class="w-full h-1 bg-blue-400 rounded mt-1"></div>
-                    </div>
-                </div>
-
-                <!-- 6 Bulan Plan (Most Popular) -->
-                <div class=" bottom-5 border-4 border-yellow-400 rounded-lg relative">
+                @foreach ($sorted as $berlangganan)
+                @if ($berlangganan->is_populer)
+                <div class="active-1 bottom-5 border-4 border-yellow-400 rounded-lg relative">
                     <!-- Header -->
                     <div class="bg-teal-600 p-6 rounded-t-lg">
                         <div
                             class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-white px-4 py-1 rounded-full text-sm font-semibold">
                             TERPOPULER!
                         </div>
-                        <h3 class="text-white text-md font-semibold mb-1">6 Bulan</h3>
-                        <p class="text-white text-sm mb-2">PAKET VIDEO E-LEARNING</p>
-                        <p class="text-white text-sm line-through mb-1">Rp 2.100.000</p>
-                        <p class="text-white text-2xl font-bold mb-2">Rp 99.000</p>
-                        <p class="text-white text-sm mb-2">Untuk akses semua, setara Rp 16.500 / bulan.</p>
+                        @else
+                        <div class="active-2">
+                            <!-- Header -->
+                            <div class="bg-blue-500 p-6 rounded-t-lg">
+                                @endif
+                                <h3 class="text-white text-lg font-semibold mb-1">{{ $berlangganan->masa_berlangganan }}</h3>
+                                <p class="text-blue-100 text-sm mb-2">PAKET VIDEO E-LEARNING</p>
+                                <p class="text-white text-sm line-through mb-1">Rp. {{ $berlangganan->harga_berlangganan }}</p>
+                                <p class="text-white text-2xl font-bold mb-2">Rp. {{ $berlangganan->harga_diskon }}</p>
+                                <p class="text-white text-sm mb-2">Untuk akses semua, setara Rp 7.250 / minggu.</p>
+                            </div>
+
+                            <!-- Body -->
+                            <div class="p-6 bg-white rounded-b-lg">
+                                <ul class="text-gray-800 text-sm mb-6 space-y-2">
+                                    @foreach ($berlangganan->benefits() as $benefit)
+                                    <li class="flex items-center">
+                                        <svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd"
+                                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span>{{ $benefit->nama_benefit }}</span>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                                <a href="/payment">
+                                    <button
+                                        class="w-full bg-blue-500 text-white font-semibold py-2 rounded text-sm hover:bg-blue-600 transition-colors">
+                                        Mulai Berlangganan
+                                    </button>
+                                </a>
+                                <p class="text-blue-100 text-xs mt-2">Segera Habis 🔥</p>
+                                <div class="w-full h-1 bg-blue-400 rounded mt-1"></div>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
 
-                    <!-- Body -->
-                    <div class="p-6 bg-white rounded-b-lg">
-                        <ul class="text-gray-800 text-sm mb-6 space-y-2">
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-teal-500" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>1400+ Materi Video</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-teal-500" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>1400+ Modul Praktik Portfolio</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-teal-500" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>Sertifikat di Tiap Materi</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-teal-500" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>Grup Komunitas</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-teal-500" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>FREE 6-12x Webinar Series</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-teal-500" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>Diskon untuk Bootcamp</li>
-                        </ul>
-                        <a href="/payment">
-                            <button class="w-full bg-blue-500 text-white font-semibold py-2 rounded text-sm hover:bg-blue-600 transition-colors">Mulai
-                                Berlangganan</button>
-                        </a>
-                        <p class="text-gray-800 text-xs mt-2">Segera Habis 🔥</p>
-                        <div class="w-3/4 h-1 bg-teal-200 rounded mt-1"></div>
-                    </div>
-                </div>
 
 
 
-                <!-- 1 Bulan Plan -->
-                <div class="">
-                    <!-- Header -->
-                    <div class="bg-blue-500 p-6 rounded-t-lg">
-                        <h3 class="text-white text-lg font-semibold mb-1">1 Bulan</h3>
-                        <p class="text-blue-100 text-sm mb-2">PAKET VIDEO E-LEARNING</p>
-                        <p class="text-white text-sm line-through mb-1">Rp 350.000</p>
-                        <p class="text-white text-2xl font-bold mb-2">Rp 29.000</p>
-                        <p class="text-white text-sm mb-2">Untuk akses semua, setara Rp 7.250 / minggu.</p>
-                    </div>
-
-                    <!-- Body -->
-                    <div class="p-6 bg-white rounded-b-lg">
-                        <ul class="text-gray-800 text-sm mb-6 space-y-2">
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>1400+ Materi Video</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>1400+ Modul Praktik Portfolio</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evxenodd"></path>
-                                </svg>Sertifikat di Tiap Materi</li>
-                            <li class="flex items-center"><svg class="w-4 h-4 mr-2 text-gray-800" fill="currentColor"
-                                    viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd"
-                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                                        clip-rule="evenodd"></path>
-                                </svg>Grup Komunitas</li>
-                        </ul>
-                        <a href="/payment">
-                            <button class="w-full bg-blue-500 text-white font-semibold py-2 rounded text-sm hover:bg-blue-600 transition-colors">Mulai
-                                Berlangganan</button>
-                        </a>
-                        <p class="text-gray-800 text-xs mt-2">Segera Habis 🔥</p>
-                        <div class="w-full h-1 bg-blue-400 rounded mt-1"></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </section>
 
     {{-- Section 8: Portofolio --}}
@@ -690,7 +579,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -699,7 +589,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -708,7 +599,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -717,7 +609,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -726,7 +619,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -735,7 +629,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                     <div class="flex items-center mb-4">
@@ -743,7 +638,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -752,7 +648,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -761,7 +658,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -770,7 +668,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
                 <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -779,7 +678,8 @@
                     </div>
                     <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                     <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat Portofolio</button>
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                        Portofolio</button>
 
                 </div>
             </div>
@@ -787,7 +687,7 @@
     </section>
 
     <!-- akses konten premium -->
-    <section class="w-full h-auto rounded-b-3xl bg-orange-100 lg:flex items-center mt-12 p-4">
+    <section class="w-full h-auto rounded-b-3xl bg-white lg:flex items-center mt-12 mb-14 p-4">
         <img src="{{ asset('./assets/bootcamp/pembelajaran.png') }}" class="h-72 w-100 lg:ml-20 mx-auto py-4">
         <div class="mx-auto">
             <p class="text-4xl font-bold w-4/5 ml-4">E-learning & Training Untuk Perusahaan</p>
@@ -804,5 +704,4 @@
     </section>
 
 </section>
-
 @endsection
