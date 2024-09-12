@@ -60,7 +60,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/register', function () {
     return view('auth.register');
-});
+})->name('register');
 
 Route::get('/home', [DashboardController::class, 'home'])->middleware(['auth', 'verified'])->name('home');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
