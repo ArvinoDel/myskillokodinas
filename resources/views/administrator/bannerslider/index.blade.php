@@ -56,6 +56,7 @@
                                 <th class="text-center">Judul</th>
                                 <th class="text-center">Deskripsi</th>
                                 <th class="text-center">Tgl Posting</th>
+                                <th class="text-center">Is_myskill</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -66,6 +67,7 @@
                                 <td>{{ $banner->judul }}</td>
                                 <td>{{ strip_tags($banner->deskripsi) }}</td>
                                 <td>{{ \Carbon\Carbon::parse($banner->tgl_posting)->locale('id')->isoFormat('D MMM YYYY') }}</td>
+                                <td>{{ $banner->is_myskill }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('administrator.bannerslider.edit', $banner->id_banner) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
