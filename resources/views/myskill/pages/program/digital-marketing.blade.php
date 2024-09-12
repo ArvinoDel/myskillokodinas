@@ -21,7 +21,7 @@
                     class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-1 rounded-full">Limited</span>
             </div>
             <a href="/payment">
-                <button type="button" onclick="toggleModal('registrationModal')"
+                <button type="button"
                     class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 dark:focus:ring-yellow-900 max-sm:bg-yellow-500 max-sm:text-white max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
                     <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
                 </button>
@@ -36,12 +36,11 @@
 <!-- Modal -->
 <div id="registrationModal" class="fixed inset-0 z-50 hidden justify-center">
     <div class="flex items-center justify-center min-h-screen px-4 py-12 sm:px-0">
-        <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" aria-hidden="true"
-            onclick="toggleModal('registrationModal')"></div>
+        <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" aria-hidden="true"></div>
         <div class="z-50 w-full max-w-md p-6 overflow-hidden transition-all transform bg-white rounded-lg shadow-xl">
             <div class="flex items-center justify-between">
                 <h3 class="text-lg font-medium text-gray-900">Pendaftaran Bootcamp</h3>
-                <button onclick="toggleModal('registrationModal')"
+                <button
                     class="text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     <span class="sr-only">Close</span>
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +88,7 @@
                 </form>
             </div>
             <div class="flex justify-end mt-4">
-                <button type="button" onclick="toggleModal('registrationModal')"
+                <button type="button"
                     class="px-4 py-2 mr-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Tutup</button>
                 <button type="button"
                     class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Lanjut
@@ -147,7 +146,7 @@
         <!-- Tombol Daftar Sekarang dengan Ikon Petir -->
         <div class="">
             <a href="/payment">
-                <button onclick="toggleModal('registrationModal')"
+                <button
                     class="absolute top-[340px] left-4 w-9/12 bg-yellow-500 text-white rounded-lg flex items-center justify-center lg:p-1 lg:ml-7 lg:mb-4 lg:mt-12">
                     <i class="fas fa-bolt mr-2"></i>
                     Daftar Sekarang
@@ -570,7 +569,7 @@
         </a>
         <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6 md:mb-2">Ayo, persiapkan dirimu untuk mulai #RintisKarirImpian</p>
         <a href="/payment">
-            <button type="button" onclick="toggleModal('registrationModal')"
+            <button type="button"
                 class="lg:mt-2 w-full md:w-11/12 md:ml-8 md:p-2 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm lg:px-5 lg:py-3 dark:focus:ring-yellow-900 max-sm:bg-yellow-500 max-sm:text-white max-sm:px-3 max-sm:py-2 max-sm:mt-1 max-sm:w-4/5 max-sm:mx-auto">
                 <i class="fas fa-bolt"></i> Daftar Sekarang
             </button>
