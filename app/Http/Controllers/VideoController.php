@@ -77,13 +77,16 @@ class VideoController extends Controller
             'jdl_video' => 'required|string|max:255',
             'id_playlist' => 'required|exists:playlist,id_playlist', // Tambahkan validasi untuk kategori
             'gbr_video' => 'nullable|file|mimetypes:image/jpeg,image/png,image/jpg,image/gif,video/mp4,video/avi,video/mpeg|max:20480',
-            'video' => 'nullable',
-            'youtube' => 'required|url|max:255'
+            // 'video' => 'nullable',
+            'video' => 'required|file|mimetypes:video/mp4,video/avi,video/mpeg|max:20480',
+            'youtube' => 'required|url|max:255',
+            'is_myskill' => 'required|boolean'
         ]);
 
         $jdl_video = $request->jdl_video;
         $keterangan = $request->keterangan;
         $gambarName = null;
+        $videoName = null;
 
         $username = $request->username ?: 'admin';
 
@@ -91,6 +94,12 @@ class VideoController extends Controller
             $gbr_video = $request->file("gbr_video");
             $gambarName = $gbr_video->getClientOriginalName();
             $gbr_video->move("./foto_video/", $gambarName);
+        }
+
+        if($request->hasFile('video')) {
+            $video = $request->file("video");
+            $videoName = $video->getClientOriginalName();
+            $video->move("./video_files/", $videoName);
         }
 
         if ($request->tagvid !=''){
@@ -105,7 +114,7 @@ class VideoController extends Controller
             "video_seo" => Str::slug($validated['jdl_video']),
             "id_playlist" => $validated['id_playlist'],
             "gbr_video" => $gambarName,
-            "video" => '',
+            "video" => $videoName,
             "keterangan" => $keterangan,
             "youtube" => $validated['youtube'],
             "tagvid" => $tagvid,
@@ -113,6 +122,7 @@ class VideoController extends Controller
             "tanggal" => now(),
             "jam" => now(),
             "hari" => now()->format('l'),
+            "is_myskill" => $validated['is_myskill']
         ]);
 
         return response()->json([
@@ -154,8 +164,10 @@ class VideoController extends Controller
             'keterangan' => 'required|string|max:255',
             'id_playlist' => 'required|exists:playlist,id_playlist',
             'gbr_video' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'video' => 'nullable',
+            // 'video' => 'nullable',
+            'video' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg|max:20480',
             'youtube' => 'required|url|max:255',
+            'is_myskill' => 'required|boolean'
         ]);
 
         $videos = Video::findOrFail($id_video);
@@ -179,6 +191,12 @@ class VideoController extends Controller
             $videos->gbr_video = $gambarName;
         }
 
+        if($request->hasFile('video')) {
+            $video = $request->file("video");
+            $videoName = $video->getClientOriginalName();
+            $video->move("./video_files/", $videoName);
+        }
+
         $videos->update([
             "jdl_video" => $jdl_video,
             "video_seo" => Str::slug($validated['jdl_video']),
@@ -186,11 +204,11 @@ class VideoController extends Controller
             "tagvid" => $tagvid,
             "youtube" => $validated['youtube'],
             "keterangan" => $validated['keterangan'],
-            "video" => '',
             "username" => $username,
             "tanggal" => now(),
             "jam" => now(),
             "hari" => now()->format('l'),
+            "is_myskill" => $validated['is_myskill']
         ]);
 
         return response()->json([

@@ -12,7 +12,7 @@ class Video extends Model
     public $timestamps = false;
     protected $table = 'video';
     protected $primaryKey = 'id_video';
-    protected $fillable = ['id_video', 'id_playlist', 'jdl_video', 'video_seo', 'username', 'keterangan', 'tanggal', 'jam', 'hari', 'gbr_video', 'video', 'dilihat', 'youtube', 'tagvid', 'tanggal'];
+    protected $fillable = ['id_video', 'id_playlist', 'jdl_video', 'video_seo', 'username', 'keterangan', 'tanggal', 'jam', 'hari', 'gbr_video', 'video', 'dilihat', 'youtube', 'tagvid', 'tanggal', 'is_myskill'];
 
     public function scopeLatest($query)
     {
@@ -44,5 +44,10 @@ class Video extends Model
         }
 
         return 'https://www.youtube.com/embed/' . $youtube_id;
+    }
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class, 'id_program', 'id_program');
     }
 }

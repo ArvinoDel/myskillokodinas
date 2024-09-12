@@ -107,10 +107,27 @@ class TestimoniController extends Controller
 
         $gambarName = null;
 
+        // Hapus gambar yang sebelumnya jika ada
+        if ($testimonis->gambar && file_exists("./foto_testimoni/" . $testimonis->gambar)) {
+            try {
+                unlink("./foto_testimoni/" . $testimonis->gambar);
+            } catch (\Exception $e) {
+                // Jika gagal menghapus gambar, simpan error message
+                $errorMessage = "Gagal menghapus gambar: " . $e->getMessage();
+            }
+        }
+
         if ($request->hasFile('gambar')) {
             $gambar = $request->file("gambar");
             $gambarName = $gambar->getClientOriginalName(); // Menggunakan nama file asli
-            $gambar->move("./foto_testimoni/", $gambarName);
+            try {
+                $gambar->move("./foto_testimoni/", $gambarName);
+            } catch (\Exception $e) {
+                // Jika gagal memindahkan gambar, simpan error message
+                $errorMessage = "Gagal memindahkan gambar: " . $e->getMessage();
+            }
+        } else {
+            $gambarName = $testimonis->gambar;
         }
 
         $testimonis->update([
@@ -118,11 +135,19 @@ class TestimoniController extends Controller
             "gambar" => $gambarName
         ]);
 
-        return response()->json([
-            'url' => route('administrator.testimoni.index'),
-            'success' => true,
-            'message' => 'Data Testimoni Berhasil Diperbarui'
-        ]);
+        if (isset($errorMessage)) {
+            return response()->json([
+                'url' => route('administrator.testimoni.index'),
+                'success' => false,
+                'message' => 'Data Testimoni Gagal Diperbarui: ' . $errorMessage
+            ]);
+        } else {
+            return response()->json([
+                'url' => route('administrator.testimoni.index'),
+                'success' => true,
+                'message' => 'Data Testimoni Berhasil Diperbarui'
+            ]);
+        }
     }
 
     /**
@@ -132,6 +157,9 @@ class TestimoniController extends Controller
     {
         //
         $testimonis = Testimoni::findOrFail($id);
+        if ($testimonis->gambar && file_exists("./foto_testimoni/" . $testimonis->gambar)) {
+            unlink("./foto_testimoni/" . $testimonis->gambar);
+        }
         $testimonis->delete();
 
         return response()->json(['message' => 'Data berhasil dihapus.']);

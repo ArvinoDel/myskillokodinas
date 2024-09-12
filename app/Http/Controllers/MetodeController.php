@@ -61,7 +61,7 @@ class MetodeController extends Controller
         $pembayaranName = null;
         if ($request->hasFile('pembayaran')) {
             $pembayaran = $request->file("pembayaran");
-            $pembayaranName = $gambar->getClientOriginalName();
+            $pembayaranName = $pembayaran->getClientOriginalName();
             $pembayaran->move("./foto_pembayaran/", $pembayaranName);
         }
 
@@ -111,13 +111,18 @@ class MetodeController extends Controller
 
     $metode = Metode::findorfail($id_metode);
     $metode->nama_pembayaran = $validatedData['nama_pembayaran'];
-    $metode->pembayaran = $validatedData['pembayaran'];
 
     if ($request->hasFile('gambar')) {
         $gambar = $request->file("gambar");
         $gambarName = $gambar->getClientOriginalName();
         $gambar->move("./foto_metode/", $gambarName);
         $metode->gambar = $gambarName;
+    }
+    if ($request->hasFile('pembayaran')) {
+        $pembayaran = $request->file("pembayaran");
+        $pembayaranName = $pembayaran->getClientOriginalName();
+        $pembayaran->move("./foto_metode/", $pembayaranName);
+        $metode->pembayaran = $pembayaranName;
     }
 
     $metode->save();

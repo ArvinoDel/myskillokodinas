@@ -6,6 +6,7 @@ use App\Models\Kategoriprogram;
 use App\Models\Kategoriprogramgroup;
 use App\Models\Program;
 use App\Models\Trainer;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -29,14 +30,17 @@ class ProgramController extends Controller
         $query = Program::query();
 
         if (!empty($search)) {
-            $query->where('nama_program', 'like', "%$search%")->orWhere('harga', 'like', "%$search%")->orWhere('judul', 'like', "%$search%")->orWhere('keterangan', 'like', "%$search%");
+            $query->where('nama_program', 'like', "%$search%")
+                  ->orWhere('harga', 'like', "%$search%")
+                  ->orWhere('judul', 'like', "%$search%")
+                  ->orWhere('keterangan', 'like', "%$search%");
         }
 
         if (!empty($judul)) {
             $query->where('judul', $judul);
         }
 
-        $programs = $query->paginate(10);
+        $programs = $query->with('videos')->paginate(10);
 
         $tanggals = Program::select('tanggal')
                     ->groupBy('tanggal')
@@ -53,7 +57,9 @@ class ProgramController extends Controller
         //
         $kategoriprograms = Kategoriprogram::all();
         $trainers = Trainer::all();
-        return view('administrator.program.create', compact(['kategoriprograms', 'trainers']));
+        $videos = Video::where('is_myskill', 1)->get();
+
+        return view('administrator.program.create', compact(['kategoriprograms', 'trainers', 'videos']));
     }
 
     /**
@@ -113,6 +119,7 @@ class ProgramController extends Controller
         $programs = Program::where('id_program', $id_program)->firstOrFail();
         $kategoriprograms = Kategoriprogram::all(); // Tambahkan ini
         $trainers = Trainer::all();
+        $videos = Video::where('is_myskill', 1)->get(); // Fetch videos with is_myskill = 1
 
         return view('administrator.program.edit', compact('programs', 'kategoriprograms', 'trainers'));
     }

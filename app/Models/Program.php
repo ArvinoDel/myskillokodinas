@@ -26,6 +26,11 @@ class Program extends Model
         return $this->belongsTo(KategoriProgram::class, 'id_kategori_program', 'id_kategori_program');
     }
 
+    public function videos()
+    {
+        return $this->hasMany(Video::class, 'id_program', 'id_program');
+    }
+
     public function ratings()
     {
         return $this->hasMany(Rating::class, 'id_program', 'id_program');
