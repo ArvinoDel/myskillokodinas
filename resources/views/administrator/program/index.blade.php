@@ -56,6 +56,7 @@
                                 <th class="text-center">Judul</th>
                                 <th class="text-center">Harga</th>
                                 <th class="text-center">Keterangan</th>
+                                <th class="text-center">ID Video</th> <!-- Tambahkan kolom ID Video -->
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -66,6 +67,11 @@
                                 <td>{{ $program->judul_program }}</td>
                                 <td>{{ $program->harga }}</td>
                                 <td>{{ strip_tags($program->keterangan) }}</td>
+                                <td>
+                                    @foreach ($program->videos as $video)
+                                        {{ $video->id_video }}<br>
+                                    @endforeach
+                                </td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('administrator.program.edit', $program->id_program) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">

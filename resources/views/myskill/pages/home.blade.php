@@ -63,23 +63,22 @@
     <div class="py-12">
         <h2 class="text-2xl text-center font-bold">Terbukti Memberi Hasil dan Membuka Batasan Diri</h2>
     </div>
-    <div class="grid grid-flow-col ps-6 gap-8 overflow-x-auto no-scrollbar">
+
+    <div class="flex overflow-x-auto space-x-4 mx-5 px-1 pb-4 no-scrollbar">
         @foreach ($testimonis as $testimoni)
-            <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
-                <div class="flex justify-center">
-                    @php
-                        $imageUrl = asset('foto_testimoni/' . $testimoni->gambar);
-                    @endphp
-                    <img class="flex justify-center mt-4 rounded-t-lg w-28 h-28" src="{{ $imageUrl }}"
-                        alt="{{ $testimoni->gambar }}" />
+            <div class="bg-white p-4 rounded-2xl shadow-md max-w-[220px] sm:max-w-[180px] md:max-w-[200px] flex-shrink-0">
+                <div class="flex items-center justify-center mb-4">
+                    <img class="rounded-lg w-full max-h-[220px] object-cover"
+                        src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}" alt="Testimoni Image" />
                 </div>
-                <div class="p-5 flex justify-center">
-                    <button class="bg-yellow-400 text-white px-7 py-2 rounded-md">Baca Cerita</button>
-                </div>
+                <a href="{{ $testimoni->link }}">
+                    <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Baca
+                        Cerita</button>
+                </a>
             </div>
         @endforeach
-
     </div>
+
     <div>
         <h3 class="py-12 text-center font-bold text-2xl text-black">Berbagai Macam Program di Pandai Digital</h3>
     </div>
@@ -182,7 +181,7 @@
             alt="" />
     </div>
     </div>
-    <h2 class="text-center font-bold text-2xl mx-3 lg:px-80 py-24">Rasanya Gabung Dengan Komunitas GM Official #Sipaling
+    <h2 class="text-center font-bold text-2xl mx-3 lg:px-80 py-24">Rasanya Gabung Dengan Komunitas Pandai Digital #Sipaling
         Ngoding
     </h2>
     <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar ps-6 gap-11"
@@ -203,14 +202,14 @@
         @endforeach
     </div>
     {{-- Section : Mentors --}}
-    <section class="bg-gray-100 py-12 px-4">
+    <section class="bg-gray-100 py-3 my-3 px-4">
         <div class="container mx-auto">
-            <h3 class="text-2xl text-center font-bold py-5">Belajar Bersama Senior Operator Langsung di Kantor</h3>
+            <h3 class="text-2xl text-center font-bold py-3">Belajar Bersama Senior Operator Langsung di Kantor</h3>
             <p class="text-center text-gray-600 mb-8">Belajar langsung dari experienced professional yang mengajarkan
                 pengalaman, case study & best practices.</p>
 
             <div
-                class="flex flex-nowrap md:mx-24 justify-start md:justify-center overflow-x-auto pb-6 space-x-4 snap-x no-scrollbar">
+                class="flex flex-nowrap md:mx-24 justify-start md:justify-center overflow-x-auto pb-3 space-x-4 snap-x no-scrollbar">
                 <!-- Repeat this card structure for each professional -->
                 @foreach ($trainer as $train)
                     <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
@@ -259,10 +258,10 @@
         ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
         onmouseup="this.classList.remove('touching')">
         @foreach ($logo_bawah as $lb)
-        <div
-            class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
-            <img class="w-32" src="{{ asset('foto_metode/' . $lb->gambar) }}" alt="" />
-        </div>
+            <div
+                class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
+                <img class="w-32" src="{{ asset('foto_metode/' . $lb->gambar) }}" alt="" />
+            </div>
         @endforeach
 
     </div>
