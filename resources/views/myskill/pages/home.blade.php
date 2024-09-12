@@ -192,9 +192,9 @@
     onmouseup="this.classList.remove('touching')">
     @foreach ($album as $album)
     <div
-        class="snap-always snap-center flex-shrink-0 w-52 h-44 bg-white shadow-lg border rounded-lg">
+        class="snap-always snap-center flex-shrink-0 w-52 h-full mb-4 bg-white shadow-lg border rounded-lg">
         <div class="flex flex-col justify-center items-center">
-            <img class="rounded-2xl pt-2 w-32 h-32 object-cover"
+            <img class="rounded-2xl py-2 w-32 h-32 object-cover"
                 src="{{ asset('img_album/' . $album->gbr_album) }}" alt="Album Image" />
         </div>
         <p class="text-base font-semibold text-black text-center p-4">Main di Perusahaan</p>
@@ -259,8 +259,8 @@
     onmouseup="this.classList.remove('touching')">
     @foreach ($logo_bawah as $lb)
     <div
-        class="snap-always snap-center flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
-        <img class="w-32" src="{{ asset('foto_metode/' . $lb->gambar) }}" alt="" />
+        class="snap-always snap-center object-cover p-3 flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
+        <img class="w-auto" src="{{ asset('foto_metode/' . $lb->gambar) }}" alt="" />
     </div>
     @endforeach
 

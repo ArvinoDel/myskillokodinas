@@ -838,7 +838,7 @@
       <div class="row align-items-center justify-content-lg-between">
         <div class="col-lg-12">
           <div class="copyright-text text-center">
-            <strong>Copyright &copy;  <?php echo date('Y'); ?> <a target='_BLANK' href="http://www.lokomedia.web.id"> P.T Grage Media Technology</a>.</strong> All rights reserved.
+            <strong>Copyright &copy;  <?php echo date('Y'); ?> <a target='_BLANK' href="http://www.lokomedia.web.id"> PT. Pandai Digital</a>.</strong> All rights reserved.
           </div>
         </div>
       </div>

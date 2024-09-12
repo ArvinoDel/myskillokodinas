@@ -84,6 +84,31 @@ class MainController extends Controller
         return view('myskill.pages.program.bootcamp', compact('testimonis', 'logo', 'banners', 'links', 'album'));
     }
 
+    public function review(Request $request)
+    {
+        $testimonis = Testimoni::all();
+        $banners = Bannerslider::all();
+        $album = Album::all();
+        // dd($testimonis);
+        $logo = Logo::orderBy('id_logo', 'DESC')->first();
+        $links = Bannerhome::orderBy('id_iklantengah', 'ASC')->limit(10)->get();
+        // dd($menus);
+        $gambar = $request->query('gambar', 'default'); // Mengambil parameter 'gambar' dari query string
+        // $background = Background::where('gambar', $gambar)->first();
+
+        // if ($background) {
+        //     return response()->json(['color' => $background->gambar]);
+        // } else {
+        //     return response()->json(['color' => 'darkslateblue']); // Warna default jika tidak ditemukan
+        // }
+        $templateDinas4 = Template::where('folder', 'myskill')->first();
+        $templateDinas3 = Template::where('folder', 'dinas-3')->first();
+        $templateDinas2 = Template::where('folder', 'dinas-2')->first();
+        $templateDinas1 = Template::where('folder', '')->first();
+
+        return view('myskill.pages.cv.review', compact('testimonis', 'logo', 'banners', 'links', 'album'));
+    }
+
 
     /**
      * Show the form for creating a new resource.

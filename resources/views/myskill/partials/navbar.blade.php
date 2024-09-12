@@ -54,14 +54,14 @@
     <div class="max-md:hidden lg:block space-x-2 justify-items-end mt-1.5">
         @if (Auth::check())
             <div class="bg-transparent flex justify-center items-center mx-5">
-                <div x-data="{ open: false }" class="bg-transparent w-40 flex justify-center items-center">
+                <div x-data="{ open: false }" class="bg-transparent w-52 flex justify-center items-center">
                     <div @click="open = !open" class="relative py-1"
                         :class="{ 'border-indigo-700 transform transition duration-300 ': open }"
                         x-transition:enter-end="transform opacity-100 scale-100"
                         x-transition:leave="transition ease-in duration-75"
                         x-transition:leave-start="transform opacity-100 scale-100">
                         <div class="flex justify-center items-center space-x-3 cursor-pointer">
-                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-900">
+                            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-gray-900">
                                 <img src="https://images.unsplash.com/photo-1610397095767-84a5b4736cbd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
                                     alt="" class="w-full h-full object-cover">
                             </div>
