@@ -34,9 +34,9 @@
             <div class="flex flex-col justify-center max-sm:text-center max-sm:mt-5">
                 <h3 class="font-semibold">Lainnya</h3>
                 <ul class="mt-2 space-y-2">
-                    <li><a href="#" class="hover:underline">FAQ</a></li>
-                    <li><a href="#" class="hover:underline">Syarat & Ketentuan</a></li>
-                    <li><a href="#" class="hover:underline">Ketentuan Privasi</a></li>
+                    <li><a href="/lainnya/faq" class="hover:underline">FAQ</a></li>
+                    <li><a href="/lainnya/snk" class="hover:underline">Syarat & Ketentuan</a></li>
+                    <li><a href="/lainnya/snk" class="hover:underline">Ketentuan Privasi</a></li>
                 </ul>
             </div>
         </div>
