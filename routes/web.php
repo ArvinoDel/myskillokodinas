@@ -334,9 +334,8 @@ Route::get('/profile/my-transaction', function () {
     return view('./myskill/pages/profile/my-transaction');
 })->name('Transactions');
 
-Route::get('/my-profile', function () {
-    return view('./myskill/pages/profile/my-profile');
-})->name(name: 'My Profile');
+Route::get('/my-profile', [ProfileController::class, 'edit'])->name('profile.my-profile');
+Route::patch('/my-profile', [ProfileController::class, 'update'])->name('profile.update');
 
 // Route::get('/', [MainController::class, 'index']);
 Route::get('sejarah-instansi', [HalamanController::class, 'sejarah_instansi']);
