@@ -70,7 +70,7 @@
                                                     id="benefit{{ $benefit->id_benefit }}">
                                                 <label class="form-check-label" for="benefit{{ $benefit->id_benefit }}">
                                                     {{ $benefit->nama_benefit }}
-                                                </label> <br>e
+                                                </label> <br>
                                             @endforeach
                                         </div>
                                     </td>
