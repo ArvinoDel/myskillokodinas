@@ -1,4 +1,6 @@
 <?php
+
+use App\Models\Berlangganan;
     use App\Http\Controllers\AgendaController;
     use App\Http\Controllers\AlamatkontakController;
     use App\Http\Controllers\AlbumController;
