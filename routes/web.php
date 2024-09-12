@@ -270,10 +270,6 @@ use App\Models\Berlangganan;
     return view('./myskill/pages/e-learning/program');
     })->name('Program');
 
-    Route::get('/my-profile', function () {
-        return view('./myskill/pages/profile/my-profile');
-        })->name('My Profile');
-
     Route::get('/e-learning/materi', function () {
     return view('./myskill/pages/e-learning/materi');
     })->name('Materi');
@@ -335,10 +331,6 @@ use App\Models\Berlangganan;
     return view('./myskill/pages/profile/my-transaction');
     })->name('Transactions');
 
-    Route::get('/my-profile', function () {
-    return view('./myskill/pages/profile/my-profile');
-    })->name('My Profile');
-
     // Route::get('/', [MainController::class, 'index']);
     Route::get('sejarah-instansi', [HalamanController::class, 'sejarah_instansi']);
     Route::get('struktur-organisasi', [HalamanController::class, 'struktur_organisasi']);
@@ -353,3 +345,8 @@ use App\Models\Berlangganan;
     Route::get('sliderlogo', [MainController::class, 'create']);
 
     // Route::get('administrator/layout', [TestingController::class, 'layout']);
+    
+    //Route my-profile
+    Route::get('/my-profile', [ProfileController::class, 'edit'])->name('profile.my-profile');
+    Route::patch('/my-profile', [ProfileController::class, 'update'])->name('profile.update');
+    
