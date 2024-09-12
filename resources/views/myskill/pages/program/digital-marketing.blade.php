@@ -20,10 +20,12 @@
                 <span
                     class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-1 rounded-full">Limited</span>
             </div>
-            <button type="button" onclick="toggleModal('registrationModal')"
-                class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 dark:focus:ring-yellow-900 max-sm:bg-yellow-500 max-sm:text-white max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
-                <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
-            </button>
+            <a href="/payment">
+                <button type="button" onclick="toggleModal('registrationModal')"
+                    class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 dark:focus:ring-yellow-900 max-sm:bg-yellow-500 max-sm:text-white max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
+                    <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
+                </button>
+            </a>
             <div class="flex items-center mt-1 max-sm:flex-col max-sm:items-center">
                 <p class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 lg:text-white text-md font-semibold max-sm:text-black max-sm:ml-0 max-sm:text-sm max-sm:mt-2">
                     5.000+ Alumni Bootcamp Tiap Bulan</p>
@@ -144,11 +146,13 @@
         </div>
         <!-- Tombol Daftar Sekarang dengan Ikon Petir -->
         <div class="">
-            <button onclick="toggleModal('registrationModal')"
-                class="absolute top-[340px] left-4 w-9/12 bg-yellow-500 text-white rounded-lg flex items-center justify-center lg:p-1 lg:ml-7 lg:mb-4 lg:mt-12">
-                <i class="fas fa-bolt mr-2"></i>
-                Daftar Sekarang
-            </button>
+            <a href="/payment">
+                <button onclick="toggleModal('registrationModal')"
+                    class="absolute top-[340px] left-4 w-9/12 bg-yellow-500 text-white rounded-lg flex items-center justify-center lg:p-1 lg:ml-7 lg:mb-4 lg:mt-12">
+                    <i class="fas fa-bolt mr-2"></i>
+                    Daftar Sekarang
+                </button>
+            </a>
         </div>
     </div>
     <!-- Main Content -->
@@ -558,14 +562,19 @@
             </div>
         </div>
         <!-- komunitas end -->
+
         <!-- daftar sekarang -->
-        <p class="md:ml-6 md:text-xl text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 lg:mt-6 font-bold lg:mb-1 max-sm:mt-4"><i
-                class="fas fa-chevron-right text-orange-600 mr-3"></i>Daftar Sekarang</p>
+        <a href="/payment">
+            <p class="md:ml-6 md:text-xl text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 lg:mt-6 font-bold lg:mb-1 max-sm:mt-4"><i
+                    class="fas fa-chevron-right text-orange-600 mr-3"></i>Daftar Sekarang</p>
+        </a>
         <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6 md:mb-2">Ayo, persiapkan dirimu untuk mulai #RintisKarirImpian</p>
-        <button type="button" onclick="toggleModal('registrationModal')"
-            class="lg:mt-2 w-full md:w-11/12 md:ml-8 md:p-2 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm lg:px-5 lg:py-3 dark:focus:ring-yellow-900 max-sm:bg-yellow-500 max-sm:text-white max-sm:px-3 max-sm:py-2 max-sm:mt-1 max-sm:w-4/5 max-sm:mx-auto">
-            <i class="fas fa-bolt"></i> Daftar Sekarang
-        </button>
+        <a href="/payment">
+            <button type="button" onclick="toggleModal('registrationModal')"
+                class="lg:mt-2 w-full md:w-11/12 md:ml-8 md:p-2 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm lg:px-5 lg:py-3 dark:focus:ring-yellow-900 max-sm:bg-yellow-500 max-sm:text-white max-sm:px-3 max-sm:py-2 max-sm:mt-1 max-sm:w-4/5 max-sm:mx-auto">
+                <i class="fas fa-bolt"></i> Daftar Sekarang
+            </button>
+        </a>
     </div>
 </div>
 <div class="w-full flex justify-center">
