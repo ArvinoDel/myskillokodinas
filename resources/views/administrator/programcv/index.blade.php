@@ -12,7 +12,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h3 class="mb-0">Daftar Program CV</h3>
+                    <h3 class="mb-0">Daftar Program CV Berlangganan</h3>
                     <a href="{{ route('administrator.programcv.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
                 </div>
 
