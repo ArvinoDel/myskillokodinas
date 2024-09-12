@@ -1,64 +1,65 @@
 <?php
 
 use App\Models\Berlangganan;
-use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\AlamatkontakController;
-use App\Http\Controllers\AlbumController;
-use App\Http\Controllers\AppController;
-use App\Http\Controllers\BannerhomeController;
-use App\Http\Controllers\BannersliderController;
-use App\Http\Controllers\BenefitController;
-use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\BerlanggananController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DownloadareaController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\GrafikController;
-use App\Http\Controllers\HalamanbaruController;
-use App\Http\Controllers\IdentitaswebsiteController;
-use App\Http\Controllers\IklanatasController;
-use App\Http\Controllers\IklansidebarController;
-use App\Http\Controllers\JejakpendapatController;
-use App\Http\Controllers\KategoriberitaController;
-use App\Http\Controllers\KomentarberitaController;
-use App\Http\Controllers\KomentarvideoController;
-use App\Http\Controllers\LayoutController;
-use App\Http\Controllers\LogowebsiteController;
-use App\Http\Controllers\Main2Controller;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\ManajemenmodulController;
-use App\Http\Controllers\ManajemenuserController;
-use App\Http\Controllers\MenuwebsiteController;
-use App\Http\Controllers\PesanmasukController;
-use App\Http\Controllers\PlaylistvideoController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SekilasinfoController;
-use App\Http\Controllers\SensorkomentarController;
-use App\Http\Controllers\TagberitaController;
-use App\Http\Controllers\TagvideoController;
-use App\Http\Controllers\TestingController;
-use App\Http\Controllers\VideoController;
-use App\Http\Controllers\YmController;
-use App\Http\Controllers\DatabaseController;
-use App\Http\Controllers\HalamanController;
-use App\Http\Controllers\TrainerController;
-use App\Http\Controllers\TestimoniController;
-use App\Http\Controllers\ProgramController;
-use App\Http\Controllers\KategoriprogramController;
-use App\Http\Controllers\MateriController;
-use App\Http\Controllers\MemberController;
-use App\Http\Controllers\MetodeController;
-use App\Http\Controllers\MetodepembayaranController;
-use App\Http\Controllers\MitraController;
-use App\Http\Controllers\RatingController;
-use App\Http\Controllers\TemplatewebsiteController;
-use App\Models\Agenda;
-use App\Models\Berita;
-use App\Models\Halamanbaru;
-use App\Models\Testimoni;
-use App\Models\User;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PaymentController;
+    use App\Http\Controllers\AgendaController;
+    use App\Http\Controllers\AlamatkontakController;
+    use App\Http\Controllers\AlbumController;
+    use App\Http\Controllers\AppController;
+    use App\Http\Controllers\BannerhomeController;
+    use App\Http\Controllers\BannersliderController;
+    use App\Http\Controllers\BenefitController;
+    use App\Http\Controllers\BeritaController;
+    use App\Http\Controllers\BerlanggananController;
+    use App\Http\Controllers\DashboardController;
+    use App\Http\Controllers\DownloadareaController;
+    use App\Http\Controllers\GalleryController;
+    use App\Http\Controllers\GrafikController;
+    use App\Http\Controllers\HalamanbaruController;
+    use App\Http\Controllers\IdentitaswebsiteController;
+    use App\Http\Controllers\IklanatasController;
+    use App\Http\Controllers\IklansidebarController;
+    use App\Http\Controllers\JejakpendapatController;
+    use App\Http\Controllers\KategoriberitaController;
+    use App\Http\Controllers\KomentarberitaController;
+    use App\Http\Controllers\KomentarvideoController;
+    use App\Http\Controllers\LayoutController;
+    use App\Http\Controllers\LogowebsiteController;
+    use App\Http\Controllers\Main2Controller;
+    use App\Http\Controllers\MainController;
+    use App\Http\Controllers\ManajemenmodulController;
+    use App\Http\Controllers\ManajemenuserController;
+    use App\Http\Controllers\MenuwebsiteController;
+    use App\Http\Controllers\PesanmasukController;
+    use App\Http\Controllers\PlaylistvideoController;
+    use App\Http\Controllers\ProfileController;
+    use App\Http\Controllers\SekilasinfoController;
+    use App\Http\Controllers\SensorkomentarController;
+    use App\Http\Controllers\TagberitaController;
+    use App\Http\Controllers\TagvideoController;
+    use App\Http\Controllers\TestingController;
+    use App\Http\Controllers\VideoController;
+    use App\Http\Controllers\YmController;
+    use App\Http\Controllers\DatabaseController;
+    use App\Http\Controllers\HalamanController;
+    use App\Http\Controllers\TrainerController;
+    use App\Http\Controllers\TestimoniController;
+    use App\Http\Controllers\ProgramController;
+    use App\Http\Controllers\KategoriprogramController;
+    use App\Http\Controllers\MateriController;
+    use App\Http\Controllers\MemberController;
+    use App\Http\Controllers\MetodeController;
+    use App\Http\Controllers\MetodepembayaranController;
+    use App\Http\Controllers\MitraController;
+    use App\Http\Controllers\RatingController;
+    use App\Http\Controllers\TemplatewebsiteController;
+    use App\Models\Agenda;
+    use App\Models\Berita;
+    use App\Models\Halamanbaru;
+    use App\Models\Testimoni;
+    use App\Models\User;
+    use Illuminate\Support\Facades\Route;
+    use App\Http\Controllers\PaymentController;
+    use App\Http\Controllers\ProgramcvController;
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -223,6 +224,16 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->middleware('checkModul:berlangganan');
 
 
+
+
+
+
+
+
+    Route::resource('programcv', ProgramcvController::class)
+    ->middleware('checkModul:programcv');
+
+
     // Rute untuk backup database
     // Rute untuk backup database
     Route::get('database', [DatabaseController::class, 'index'])
@@ -344,9 +355,7 @@ Route::get('video', [HalamanController::class, 'video']);
 Route::get('agenda', [HalamanController::class, 'agenda']);
 Route::get('sliderlogo', [MainController::class, 'create']);
 
-    // Route::get('administrator/layout', [TestingController::class, 'layout']);
-    
+
     //Route my-profile
     Route::get('/my-profile', [ProfileController::class, 'edit'])->name('profile.my-profile');
     Route::patch('/my-profile', [ProfileController::class, 'update'])->name('profile.update');
-    
