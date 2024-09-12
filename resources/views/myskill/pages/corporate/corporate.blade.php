@@ -17,7 +17,7 @@
                 Layanan Pengembangan Skill dan Peningkatan Performa Karyawan
             </p>
             <p class="lg:w-8/12 lg:text-white text-white">
-                Jalankan corporate training yang disesuaikan dengan kebutuhan perusahaan, maupun akses Performance Management Software dan E-learning MySkill for Business.
+                Jalankan corporate training yang disesuaikan dengan kebutuhan perusahaan, maupun akses Performance Management Software dan E-learning Pandai Digital for Business.
             </p>
             <br>
             <!-- Container for buttons -->
@@ -28,7 +28,7 @@
                     class="text-black lg:text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 mb-2 lg:mb-0 dark:focus:ring-yellow-900">
                     Corporate Training
                 </a>
-    
+
                 <!-- Performance Management Software Button -->
                 <a href="/experience"
                     class="text-black lg:text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-2 mb-2 lg:mb-0 dark:focus:ring-yellow-900">
@@ -152,7 +152,7 @@
                 </ul>
                 <a href="#call" type="button"
                     class="focus:outline-none mb-4 text-white bg-pink-600 font-medium rounded-md text-sm px-5 py-2.5 me-2 dark:focus:ring-yellow-900">Hubungi
-                    Tim MySkill</a>
+                    Tim Pandai Digital</a>
             </div>
         </div>
 
@@ -199,7 +199,7 @@
                     <div class="flex flex-col sm:flex-row items-center space-y-4 sm:space-x-4 sm:space-y-0">
                         <button type="submit"
                             class="w-full sm:w-auto px-4 py-2 bg-gray-300 text-white font-bold rounded-lg">Kirim</button>
-                        <p class="text-xs sm:text-sm">silahkan lengkapi form diatas untuk mengirim pesan</p>
+                        <p class="text-xs sm:text-sm">Silahkan lengkapi form diatas untuk mengirim pesan</p>
                     </div>
                 </form>
             </div>

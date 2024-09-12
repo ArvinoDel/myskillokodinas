@@ -46,7 +46,7 @@
         @foreach($testimonis as $testimoni)
         <div class="inline-block px-4">
             <div class="bg-white rounded-lg shadow-md p-4 md:p-2 w-64 md:-mt-28">
-                <img class="h-34 w-64 rounded-sm" src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}"/>
+                <img class="h-34 w-64 rounded-sm" src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}" />
                 <button class="w-full p-2 mt-2 bg-teal-500 text-white py-2 px-4 rounded">Baca Cerita</button>
             </div>
         </div>
@@ -216,7 +216,7 @@
     <!-- end grid -->
 
     <!-- akses konten premium -->
-    <section class="w-full h-auto rounded-b-3xl bg-white lg:flex items-center mt-12 mb-14 p-4">
+    <section class="w-full h-auto rounded-b-3xl bg-orange-100 lg:flex items-center mt-12 p-4">
         <img src="{{ asset('./assets/bootcamp/pembelajaran.png') }}" class="h-72 w-100 lg:ml-20 mx-auto py-4">
         <div class="mx-auto">
             <p class="text-4xl font-bold w-4/5 ml-4">E-learning & Training Untuk Perusahaan</p>
