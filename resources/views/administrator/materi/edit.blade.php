@@ -20,6 +20,21 @@
                                 </td>
                             </tr>
                             <tr>
+                                <th style="padding: 5px;">Video</th>
+                                <td style="padding: 5px;">
+                                    <div class="d-flex align-items-center">
+                                        <video id="video-preview" controls style="max-width: 200px; margin-top: 5px;" class="mr-3">
+                                            <source src="{{ url('video_materi/'.$materis->video_materi) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                        <div class="flex-grow-1">
+                                            <input type="file" class="form-control" onchange="previewVideo(event)" id="video_materi" name="video_materi" accept="video/*">
+                                            <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah video.</small>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
                                 <th style="padding: 5px;">Program</th>
                                 <td style="padding: 5px;">
                                     <select class="form-control" name="id_program" required>
@@ -47,6 +62,20 @@
 <script>
     function previewImage(event) {
         var preview = document.getElementById('preview');
+        var file = event.target.files[0];
+        var reader = new FileReader();
+
+        reader.onload = function(){
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function previewVideo(event) {
+        var preview = document.getElementById('video-preview');
         var file = event.target.files[0];
         var reader = new FileReader();
 

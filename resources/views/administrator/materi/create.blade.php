@@ -21,6 +21,12 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <th style="padding: 5px;">Video</th>
+                                    <td style="padding: 5px;">
+                                        <input type="file" class="form-control" id="video_materi" name="video_materi" accept="video/*">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th style="padding: 5px;">Program</th>
                                     <td style="padding: 5px;">
                                         <select class="form-control" name="id_program" required>
