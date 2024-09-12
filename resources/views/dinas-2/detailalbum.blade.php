@@ -1,58 +1,52 @@
 @extends('dinas-2.layout')
 
 @section('content')
-
 <div class="ecommerce-gallery vertical" data-mdb-ecommerce-gallery-init>
   <div class="row">
-    <div class="col-4 col-sm-3">
-      <div class="multi-carousel vertical" data-mdb-multi-carousel-init data-mdb-items="3">
-        <div class="multi-carousel-inner">
-          @foreach($gallery as $item)
-          <div class="multi-carousel-item {{ $loop->first ? 'active' : '' }}">
-            <img
-              src="{{ asset('img_gallery/' . $item->gbr_gallery) }}"
-              data-mdb-img="{{ asset('img_gallery/' . $item->gbr_gallery) }}"
-              alt="{{ $item->jdl_gallery }}"
-              class="{{ $loop->first ? 'active' : '' }} w-100" style="max-height: 150px;" />
+    <div class="col-lg-10" style="margin-top: 5rem;">
+      <h2 class="h2-heading text-left">Detail Album</h2>
+      <div class="carousel-container">
+        <div id="gallery-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+          <div class="carousel-inner">
+            @foreach($gallery as $item)
+            <div class="carousel-item{{ $loop->first ? ' active' : '' }}">
+              <div class="row">
+                <div class="col-lg-8 col-xl-7">
+                  <div class="image-container">
+                    <img class="img-fluid" src="{{ asset('img_gallery/' . $item->gbr_gallery) }}" alt="{{ $item->jdl_gallery }}">
+                  </div>
+                </div>
+                <div class="col-lg-6 col-xl-5">
+                  <div class="text-container">
+                    <h1 class="h1-large">{{ $item->jdl_gallery }}</h1>
+                    <p class="p-large">{{ $item->keterangan }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            @endforeach
           </div>
-          @endforeach
+          <a class="carousel-control-prev" href="#gallery-carousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+          </a>
+          <a class="carousel-control-next" href="#gallery-carousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+          </a>
         </div>
-        <button
-          class="carousel-control-prev"
-          tabindex="0"
-          type="button"
-          data-mdb-slide="prev">
-          <span
-            class="carousel-control-prev-icon"
-            aria-hidden="true"></span>
-        </button>
-        <button
-          class="carousel-control-next"
-          tabindex="0"
-          type="button"
-          data-mdb-slide="next">
-          <span
-            class="carousel-control-next-icon"
-            aria-hidden="true"></span>
-        </button>
       </div>
     </div>
-    <div class="col-8 col-sm-9">
+    <div class="col-12 col-sm-12 d-flex justify-content-center">
       <div class="lightbox" data-mdb-lightbox-init>
         @foreach($gallery as $item)
-        <img
-          src="{{ asset('img_gallery/' . $item->gbr_gallery) }}"
-          alt="{{ $item->jdl_gallery }}"
-          class="ecommerce-gallery-main-img active w-100" style="max-height: 500px;" />
-        <div class="mt-3">
-          <h3>{{ $item->jdl_gallery }}</h3>
-          <p>{{ $item->keterangan }}</p>
+        <div class="p-2">
+          <img
+            src="{{ asset('img_gallery/' . $item->gbr_gallery) }}"
+            alt="{{ $item->jdl_gallery }}"
+            class="ecommerce-gallery-main-img active w-10 d-flex" style="width: 100px; height: auto;" />
         </div>
         @endforeach
       </div>
     </div>
   </div>
 </div>
-
-
 @endsection

@@ -56,7 +56,8 @@ class BannersliderController extends Controller
         $validated = $request->validate([
             'judul' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'is_myskill' => 'nullable|boolean'
         ]);
 
         $judul = $request->judul;
@@ -72,7 +73,8 @@ class BannersliderController extends Controller
             'judul' => $validated['judul'],
             'gambar' => $gambarName,
             'tgl_posting' => now(),
-            'deskripsi' => $request->deskripsi
+            'deskripsi' => $request->deskripsi,
+            'is_myskill' => $validated['is_myskill']
         ]);
 
         return response()->json([
@@ -114,10 +116,12 @@ class BannersliderController extends Controller
 
         $judul = $request->judul;
         $deskripsi = $request->deskripsi;
+        $myskill = $request->is_myskill;
 
         $updateData = [
             'judul' => $judul,
             'deskripsi' => $deskripsi,
+            'is_myskill' => $myskill,
         ];
 
         if ($request->hasFile('gambar')) {

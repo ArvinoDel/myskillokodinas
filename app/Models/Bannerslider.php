@@ -12,7 +12,7 @@ class Bannerslider extends Model
     public $timestamps = false;
     protected $primaryKey = 'id_banner';
     protected $table = 'banner';
-    protected $fillable = ['id_banner', 'judul', 'gambar', 'tgl_posting', 'deskripsi', 'url']; // Kolom yang dapat diisi
+    protected $fillable = ['id_banner', 'judul', 'gambar', 'tgl_posting', 'deskripsi', 'url','is_myskill']; // Kolom yang dapat diisi
 
     protected $attributes = [
         'url' => '#',
