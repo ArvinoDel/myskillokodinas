@@ -38,6 +38,21 @@
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="padding: 5px;">Is My Skill</th>
+                                <td style="padding: 5px;">
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="is_myskill" value="1" required
+                                                {{ $bannerslider->is_myskill == '1' ? 'checked' : '' }}> Y
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="is_myskill" value="0" required
+                                                {{ $bannerslider->is_myskill == '0' ? 'checked' : '' }}> N
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">

@@ -31,6 +31,19 @@
                                     <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*" required>
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="padding: 5px;">Is My Skill</th>
+                                <td style="padding: 5px;">
+                                    <div>
+                                        <label>
+                                            <input type="radio" name="is_myskill" value="1" required> Y
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="is_myskill" value="0" required> N
+                                        </label>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
