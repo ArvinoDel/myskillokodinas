@@ -8,7 +8,7 @@
             Pandai Digital adalah platform pengembangan skill profesional dengan lebih dari 1 juta pengguna
             se-Indonesia. Pandai Digital percaya bahwa:
         </p>
-        <blockquote class="text-orange-400 font-semibold text-lg mb-8">
+        <blockquote class="text-orange-400 font-semibold text-2xl mb-8">
             "PENDIDIKAN DAN PEKERJAAN YANG LAYAK ADALAH HAK BAGI SETIAP RAKYAT INDONESIA."
         </blockquote>
         <blockquote class="text-lg font-semibold mb-2 text-center sm:break-words md:break-words">Pandai Digital telah menjadi bagian dari</blockquote>
