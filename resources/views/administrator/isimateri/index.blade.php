@@ -13,50 +13,27 @@
     <div class="col">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="mb-0">Materi</h3>
-                <a href="{{ route('administrator.materi.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <h3 class="mb-0">Isi Materi</h3>
+                <a href="{{ route('administrator.isimateri.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
             <!-- Tambahkan form pencarian -->
             <div class="card-body">
-                <form action="{{ route('administrator.materi.index') }}" method="GET" class="mb-1">
+                <form action="{{ route('administrator.isimateri.index') }}" method="GET" class="mb-1">
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
-                            <select class="form-control" name="nam_materi">
-                                <option value="">Pilih Materi</option>
-                                @foreach ($nama_materis as $nama_materi)
-                                    <option value="{{ $nama_materi->nama_materi }}" {{ request('nama_materi') == $nama_materi->nama_materi ? 'selected' : '' }}>
-                                        {{ $nama_materi->nama_materi }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-primary" type="submit">Filter</button>
-                            </div>
+                            <a href="{{ route('administrator.materi.index') }}" class="btn btn-primary btn-lg">Back Materi</a>
                         </div>
                         <div class="input-group" style="max-width: 300px;">
-                            <select class="form-control" name="id_program">
-                                <option value="">Pilih Program</option>
-                                @foreach ($programs as $program)
-                                    <option value="{{ $program->id_program }}" {{ request('id_program') == $program->id_program ? 'selected' : '' }}>
-                                        {{ $program->judul_program }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-primary" type="submit">Filter</button>
-                            </div>
-                        </div>
-                        <div class="input-group" style="max-width: 300px;">
-                            <input type="text" class="form-control" placeholder="Cari Materi..." name="search" value="{{ request('search') }}">
+                            <input type="text" class="form-control" placeholder="Cari Isi Materi..." name="search" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Cari</button>
                             </div>
                         </div>
                     </div>
-                    @if(request('search') || request('nama_materi') || request('id_program'))
+                    @if(request('search') || request('nama_materis'))
                     <div class="mt-2 d-flex justify-content-center">
-                        <a href="{{ route('administrator.materi.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
+                        <a href="{{ route('administrator.isimateri.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
                     </div>
                     @endif
                 </form>
@@ -66,42 +43,34 @@
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Judul Materi</th>
-                                <th class="text-center">Program</th>
+                                <th class="text-center">URL Materi</th>
+                                <th class="text-center">Judul File</th>
                                 <th class="text-center">Action</th>
-                                <th class="text-center">Isi Materi</th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($isi_materis as $index => $isi_materi)
                             <tr>
-                                @foreach ($materis as $index => $materi)
-                                <td>{{ $loop->iteration + $materis->firstItem() - 1 }}</td>
-                                <td>{{ $materi->nama_materi }}</td>
-                                <td>{{ optional($materi->program)->judul_program }}</td>
+                                <td>{{ $loop->iteration + $isi_materis->firstItem() - 1 }}</td>
+                                <td>{{ $isi_materi->url }}</td>
+                                <td>{{ $isi_materi->judul_file }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('administrator.materi.edit', $materi->id_materi) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                        <a href="{{ route('administrator.isimateri.edit', $isi_materi->id_isi_materi) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button data-url="{{ route('administrator.materi.destroy', $materi->id_materi) }}"
+                                        <button data-url="{{ route('administrator.isimateri.destroy', $isi_materi->id_isi_materi) }}"
                                             type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                     </div>
                                 </td>
-                                @endforeach
-                                <td class="text-center">
-                                    <div class="d-flex justify-content-center">
-                                        <a href="{{ route('administrator.isimateri.index') }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                    </div>
-                                </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <br>
-                    {{ $materis->links('vendor.pagination.bootstrap-4') }}
+                    {{ $isi_materis->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
         </div>
@@ -182,7 +151,7 @@
 
         // Fungsi untuk memperbarui nomor urut
         function updateRowNumbers() {
-            let startingIndex = {{ $materis->firstItem() - 1 }};
+            let startingIndex = {{ $isi_materis->firstItem() - 1 }};
             $('table tbody tr').each(function(index) {
                 $(this).find('td:first-child').text(startingIndex + index + 1);
             });

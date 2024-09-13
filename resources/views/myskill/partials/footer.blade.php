@@ -15,10 +15,8 @@
             <div class="flex flex-col justify-center max-sm:text-center max-sm:mt-5">
                 <h3 class="font-semibold">Pandai Digital</h3>
                 <ul class="mt-2 space-y-2">
-                    <li><a href="#" class="hover:underline">Tentang</a></li>
-                    <li><a href="#" class="hover:underline">Karir</a></li>
-                    <li><a href="#" class="hover:underline">Kerjasama</a></li>
-                    <li><a href="#" class="hover:underline">Blog</a></li>
+                    <li><a href="/about" class="hover:underline">Tentang</a></li>
+                    <li><a href="/corporate-service" class="hover:underline">Kerjasama</a></li>
                 </ul>
             </div>
 
@@ -34,9 +32,9 @@
             <div class="flex flex-col justify-center max-sm:text-center max-sm:mt-5">
                 <h3 class="font-semibold">Lainnya</h3>
                 <ul class="mt-2 space-y-2">
-                    <li><a href="#" class="hover:underline">FAQ</a></li>
-                    <li><a href="#" class="hover:underline">Syarat & Ketentuan</a></li>
-                    <li><a href="#" class="hover:underline">Ketentuan Privasi</a></li>
+                    <li><a href="/faq" class="hover:underline">FAQ</a></li>
+                    <li><a href="/s&k" class="hover:underline">Syarat & Ketentuan</a></li>
+                    <li><a href="/privacy-policy" class="hover:underline">Ketentuan Privasi</a></li>
                 </ul>
             </div>
         </div>

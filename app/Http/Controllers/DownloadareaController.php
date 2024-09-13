@@ -76,7 +76,7 @@ class DownloadareaController extends Controller
 
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
-            'nama_file' => 'required|file|mimes:pdf,doc,docx,xls,txt,xlsx,ppt,pptx,txt,png,jpg,jpeg,gif|max:2048'
+            'nama_file' => 'required|file|mimes:pdf,doc,docx,xls,txt,xlsx,ppt,pptx,txt,png,jpg,jpeg,gif|max:10000'
         ]);
 
         $judul = $request->judul;
@@ -150,7 +150,7 @@ class DownloadareaController extends Controller
             'judul' => 'required|string|max:255',
             'file' => 'nullable|file|mimes:pdf,doc,docx,xls,txt,xlsx,ppt,pptx,txt|max:2048'
         ]);
-  
+
         $download = Downloadarea::findOrFail($id_download);
 
         $judul = $request->judul;

@@ -1,64 +1,67 @@
 <?php
 
+use App\Models\User;
+use App\Models\Agenda;
+use App\Models\Berita;
+use App\Models\Trainer;
+use App\Models\Testimoni;
+use App\Models\Halamanbaru;
 use App\Models\Berlangganan;
-use App\Http\Controllers\AgendaController;
-use App\Http\Controllers\AlamatkontakController;
-use App\Http\Controllers\AlbumController;
-use App\Http\Controllers\AppController;
-use App\Http\Controllers\BannerhomeController;
-use App\Http\Controllers\BannersliderController;
-use App\Http\Controllers\BenefitController;
-use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\BerlanggananController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DownloadareaController;
-use App\Http\Controllers\GalleryController;
-use App\Http\Controllers\GrafikController;
-use App\Http\Controllers\HalamanbaruController;
-use App\Http\Controllers\IdentitaswebsiteController;
-use App\Http\Controllers\IklanatasController;
-use App\Http\Controllers\IklansidebarController;
-use App\Http\Controllers\JejakpendapatController;
-use App\Http\Controllers\KategoriberitaController;
-use App\Http\Controllers\KomentarberitaController;
-use App\Http\Controllers\KomentarvideoController;
-use App\Http\Controllers\LayoutController;
-use App\Http\Controllers\LogowebsiteController;
-use App\Http\Controllers\Main2Controller;
-use App\Http\Controllers\MainController;
-use App\Http\Controllers\ManajemenmodulController;
-use App\Http\Controllers\ManajemenuserController;
-use App\Http\Controllers\MenuwebsiteController;
-use App\Http\Controllers\PesanmasukController;
-use App\Http\Controllers\PlaylistvideoController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SekilasinfoController;
-use App\Http\Controllers\SensorkomentarController;
-use App\Http\Controllers\TagberitaController;
-use App\Http\Controllers\TagvideoController;
-use App\Http\Controllers\TestingController;
-use App\Http\Controllers\VideoController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\YmController;
-use App\Http\Controllers\DatabaseController;
-use App\Http\Controllers\HalamanController;
-use App\Http\Controllers\TrainerController;
-use App\Http\Controllers\TestimoniController;
-use App\Http\Controllers\ProgramController;
-use App\Http\Controllers\KategoriprogramController;
+use App\Http\Controllers\AppController;
+use App\Http\Controllers\MainController;
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\Main2Controller;
+use App\Http\Controllers\MitraController;
+use App\Http\Controllers\VideoController;
+use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\GrafikController;
+use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MetodeController;
-use App\Http\Controllers\MetodepembayaranController;
-use App\Http\Controllers\MitraController;
 use App\Http\Controllers\RatingController;
-use App\Http\Controllers\TemplatewebsiteController;
-use App\Models\Agenda;
-use App\Models\Berita;
-use App\Models\Halamanbaru;
-use App\Models\Testimoni;
-use App\Models\User;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BenefitController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\HalamanController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\TestingController;
+use App\Http\Controllers\TrainerController;
+use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\TagvideoController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\IklanatasController;
+use App\Http\Controllers\TagberitaController;
+use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\BannerhomeController;
+use App\Http\Controllers\PesanmasukController;
+use App\Http\Controllers\HalamanbaruController;
+use App\Http\Controllers\LogowebsiteController;
+use App\Http\Controllers\MenuwebsiteController;
+use App\Http\Controllers\SekilasinfoController;
+use App\Http\Controllers\AlamatkontakController;
+use App\Http\Controllers\BannersliderController;
+use App\Http\Controllers\BerlanggananController;
+use App\Http\Controllers\DownloadareaController;
+use App\Http\Controllers\IklansidebarController;
+use App\Http\Controllers\JejakpendapatController;
+use App\Http\Controllers\KomentarvideoController;
+use App\Http\Controllers\ManajemenuserController;
+use App\Http\Controllers\PlaylistvideoController;
+use App\Http\Controllers\KategoriberitaController;
+use App\Http\Controllers\KomentarberitaController;
+use App\Http\Controllers\ManajemenmodulController;
+use App\Http\Controllers\SensorkomentarController;
+use App\Http\Controllers\KategoriprogramController;
+use App\Http\Controllers\TemplatewebsiteController;
+use App\Http\Controllers\IdentitaswebsiteController;
+use App\Http\Controllers\MetodepembayaranController;
+use App\Http\Controllers\IsimateriController;
+
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -206,6 +209,9 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('materi', MateriController::class)
         ->middleware('checkModul:materi');
 
+    Route::resource('isimateri', IsimateriController::class)
+        ->middleware('checkModul:isimateri');
+
     Route::resource('member', MemberController::class)
         ->middleware('checkModul:member');
 
@@ -259,12 +265,13 @@ Route::get('/', [MainController::class, 'index']);
 
 // e-learning
 Route::get('/e-learning', function () {
+    $trainer = Trainer::all();
     $testimonis = Testimoni::all();
     $berlangganans = Berlangganan::all();
     foreach ($berlangganans as $berlangganan) {
         $berlangganan->id_benefits = json_decode($berlangganan->id_benefits); // Decode JSON
     }
-    return view('./myskill/pages/e-learning/e-learning', compact('testimonis', 'berlangganans'));
+    return view('./myskill/pages/e-learning/e-learning', compact('testimonis', 'berlangganans', 'trainer'));
 })->name('E-learning');
 
 Route::get('/e-learning/program', function () {
@@ -292,7 +299,8 @@ Route::get('/bootcamp/digital-marketing', function () {
 
 //cv
 Route::get('/review', function () {
-    return view('./myskill/pages/cv/review');
+    $testimonis = Testimoni::all();
+    return view('./myskill/pages/cv/review', compact('testimonis'));
 })->name('Review CV');
 
 //corporate
@@ -334,9 +342,8 @@ Route::get('/profile/my-transaction', function () {
     return view('./myskill/pages/profile/my-transaction');
 })->name('Transactions');
 
-Route::get('/my-profile', function () {
-    return view('./myskill/pages/profile/my-profile');
-})->name(name: 'My Profile');
+Route::get('/my-profile', [ProfileController::class, 'edit'])->name('profile.my-profile');
+Route::patch('/my-profile', [ProfileController::class, 'update'])->name('profile.update');
 
 // Route::get('/', [MainController::class, 'index']);
 Route::get('sejarah-instansi', [HalamanController::class, 'sejarah_instansi']);
@@ -354,7 +361,7 @@ Route::get('sliderlogo', [MainController::class, 'create']);
 // Route::get('administrator/layout', [TestingController::class, 'layout']);
 
 
-//routes lainnya
+//routes footer
 Route::get('/faq', function () {
     return view('./myskill/pages/lainnya/faq');
 })->name('FAQ');
@@ -362,3 +369,11 @@ Route::get('/faq', function () {
 Route::get('/s&k', function () {
     return view('./myskill/pages/lainnya/s&k');
 })->name('Syarat dan Ketentuan');
+
+Route::get('/privacy-policy', function () {
+    return view('./myskill/pages/lainnya/privacy-policy');
+})->name('Ketentuan Privasi');
+
+Route::get('/about', function () {
+    return view('./myskill/pages/lainnya/about');
+})->name('Tentang');

@@ -203,35 +203,35 @@
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     <div
                         class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                        <a href="/e-learning/program">
-                            <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                                class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                            <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                            <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
-                            <div class="flex items-center text-xs text-gray-500">
-                                <span>5 Video</span>
-                                <span class="mx-1">•</span>
-                                <span>21.403</span>
+                        <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
+                            class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
+                        <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
                             </div>
-                            <div class="flex items-center mt-6">
-                                <span class="text-yellow-400 text-sm">★★★★★</span>
-                                <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                                <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="ml-1 text-xs text-gray-600">4.7/5</span>
+                            <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
+                        <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
+                            class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
+                        <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
                             </div>
-                        </a>
-                    </div>
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                        <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                            class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                        <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                        <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
-                        <div class="flex items-center text-xs text-gray-500">
-                            <span>5 Video</span>
-                            <span class="mx-1">•</span>
-                            <span>21.403</span>
                         </div>
-                        <div class="flex items-center mt-6">
+                        <div class="flex items-center mt-2">
                             <span class="text-yellow-400 text-sm">★★★★★</span>
                             <span class="ml-1 text-xs text-gray-600">4.7/5</span>
                             <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
@@ -242,13 +242,14 @@
                         <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
                             class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
                         <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                        <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
                         <div class="flex items-center text-xs text-gray-500">
-                            <span>5 Video</span>
-                            <span class="mx-1">•</span>
-                            <span>21.403</span>
+                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
                         </div>
-                        <div class="flex items-center mt-6">
+                        <div class="flex items-center mt-2">
+                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-2">
                             <span class="text-yellow-400 text-sm">★★★★★</span>
                             <span class="ml-1 text-xs text-gray-600">4.7/5</span>
                             <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
@@ -259,13 +260,14 @@
                         <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
                             class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
                         <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                        <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
                         <div class="flex items-center text-xs text-gray-500">
-                            <span>5 Video</span>
-                            <span class="mx-1">•</span>
-                            <span>21.403</span>
+                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
                         </div>
-                        <div class="flex items-center mt-6">
+                        <div class="flex items-center mt-2">
+                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-2">
                             <span class="text-yellow-400 text-sm">★★★★★</span>
                             <span class="ml-1 text-xs text-gray-600">4.7/5</span>
                             <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
@@ -276,13 +278,14 @@
                         <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
                             class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
                         <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                        <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
                         <div class="flex items-center text-xs text-gray-500">
-                            <span>5 Video</span>
-                            <span class="mx-1">•</span>
-                            <span>21.403</span>
+                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
                         </div>
-                        <div class="flex items-center mt-6">
+                        <div class="flex items-center mt-2">
+                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-2">
                             <span class="text-yellow-400 text-sm">★★★★★</span>
                             <span class="ml-1 text-xs text-gray-600">4.7/5</span>
                             <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
@@ -293,13 +296,14 @@
                         <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
                             class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
                         <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                        <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
                         <div class="flex items-center text-xs text-gray-500">
-                            <span>5 Video</span>
-                            <span class="mx-1">•</span>
-                            <span>21.403</span>
+                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
                         </div>
-                        <div class="flex items-center mt-6">
+                        <div class="flex items-center mt-2">
+                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-2">
                             <span class="text-yellow-400 text-sm">★★★★★</span>
                             <span class="ml-1 text-xs text-gray-600">4.7/5</span>
                             <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
@@ -310,13 +314,14 @@
                         <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
                             class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
                         <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                        <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
                         <div class="flex items-center text-xs text-gray-500">
-                            <span>5 Video</span>
-                            <span class="mx-1">•</span>
-                            <span>21.403</span>
+                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
                         </div>
-                        <div class="flex items-center mt-6">
+                        <div class="flex items-center mt-2">
+                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-2">
                             <span class="text-yellow-400 text-sm">★★★★★</span>
                             <span class="ml-1 text-xs text-gray-600">4.7/5</span>
                             <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
@@ -327,13 +332,14 @@
                         <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
                             class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
                         <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                        <p class="text-xs text-gray-600 mb-6">VERONICA G.</p>
                         <div class="flex items-center text-xs text-gray-500">
-                            <span>5 Video</span>
-                            <span class="mx-1">•</span>
-                            <span>21.403</span>
+                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
                         </div>
-                        <div class="flex items-center mt-6">
+                        <div class="flex items-center mt-2">
+                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center mt-2">
                             <span class="text-yellow-400 text-sm">★★★★★</span>
                             <span class="ml-1 text-xs text-gray-600">4.7/5</span>
                             <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
@@ -343,153 +349,37 @@
                 </div>
         </section>
 
-        {{-- Section 6: Mentors --}}
-        <section class="bg-gray-100 py-12 px-4">
+        {{-- Section : Mentors --}}
+        <section class="bg-gray-100 py-3 my-3 px-4 lg:mt-20">
             <div class="container mx-auto">
-                <h2 class="text-3xl font-bold text-center mb-2">Dibuat oleh Praktisi Profesional Terkurasi. Walk the talk.
-                </h2>
+                <h3 class="text-2xl text-center font-bold py-3">Belajar Bersama Senior Operator Langsung di Kantor</h3>
                 <p class="text-center text-gray-600 mb-8">Belajar langsung dari experienced professional yang mengajarkan
                     pengalaman, case study & best practices.</p>
 
                 <div
-                    class="flex flex-nowrap md:mx-24 justify-start md:justify-between overflow-x-auto pb-6 space-x-4 md:space-x-2 snap-x no-scrollbar">
+                    class="flex flex-nowrap md:mx-24 justify-start md:justify-center overflow-x-auto pb-3 space-x-4 snap-x no-scrollbar">
                     <!-- Repeat this card structure for each professional -->
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
+                    @foreach ($trainer as $train)
+                        <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
+                            <img src="{{ asset('foto_trainer/' . $train->foto) }}" alt="Professional"
+                                class="w-full h-full object-cover rounded-lg">
+                            <div
+                                class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
+                                <a href="{{ $train->link }}">
+                                    <button
+                                        class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
+                                        Materi</button>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
 
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors2.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors3.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors4.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors5.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors6.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors7.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors8.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors9.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors10.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                        <img src="{{ asset('assets/e-learning/mentors2.webp') }}" alt="Professional"
-                            class="w-full h-full object-cover rounded-lg">
-                        <div
-                            class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </div>
-                    </div>
-
-                    <!-- Repeat the above card structure for each professional (total of 7 cards) -->
 
                 </div>
+
+                <!-- Repeat the above card structure for each professional (total of 7 cards) -->
+
+            </div>
             </div>
         </section>
 
