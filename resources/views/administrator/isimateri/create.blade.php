@@ -5,29 +5,42 @@
         <div class="col">
             <div class="card card-shadow">
                 <div class="card-header">
-                    <h3 class="mb-0">Tambah Materi</h3>
+                    <h3 class="mb-0">Isi Materi</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrator.materi.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('administrator.isimateri.store') }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
                         @csrf
                         <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                             <tbody>
                                 <tr>
-                                    <th style="padding: 5px;">Materi</th>
+                                    <th style="padding: 5px;">URL</th>
                                     <td style="padding: 5px;">
-                                        <input type="text" class="form-control" id="nama_materi" name="nama_materi"
-                                            placeholder="Masukkan Nama Materi" required>
+                                        <input type="text" class="form-control" id="url" name="url"
+                                            placeholder="Masukkan URL Materi" required>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="padding: 5px;">Program</th>
+                                    <th style="padding: 5px;">Judul File</th>
                                     <td style="padding: 5px;">
-                                        <select class="form-control" name="id_program" required>
-                                            <option value="">-- Pilih Program --</option>
-                                            @foreach ($programs as $program)
-                                                <option value="{{ $program->id_program }}">
-                                                    {{ $program->judul_program }}
+                                        <input type="text" class="form-control" id="judul_file" name="judul_file"
+                                            placeholder="Masukkan Judul File" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">File</th>
+                                    <td style="padding: 5px;">
+                                        <input type="file" class="form-control" id="file" name="file">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Materi</th>
+                                    <td style="padding: 5px;">
+                                        <select class="form-control" name="id_materi" required>
+                                            <option value="">-- Pilih Materi --</option>
+                                            @foreach ($materis as $materi)
+                                                <option value="{{ $materi->id_materi }}">
+                                                    {{ $materi->nama_materi }}
                                                 </option>
                                             @endforeach
                                         </select>
