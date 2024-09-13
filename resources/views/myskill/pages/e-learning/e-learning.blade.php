@@ -163,10 +163,10 @@
                     setiap bulan tanpa tambahan biaya.</p>
                 <!-- Buttons -->
                 <div class="flex overflow-x-auto space-x-2 pb-2 no-scrollbar mb-5">
-                    @foreach ($categories as $kategori)
-                        <button
-                            id="btn-{{ $kategori->id_kategori_program }}"
-                            class="tab-button bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold flex-shrink-0 whitespace-nowrap">
+                    @foreach ($categories as $index => $kategori)
+                        <button id="btn-{{ $kategori->id_kategori_program }}"
+                            data-category-id="{{ $kategori->id_kategori_program }}"
+                            class="tab-button {{ $index === 0 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700' }} px-4 py-2 rounded-full font-semibold flex-shrink-0 whitespace-nowrap">
                             {{ $kategori->nama_kategori }}
                         </button>
                     @endforeach
@@ -174,14 +174,44 @@
 
                 <!-- Carousel Container -->
                 <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
-                    @include('./myskill/partials.cards-elearning')
+                    <div id="card-container" class="flex space-x-4">
+                        @foreach ($materis as $materi)
+                            <a href="{{ url('/e-learning/materi/' . $materi->id_materi) }}">
+                                <div id="card-{{ $materi->kategoriprogram->id_kategori_program }}"
+                                    data-category-id="{{ $materi->kategoriprogram->id_kategori_program }}"
+                                    class="card flex-none bg-white rounded-lg shadow-md h-80 w-64 flex flex-col">
+                                    <div class="relative w-full h-40">
+                                        <img src="{{ asset('./thumbnail/' . $materi->thumbnail) }}"
+                                            alt="{{ $materi->nama_materi }}"
+                                            class="absolute inset-0 w-full h-full object-contain rounded-t-lg">
+                                    </div>
+                                    <div class="p-4 flex flex-col flex-grow">
+                                        <h3 class="font-bold text-lg mb-2">{{ $materi->nama_materi }}</h3>
+                                        <div class="flex items-center text-sm">
+                                            <span class="mr-2">📅 {{ $materi->kategoriProgram->nama_kategori }}
+                                                Video</span>
+                                        </div>
+                                        <div class="flex items-center text-sm mt-1">
+                                            <span class="mr-2">👤 {{ number_format($materi->id_program * 10) }}</span>
+                                        </div>
+                                        <div class="flex items-center mt-2">
+                                            <span class="text-yellow-500">★★★★★</span>
+                                            <span class="ml-1 text-sm">4.71/5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
+
+
 
                 <div class="flex justify-center mt-4 gap-4">
                     <a href="#pricing" class="scroll-smooth"><button
                             class="bg-yellow-500 text-white px-4 py-2 rounded-full">Mulai Berlangganan</button></a>
                     <a href="#learning" class="scroll-smooth"><button
-                            class="border border-blue-500 text-blue-500 px-4 py-2 rounded-full">Lihat Semua
+                            class="border border-cyan-500 text-cyan-300 px-4 py-2 rounded-full">Lihat Semua
                             Materi</button></a>
                 </div>
             </div>
@@ -590,3 +620,59 @@
 
     </section>
 @endsection
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Select all buttons and cards
+        const buttons = document.querySelectorAll('.tab-button');
+        const cards = document.querySelectorAll('.card');
+
+        // Check if buttons and cards are found; if not, exit the script
+        if (buttons.length === 0 || cards.length === 0) {
+            console.error('Buttons or cards not found in the DOM.');
+            return;
+        }
+
+        // Set the first button as active and display the first set of cards
+        const firstCategoryId = buttons[0].getAttribute('data-category-id');
+        setActiveButton(buttons[0]);
+        filterCards(firstCategoryId);
+
+        // Add click event listeners to each button
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const categoryId = button.getAttribute('data-category-id');
+
+                // Change button color to indicate active state
+                setActiveButton(button);
+
+                // Display only the cards that match the selected category ID
+                filterCards(categoryId);
+            });
+        });
+
+        // Function to set the active button and remove active state from others
+        function setActiveButton(activeButton) {
+            // Reset all buttons to the default style
+            buttons.forEach(button => {
+                button.classList.remove('bg-cyan-500', 'text-white');
+                button.classList.add('bg-gray-200', 'text-gray-700');
+            });
+
+            // Set the clicked button to active style
+            activeButton.classList.remove('bg-gray-200', 'text-gray-700');
+            activeButton.classList.add('bg-cyan-500', 'text-white');
+        }
+
+        // Function to show cards based on the selected category ID
+        function filterCards(categoryId) {
+            cards.forEach(card => {
+                if (card.getAttribute('data-category-id') === categoryId) {
+                    card.classList.remove('hidden'); // Show the card
+                } else {
+                    card.classList.add('hidden'); // Hide the card
+                }
+            });
+        }
+    });
+</script>

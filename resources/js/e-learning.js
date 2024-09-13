@@ -1,92 +1,54 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Select all cards and remove the styles
-    document.querySelectorAll('.card').forEach(card => {
-        card.classList.remove('border-indigo-500', 'scale-105');
-    });
 
-    // Apply styles to the default card
-    const defaultCard = document.querySelector('#card-1'); // Set your default card's ID or class
-    if (defaultCard) {
-        defaultCard.classList.add('border-indigo-500', 'scale-105');
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+        // Select all buttons and cards
+        const buttons = document.querySelectorAll('.tab-button');
+        const cards = document.querySelectorAll('.card');
 
-    // Add click event listener to all cards
-    document.querySelectorAll('.card').forEach(card => {
-        card.addEventListener('click', function() {
-            document.querySelectorAll('.card').forEach(c => c.classList.remove('border-indigo-500', 'scale-105'));
-            this.classList.add('border-indigo-500', 'scale-105');
+        // Check if buttons and cards are found; if not, exit the script
+        if (buttons.length === 0 || cards.length === 0) {
+            console.error('Buttons or cards not found in the DOM.');
+            return;
+        }
+
+        // Set the first button as active and display the first set of cards
+        const firstCategoryId = buttons[0].getAttribute('data-category-id');
+        setActiveButton(buttons[0]);
+        filterCards(firstCategoryId);
+
+        // Add click event listeners to each button
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const categoryId = button.getAttribute('data-category-id');
+
+                // Change button color to indicate active state
+                setActiveButton(button);
+
+                // Display only the cards that match the selected category ID
+                filterCards(categoryId);
+            });
         });
-    });
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('[data-target]');
-    const images = document.querySelectorAll('[id^="img"]');
-
-    // Show the first image by default
-    const defaultImage = document.getElementById('img1');
-    if (defaultImage) {
-        defaultImage.classList.remove('hidden');
-        defaultImage.classList.add('fade-in-right');
-    }
-
-    cards.forEach(card => {
-        card.addEventListener('click', () => {
-            const targetId = card.getAttribute('data-target');
-
-            // Hide all images with fade-out animation
-            images.forEach(img => {
-                if (!img.classList.contains('hidden')) {
-                    img.classList.add('fade-in-left');
-                    img.classList.remove('fade-out-right');
-                    setTimeout(() => img.classList.add('hidden'), 100); // Match duration with animation
-                }
+        // Function to set the active button and remove active state from others
+        function setActiveButton(activeButton) {
+            // Reset all buttons to the default style
+            buttons.forEach(button => {
+                button.classList.remove('bg-cyan-500', 'text-white');
+                button.classList.add('bg-gray-200', 'text-gray-700');
             });
 
-            // Show the selected image with fade-in animation
-            const targetImage = document.getElementById(targetId);
-            if (targetImage) {
-                targetImage.classList.remove('hidden');
-                targetImage.classList.add('fade-in-left');
-            }
-        });
+            // Set the clicked button to active style
+            activeButton.classList.remove('bg-gray-200', 'text-gray-700');
+            activeButton.classList.add('bg-cyan-500', 'text-white');
+        }
+
+        // Function to show cards based on the selected category ID
+        function filterCards(categoryId) {
+            cards.forEach(card => {
+                if (card.getAttribute('data-category-id') === categoryId) {
+                    card.classList.remove('hidden'); // Show the card
+                } else {
+                    card.classList.add('hidden'); // Hide the card
+                }
+            });
+        }
     });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Set the default active button and visible card
-    const defaultButtonId = 'btn-1';
-    const defaultCardId = 'card-1';
-    
-    // Function to handle button click
-    function handleButtonClick(buttonId, cardId) {
-        // Remove 'active' class from all buttons
-        document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-
-        // Add 'active' class to the clicked button
-        document.getElementById(buttonId).classList.add('active');
-
-        // Hide all cards and show the selected card
-        document.querySelectorAll('.card').forEach(card => {
-            if (card.id === cardId) {
-                card.classList.remove('hidden'); // Show the selected card
-            } else {
-                card.classList.add('hidden'); // Hide other cards
-            }
-        });
-    }
-
-    // Set the default active button and visible card
-    handleButtonClick(defaultButtonId, defaultCardId);
-
-    // Add click event listeners to all buttons
-    document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', function() {
-            // Get the button ID and determine the corresponding card ID
-            const buttonId = this.id;
-            const cardId = `card-${this.id.split('-')[1]}`;
-            handleButtonClick(buttonId, cardId);
-        });
-    });
-});
- 

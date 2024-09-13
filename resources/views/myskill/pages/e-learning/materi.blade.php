@@ -19,41 +19,15 @@
                     </div>
                     <div class="mx-4 md:mx-20 -mt-8 md:-mt-28">
                         <h3 class="text-gray-500 font-semibold py-4">Materi</h3>
-                        <div class="py-2 flex items-center justify-between">
-                            <div class="flex items-center space-x-2 mx-2 md:mx-6">
-                                <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
-                                <h3 class="text-sm md:text-base">1. Copywriting Introduction</h3>
+                        @foreach ($materi->isimateri as $isi)
+                            <div class="py-2 flex items-center justify-between">
+                                <div class="flex items-center space-x-2 mx-2 md:mx-6">
+                                    <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
+                                    <h3 class="text-sm md:text-base">{{ $isi->judul_file }}</h3>
+                                </div>
+                                <i class="fa-regular fa-square text-lg md:text-xl"></i>
                             </div>
-                            <i class="fa-regular fa-square text-lg md:text-xl"></i>
-                        </div>
-                        <div class="py-2 flex items-center justify-between">
-                            <div class="flex items-center space-x-2 mx-2 md:mx-6">
-                                <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
-                                <h3 class="text-sm md:text-base">2. The Importance of Copywriting</h3>
-                            </div>
-                            <i class="fa-regular fa-square text-lg md:text-xl"></i>
-                        </div>
-                        <div class="py-2 flex items-center justify-between">
-                            <div class="flex items-center space-x-2 mx-2 md:mx-6">
-                                <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
-                                <h3 class="text-sm md:text-base">3. Copywriting vs Content Writing</h3>
-                            </div>
-                            <i class="fa-regular fa-square text-lg md:text-xl"></i>
-                        </div>
-                        <div class="py-2 flex items-center justify-between">
-                            <div class="flex items-center space-x-2 mx-2 md:mx-6">
-                                <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
-                                <h3 class="text-sm md:text-base">4. Characteristic of Copywriting</h3>
-                            </div>
-                            <i class="fa-regular fa-square text-lg md:text-xl"></i>
-                        </div>
-                        <div class="py-2 flex items-center justify-between">
-                            <div class="flex items-center space-x-2 mx-2 md:mx-6">
-                                <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
-                                <h3 class="text-sm md:text-base">5. Copywriting Media</h3>
-                            </div>
-                            <i class="fa-regular fa-square text-lg md:text-xl"></i>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -119,7 +93,7 @@
         <h2 class="text-xl md:text-2xl font-bold mb-6 text-start px-4 md:px-14">Rating Materi</h2>
         <section class="overflow-x-auto bg-white p-4 md:p-4">
             <div class="grid grid-flow-row gap-4">
-                <div class="container mx-auto px-4">                    
+                <div class="container mx-auto px-4">
                     <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
                         <div id="card-container" class="flex space-x-4">
                             <!-- Rating Card -->
@@ -286,8 +260,37 @@
 
                 <!-- Carousel Container -->
                 <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
-                    @include('./myskill/partials.cards-elearning')
+                    <div id="card-container" class="flex space-x-4">
+                        @foreach ($materis as $materi)
+                            <a href="{{ url('/e-learning/materi/' . $materi->id_materi) }}">
+                                <div id="card-{{ $materi->kategoriprogram->id_kategori_program }}"
+                                    class="card flex-none bg-white rounded-lg shadow-md h-80 w-64 flex flex-col">
+                                    <div class="relative w-full h-40">
+                                        <img src="{{ asset('./thumbnail/' . $materi->thumbnail) }}"
+                                            alt="{{ $materi->nama_materi }}"
+                                            class="absolute inset-0 w-full h-full object-contain rounded-t-lg">
+                                    </div>
+                                    <div class="p-4 flex flex-col flex-grow">
+                                        <h3 class="font-bold text-lg mb-2">{{ $materi->nama_materi }}</h3>
+                                        <div class="flex items-center text-sm">
+                                            <span class="mr-2">📅 {{ $materi->kategoriProgram->nama_kategori }}
+                                                Video</span>
+                                        </div>
+                                        <div class="flex items-center text-sm mt-1">
+                                            <span class="mr-2">👤 {{ number_format($materi->id_program * 10) }}</span>
+                                        </div>
+                                        <div class="flex items-center mt-2">
+                                            <span class="text-yellow-500">★★★★★</span>
+                                            <span class="ml-1 text-sm">4.71/5</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
+                    </div>
                 </div>
+
+
             </div>
         </section>
 
