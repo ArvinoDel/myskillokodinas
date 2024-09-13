@@ -354,7 +354,7 @@ Route::get('sliderlogo', [MainController::class, 'create']);
 // Route::get('administrator/layout', [TestingController::class, 'layout']);
 
 
-//routes lainnya
+//routes footer
 Route::get('/faq', function () {
     return view('./myskill/pages/lainnya/faq');
 })->name('FAQ');
@@ -362,3 +362,11 @@ Route::get('/faq', function () {
 Route::get('/s&k', function () {
     return view('./myskill/pages/lainnya/s&k');
 })->name('Syarat dan Ketentuan');
+
+Route::get('/privacy-policy', function () {
+    return view('./myskill/pages/lainnya/privacy-policy');
+})->name('Ketentuan Privasi');
+
+Route::get('/about', function () {
+    return view('./myskill/pages/lainnya/about');
+})->name('Tentang');

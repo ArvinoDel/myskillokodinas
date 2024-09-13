@@ -6,7 +6,7 @@
 
     <section class="mb-10">
         <h2 class="text-2xl font-bold mb-5">1. Cara Daftar Akun Pandai Digital</h2>
-        <p>1. Silakan mengunjungi halaman <a href="#" class="text-blue-500 underline">Pendaftaran MySkill</a></p>
+        <p>1. Silakan mengunjungi halaman <a href="#" class="text-blue-500 underline">Pendaftaran Pandai Digital</a></p>
         <p>2. Masukkan akun e-mail (gmail) yang masih aktif dan password.</p>
         <p>3. Jika pendaftaran berhasil, kamu akan menerima e-mail verifikasi.</p>
     </section>
@@ -14,7 +14,7 @@
     <section class="mb-10">
         <h2 class="text-2xl font-bold mb-5">2. Cara Daftar Program dan Pembayaran</h2>
         <ol class="list-decimal list-inside">
-            <li>Login ke website <a href="#" class="text-blue-500 underline">MySkill</a></li>
+            <li>Login ke website <a href="#" class="text-blue-500 underline">Pandai Digital</a></li>
             <li>Pilih program yang ingin diikuti (E-learning/Bootcamp/Mentoring CV)</li>
             <li>Masukkan kode promo jika ada</li>
             <li>Pilih metode pembayaran, kemudian selesaikan pembayaran di <a href="#" class="text-blue-500 underline">Transaksi Saya</a></li>
@@ -33,7 +33,7 @@
         <h2 class="text-2xl font-bold mb-5">3. E-Learning</h2>
         <h3 class="text-xl font-semibold">Cara Akses E-learning Setelah Berhasil Bayar</h3>
         <ol class="list-decimal list-inside">
-            <li>Login akun MySkill atau klik <a href="#" class="text-blue-500 underline">E-learning</a></li>
+            <li>Login akun Pandai Digital atau klik <a href="#" class="text-blue-500 underline">E-learning</a></li>
             <li>Pilih salah satu learning path (misalnya Digital Marketing)</li>
             <li>Kerjakan pretest, belajar lewat video, dan kerjakan post test</li>
             <li>Pastikan progres belajar mencapai 100%</li>

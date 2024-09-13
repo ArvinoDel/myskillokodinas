@@ -15,10 +15,8 @@
             <div class="flex flex-col justify-center max-sm:text-center max-sm:mt-5">
                 <h3 class="font-semibold">Pandai Digital</h3>
                 <ul class="mt-2 space-y-2">
-                    <li><a href="#" class="hover:underline">Tentang</a></li>
-                    <li><a href="#" class="hover:underline">Karir</a></li>
-                    <li><a href="#" class="hover:underline">Kerjasama</a></li>
-                    <li><a href="#" class="hover:underline">Blog</a></li>
+                    <li><a href="/about" class="hover:underline">Tentang</a></li>
+                    <li><a href="/corporate-service" class="hover:underline">Kerjasama</a></li>
                 </ul>
             </div>
 
@@ -36,7 +34,7 @@
                 <ul class="mt-2 space-y-2">
                     <li><a href="/faq" class="hover:underline">FAQ</a></li>
                     <li><a href="/s&k" class="hover:underline">Syarat & Ketentuan</a></li>
-                    <li><a href="/lainnya/snk" class="hover:underline">Ketentuan Privasi</a></li>
+                    <li><a href="/privacy-policy" class="hover:underline">Ketentuan Privasi</a></li>
                 </ul>
             </div>
         </div>
@@ -56,7 +54,7 @@
             <div class="flex lg:mx-32 lg:justify-start max-lg:justify-center space-x-1 mt-2">
                 <!-- Payment Method Icons -->
                 @foreach ($metod as $pay)
-                    <img src="{{ asset('foto_metode/' . $pay->gambar) }}" class="max-w-12 mx-3" alt="Bank">
+                <img src="{{ asset('foto_metode/' . $pay->gambar) }}" class="max-w-12 mx-3" alt="Bank">
                 @endforeach
                 <!-- Add more payment icons as needed -->
             </div>
