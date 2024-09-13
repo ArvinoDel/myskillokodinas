@@ -1,24 +1,23 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Select all cards and remove the styles
-    document.querySelectorAll('.cards').forEach(card => {
+    document.querySelectorAll('.card').forEach(card => {
         card.classList.remove('border-indigo-500', 'scale-105');
     });
 
     // Apply styles to the default card
-    const defaultCard = document.querySelector('#card1'); // Set your default card's ID or class
+    const defaultCard = document.querySelector('#card-1'); // Set your default card's ID or class
     if (defaultCard) {
         defaultCard.classList.add('border-indigo-500', 'scale-105');
     }
 
     // Add click event listener to all cards
-    document.querySelectorAll('.cards').forEach(card => {
+    document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('click', function() {
-            document.querySelectorAll('.cards').forEach(c => c.classList.remove('border-indigo-500', 'scale-105'));
+            document.querySelectorAll('.card').forEach(c => c.classList.remove('border-indigo-500', 'scale-105'));
             this.classList.add('border-indigo-500', 'scale-105');
         });
     });
 });
-
 
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('[data-target]');
@@ -35,13 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('click', () => {
             const targetId = card.getAttribute('data-target');
 
-            
             // Hide all images with fade-out animation
             images.forEach(img => {
                 if (!img.classList.contains('hidden')) {
                     img.classList.add('fade-in-left');
                     img.classList.remove('fade-out-right');
-                    setTimeout(() => img.classList.add('hidden'),100); // Match duration with animation
+                    setTimeout(() => img.classList.add('hidden'), 100); // Match duration with animation
                 }
             });
 
@@ -55,10 +53,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     // Set the default active button and visible card
-    const defaultButtonId = 'btn-digitalmarketing';
-    const defaultCardId = 'card-digitalmarketing';
+    const defaultButtonId = 'btn-1';
+    const defaultCardId = 'card-1';
     
     // Function to handle button click
     function handleButtonClick(buttonId, cardId) {
@@ -91,5 +89,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-
-
+ 
