@@ -60,6 +60,8 @@ use App\Http\Controllers\KategoriprogramController;
 use App\Http\Controllers\TemplatewebsiteController;
 use App\Http\Controllers\IdentitaswebsiteController;
 use App\Http\Controllers\MetodepembayaranController;
+use App\Http\Controllers\IsimateriController;
+
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -206,6 +208,9 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
     Route::resource('materi', MateriController::class)
         ->middleware('checkModul:materi');
+
+    Route::resource('isimateri', IsimateriController::class)
+        ->middleware('checkModul:isimateri');
 
     Route::resource('member', MemberController::class)
         ->middleware('checkModul:member');

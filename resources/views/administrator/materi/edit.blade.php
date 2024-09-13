@@ -14,24 +14,9 @@
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                         <tbody>
                             <tr>
-                                <th style="padding: 5px;">Judul Materi</th>
+                                <th style="padding: 5px;">Nama Materi</th>
                                 <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="judul_materi" name="judul_materi" value="{{ $materis->judul_materi }}" required>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="padding: 5px;">Video</th>
-                                <td style="padding: 5px;">
-                                    <div class="d-flex align-items-center">
-                                        <video id="video-preview" controls style="max-width: 200px; margin-top: 5px;" class="mr-3">
-                                            <source src="{{ url('video_materi/'.$materis->video_materi) }}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                        <div class="flex-grow-1">
-                                            <input type="file" class="form-control" onchange="previewVideo(event)" id="video_materi" name="video_materi" accept="video/*">
-                                            <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah video.</small>
-                                        </div>
-                                    </div>
+                                    <input type="text" class="form-control" id="nama_materi" name="nama_materi" value="{{ $materis->nama_materi }}" required>
                                 </td>
                             </tr>
                             <tr>
