@@ -292,7 +292,8 @@ Route::get('/bootcamp/digital-marketing', function () {
 
 //cv
 Route::get('/review', function () {
-    return view('./myskill/pages/cv/review');
+    $testimonis = Testimoni::all();
+    return view('./myskill/pages/cv/review', compact('testimonis'));
 })->name('Review CV');
 
 //corporate

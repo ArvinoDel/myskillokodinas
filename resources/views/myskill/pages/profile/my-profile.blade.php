@@ -113,7 +113,7 @@
                         <label for="foto" class="block text-gray-700">Foto</label>
                         <input type="file" id="foto" name="foto" class="mt-2 p-2 w-full border rounded">
                     </div>
-                    <div>
+                    <div class="hidden">
                         <label for="level" class="block text-gray-700">Level</label>
                         <input type="text" id="level" name="level" class="mt-2 p-2 w-full border rounded" value="{{ old('level', $user->level) }}">
                     </div>
