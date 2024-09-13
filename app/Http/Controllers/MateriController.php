@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Isimateri;
+use App\Models\Kategoriprogram;
 use App\Models\Materi;
 use App\Models\Program;
 use Illuminate\View\View;
@@ -26,39 +27,43 @@ class MateriController extends Controller
     {
         $search = $request->search;
         $nama_materi = $request->nama_materi;
+        $id_kategori_program = $request->id_kategori_program; // Tambahkan ini
 
-        $query = Materi::query();
+        $query = Materi::query(); // Tambahkan eager loading
 
         if (!empty($search)) {
             $query->where('nama_materi', 'like', "%$search%");
         }
 
-        if (!empty($judul_materi)) {
+        if (!empty($nama_materi)) {
             $query->where('nama_materi', $nama_materi);
         }
 
+        if (!empty($id_kategori_program)) { // Tambahkan ini
+            $query->where('id_kategori_program', $id_kategori_program);
+        }
+
         $materis = $query->paginate(10);
+        $kategoriprograms = Kategoriprogram::all();
 
-
-        // Ambil semua data program
-        $programs = Program::all();
-        $isi_materis = Isimateri::all();
-
+        // Ambil semua data kategori program
+        // dd($kategoriprograms);
         $nama_materis = Materi::select('nama_materi')
             ->groupBy('nama_materi')
             ->get();
 
-        return view('administrator.materi.index', compact(['materis', 'nama_materis', 'programs']));
+        return view('administrator.materi.index', compact(['materis', 'nama_materis', 'kategoriprograms']));
     }
 
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $programs = Program::all();
+        $kategoriprograms = Kategoriprogram::all();
         // dd($programs); // Debugging // Mengambil semua data program
-        return view('administrator.materi.create', compact('programs'));
+        return view('administrator.materi.create', compact('kategoriprograms'));
     }
 
     /**
@@ -70,27 +75,29 @@ class MateriController extends Controller
 
     $request->validate([
         'nama_materi' => 'required|string|max:255',
-        'id_program' => 'nullable|exists:program,id_program',
+        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        'id_kategori_program' => 'nullable|exists:kategori_program,id_kategori_program',
     ]);
 
-    try {
-        Materi::create([
-            'nama_materi' => $request->nama_materi,
-            'id_program' => $request->id_program,
-        ]);
+    $gambarName = null;
 
-        return response()->json([
-            'url' => route('administrator.materi.index'),
-            'success' => true,
-            'message' => 'Data Materi Berhasil Ditambah'
-        ]);
-    } catch (\Exception $e) {
-        Log::error('Error:', ['exception' => $e->getMessage()]);
-        return response()->json([
-            'success' => false,
-            'message' => 'Terjadi kesalahan saat menambah data.'
-        ], 500);
+    if ($request->hasFile('thumbnail')) {
+        $gambar = $request->file("thumbnail");
+        $gambarName = $gambar->getClientOriginalName(); // Menggunakan nama file asli
+        $gambar->move("./thumbnail/", $gambarName);
     }
+
+    Materi::create([
+        'nama_materi' => $request->nama_materi,
+        'id_kategori_program' => $request->id_kategori_program,
+        'thumbnail' => $gambarName
+    ]);
+
+    return response()->json([
+        'url' => route('administrator.materi.index'),
+        'success' => true,
+        'message' => 'Data Materi Berhasil Ditambah'
+    ]);
 }
 
     /**
@@ -108,8 +115,8 @@ class MateriController extends Controller
     {
         $materis = Materi::findOrFail($id);
 
-        $programs = Program::all();
-        return view('administrator.materi.edit', compact('materis', 'programs'));
+        $kategoriprograms = Kategoriprogram::all();
+        return view('administrator.materi.edit', compact('materis', 'kategoriprograms'));
     }
 
     /**
@@ -117,34 +124,31 @@ class MateriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Validasi input
-        $request->validate([
-            'nama_materi' => 'required|string|max:255',
-            'id_program' => 'nullable|exists:program,id_program', // Validasi id_program
-            // 'video_materi' => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg|max:20480',
-        ]);
 
-        // Temukan materi yang akan diperbarui
         $materis = Materi::findOrFail($id);
 
-
-         // Hapus video lama jika ada video baru yang diunggah
-        // if($request->hasFile('video_materi')) {
-        //     if ($materis->video_materi && file_exists(public_path("video_materi/" . $materis->video_materi))) {
-        //         unlink(public_path("video_materi/" . $materis->video_materi));
-        //     }
-        //     $video = $request->file("video_materi");
-        //     $videoName = $video->getClientOriginalName();
-        //     $video->move(public_path("video_materi"), $videoName);
-        //     $materis->video_materi = $videoName;
-        // }
-
-        // Perbarui data materi
-        $materis->update([
+        $updateData = [
             'nama_materi' => $request->nama_materi,
-            'id_program' => $request->id_program,
-            // 'video_materi' => $materis->video_materi,
-        ]);
+            'id_kategori_program' => $request->id_kategori_program,
+        ];
+
+        if ($request->hasFile('thumbnail')) {
+            $gambar = $request->file("thumbnail");
+            $gambarName = $gambar->getClientOriginalName();
+            $gambar->move("./thumbnail/", $gambarName);
+
+            // Menghapus gambar lama jika ada
+            if ($materis->thumbnail) {
+                $path = "./thumbnail/" . $materis->thumbnail;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+
+            $updateData['thumbnail'] = $gambarName;
+        }
+
+        $materis->update($updateData);
 
         return response()->json([
             'url' => route('administrator.materi.index'),
@@ -160,12 +164,13 @@ class MateriController extends Controller
     public function destroy(string $id)
     {
         $materis = Materi::findOrFail($id);
+        if ($materis->thumbnail) {
+            $path = "./thumbnail/" . $materis->thumbnail;
+            if (file_exists($path)) {
+                unlink($path);
+            }
+        }
         $materis->delete();
-
-       // Hapus file video dari storage
-        // if ($materis->video_materi && file_exists(public_path("video_materi/" . $materis->video_materi))) {
-        //     unlink(public_path("video_materi/" . $materis->video_materi));
-        // }
 
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }
