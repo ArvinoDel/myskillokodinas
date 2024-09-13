@@ -28,25 +28,24 @@
             </div>
         </div>
 
-        <h2 class="text-xl font-semibold mb-4 text-center">Co-founders dari Pandai Digital:</h2>
-        <div class="text-center w-screen">
-            <div class="flex justify-center gap-6 flex-wrap max-sm:gap-4 md:gap-4 w-screen">
+        <h2 class="text-lg sm:text-xl font-semibold mb-4 text-center">Co-founders dari Pandai Digital:</h2>
+        <div class="text-center">
+            <div class="flex justify-center gap-4 flex-wrap">
                 <div
-                    class="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-8 rounded-2xl text-white text-center max-w-xs">
-                    <img src="/path/to/angga-photo.png" alt="Angga" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    class="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-4 sm:p-6 md:p-8 rounded-2xl text-white text-center max-w-xs">
+                    <img src="/path/to/angga-photo.png" alt="Angga" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
                     <p class="font-semibold">Angga</p>
                     <p>Pandai Digital</p>
                 </div>
                 <div
-                    class="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-8 rounded-2xl text-white text-center max-w-xs">
-                    <img src="/path/to/erahmat-photo.png" alt="Erahmat" class="w-24 h-24 rounded-full mx-auto mb-4">
+                    class="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-4 sm:p-6 md:p-8 rounded-2xl text-white text-center max-w-xs">
+                    <img src="/path/to/erahmat-photo.png" alt="Erahmat" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
                     <p class="font-semibold">Erahmat</p>
                     <p>Pandai Digital</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
-@endsection
+    @endsection
