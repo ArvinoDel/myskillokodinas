@@ -36,7 +36,7 @@
                 <ul class="mt-2 space-y-2">
                     <li><a href="/faq" class="hover:underline">FAQ</a></li>
                     <li><a href="/s&k" class="hover:underline">Syarat & Ketentuan</a></li>
-                    <li><a href="/lainnya/snk" class="hover:underline">Ketentuan Privasi</a></li>
+                    <li><a href="/privacy-policy" class="hover:underline">Ketentuan Privasi</a></li>
                 </ul>
             </div>
         </div>
@@ -56,7 +56,7 @@
             <div class="flex lg:mx-32 lg:justify-start max-lg:justify-center space-x-1 mt-2">
                 <!-- Payment Method Icons -->
                 @foreach ($metod as $pay)
-                    <img src="{{ asset('foto_metode/' . $pay->gambar) }}" class="max-w-12 mx-3" alt="Bank">
+                <img src="{{ asset('foto_metode/' . $pay->gambar) }}" class="max-w-12 mx-3" alt="Bank">
                 @endforeach
                 <!-- Add more payment icons as needed -->
             </div>

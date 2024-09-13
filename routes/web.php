@@ -362,3 +362,7 @@ Route::get('/faq', function () {
 Route::get('/s&k', function () {
     return view('./myskill/pages/lainnya/s&k');
 })->name('Syarat dan Ketentuan');
+
+Route::get('/privacy-policy', function () {
+    return view('./myskill/pages/lainnya/privacy-policy');
+})->name('Ketentuan Privasi');
