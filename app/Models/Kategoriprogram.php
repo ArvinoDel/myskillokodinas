@@ -19,4 +19,9 @@ class Kategoriprogram extends Model
     {
         return $this->hasMany(Program::class, 'id_kategori_program', 'id_kategori_program');
     }
+
+    public function materi()
+    {
+        return $this->hasMany(Materi::class, 'id_kategori_program', 'id_kategori_program');
+    }
 }

@@ -21,13 +21,19 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="padding: 5px;">Program</th>
+                                    <th style="padding: 5px;">Thumbnail</th>
                                     <td style="padding: 5px;">
-                                        <select class="form-control" name="id_program" required>
-                                            <option value="">-- Pilih Program --</option>
-                                            @foreach ($programs as $program)
-                                                <option value="{{ $program->id_program }}">
-                                                    {{ $program->judul_program }}
+                                        <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/*">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Kategori</th>
+                                    <td style="padding: 5px;">
+                                        <select class="form-control" name="id_kategori_program" required>
+                                            <option value="">-- Pilih Kategori --</option>
+                                            @foreach ($kategoriprograms as $katprogram)
+                                                <option value="{{ $katprogram->id_kategori_program }}">
+                                                    {{ $katprogram->nama_kategori }}
                                                 </option>
                                             @endforeach
                                         </select>

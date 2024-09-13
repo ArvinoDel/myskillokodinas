@@ -163,21 +163,13 @@
                     setiap bulan tanpa tambahan biaya.</p>
                 <!-- Buttons -->
                 <div class="flex overflow-x-auto space-x-2 pb-2 no-scrollbar mb-5">
-                    <button id="btn-digitalmarketing"
-                        class="tab-button bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold flex-shrink-0 whitespace-nowrap">Digital
-                        Marketing</button>
-                    <button id="btn-datascience"
-                        class="tab-button bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold flex-shrink-0 whitespace-nowrap">Data
-                        Science & Data Analysis</button>
-                    <button id="btn-excel"
-                        class="tab-button bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold flex-shrink-0 whitespace-nowrap">Microsoft
-                        Excel, Word and PowerPoint</button>
-                    <button id="btn-uiux"
-                        class="tab-button bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold flex-shrink-0 whitespace-nowrap">UI-UX
-                        Research and Design</button>
-                    <button id="btn-productmanagement"
-                        class="tab-button bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold flex-shrink-0 whitespace-nowrap">Product
-                        and Project Management</button>
+                    @foreach ($categories as $kategori)
+                        <button
+                            id="btn-{{ $kategori->id_kategori_program }}"
+                            class="tab-button bg-gray-200 text-gray-700 px-4 py-2 rounded-full font-semibold flex-shrink-0 whitespace-nowrap">
+                            {{ $kategori->nama_kategori }}
+                        </button>
+                    @endforeach
                 </div>
 
                 <!-- Carousel Container -->

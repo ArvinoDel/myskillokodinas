@@ -57,9 +57,8 @@ class ProgramController extends Controller
         //
         $kategoriprograms = Kategoriprogram::all();
         $trainers = Trainer::all();
-        $videos = Video::where('is_myskill', 1)->get();
 
-        return view('administrator.program.create', compact(['kategoriprograms', 'trainers', 'videos']));
+        return view('administrator.program.create', compact(['kategoriprograms', 'trainers']));
     }
 
     /**
@@ -119,7 +118,6 @@ class ProgramController extends Controller
         $programs = Program::where('id_program', $id_program)->firstOrFail();
         $kategoriprograms = Kategoriprogram::all(); // Tambahkan ini
         $trainers = Trainer::all();
-        $videos = Video::where('is_myskill', 1)->get(); // Fetch videos with is_myskill = 1
 
         return view('administrator.program.edit', compact('programs', 'kategoriprograms', 'trainers'));
     }

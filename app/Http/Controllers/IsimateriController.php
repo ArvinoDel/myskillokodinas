@@ -17,7 +17,7 @@ class IsimateriController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
-        $nama_materi = $request->nama_materi;
+        $id_materi = $request->id_materi; // Tambahkan ini
 
         $query = Isimateri::query();
 
@@ -25,8 +25,8 @@ class IsimateriController extends Controller
             $query->where('judul_file', 'like', "%$search%");
         }
 
-        if (!empty($nama_materi)) {
-            $query->where('nama_materi', $nama_materi);
+        if (!empty($id_materi)) { // Tambahkan ini
+            $query->where('id_materi', $id_materi);
         }
 
         $isi_materis = $query->paginate(10);

@@ -57,20 +57,6 @@
                                 </td>  
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Video</th>
-                                <td style="padding: 5px;">
-                                    <select class="form-control" id="id_video" name="id_video" required>
-                                        <option value="">-- Pilih Video --
-                                        @foreach($videos as $video)
-                                        <option value="{{ $video->id_video }}" {{ $programs->id_video == $video->id_video ? 'selected' : '' }}>
-                                            {{ $video->jdl_video }}
-                                        </option>
-                                        @endforeach
-                                        </option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th style="padding: 5px;">Harga</th>
                                 <td style="padding: 5px;">
                                     <input type="text" class="form-control" id="harga" name="harga" value="{{ $programs->harga }}" required>

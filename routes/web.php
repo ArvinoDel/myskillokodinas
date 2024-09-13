@@ -7,6 +7,7 @@ use App\Models\Trainer;
 use App\Models\Testimoni;
 use App\Models\Halamanbaru;
 use App\Models\Berlangganan;
+use App\Models\Kategoriprogram;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\YmController;
 use App\Http\Controllers\AppController;
@@ -267,11 +268,12 @@ Route::get('/', [MainController::class, 'index']);
 Route::get('/e-learning', function () {
     $trainer = Trainer::all();
     $testimonis = Testimoni::all();
+    $categories = Kategoriprogram::all();
     $berlangganans = Berlangganan::all();
     foreach ($berlangganans as $berlangganan) {
         $berlangganan->id_benefits = json_decode($berlangganan->id_benefits); // Decode JSON
     }
-    return view('./myskill/pages/e-learning/e-learning', compact('testimonis', 'berlangganans', 'trainer'));
+    return view('./myskill/pages/e-learning/e-learning', compact('testimonis', 'berlangganans', 'trainer', 'categories'));
 })->name('E-learning');
 
 Route::get('/e-learning/program', function () {

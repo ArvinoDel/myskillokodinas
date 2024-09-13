@@ -14,12 +14,13 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="mb-0">Isi Materi</h3>
-                <a href="{{ route('administrator.isimateri.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <a href="{{ route('administrator.isimateri.create', ['id_materi' => request('id_materi')]) }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
             <!-- Tambahkan form pencarian -->
             <div class="card-body">
                 <form action="{{ route('administrator.isimateri.index') }}" method="GET" class="mb-1">
+                    <input type="hidden" name="id_materi" value="{{ request('id_materi') }}"> <!-- Tambahkan ini -->
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
                             <a href="{{ route('administrator.materi.index') }}" class="btn btn-primary btn-lg">Back Materi</a>
@@ -31,11 +32,6 @@
                             </div>
                         </div>
                     </div>
-                    @if(request('search') || request('nama_materis'))
-                    <div class="mt-2 d-flex justify-content-center">
-                        <a href="{{ route('administrator.isimateri.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
-                    </div>
-                    @endif
                 </form>
 
                 <div class="table-responsive py-4">

@@ -20,13 +20,25 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Program</th>
+                                <th style="padding: 5px;">Thumbnail saat ini:</th>
                                 <td style="padding: 5px;">
-                                    <select class="form-control" name="id_program" required>
-                                        <option value="">-- Pilih Program --</option>
-                                        @foreach ($programs as $program)
-                                            <option value="{{ $program->id_program }}" {{ $program->id_program == $materis->id_program ? 'selected' : '' }}>
-                                                {{ $program->judul_program }}
+                                    <div class="d-flex align-items-center">
+                                        <img id="preview" src="{{ url('thumbnail/'.$materis->thumbnail) }}" alt="Preview" style="max-width: 100px; margin-top: 5px;" class="mr-3">
+                                        <div class="flex-grow-1">
+                                            <input type="file" class="form-control" onchange="previewImage(event)" name="thumbnail" id="thumbnail">
+                                            <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah cover.</small>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="padding: 5px;">Kategori</th>
+                                <td style="padding: 5px;">
+                                    <select class="form-control" name="id_kategori_program" required>
+                                    <option value="">-- Pilih Kategori --</option>
+                                        @foreach ($kategoriprograms as $kategoriprogram)
+                                            <option value="{{ $kategoriprogram->id_kategori_program }}" {{ $kategoriprogram->id_kategori_program == $materis->id_kategori_program ? 'selected' : '' }}>
+                                                {{ $kategoriprogram->nama_kategori }}
                                             </option>
                                         @endforeach
                                     </select>
