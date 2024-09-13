@@ -271,13 +271,13 @@
     <div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
         <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
             onclick="toggleDropdown('dropdown1', this)">
-            Apakah ProSkill bagus ?
+            Apakah Pandai Digital bagus ?
             <i id="icon2"
                 class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5 transition-transform duration-300"></i>
         </button>
         <div id="dropdown1"
             class="hidden p-2 bg-white transition-all duration-300 ease-in-out max-h-0 overflow-hidden">
-            <p class="text-gray-700 block text-sm" role="menuitem">Proskill memiliki tiga fitur utama
+            <p class="text-gray-700 block text-sm" role="menuitem">Pandai Digital memiliki tiga fitur utama
                 e-learning untuk belajar Mandiri via video modul belajar dan webinar series bulanan bootcamp
                 untuk belajar intensif fokus pada praktik via Zoom barang ekspor mentoring untuk dapat template
                 dan review CV hingga persiapan wawancara bersama HRD</p>
@@ -287,7 +287,7 @@
     <div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
         <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
             onclick="toggleDropdown('dropdown2', this)">
-            Apakah ProSkill Berbayar ?
+            Apakah Pandai Digital Berbayar ?
             <i id="icon3"
                 class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5 transition-transform duration-300"></i>
         </button>
@@ -301,7 +301,7 @@
     <div class="mb-1 border border-gray-300 rounded lg:mt-2 max-sm:mt-2 md:m-4 max-sm:p-1 max-sm:mx-1">
         <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center font-semibold"
             onclick="toggleDropdown('dropdown3', this)">
-            Platform Pembayaran apa saja yang digunakan pada SkillPro ?
+            Platform Pembayaran apa saja yang digunakan pada Pandai Digital ?
             <i id="icon4"
                 class="fa-solid fa-chevron-down ml-2 text-sm mt-1.5 transition-transform duration-300"></i>
         </button>
