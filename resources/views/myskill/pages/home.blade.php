@@ -1,14 +1,14 @@
 @extends('./myskill/layouts.main')
 @section('container')
     <div class="w-screen h-auto  rounded-b-3xl bg-gradient-to-b from-orange-400 to-red-500">
-        <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar gap-6 mx-4 lg:mx-4"
+        <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar gap-6 mx-4 lg:mx-12"
             style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
             ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
             onmouseup="this.classList.remove('touching')">
             @foreach ($banners as $link)
                 <div class="snap-always snap-center flex-shrink-0">
                     <img src="{{ url('foto_banner/' . $link->gambar) }}" alt=""
-                        class="h-32 lg:h-80 md:h-60 w-auto mx-auto rounded-2xl">
+                        class="h-32 lg:h-96 md:h-64 w-auto mx-auto rounded-2xl">
                 </div>
             @endforeach
         </div>
@@ -18,7 +18,7 @@
         </div>
 
 
-        <div class="grid grid-flow-col lg:grid-cols-5 ps-6 gap-8 overflow-x-auto no-scrollbar no-scrollbar ">
+        <div class="grid grid-flow-col lg:grid-cols-5 ps-6 gap-4 overflow-x-auto no-scrollbar no-scrollbar justify-center items-center">
             <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
                 <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/alumny.webp') }}" alt="" />
