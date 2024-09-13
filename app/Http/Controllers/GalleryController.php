@@ -145,6 +145,10 @@ class GalleryController extends Controller
             $gbr_gallery = $request->file("gbr_gallery");
             $gambarName = $gbr_gallery->getClientOriginalName();
             $gbr_gallery->move("./img_gallery/", $gambarName);
+            // Hapus gambar lama jika ada
+            if ($gallery->gbr_gallery && file_exists("./img_gallery/" . $gallery->gbr_gallery)) {
+                unlink("./img_gallery/" . $gallery->gbr_gallery);
+            }
             $gallery->gbr_gallery = $gambarName;
         }
         $keterangan = $request->keterangan;

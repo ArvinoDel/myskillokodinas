@@ -145,6 +145,11 @@ class AlbumController extends Controller
             $gambar = $request->file("cover");
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./img_album/", $gambarName);
+            
+            // Hapus gambar lama jika ada
+            if ($album->gbr_album && file_exists("./img_album/" . $album->gbr_album)) {
+                unlink("./img_album/" . $album->gbr_album);
+            }
         }
         
         $album->update([

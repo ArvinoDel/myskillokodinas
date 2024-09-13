@@ -65,8 +65,14 @@ class LogowebsiteController extends Controller
 
         if ($request->hasFile('logo')) {
             $gambar = $request->file("logo");
-            $logoName = "logo".Str::random(25).".".$gambar->getClientOriginalName();
+            $logoName = $gambar->getClientOriginalName();
             $gambar->move(public_path('logo'), $logoName);
+
+            // Hapus gambar lama jika ada
+            if ($logo->gambar) {
+                unlink(public_path('logo/' . $logo->gambar));
+            }
+
             $logo->update(['gambar' => $logoName]);
         }
 

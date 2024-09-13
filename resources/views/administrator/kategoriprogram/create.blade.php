@@ -19,6 +19,12 @@
                                     <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Nama kategori" required>
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="padding: 5px;">Gambar</th>
+                                <td style="padding: 5px;">
+                                    <input type="file" class="form-control" id="gambar" name="gambar" accept="image/*" required>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">

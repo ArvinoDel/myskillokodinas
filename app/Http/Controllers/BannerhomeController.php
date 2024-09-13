@@ -137,6 +137,14 @@ class BannerhomeController extends Controller
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./foto_bannerhome/", $gambarName);
             $updateData['gambar'] = $gambarName;
+
+            // Menghapus gambar lama jika ada
+            if ($bannerhomes->gambar) {
+                $path = "./foto_bannerhome/" . $bannerhomes->gambar;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
         }
 
         $bannerhomes->update($updateData);

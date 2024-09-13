@@ -44,16 +44,7 @@ class IdentitaswebsiteController extends Controller
 
         if ($request->hasFile('favicon')) {
             $favicon = $request->file('favicon');
-
-            // Generate nama file baru dengan memastikan tidak melebihi batas karakter
-            $baseFilename = $request->nama_website . "_" . Str::random(25);
-            $extension = $favicon->getClientOriginalExtension();
-
-            // Batasi panjang nama file dasar agar total panjang tidak melebihi batas
-            $maxFilenameLength = 50 - strlen($extension) - 1; // -1 untuk underscore
-            $faviconName = substr($baseFilename, 0, $maxFilenameLength) . '.' . $extension;
-
-            // Pindahkan file ke direktori tujuan
+            $faviconName = $favicon->getClientOriginalName();
             $favicon->move(public_path('foto_identitas'), $faviconName);
 
             // Hapus favicon lama jika ada

@@ -132,6 +132,14 @@ class IklanatasController extends Controller
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./foto_iklanatas/", $gambarName);
             $updateData['gambar'] = $gambarName;
+
+            // Hapus gambar lama jika ada
+            if ($iklanatas->gambar) {
+                $path = "./foto_iklanatas/" . $iklanatas->gambar;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
         }
 
         $iklanatas->update($updateData);

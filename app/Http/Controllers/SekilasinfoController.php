@@ -134,6 +134,11 @@ class SekilasinfoController extends Controller
 
         $info = $request->info;
 
+        // Menghapus gambar lama jika ada
+        if ($sekilasinfo->gambar && file_exists("./foto_info/" . $sekilasinfo->gambar)) {
+            unlink("./foto_info/" . $sekilasinfo->gambar);
+        }
+
         if ($request->hasFile('gambar')) {
             $gambar = $request->file("gambar");
             $gambarName = $gambar->getClientOriginalName();

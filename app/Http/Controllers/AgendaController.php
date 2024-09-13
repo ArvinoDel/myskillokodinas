@@ -176,6 +176,12 @@ class AgendaController extends Controller
             $gambar = $request->file("gambar");
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./foto_agenda/", $gambarName);
+
+            // Hapus gambar lama jika ada
+            if ($agenda->gambar && file_exists("./foto_agenda/" . $agenda->gambar)) {
+                unlink("./foto_agenda/" . $agenda->gambar);
+            }
+
             $agenda->gambar = $gambarName;
         }
 
@@ -183,7 +189,7 @@ class AgendaController extends Controller
             "tema" => $tema,
             "isi_agenda" => $validated['isi_agenda'],
             "tempat" => $validated['tempat'],
-            "gambar" => $gambarName,
+            "gambar" => $gambarName ?? $agenda->gambar,
             "jam" => $jam,
             "username" => $username,
             "tgl_mulai" => $tgl_mulai,

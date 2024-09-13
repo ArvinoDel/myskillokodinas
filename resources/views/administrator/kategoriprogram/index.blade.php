@@ -54,6 +54,7 @@
                             <tr>
                                 <th class="text-center">No</th>
                                 <th class="text-center">Nama Kategori</th>
+                                <th class="text-center">Gambar</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -62,6 +63,7 @@
                             <tr>
                                 <td>{{ $loop->iteration + $kategoriprograms->firstItem() - 1 }}</td>
                                 <td>{{ $katprogram->nama_kategori }}</td>
+                                <td><img src="{{ asset('kategori_program/' . $katprogram->gambar) }}" alt="Gambar Kategori" class="img-fluid" style="max-width: 100px; max-height: 100px;"></td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('administrator.kategoriprogram.edit', $katprogram->id_kategori_program) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">

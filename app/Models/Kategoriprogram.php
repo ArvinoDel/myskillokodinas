@@ -12,7 +12,7 @@ class Kategoriprogram extends Model
     public $timestamps = false;
     protected $primaryKey = 'id_kategori_program';
     protected $table = 'kategori_program';
-    protected $fillable = ['id_kategori_program', 'nama_kategori'];
+    protected $fillable = ['id_kategori_program', 'nama_kategori','gambar'];
 
     // Relasi ke Program
     public function programs()

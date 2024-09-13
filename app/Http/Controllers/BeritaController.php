@@ -172,6 +172,11 @@ class BeritaController extends Controller
             $tag = '';
         }
 
+        // Hapus gambar lama jika ada
+        if ($berita->gambar && file_exists("./foto_berita/" . $berita->gambar)) {
+            unlink("./foto_berita/" . $berita->gambar);
+        }
+
         if ($request->hasFile('gambar')) {
             $gambar = $request->file("gambar");
             $gambarName = $gambar->getClientOriginalName();

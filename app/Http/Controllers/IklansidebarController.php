@@ -126,6 +126,14 @@ class IklansidebarController extends Controller
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./foto_iklansidebar/", $gambarName);
             $updateData['gambar'] = $gambarName;
+
+            // Hapus gambar lama jika ada
+            if ($iklansidebar->gambar) {
+                $path = "./foto_iklansidebar/" . $iklansidebar->gambar;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
         }
 
         $iklansidebar->update($updateData);
@@ -133,7 +141,7 @@ class IklansidebarController extends Controller
         return response()->json([
             'url' => route('administrator.iklansidebar.index'),
             'success' => true,
-            'message' => 'Data Iklan Sidebar Berhasil Ditambah'
+            'message' => 'Data Iklan Sidebar Berhasil Diupdate'
         ]);
     }
 

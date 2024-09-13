@@ -129,6 +129,14 @@ class BannersliderController extends Controller
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./foto_banner/", $gambarName);
             $updateData['gambar'] = $gambarName;
+
+            // Menghapus gambar lama jika ada
+            if ($bannerslider->gambar) {
+                $path = "./foto_banner/" . $bannerslider->gambar;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
         }
 
         $bannerslider->update($updateData);

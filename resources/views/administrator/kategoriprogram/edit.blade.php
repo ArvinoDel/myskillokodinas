@@ -13,11 +13,18 @@
                     @csrf
                     @method('PUT')
                     <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
-                        <tbody> 
+                        <tbody>
                             <tr>
                                 <th style="padding: 5px;">Nama Kategori</th>
                                 <td style="padding: 5px;">
                                     <input type="text" class="form-control" id="nama_kategori" name="nama_kategori" placeholder="Masukkan Nama kategori" value="{{ $kategoriprograms->nama_kategori }}" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th style="padding: 5px;">Gambar</th>
+                                <td style="padding: 5px;">
+                                    <input type="file" class="form-control" id="gambar" name="gambar" onchange="previewImage(event)" placeholder="Masukkan Gambar" required>
+                                    <img src="{{ asset('kategori_program/' . $kategoriprograms->gambar) }}"  alt="Gambar Sebelumnya" class="img-fluid">
                                 </td>
                             </tr>
                         </tbody>
@@ -31,7 +38,21 @@
         </div>
     </div>
 </div>
+<script>
+    function previewImage(event) {
+        var preview = document.getElementById('preview');
+        var file = event.target.files[0];
+        var reader = new FileReader();
 
+        reader.onload = function() {
+            preview.src = reader.result;
+        }
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+</script>
 @endsection
 
 @section('script')

@@ -56,16 +56,24 @@ class KategoriprogramController extends Controller
      */
     public function store(Request $request)
     {
-        $nama_kategori = $request->nama_kategori;
+        $validatedData = $request->validate([
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
+            'nama_kategori' => 'required|string|max:255',
+        ]);
+
+        $nama_kategori = $validatedData['nama_kategori'];
+        $gambarName = $validatedData['gambar']->getClientOriginalName();
+        $validatedData['gambar']->move("./kategori_program", $gambarName);
 
         Kategoriprogram::create([
-            "nama_kategori" => $nama_kategori
+            "nama_kategori" => $nama_kategori,
+            "gambar" => $gambarName
         ]);
 
         return response()->json([
             'url' => route('administrator.kategoriprogram.index'),
             'success' => true,
-            'message' => 'Data Kategori Program Berhasil Diperbarui'
+            'message' => 'Data Kategori Program Berhasil Ditambah'
         ]);
     }
 
@@ -96,10 +104,25 @@ class KategoriprogramController extends Controller
         $kategoriprograms = Kategoriprogram::findOrFail($id_kategori_program);
 
         $nama_kategori = $request->nama_kategori;
+        $gambar = $request->file("gambar");
 
         $updateData = [
             'nama_kategori' => $nama_kategori,
         ];
+
+        if ($gambar) {
+            $gambarName = $gambar->getClientOriginalName();
+            $gambar->move("./kategori_program", $gambarName);
+            $updateData['gambar'] = $gambarName;
+
+            // Menghapus gambar lama jika ada
+            if ($kategoriprograms->gambar) {
+                $path = "./kategori_program/" . $kategoriprograms->gambar;
+                if (file_exists($path)) {
+                    unlink($path);
+                }
+            }
+        }
 
         $kategoriprograms->update($updateData);
 
