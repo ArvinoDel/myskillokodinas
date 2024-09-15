@@ -108,11 +108,11 @@ class MateriController extends Controller
         // Fetch the materi by id_materi
         $materi = Materi::with('isimateri')->where('id_materi', $id_materi)->firstOrFail();
         $materis = Materi::all();
-    
+
         // Pass the fetched materi to the view
         return view('myskill.pages.e-learning.materi', compact('materi', 'materis'));
     }
-    
+
 
 
 
@@ -182,4 +182,22 @@ class MateriController extends Controller
 
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }
+
+    // MateriController.php
+    public function rate(Request $request, $id_materi)
+    {
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
+    
+        $materi = Materi::findOrFail($id_materi);
+        $rating = $request->input('rating');
+    
+        // Update rating ke database
+        // Jika hanya menyimpan rating terbaru
+        $materi->rating = $rating;
+        $materi->save();
+    
+        return redirect()->back()->with('success', 'Rating berhasil dikirim');
+    }    
 }

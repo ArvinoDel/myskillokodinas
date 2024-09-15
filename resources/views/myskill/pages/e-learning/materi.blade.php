@@ -279,10 +279,12 @@
                                         <div class="flex items-center text-sm mt-1">
                                             <span class="mr-2">👤 {{ number_format($materi->id_program * 10) }}</span>
                                         </div>
-                                        <div class="flex items-center mt-2">
-                                            <span class="text-yellow-500">★★★★★</span>
-                                            <span class="ml-1 text-sm">4.71/5</span>
-                                        </div>
+                                        <!-- Rating Form -->
+                                        <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST">
+                                            @csrf
+                                            <input type="number" name="rating" min="1" max="5" required>
+                                            <button type="submit">Submit Rate</button>
+                                        </form>                                        
                                     </div>
                                 </div>
                             </a>

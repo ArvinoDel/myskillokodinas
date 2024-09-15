@@ -196,8 +196,9 @@
                                         </div>
                                         <div class="flex items-center mt-2">
                                             <span class="text-yellow-500">★★★★★</span>
-                                            <span class="ml-1 text-sm">4.71/5</span>
+                                            <span class="ml-1 text-sm">{{ number_format($materi->rating, ) }}/5</span>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </a>
