@@ -248,6 +248,37 @@
         </section>
 
 
+        <!-- Rating Form -->
+        <div class="flex flex-col items-center justify-center p-6 bg-gray-100 rounded-lg shadow-lg">
+            <!-- Judul -->
+            <h2 class="text-lg font-semibold mb-4">Berikan Rating Untuk Materi Ini!</h2>
+
+            <!-- Rating Form -->
+            <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST" id="ratingForm"
+                class="flex flex-col items-center">
+                @csrf
+                <div id="starContainer" class="flex space-x-2 mb-2">
+                    @for ($i = 1; $i <= 5; $i++)
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            class="text-gray-400 w-8 h-8 fill-current cursor-pointer star"
+                            data-rating="{{ $i }}" viewBox="0 0 16 16"
+                            onclick="selectRating({{ $i }})">
+                            <path
+                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                        </svg>
+                    @endfor
+                </div>
+
+                <!-- Indikator Jumlah Rating -->
+                <p id="ratingIndicator" class="text-gray-500 mb-4">Rating: 0/5</p>
+
+                <input type="hidden" name="rating" id="ratingValue" required>
+
+                <button type="submit"
+                    class="mt-3 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200">Submit
+                    Rating</button>
+            </form>
+        </div>
 
 
         {{-- Section 4: Skills --}}
@@ -279,12 +310,7 @@
                                         <div class="flex items-center text-sm mt-1">
                                             <span class="mr-2">👤 {{ number_format($materi->id_program * 10) }}</span>
                                         </div>
-                                        <!-- Rating Form -->
-                                        <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST">
-                                            @csrf
-                                            <input type="number" name="rating" min="1" max="5" required>
-                                            <button type="submit">Submit Rate</button>
-                                        </form>                                        
+
                                     </div>
                                 </div>
                             </a>
@@ -298,4 +324,37 @@
 
         </div>
     </section>
+    <script>
+        let selectedRating = 0;
+
+        function selectRating(rating) {
+            selectedRating = rating;
+            document.getElementById('ratingValue').value = rating;
+
+            // Update rating indicator
+            document.getElementById('ratingIndicator').textContent = `Rating: ${rating}/5`;
+
+            // Dapatkan semua elemen bintang
+            const stars = document.querySelectorAll('.star');
+
+            // Ubah warna bintang yang sudah dipilih
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('text-gray-400');
+                    star.classList.add('text-yellow-500');
+                } else {
+                    star.classList.remove('text-yellow-500');
+                    star.classList.add('text-gray-400');
+                }
+            });
+        }
+
+        // Mencegah form dikirim tanpa rating
+        document.getElementById('ratingForm').addEventListener('submit', function(event) {
+            if (selectedRating === 0) {
+                event.preventDefault();
+                alert('Please select a rating before submitting.');
+            }
+        });
+    </script>
 @endsection
