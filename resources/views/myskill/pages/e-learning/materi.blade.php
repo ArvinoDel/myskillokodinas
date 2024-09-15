@@ -253,11 +253,10 @@
             <!-- Judul -->
             <h2 class="text-lg font-semibold mb-4">Berikan Rating Untuk Materi Ini!</h2>
 
-            <!-- Rating Form -->
             <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST" id="ratingForm"
-                class="flex flex-col items-center">
+                class="text-center">
                 @csrf
-                <div id="starContainer" class="flex space-x-2 mb-2">
+                <div id="starContainer" class="flex justify-center space-x-1 mb-3">
                     @for ($i = 1; $i <= 5; $i++)
                         <svg xmlns="http://www.w3.org/2000/svg"
                             class="text-gray-400 w-8 h-8 fill-current cursor-pointer star"
@@ -269,14 +268,11 @@
                     @endfor
                 </div>
 
-                <!-- Indikator Jumlah Rating -->
-                <p id="ratingIndicator" class="text-gray-500 mb-4">Rating: 0/5</p>
+                <!-- Indicator jumlah rating -->
+                <div id="ratingIndicator" class="text-lg font-semibold text-gray-700 mb-3">Rating: 0/5</div>
 
                 <input type="hidden" name="rating" id="ratingValue" required>
-
-                <button type="submit"
-                    class="mt-3 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200">Submit
-                    Rating</button>
+                <button type="submit" class="mt-3 px-4 py-2 bg-blue-500 text-white rounded">Submit Rating</button>
             </form>
         </div>
 
@@ -331,13 +327,16 @@
             selectedRating = rating;
             document.getElementById('ratingValue').value = rating;
 
+            // Debug: Log rating to ensure it's selected
+            console.log("Rating yang dipilih: ", rating);
+
             // Update rating indicator
             document.getElementById('ratingIndicator').textContent = `Rating: ${rating}/5`;
 
-            // Dapatkan semua elemen bintang
+            // Get all star elements
             const stars = document.querySelectorAll('.star');
 
-            // Ubah warna bintang yang sudah dipilih
+            // Change the color of the selected stars
             stars.forEach((star, index) => {
                 if (index < rating) {
                     star.classList.remove('text-gray-400');
@@ -349,11 +348,17 @@
             });
         }
 
-        // Mencegah form dikirim tanpa rating
+        // Prevent form submission if no rating is selected
         document.getElementById('ratingForm').addEventListener('submit', function(event) {
             if (selectedRating === 0) {
                 event.preventDefault();
-                alert('Please select a rating before submitting.');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please select a rating before submitting.',
+                    timer: 3000, // Auto close after 3 seconds
+                    showConfirmButton: false
+                });
             }
         });
     </script>
