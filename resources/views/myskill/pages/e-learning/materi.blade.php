@@ -20,17 +20,20 @@
                     <div class="mx-4 md:mx-20 -mt-8 md:-mt-48">
                         <h3 class="text-gray-500 font-semibold py-4">Materi</h3>
                         @foreach ($materi->isimateri as $isi)
-                        <button onclick="openModal('{{ asset('../video_files/' . $isi->file) }}')">
+                        <button onclick="openFile('{{ asset('../video_files/' . $isi->file) }}', '{{ $isi->file }}')" class="w-full">
                             <div class="py-2 flex items-center justify-between">
-                                <div class="flex items-center space-x-2 mx-2 md:mx-6">
+                                <div class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow">
                                     <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
                                     <h3 class="text-sm md:text-base">{{ $isi->judul_file }}</h3>
                                 </div>
-                                <i class="fa-regular fa-square text-lg md:text-xl"></i>
+                                <div class="ml-auto">
+                                    <i class="fa-regular fa-square text-lg md:text-xl"></i>
+                                </div>
                             </div>
                         </button>
 
-                        <!-- Modal -->
+
+                        <!-- Modal untuk video -->
                         <div id="videoModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                             <div class="bg-white p-4 rounded-lg">
                                 <span class="close" onclick="closeModal()">&times;</span>
@@ -38,6 +41,22 @@
                                     <source id="videoSource" src="" type="video/mp4">
                                     Your browser does not support the video tag.
                                 </video>
+                            </div>
+                        </div>
+
+                        <!-- Modal untuk PDF -->
+                        <div id="fileModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                            <div class="bg-white p-4 rounded-lg">
+                                <span class="close" onclick="closeFileModal()">&times;</span>
+                                <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
+                            </div>
+                        </div>
+
+                        <!-- Modal untuk Gambar -->
+                        <div id="imageModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                            <div class="bg-white p-4 rounded-lg">
+                                <span class="close" onclick="closeImageModal()">&times;</span>
+                                <img id="imageViewer" class="w-full" src="" alt="Gambar">
                             </div>
                         </div>
                         @endforeach
@@ -375,16 +394,36 @@
             }
         });
 
-        function openModal(videoUrl) {
-            console.log("Membuka video: ", videoUrl); // Tambahkan log ini
-            document.getElementById('videoSource').src = videoUrl;
-            document.getElementById('videoPlayer').load();
-            document.getElementById('videoModal').classList.remove('hidden');
+        function openFile(fileUrl, fileName) {
+            const fileExtension = fileName.split('.').pop().toLowerCase();
+            // Tambahkan kondisi untuk mendukung ekstensi file yang baru
+            const videoExtensions = ['mp4', 'avi', 'mpeg'];
+            const documentExtensions = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt'];
+            const imageExtensions = ['png', 'jpg', 'jpeg', 'gif'];
+
+            if (videoExtensions.includes(fileExtension)) {
+                document.getElementById('videoSource').src = fileUrl;
+                document.getElementById('videoPlayer').load();
+                document.getElementById('videoModal').classList.remove('hidden');
+            } else if (documentExtensions.includes(fileExtension)) {
+                document.getElementById('fileViewer').src = fileUrl;
+                document.getElementById('fileModal').classList.remove('hidden');
+            } else if (imageExtensions.includes(fileExtension)) {
+                document.getElementById('imageViewer').src = fileUrl;
+                document.getElementById('imageModal').classList.remove('hidden');
+            } else {
+                alert('Format file tidak didukung.');
+            }
         }
 
-        function closeModal() {
-            document.getElementById('videoModal').classList.add('hidden');
-            document.getElementById('videoPlayer').pause();
+        function closeFileModal() {
+            document.getElementById('fileModal').classList.add('hidden');
+            document.getElementById('fileViewer').src = '';
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').classList.add('hidden');
+            document.getElementById('imageViewer').src = '';
         }
     </script>
 @endsection
