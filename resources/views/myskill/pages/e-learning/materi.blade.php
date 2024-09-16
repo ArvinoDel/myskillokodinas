@@ -17,9 +17,10 @@
                         </div>
                         <h3 class="font-bold text-xs md:text-sm text-red-500 p-2">10.000+ Orang Berlangganan Tiap Bulan</h3>
                     </div>
-                    <div class="mx-4 md:mx-20 -mt-8 md:-mt-28">
+                    <div class="mx-4 md:mx-20 -mt-8 md:-mt-48">
                         <h3 class="text-gray-500 font-semibold py-4">Materi</h3>
                         @foreach ($materi->isimateri as $isi)
+                        <button onclick="openModal('{{ asset('video_files/' . $isi->file) }}')">
                             <div class="py-2 flex items-center justify-between">
                                 <div class="flex items-center space-x-2 mx-2 md:mx-6">
                                     <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
@@ -27,6 +28,18 @@
                                 </div>
                                 <i class="fa-regular fa-square text-lg md:text-xl"></i>
                             </div>
+                        </button>
+
+                        <!-- Modal -->
+                        <div id="videoModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                            <div class="bg-white p-4 rounded-lg">
+                                <span class="close" onclick="closeModal()">&times;</span>
+                                <video id="videoPlayer" controls class="w-full">
+                                    <source id="videoSource" src="" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -361,5 +374,17 @@
                 });
             }
         });
+
+        function openModal(videoUrl) {
+            console.log("Membuka video: ", videoUrl); // Tambahkan log ini
+            document.getElementById('videoSource').src = videoUrl;
+            document.getElementById('videoPlayer').load();
+            document.getElementById('videoModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('videoModal').classList.add('hidden');
+            document.getElementById('videoPlayer').pause();
+        }
     </script>
 @endsection
