@@ -49,6 +49,7 @@ use App\Http\Controllers\SekilasinfoController;
 use App\Http\Controllers\AlamatkontakController;
 use App\Http\Controllers\BannersliderController;
 use App\Http\Controllers\BerlanggananController;
+use App\Http\Controllers\BootcampController;
 use App\Http\Controllers\DownloadareaController;
 use App\Http\Controllers\IklansidebarController;
 use App\Http\Controllers\JejakpendapatController;
@@ -229,6 +230,9 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     //ini dari sini diganti
     Route::resource('berlangganan', BerlanggananController::class)
         ->middleware('checkModul:berlangganan');
+
+    Route::resource('bootcamps', BootcampController::class)
+        ->middleware('checkModul:bootcamps');
 
 
     // Rute untuk backup database

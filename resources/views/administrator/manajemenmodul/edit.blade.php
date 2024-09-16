@@ -86,18 +86,19 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
         $(document).on('click', '.btn-delete', function() {
-            let btn =$(this);
+            let btn = $(this);
             Swal.fire({
-               icon:'warning',
-               text:'Data yang sudah di hapus tidak dapat dikembalikan!',
-               title:'Apakah Anda yakin ingin menghapus data ini?',
-               showCancelButton: true,
-               confirmButtonColor:'#D33',
-               confirmButtonText:'Yakin hapus?',
-               cancelButtonText:'Batal'
-            }).then((result)=>{
-                if (result.isConfirmed){
+                icon: 'warning',
+                text: 'Data yang sudah di hapus tidak dapat dikembalikan!',
+                title: 'Apakah Anda yakin ingin menghapus data ini?',
+                showCancelButton: true,
+                confirmButtonColor: '#D33',
+                confirmButtonText: 'Yakin hapus?',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
                     Swal.fire({
                         title: "Deleted!",
                         text: "Your file has been deleted.",
@@ -107,24 +108,28 @@
                 }
             });
         });
+
         $('.form-ajax').each(function() {
-                $(this).bind('submit', function(e) {
-                    e.preventDefault();
+            $(this).bind('submit', function(e) {
+                e.preventDefault();
 
-                    for (instance in CKEDITOR.instances) {
-                        CKEDITOR.instances[instance].updateElement();
-                    }
+                let form = $(this);
 
-                    let form = $(this);
-                    $.ajax({
-                        url: form.prop('action'),
-                        data: new FormData(this),
-                        cache: false,
-                        async: false,
-                        type: 'post',
-                        contentType: false,
-                        processData: false,
-                        success: function(data) {
+                // Menyinkronkan data dari CKEditor ke textarea
+                for (var instance in CKEDITOR.instances) {
+                    CKEDITOR.instances[instance].updateElement();
+                }
+
+                $.ajax({
+                    url: form.prop('action'),
+                    data: new FormData(this),
+                    cache: false,
+                    async: true,
+                    type: 'post',
+                    contentType: false,
+                    processData: false,
+                    success: function(data) {
+                        console.log(data); // Ini untuk debugging
                         if (data.success === false) {
                             Swal.fire({
                                 icon: 'error',
@@ -134,17 +139,15 @@
                             });
                         } else {
                             Swal.fire({
-                                    position: "center",
-                                    icon: "success",
-                                    title: data.message,
-                                    showConfirmButton: false,
-                                    timer: 1500
-                                }).then((result)=>{
-                                    console.log(result);
-                                    document.location = data.url;
-                                });
-
-
+                                position: "center",
+                                icon: "success",
+                                title: data.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            }).then((result) => {
+                                console.log(result);
+                                document.location = data.url;
+                            });
                         }
                     }
                 });
@@ -152,8 +155,4 @@
         });
     });
 </script>
-
-{{-- <script>
-    CKEDITOR.replace('deskripsi');
-</script> --}}
 @endsection
