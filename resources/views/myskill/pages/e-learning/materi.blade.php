@@ -20,7 +20,7 @@
                     <div class="mx-4 md:mx-20 -mt-8 md:-mt-48">
                         <h3 class="text-gray-500 font-semibold py-4">Materi</h3>
                         @foreach ($materi->isimateri as $isi)
-                        <button onclick="openModal('{{ asset('video_files/' . $isi->file) }}')">
+                        <button onclick="openModal('{{ asset('../video_files/' . $isi->file) }}')">
                             <div class="py-2 flex items-center justify-between">
                                 <div class="flex items-center space-x-2 mx-2 md:mx-6">
                                     <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
