@@ -191,11 +191,25 @@ class MateriController extends Controller
         ]);
     
         $materi = Materi::findOrFail($id_materi);
-        $rating = $request->input('rating');
+        $user_id = auth()->id(); // Ambil ID user yang sedang login
     
-        // Update rating ke database
-        // Jika hanya menyimpan rating terbaru
-        $materi->rating = $rating;
+        // Cek apakah user sudah memberikan rating
+        if ($materi->rated_users && in_array($user_id, json_decode($materi->rated_users))) {
+            return redirect()->back()->with('error', 'Anda sudah memberikan rating sebelumnya.');
+        }
+    
+        // Tambahkan rating ke total rating
+        $materi->rating += $request->input('rating');
+    
+        // Tambah jumlah user yang memberikan rating
+        $materi->rating_count += 1;
+    
+        // Simpan user yang sudah memberikan rating
+        $rated_users = json_decode($materi->rated_users, true) ?? [];
+        $rated_users[] = $user_id;
+        $materi->rated_users = json_encode($rated_users);
+    
+        // Simpan perubahan
         $materi->save();
     
         return redirect()->back()->with('success', 'Rating berhasil dikirim');

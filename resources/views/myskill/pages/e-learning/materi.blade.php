@@ -20,45 +20,49 @@
                     <div class="mx-4 md:mx-20 -mt-8 md:-mt-48">
                         <h3 class="text-gray-500 font-semibold py-4">Materi</h3>
                         @foreach ($materi->isimateri as $isi)
-                        <button onclick="openFile('{{ asset('../video_files/' . $isi->file) }}', '{{ $isi->file }}')" class="w-full">
-                            <div class="py-2 flex items-center justify-between">
-                                <div class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow">
-                                    <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
-                                    <h3 class="text-sm md:text-base">{{ $isi->judul_file }}</h3>
+                            <button onclick="openFile('{{ asset('../video_files/' . $isi->file) }}', '{{ $isi->file }}')"
+                                class="w-full">
+                                <div class="py-2 flex items-center justify-between">
+                                    <div class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow">
+                                        <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
+                                        <h3 class="text-sm md:text-base">{{ $isi->judul_file }}</h3>
+                                    </div>
+                                    <div class="ml-auto">
+                                        <i class="fa-regular fa-square text-lg md:text-xl"></i>
+                                    </div>
                                 </div>
-                                <div class="ml-auto">
-                                    <i class="fa-regular fa-square text-lg md:text-xl"></i>
+                            </button>
+
+
+                            <!-- Modal untuk video -->
+                            <div id="videoModal"
+                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                                <div class="bg-white p-4 rounded-lg">
+                                    <span class="close" onclick="closeModal()">&times;</span>
+                                    <video id="videoPlayer" controls class="w-full">
+                                        <source id="videoSource" src="" type="video/mp4">
+                                        Your browser does not support the video tag.
+                                    </video>
                                 </div>
                             </div>
-                        </button>
 
-
-                        <!-- Modal untuk video -->
-                        <div id="videoModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                            <div class="bg-white p-4 rounded-lg">
-                                <span class="close" onclick="closeModal()">&times;</span>
-                                <video id="videoPlayer" controls class="w-full">
-                                    <source id="videoSource" src="" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
+                            <!-- Modal untuk PDF -->
+                            <div id="fileModal"
+                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                                <div class="bg-white p-4 rounded-lg">
+                                    <span class="close" onclick="closeFileModal()">&times;</span>
+                                    <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Modal untuk PDF -->
-                        <div id="fileModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                            <div class="bg-white p-4 rounded-lg">
-                                <span class="close" onclick="closeFileModal()">&times;</span>
-                                <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
+                            <!-- Modal untuk Gambar -->
+                            <div id="imageModal"
+                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                                <div class="bg-white p-4 rounded-lg">
+                                    <span class="close" onclick="closeImageModal()">&times;</span>
+                                    <img id="imageViewer" class="w-full" src="" alt="Gambar">
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Modal untuk Gambar -->
-                        <div id="imageModal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                            <div class="bg-white p-4 rounded-lg">
-                                <span class="close" onclick="closeImageModal()">&times;</span>
-                                <img id="imageViewer" class="w-full" src="" alt="Gambar">
-                            </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -284,29 +288,53 @@
         <div class="flex flex-col items-center justify-center p-6 bg-gray-100 rounded-lg shadow-lg">
             <!-- Judul -->
             <h2 class="text-lg font-semibold mb-4">Berikan Rating Untuk Materi Ini!</h2>
+            @if (Auth::check())
+                <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST" id="ratingForm"
+                    class="text-center">
+                    @csrf
+                    <div id="starContainer" class="flex justify-center space-x-1 mb-3">
+                        @for ($i = 1; $i <= 5; $i++)
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="text-gray-400 w-8 h-8 fill-current cursor-pointer star"
+                                data-rating="{{ $i }}" viewBox="0 0 16 16"
+                                onclick="selectRating({{ $i }})">
+                                <path
+                                    d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                            </svg>
+                        @endfor
+                    </div>
 
-            <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST" id="ratingForm"
-                class="text-center">
-                @csrf
-                <div id="starContainer" class="flex justify-center space-x-1 mb-3">
-                    @for ($i = 1; $i <= 5; $i++)
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="text-gray-400 w-8 h-8 fill-current cursor-pointer star"
-                            data-rating="{{ $i }}" viewBox="0 0 16 16"
-                            onclick="selectRating({{ $i }})">
-                            <path
-                                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                        </svg>
-                    @endfor
-                </div>
+                    <!-- Indicator jumlah rating -->
+                    <div id="ratingIndicator" class="text-lg font-semibold text-gray-700 mb-3">Rating: 0/5</div>
 
-                <!-- Indicator jumlah rating -->
-                <div id="ratingIndicator" class="text-lg font-semibold text-gray-700 mb-3">Rating: 0/5</div>
-
-                <input type="hidden" name="rating" id="ratingValue" required>
-                <button type="submit" class="mt-3 px-4 py-2 bg-blue-500 text-white rounded">Submit Rating</button>
-            </form>
+                    <input type="hidden" name="rating" id="ratingValue" required>
+                    <button type="submit" class="mt-3 px-4 py-2 bg-blue-500 text-white rounded">Submit Rating</button>
+                </form>
+            @else
+                <p class="text-red-500">Silakan <a href="{{ route('login') }}"
+                        class="underline text-indigo-600">login</a> untuk memberikan rating.</p>
+            @endif
         </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">Detail Rating Materi</h2>
+
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-lg text-gray-600">Total Rating:</span>
+                <span id="totalRating" class="text-lg font-semibold text-gray-900">{{ $materi->rating }}</span>
+            </div>
+
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-lg text-gray-600">Jumlah User yang Memberi Rating:</span>
+                <span id="jumlahUser" class="text-lg font-semibold text-gray-900">{{ $materi->rating_count }}</span>
+            </div>
+
+            <div class="flex items-center justify-between mb-4">
+                <span class="text-lg text-gray-600">Rata-rata Rating:</span>
+                <span id="averageRating" class="text-lg font-semibold text-indigo-600"></span>
+            </div>
+        </div>
+
 
 
         {{-- Section 4: Skills --}}
@@ -425,5 +453,18 @@
             document.getElementById('imageModal').classList.add('hidden');
             document.getElementById('imageViewer').src = '';
         }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var totalRating = parseFloat(document.getElementById('totalRating').innerText);
+            var jumlahUser = parseInt(document.getElementById('jumlahUser').innerText);
+
+            var averageRating = 0;
+            if (jumlahUser > 0) {
+                averageRating = totalRating / jumlahUser;
+            }
+
+            document.getElementById('averageRating').innerText = averageRating.toFixed(
+            1); // Membulatkan ke 1 angka desimal
+        });
     </script>
 @endsection
