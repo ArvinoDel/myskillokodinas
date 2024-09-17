@@ -249,11 +249,9 @@
                     id="paymentImage" class="rounded-lg w-32 md:w-32 mx-auto my-2">
             </div>
             <div class="flex justify-around items-center mb-4 space-x-4">
-                <button id="downloadQR" class="bg-teal-600 text-white px-3 py-2 rounded-md text-sm md:text-base"><i class="fa-solid fa-download"></i></button>
-
                 <div class="relative">
                     <input type="file" id="Upload" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-                    <button class="bg-teal-600 text-white px-3 py-2 rounded-md text-sm md:text-base"><i class="fa-solid fa-upload"></i></button>
+                    <button class="bg-teal-600 text-white px-3 py-2 rounded-md text-sm md:text-base"><i class="fa-solid fa-upload mx-2"></i>Upload Bukti</button>
                 </div>
 
                 <button id="Kirim" class="bg-teal-600 text-white px-3 py-2 rounded-md text-sm md:text-base">Kirim Bukti Pembayaran</button>
