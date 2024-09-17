@@ -1,7 +1,7 @@
 @extends('./myskill/layouts.main')
 @section('container')
     <div class="payment bg-gray-50 font-inter w-screen">
-        <div class="max-w-5xl mx-auto py-10 px-4 md:px-10">
+        <div class="max-w-5xl mx-auto my-1 ml-20 px-4 md:px-10">
             <!-- Main Container -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <div class="lg:col-span-2">
@@ -42,62 +42,65 @@
                             <span class="text-gray-600">1.5 Juta Member</span>
                         </div>
 
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow">
-                                <img src="https://placehold.co/60x60" alt="Paksi Cahyo Baskoro"
-                                    class="rounded-full mr-4 max-w-[60px]">
-                                <div>
-                                    <p class="font-semibold text-gray-800 text-sm">Paksi Cahyo Baskoro</p>
-                                    <p class="text-gray-600 text-xs">Diterima sebagai Copywriter di DBS Bank Indonesia.
-                                    </p>
+                        <div class="overflow-x-scroll no-scrollbar">
+                            <div class="flex space-x-4">
+                                <div class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
+                                    <img src="https://placehold.co/60x60" alt="Paksi Cahyo Baskoro"
+                                        class="rounded-lg mr-4 max-w-[60px]">
+                                    <div>
+                                        <p class="font-semibold text-gray-800 text-sm">Paksi Cahyo Baskoro</p>
+                                        <p class="text-gray-600 text-xs">Diterima sebagai Copywriter di DBS Bank Indonesia.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow">
-                                <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
-                                    class="rounded-full mr-4 max-w-[60px]">
-                                <div>
-                                    <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
-                                    <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
-                                    </p>
+                                <div class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
+                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                        class="rounded-lg mr-4 max-w-[60px]">
+                                    <div>
+                                        <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
+                                        <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow">
-                                <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
-                                    class="rounded-full mr-4 max-w-[60px]">
-                                <div>
-                                    <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
-                                    <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
-                                    </p>
+                                <div class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
+                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                        class="rounded-lg mr-4 max-w-[60px]">
+                                    <div>
+                                        <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
+                                        <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow">
-                                <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
-                                    class="rounded-full mr-4 max-w-[60px]">
-                                <div>
-                                    <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
-                                    <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
-                                    </p>
+                                <div class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
+                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                        class="rounded-lg mr-4 max-w-[60px]">
+                                    <div>
+                                        <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
+                                        <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow">
-                                <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
-                                    class="rounded-full mr-4 max-w-[60px]">
-                                <div>
-                                    <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
-                                    <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
-                                    </p>
+                                <div class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
+                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                        class="rounded-lg mr-4 max-w-[60px]">
+                                    <div>
+                                        <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
+                                        <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="flex items-center p-4 bg-white rounded-lg shadow">
-                                <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
-                                    class="rounded-full mr-4 max-w-[60px]">
-                                <div>
-                                    <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
-                                    <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
-                                    </p>
+                                <div class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
+                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                        class="rounded-lg mr-4 max-w-[60px]">
+                                    <div>
+                                        <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
+                                        <p class="text-gray-600 text-xs">Diterima sebagai Data Analyst di United Tractors.
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -152,7 +155,8 @@
                             <!-- Total = Subtotal + PPN -->
                         </div>
                         <p class="text-gray-500 text-xs mt-2 text-right ml-auto">+ kode unik</p>
-                        <button id="payButton" class="w-full bg-gray-200 text-gray-600 py-2 rounded-md mt-4" disabled>Lanjut
+                        <button id="payButton" class="w-full bg-gray-200 text-gray-600 py-2 rounded-md mt-4"
+                            disabled>Lanjut
                             Bayar</button>
                     </div>
                 </div>
