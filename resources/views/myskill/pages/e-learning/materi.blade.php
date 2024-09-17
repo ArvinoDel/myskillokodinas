@@ -35,37 +35,41 @@
                         @endforeach
                     </div>
                 </div>
-                    <!-- Modal untuk video -->
-                    <div id="videoModal"
-                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-16">
-                        <div class="bg-white p-5 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
-                            <span class="close" onclick="closeModal()">&times;</span>
-                            <video id="videoPlayer" controls class="w-full">
-                                <source id="videoSource" src="" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        </div>
+                <!-- Modal untuk video -->
+                <div id="videoModal"
+                    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-16">
+                    <div class="bg-white p-5 rounded-lg max-w-3xl w-full">
+                        <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
+                        <span class="close" onclick="closeModal()">&times;</span>
+                        <video id="videoPlayer" controls class="w-full">
+                            <source id="videoSource" src="" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
                     </div>
+                </div>
 
-                    <!-- Modal untuk PDF -->
-                    <div id="fileModal"
-                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-10">
-                        <div class="bg-white p-4 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
-                            <span class="close" onclick="closeFileModal()">&times;</span>
-                            <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
-                        </div>
+                <!-- Modal untuk PDF -->
+                <div id="fileModal"
+                    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-10">
+                    <div class="bg-white p-4 rounded-lg max-w-3xl w-full">
+                        <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
+                        <span class="close" onclick="closeFileModal()">&times;</span>
+                        <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
                     </div>
+                </div>
 
-                    <!-- Modal untuk Gambar -->
-                    <div id="imageModal"
-                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-12">
-                        <div class="bg-white p-4 rounded-lg max-w-2xl w-full"> <!-- Ubah max-w-3xl menjadi max-w-2xl untuk memperkecil lebar -->
-                            <span class="close" onclick="closeImageModal()">&times;</span>
-                            <div class="justify-center items-center">
-                                <img id="imageViewer" class="w-96 h-96 justify-center items-center" src="" alt="Gambar">
-                            </div>
+                <!-- Modal untuk Gambar -->
+                <div id="imageModal"
+                    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-12">
+                    <div class="bg-white p-4 rounded-lg max-w-2xl w-full">
+                        <!-- Ubah max-w-3xl menjadi max-w-2xl untuk memperkecil lebar -->
+                        <span class="close" onclick="closeImageModal()">&times;</span>
+                        <div class="justify-center items-center">
+                            <img id="imageViewer" class="w-96 h-96 justify-center items-center" src=""
+                                alt="Gambar">
                         </div>
                     </div>
+                </div>
             </div>
         </section>
 
@@ -309,7 +313,11 @@
                     {{ $materi->rating_count > 0
                         ? (fmod($materi->rating / $materi->rating_count, 1) == 0
                                 ? number_format($materi->rating / $materi->rating_count, 0)
-                                : number_format($materi->rating / $materi->rating_count, 1)) . '/5 ' . ' ('.$materi->rating_count.' users)'
+                                : number_format($materi->rating / $materi->rating_count, 1)) .
+                            '/5 ' .
+                            ' (' .
+                            $materi->rating_count .
+                            ' users)'
                         : 'No rating available' }}
 
                     <!-- Pesan bahwa pengguna sudah memberikan rating -->
@@ -361,6 +369,7 @@
                         @foreach ($materis as $materi)
                             <a href="{{ url('/e-learning/materi/' . $materi->id_materi) }}">
                                 <div id="card-{{ $materi->kategoriprogram->id_kategori_program }}"
+                                    data-category-id="{{ $materi->kategoriprogram->id_kategori_program }}"
                                     class="card flex-none bg-white rounded-lg shadow-md h-80 w-64 flex flex-col">
                                     <div class="relative w-full h-40">
                                         <img src="{{ asset('./thumbnail/' . $materi->thumbnail) }}"
@@ -374,7 +383,32 @@
                                                 Video</span>
                                         </div>
                                         <div class="flex items-center text-sm mt-1">
-                                            <span class="mr-2">👤 {{ number_format($materi->id_program * 10) }}</span>
+                                            <span class="mr-2">👤 {{ $materi->rating_count }} users</span>
+                                        </div>
+                                        <div class="flex items-center mt-2">
+                                            @if ($materi->rating_count > 0)
+                                                <span class="text-yellow-500">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($i <= floor($materi->rating / $materi->rating_count))
+                                                            ★
+                                                        @else
+                                                            ☆
+                                                        @endif
+                                                    @endfor
+                                                </span>
+                                            @endif
+                                            <span class="ml-1 text-sm">
+                                                {{ $materi->rating_count > 0
+                                                    ? (fmod($materi->rating / $materi->rating_count, 1) == 0
+                                                            ? number_format($materi->rating / $materi->rating_count, 0)
+                                                            : number_format($materi->rating / $materi->rating_count, 1)) .
+                                                        '/5 ' .
+                                                        ' (' .
+                                                        $materi->rating_count .
+                                                        ' users)'
+                                                    : 'No rating available' }}
+
+                                            </span>
                                         </div>
 
                                     </div>
@@ -382,10 +416,9 @@
                             </a>
                         @endforeach
                     </div>
+
+
                 </div>
-
-
-            </div>
         </section>
 
         </div>
