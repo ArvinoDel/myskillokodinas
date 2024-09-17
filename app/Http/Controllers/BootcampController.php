@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Benefitbootcamp;
 use App\Models\Bootcamp;
 use Illuminate\Http\Request;
 
@@ -27,11 +28,17 @@ class BootcampController extends Controller
         }
 
         $bootcamps = $query->paginate(10);
-        
+
 
         $judul_bootcamps = Bootcamp::select('judul_bootcamp')
-                    ->groupBy('judul_bootcamp')
-                    ->get();
+            ->groupBy('judul_bootcamp')
+            ->get();
+
+        foreach ($bootcamps as $bootcamp) {
+            $bootcamp->id_benefitcamps = json_decode($bootcamp->id_benefitcamps) ?? []; // Decode JSON dan berikan array kosong jika null
+        }
+
+        // dd($bootcamp);
 
         return view('administrator.bootcamps.index', compact('bootcamps', 'judul_bootcamps'));
     }
@@ -42,7 +49,8 @@ class BootcampController extends Controller
     public function create()
     {
         //
-        return view('administrator.bootcamps.create');
+        $benefits = Benefitbootcamp::all();
+        return view('administrator.bootcamps.create', compact('benefits'));
     }
 
     /**
@@ -59,11 +67,13 @@ class BootcampController extends Controller
             'harga_diskon' => 'nullable',
             'sesi' => 'nullable|string',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'id_benefitcamps' => 'nullable|array'
         ]);
 
         $data = $request->all();
-        $thumbnailName = null;
+        $data['id_benefitcamps'] = json_encode($request->input('id_benefitcamps'));
+
 
         if ($request->hasFile('thumbnail')) {
             $thumbnail = $request->file("thumbnail");
@@ -79,6 +89,7 @@ class BootcampController extends Controller
             "sesi" => $data['sesi'],
             "deskripsi" => $data['deskripsi'],
             "thumbnail" => $thumbnailName,
+            "id_benefitcamps" => $data['id_benefitcamps'],
         ]);
 
         return response()->json([
@@ -105,8 +116,11 @@ class BootcampController extends Controller
     {
         //
         $bootcamps = Bootcamp::findOrFail($id_bootcamp);
+        $bootcamps->id_benefitcamps = json_decode($bootcamps->id_benefitcamps) ?? []; // Decode JSON dan berikan array kosong jika null
 
-        return view('administrator.bootcamps.edit', compact('bootcamps'));
+        $benefits = Benefitbootcamp::all();
+
+        return view('administrator.bootcamps.edit', compact('bootcamps', 'benefits'));
     }
 
     /**
@@ -120,9 +134,11 @@ class BootcampController extends Controller
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'required|date',
             'harga' => 'required',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'harga_diskon' => 'nullable',
             'sesi' => 'nullable|string',
-            'deskripsi' => 'required'
+            'deskripsi' => 'required',
+            'id_benefitcamps' => 'nullable|array'
         ]);
 
         $bootcamps = Bootcamp::findorfail($id);
@@ -133,24 +149,26 @@ class BootcampController extends Controller
         $bootcamps->harga_diskon = $validatedData['harga_diskon'];
         $bootcamps->sesi = $validatedData['sesi'];
         $bootcamps->deskripsi = $validatedData['deskripsi'];
+        $bootcamps->id_benefitcamps = json_encode($request->input('id_benefitcamps'));
 
         if ($request->hasFile('thumbnail')) {
-            $thumbnail = $request->file("thumbnail");
-            $thumbnailName = $thumbnail->getClientOriginalName();
-            $thumbnail->move("./thumbnail_bootcamp/", $thumbnailName);
-            $bootcamps->thumbnail = $thumbnailName;
 
-            // Menghapus thumbnail lama jika ada
             if ($bootcamps->thumbnail) {
                 $path = "./thumbnail_bootcamp/" . $bootcamps->thumbnail;
                 if (file_exists($path)) {
                     unlink($path);
                 }
             }
+
+            $thumbnail = $request->file("thumbnail");
+            $thumbnailName = $thumbnail->getClientOriginalName();
+            $thumbnail->move("./thumbnail_bootcamp/", $thumbnailName);
+
+            $bootcamps->thumbnail = $thumbnailName;
         }
 
         $bootcamps->save();
-        dd($request);
+        // dd($request);
 
         return response()->json([
             'url' => route('administrator.bootcamps.index'),

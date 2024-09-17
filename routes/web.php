@@ -48,6 +48,7 @@ use App\Http\Controllers\MenuwebsiteController;
 use App\Http\Controllers\SekilasinfoController;
 use App\Http\Controllers\AlamatkontakController;
 use App\Http\Controllers\BannersliderController;
+use App\Http\Controllers\BenefitbootcampController;
 use App\Http\Controllers\BerlanggananController;
 use App\Http\Controllers\BootcampController;
 use App\Http\Controllers\DownloadareaController;
@@ -64,7 +65,7 @@ use App\Http\Controllers\KategoriprogramController;
 use App\Http\Controllers\TemplatewebsiteController;
 use App\Http\Controllers\IdentitaswebsiteController;
 use App\Http\Controllers\MetodepembayaranController;
-
+use App\Http\Controllers\ProgramcvController;
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -226,6 +227,12 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
     Route::resource('mitra', MitraController::class)
         ->middleware('checkModul:mitra');
+
+    Route::resource('programcv', ProgramcvController::class)
+        ->middleware('checkModul:programcv');
+
+    Route::resource('benefitbootcamp', BenefitbootcampController::class)
+        ->middleware('checkModul:benefitbootcamp');
 
     //ini dari sini diganti
     Route::resource('berlangganan', BerlanggananController::class)

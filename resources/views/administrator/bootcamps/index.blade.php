@@ -63,6 +63,7 @@
                                 <th class="text-center">Tanggal Selesia</th>
                                 <th class="text-center">Sesi</th>
                                 <th class="text-center">Deskripsi</th>
+                                <th class="text-center">list benefits</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -78,6 +79,11 @@
                                     <td>{{ $bootcamp->tanggal_selesai }}</td>
                                     <td>{{ $bootcamp->sesi }}</td>
                                     <td>{{ $bootcamp->deskripsi }}</td>
+                                    <td>
+                                            @foreach ($bootcamp->benefit() as $benefi)
+                                                <span>{{ $benefi->nama_benefit }}</span> <br>
+                                            @endforeach
+                                        </td>
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             <a href="{{ route('administrator.bootcamps.edit', $bootcamp->id_bootcamp) }}"

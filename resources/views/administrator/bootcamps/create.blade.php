@@ -66,6 +66,21 @@
                                         <textarea class="form-control" name="deskripsi" required></textarea>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Benefits</th>
+                                    <td style="padding: 5px;">
+                                        <div class="form-check">
+                                            @foreach ($benefits as $benefit)
+                                                <input class="form-check-input" type="checkbox" name="id_benefitcamps[]"
+                                                    value="{{ $benefit->id_benefitcamp }}"
+                                                    id="benefit{{ $benefit->id_benefitcamp }}">
+                                                <label class="form-check-label" for="benefit{{ $benefit->id_benefitcamp }}">
+                                                    {{ $benefit->nama_benefit }}
+                                                </label> <br>
+                                            @endforeach
+                                        </div>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
