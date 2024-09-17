@@ -192,7 +192,7 @@
                                                 Video</span>
                                         </div>
                                         <div class="flex items-center text-sm mt-1">
-                                            <span class="mr-2">👤 {{ $materi->rating_count }}</span>
+                                            <span class="mr-2">👤 {{ $materi->rating_count }} users</span>
                                         </div>
                                         <div class="flex items-center mt-2">
                                             @if ($materi->rating_count > 0)

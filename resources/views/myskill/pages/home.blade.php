@@ -5,14 +5,39 @@
             style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
             ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
             onmouseup="this.classList.remove('touching')">
+            <?php
+            $bootcamp = 'Bootcamp';
+            $corporateTraining = 'Corporate Training';
+            $home = 'Home';
+            $elearning = 'E-Learning';
+            $review = 'Review CV';
+            $software = 'Experience';
+            ?>
             @foreach ($banners as $link)
                 @if ($link->is_myskill == 1)
-                    <div class="snap-always snap-center flex-shrink-0">
+                    @php
+                        $href = '#'; // Default href
+                        if ($link->judul == $bootcamp) {
+                            $href = '/bootcamp';
+                        } elseif ($link->judul == $corporateTraining) {
+                            $href = '/corporate-training';
+                        } elseif ($link->judul == $home) {
+                            $href = '/home';
+                        } elseif ($link->judul == $elearning) {
+                            $href = '/elearning';
+                        } elseif ($link->judul == $review) {
+                            $href = '/review-cv';
+                        } elseif ($link->judul == $software) {
+                            $href = '/experience';
+                        }
+                    @endphp
+                    <a href="{{ $href }}" class="snap-always snap-center flex-shrink-0">
                         <img src="{{ url('foto_banner/' . $link->gambar) }}" alt="{{ $link->judul }}"
-                            class="h-32 lg:h-96 md:h-64 w-auto mx-auto rounded-2xl">
-                    </div>
+                            class="h-28 lg:h-80 md:h-52 w-auto mx-auto rounded-2xl">
+                    </a>
                 @endif
             @endforeach
+
 
         </div>
         <div>
