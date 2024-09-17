@@ -55,7 +55,7 @@ class MateriController extends Controller
         return view('administrator.materi.index', compact(['materis', 'nama_materis', 'kategoriprograms']));
     }
 
-    
+
     /**
      * Show the form for creating a new resource.
      */
@@ -69,44 +69,52 @@ class MateriController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-   public function store(Request $request)
-{
-    Log::info('Request Data:', $request->all());
+    public function store(Request $request)
+    {
+        Log::info('Request Data:', $request->all());
 
-    $request->validate([
-        'nama_materi' => 'required|string|max:255',
-        'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
-        'id_kategori_program' => 'nullable|exists:kategori_program,id_kategori_program',
-    ]);
+        $request->validate([
+            'nama_materi' => 'required|string|max:255',
+            'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'id_kategori_program' => 'nullable|exists:kategori_program,id_kategori_program',
+        ]);
 
-    $gambarName = null;
+        $gambarName = null;
 
-    if ($request->hasFile('thumbnail')) {
-        $gambar = $request->file("thumbnail");
-        $gambarName = $gambar->getClientOriginalName(); // Menggunakan nama file asli
-        $gambar->move("./thumbnail/", $gambarName);
+        if ($request->hasFile('thumbnail')) {
+            $gambar = $request->file("thumbnail");
+            $gambarName = $gambar->getClientOriginalName(); // Menggunakan nama file asli
+            $gambar->move("./thumbnail/", $gambarName);
+        }
+
+        Materi::create([
+            'nama_materi' => $request->nama_materi,
+            'id_kategori_program' => $request->id_kategori_program,
+            'thumbnail' => $gambarName
+        ]);
+
+        return response()->json([
+            'url' => route('administrator.materi.index'),
+            'success' => true,
+            'message' => 'Data Materi Berhasil Ditambah'
+        ]);
     }
-
-    Materi::create([
-        'nama_materi' => $request->nama_materi,
-        'id_kategori_program' => $request->id_kategori_program,
-        'thumbnail' => $gambarName
-    ]);
-
-    return response()->json([
-        'url' => route('administrator.materi.index'),
-        'success' => true,
-        'message' => 'Data Materi Berhasil Ditambah'
-    ]);
-}
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id_materi)
     {
-        //
+        // Fetch the materi by id_materi
+        $materi = Materi::with('isimateri')->where('id_materi', $id_materi)->firstOrFail();
+        $materis = Materi::all();
+
+        // Pass the fetched materi to the view
+        return view('myskill.pages.e-learning.materi', compact('materi', 'materis'));
     }
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -174,4 +182,36 @@ class MateriController extends Controller
 
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }
+
+    // MateriController.php
+    public function rate(Request $request, $id_materi)
+    {
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
+    
+        $materi = Materi::findOrFail($id_materi);
+        $user_id = auth()->id(); // Ambil ID user yang sedang login
+    
+        // Cek apakah user sudah memberikan rating
+        if ($materi->rated_users && in_array($user_id, json_decode($materi->rated_users))) {
+            return redirect()->back()->with('error', 'Anda sudah memberikan rating sebelumnya.');
+        }
+    
+        // Tambahkan rating ke total rating
+        $materi->rating += $request->input('rating');
+    
+        // Tambah jumlah user yang memberikan rating
+        $materi->rating_count += 1;
+    
+        // Simpan user yang sudah memberikan rating
+        $rated_users = json_decode($materi->rated_users, true) ?? [];
+        $rated_users[] = $user_id;
+        $materi->rated_users = json_encode($rated_users);
+    
+        // Simpan perubahan
+        $materi->save();
+    
+        return redirect()->back()->with('success', 'Rating berhasil dikirim');
+    }    
 }

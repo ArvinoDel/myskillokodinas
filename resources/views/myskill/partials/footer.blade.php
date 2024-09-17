@@ -54,11 +54,13 @@
             <div class="flex lg:mx-32 lg:justify-start max-lg:justify-center space-x-1 mt-2">
                 <!-- Payment Method Icons -->
                 @foreach ($metod as $pay)
-                <img src="{{ asset('foto_metode/' . $pay->gambar) }}" class="max-w-12 mx-3" alt="Bank">
+                    <img src="{{ asset('foto_metode/' . $pay->gambar) }}" class="w-16 h-16 object-contain mx-1"
+                        alt="Bank">
                 @endforeach
                 <!-- Add more payment icons as needed -->
             </div>
         </div>
+
 
         <p class="mt-8 text-center">&copy; 2024 - 2025. All rights reserved</p>
     </div>

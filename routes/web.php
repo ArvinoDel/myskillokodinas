@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Agenda;
 use App\Models\Berita;
+use App\Models\Materi;
 use App\Models\Trainer;
 use App\Models\Testimoni;
 use App\Models\Halamanbaru;
@@ -36,6 +37,7 @@ use App\Http\Controllers\DatabaseController;
 use App\Http\Controllers\TagvideoController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\IklanatasController;
+use App\Http\Controllers\IsimateriController;
 use App\Http\Controllers\TagberitaController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\BannerhomeController;
@@ -61,7 +63,6 @@ use App\Http\Controllers\KategoriprogramController;
 use App\Http\Controllers\TemplatewebsiteController;
 use App\Http\Controllers\IdentitaswebsiteController;
 use App\Http\Controllers\MetodepembayaranController;
-use App\Http\Controllers\IsimateriController;
 
 
 Route::get('/register', function () {
@@ -270,10 +271,11 @@ Route::get('/e-learning', function () {
     $testimonis = Testimoni::all();
     $categories = Kategoriprogram::all();
     $berlangganans = Berlangganan::all();
+    $materis = Materi::all();
     foreach ($berlangganans as $berlangganan) {
         $berlangganan->id_benefits = json_decode($berlangganan->id_benefits); // Decode JSON
     }
-    return view('./myskill/pages/e-learning/e-learning', compact('testimonis', 'berlangganans', 'trainer', 'categories'));
+    return view('./myskill/pages/e-learning/e-learning', compact('testimonis', 'berlangganans', 'trainer', 'categories', 'materis'));
 })->name('E-learning');
 
 Route::get('/e-learning/program', function () {
@@ -379,3 +381,10 @@ Route::get('/privacy-policy', function () {
 Route::get('/about', function () {
     return view('./myskill/pages/lainnya/about');
 })->name('Tentang');
+
+
+
+
+// Add a route for displaying a specific materi
+Route::get('/e-learning/materi/{id_materi}', [MateriController::class, 'show'])->name('materi.show');
+Route::post('/materi/{id_materi}/rate', [MateriController::class, 'rate'])->name('materi.rate')->middleware('auth');
