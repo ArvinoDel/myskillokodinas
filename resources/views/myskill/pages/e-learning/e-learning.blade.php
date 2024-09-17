@@ -192,13 +192,26 @@
                                                 Video</span>
                                         </div>
                                         <div class="flex items-center text-sm mt-1">
-                                            <span class="mr-2">👤 {{ number_format($materi->id_program * 10) }}</span>
+                                            <span class="mr-2">👤 {{ $materi->rating_count }}</span>
                                         </div>
                                         <div class="flex items-center mt-2">
-                                            <span class="text-yellow-500">★★★★★</span>
-                                            <span class="ml-1 text-sm">{{ number_format($materi->rating, ) }}/5</span>
+                                            @if ($materi->rating_count > 0)
+                                                <span class="text-yellow-500">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($i <= floor($materi->rating / $materi->rating_count))
+                                                            ★
+                                                        @else
+                                                            ☆
+                                                        @endif
+                                                    @endfor
+                                                </span>
+                                            @endif
+                                            <span class="ml-1 text-sm">
+                                                {{ $materi->rating_count > 0 ? number_format($materi->rating / $materi->rating_count, 1) . '/ 5' : 'No rating available' }}
+                                                
+                                            </span>
                                         </div>
-                                        
+
                                     </div>
                                 </div>
                             </a>

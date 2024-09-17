@@ -289,53 +289,63 @@
             <!-- Judul -->
             <h2 class="text-lg font-semibold mb-4">Berikan Rating Untuk Materi Ini!</h2>
             @if (Auth::check())
-                <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST" id="ratingForm"
-                    class="text-center">
-                    @csrf
-                    <div id="starContainer" class="flex justify-center space-x-1 mb-3">
+                @php
+                    $user_id = Auth::user()->id;
+                    $materi_rated_users = json_decode($materi->rated_users);
+                @endphp
+
+                @if ($materi_rated_users && in_array($user_id, $materi_rated_users))
+                    <!-- Jika pengguna sudah memberikan rating -->
+                    <div id="ratedStarContainer" class="flex justify-center space-x-1 mb-3">
                         @for ($i = 1; $i <= 5; $i++)
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="text-gray-400 w-8 h-8 fill-current cursor-pointer star"
-                                data-rating="{{ $i }}" viewBox="0 0 16 16"
-                                onclick="selectRating({{ $i }})">
+                                class="w-8 h-8 fill-current {{ $i <= $materi->rating / $materi->rating_count ? 'text-yellow-500' : 'text-gray-400' }}"
+                                viewBox="0 0 16 16">
                                 <path
                                     d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                             </svg>
                         @endfor
                     </div>
+                    {{ $materi->rating_count > 0
+                        ? (fmod($materi->rating / $materi->rating_count, 1) == 0
+                                ? number_format($materi->rating / $materi->rating_count, 0)
+                                : number_format($materi->rating / $materi->rating_count, 1)) . '/5 ' . ' ('.$materi->rating_count.' users)'
+                        : 'No rating available' }}
 
-                    <!-- Indicator jumlah rating -->
-                    <div id="ratingIndicator" class="text-lg font-semibold text-gray-700 mb-3">Rating: 0/5</div>
+                    <!-- Pesan bahwa pengguna sudah memberikan rating -->
+                    <div id="ratedMessage" class="text-lg font-semibold text-green-600 mb-3">Anda telah memberikan rating.
+                    </div>
+                @else
+                    <!-- Jika pengguna belum memberikan rating -->
+                    <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST" id="ratingFormNew"
+                        class="text-center">
+                        @csrf
+                        <div id="newStarContainer" class="flex justify-center space-x-1 mb-3">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="text-gray-400 w-8 h-8 fill-current cursor-pointer new-star"
+                                    data-rating="{{ $i }}" viewBox="0 0 16 16"
+                                    onclick="selectNewRating({{ $i }})">
+                                    <path
+                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                </svg>
+                            @endfor
+                        </div>
 
-                    <input type="hidden" name="rating" id="ratingValue" required>
-                    <button type="submit" class="mt-3 px-4 py-2 bg-blue-500 text-white rounded">Submit Rating</button>
-                </form>
+                        <!-- Indicator jumlah rating -->
+                        <div id="newRatingIndicator" class="text-lg font-semibold text-gray-700 mb-3">Rating: 0/5</div>
+
+                        <input type="hidden" name="rating" id="newRatingValue" required>
+                        <button type="submit" class="mt-3 px-4 py-2 bg-blue-500 text-white rounded">Submit
+                            Rating</button>
+                    </form>
+                @endif
             @else
                 <p class="text-red-500">Silakan <a href="{{ route('login') }}"
                         class="underline text-indigo-600">login</a> untuk memberikan rating.</p>
             @endif
+
         </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-            <h2 class="text-2xl font-bold mb-4 text-gray-800">Detail Rating Materi</h2>
-
-            <div class="flex items-center justify-between mb-4">
-                <span class="text-lg text-gray-600">Total Rating:</span>
-                <span id="totalRating" class="text-lg font-semibold text-gray-900">{{ $materi->rating }}</span>
-            </div>
-
-            <div class="flex items-center justify-between mb-4">
-                <span class="text-lg text-gray-600">Jumlah User yang Memberi Rating:</span>
-                <span id="jumlahUser" class="text-lg font-semibold text-gray-900">{{ $materi->rating_count }}</span>
-            </div>
-
-            <div class="flex items-center justify-between mb-4">
-                <span class="text-lg text-gray-600">Rata-rata Rating:</span>
-                <span id="averageRating" class="text-lg font-semibold text-indigo-600"></span>
-            </div>
-        </div>
-
-
 
         {{-- Section 4: Skills --}}
         <section class="overflow-x-auto bg-white p-4 md:p-8">
@@ -408,6 +418,34 @@
             });
         }
 
+        // Script untuk rating baru (belum memberikan rating)
+        let selectedNewRating = 0;
+
+        function selectNewRating(rating) {
+            selectedNewRating = rating;
+            document.getElementById('newRatingValue').value = rating;
+
+            // Debug: Log rating untuk memastikan telah dipilih
+            console.log("Rating yang dipilih: ", rating);
+
+            // Update indikator rating
+            document.getElementById('newRatingIndicator').textContent = `Rating: ${rating}/5`;
+
+            // Ambil semua elemen bintang
+            const newStars = document.querySelectorAll('.new-star');
+
+            // Ganti warna bintang yang dipilih
+            newStars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('text-gray-400');
+                    star.classList.add('text-yellow-500');
+                } else {
+                    star.classList.remove('text-yellow-500');
+                    star.classList.add('text-gray-400');
+                }
+            });
+        }
+
         // Prevent form submission if no rating is selected
         document.getElementById('ratingForm').addEventListener('submit', function(event) {
             if (selectedRating === 0) {
@@ -464,7 +502,7 @@
             }
 
             document.getElementById('averageRating').innerText = averageRating.toFixed(
-            1); // Membulatkan ke 1 angka desimal
+                1); // Membulatkan ke 1 angka desimal
         });
     </script>
 @endsection
