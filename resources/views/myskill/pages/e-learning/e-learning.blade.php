@@ -207,8 +207,16 @@
                                                 </span>
                                             @endif
                                             <span class="ml-1 text-sm">
-                                                {{ $materi->rating_count > 0 ? number_format($materi->rating / $materi->rating_count, 1) . '/ 5' : 'No rating available' }}
-                                                
+                                                {{ $materi->rating_count > 0
+                                                    ? (fmod($materi->rating / $materi->rating_count, 1) == 0
+                                                            ? number_format($materi->rating / $materi->rating_count, 0)
+                                                            : number_format($materi->rating / $materi->rating_count, 1)) .
+                                                        '/5 ' .
+                                                        ' (' .
+                                                        $materi->rating_count .
+                                                        ' users)'
+                                                    : 'No rating available' }}
+
                                             </span>
                                         </div>
 
