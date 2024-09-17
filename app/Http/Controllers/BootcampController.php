@@ -102,12 +102,18 @@ class BootcampController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(string $id_bootcamp)
     {
-        //
-        $bootcamps = Bootcamp::findOrFail($id);
-        return view('administrator.bootcamps.show', compact('bootcamp'));
+        // Fetch a single bootcamp by its ID
+        $bootcamp = Bootcamp::findOrFail($id_bootcamp);
+
+        // Decode JSON for `id_benefitcamps` if it's not null, otherwise return an empty array
+        $bootcamp->id_benefitcamps = json_decode($bootcamp->id_benefitcamps) ?? [];
+
+        // Pass the single bootcamp to the view
+        return view('myskill.pages.program.digital-marketing', compact('bootcamp'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

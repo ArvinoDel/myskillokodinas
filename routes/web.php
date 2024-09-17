@@ -399,3 +399,4 @@ Route::get('/about', function () {
 // Add a route for displaying a specific materi
 Route::get('/e-learning/materi/{id_materi}', [MateriController::class, 'show'])->name('materi.show');
 Route::post('/materi/{id_materi}/rate', [MateriController::class, 'rate'])->name('materi.rate')->middleware('auth');
+Route::get('/bootcamp/digital-marketing/{id_bootcamp}', [BootcampController::class, 'show'])->name('bootcamp.show');

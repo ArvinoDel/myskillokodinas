@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Agenda;
-use App\Models\Alamatkontak;
-use App\Models\Album;
-use App\Models\Background;
-use App\Models\Bannerhome;
-use App\Models\Bannerslider;
-use App\Models\Berita;
-use App\Models\Identitaswebsite;
 use App\Models\Logo;
-use App\Models\Menuwebsite;
-use App\Models\Metode;
-use App\Models\Metodepembayaran;
+use App\Models\Album;
 use App\Models\Mitra;
+use App\Models\Video;
+use App\Models\Agenda;
+use App\Models\Berita;
+use App\Models\Metode;
 use App\Models\Poling;
-use App\Models\Sekilasinfo;
+use App\Models\Trainer;
+use App\Models\Bootcamp;
 use App\Models\Template;
 use App\Models\Testimoni;
-use App\Models\Trainer;
-use App\Models\Video;
-use Illuminate\Contracts\View\View;
+use App\Models\Background;
+use App\Models\Bannerhome;
+use App\Models\Menuwebsite;
+use App\Models\Sekilasinfo;
+use App\Models\Alamatkontak;
+use App\Models\Bannerslider;
 use Illuminate\Http\Request;
+use App\Models\Identitaswebsite;
+use App\Models\Metodepembayaran;
+use Illuminate\Contracts\View\View;
 
 class MainController extends Controller
 {
@@ -64,6 +65,7 @@ class MainController extends Controller
         $testimonis = Testimoni::all();
         $banners = Bannerslider::all();
         $album = Album::all();
+        $bootcamps = Bootcamp::all();
         // dd($testimonis);
         $logo = Logo::orderBy('id_logo', 'DESC')->first();
         $links = Bannerhome::orderBy('id_iklantengah', 'ASC')->limit(10)->get();
@@ -81,7 +83,7 @@ class MainController extends Controller
         $templateDinas2 = Template::where('folder', 'dinas-2')->first();
         $templateDinas1 = Template::where('folder', '')->first();
 
-        return view('myskill.pages.program.bootcamp', compact('testimonis', 'logo', 'banners', 'links', 'album'));
+        return view('myskill.pages.program.bootcamp', compact('testimonis', 'logo', 'banners', 'links', 'album', 'bootcamps'));
     }
 
     public function review(Request $request)
