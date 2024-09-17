@@ -138,12 +138,12 @@
                             <div>
                                 <label for="level" class="block text-gray-700">Level</label>
                                 <input type="text" id="level" name="level" class="mt-2 p-2 w-full border rounded"
-                                    value="{{ old('level', $user->level) }}">
+                                    value="{{ old('level', $user->level) }}" disabled>
                             </div>
                             <div>
                                 <label for="blokir" class="block text-gray-700">Blokir</label>
                                 <input type="text" id="blokir" name="blokir" class="mt-2 p-2 w-full border rounded"
-                                    value="{{ old('blokir', $user->blokir) }}">
+                                    value="{{ old('blokir', $user->blokir) }}" disabled>
                             </div>
                         @else
                         @endif

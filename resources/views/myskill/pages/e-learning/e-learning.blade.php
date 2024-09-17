@@ -172,45 +172,53 @@
                 @endforeach
             </div>
 
-            <!-- Carousel Container -->
-            <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
-                <div id="card-container" class="flex space-x-4">
-                    @foreach ($materis as $materi)
-                    <a href="{{ url('/e-learning/materi/' . $materi->id_materi) }}">
-                        <div id="card-{{ $materi->kategoriprogram->id_kategori_program }}"
-                            data-category-id="{{ $materi->kategoriprogram->id_kategori_program }}"
-                            class="card flex-none bg-white rounded-lg shadow-md h-80 w-64 flex flex-col">
-                            <div class="relative w-full h-40">
-                                <img src="{{ asset('./thumbnail/' . $materi->thumbnail) }}"
-                                    alt="{{ $materi->nama_materi }}"
-                                    class="absolute inset-0 w-full h-full object-contain rounded-t-lg">
-                            </div>
-                            <div class="p-4 flex flex-col flex-grow">
-                                <h3 class="font-bold text-lg mb-2">{{ $materi->nama_materi }}</h3>
-                                <div class="flex items-center text-sm">
-                                    <span class="mr-2">📅 {{ $materi->kategoriProgram->nama_kategori }}
-                                        Video</span>
-                                </div>
-                                <div class="flex items-center text-sm mt-1">
-                                    <span class="mr-2">👤 {{ $materi->rating_count }}</span>
-                                </div>
-                                <div class="flex items-center mt-2">
-                                    @if ($materi->rating_count > 0)
-                                    <span class="text-yellow-500">
-                                        @for ($i = 1; $i <= 5; $i++)
-                                            @if ($i <=floor($materi->rating / $materi->rating_count))
-                                            ★
-                                            @else
-                                            ☆
+                <!-- Carousel Container -->
+                <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
+                    <div id="card-container" class="flex space-x-4">
+                        @foreach ($materis as $materi)
+                            <a href="{{ url('/e-learning/materi/' . $materi->id_materi) }}">
+                                <div id="card-{{ $materi->kategoriprogram->id_kategori_program }}"
+                                    data-category-id="{{ $materi->kategoriprogram->id_kategori_program }}"
+                                    class="card flex-none bg-white rounded-lg shadow-md h-80 w-64 flex flex-col">
+                                    <div class="relative w-full h-40">
+                                        <img src="{{ asset('./thumbnail/' . $materi->thumbnail) }}"
+                                            alt="{{ $materi->nama_materi }}"
+                                            class="absolute inset-0 w-full h-full object-contain rounded-t-lg">
+                                    </div>
+                                    <div class="p-4 flex flex-col flex-grow">
+                                        <h3 class="font-bold text-lg mb-2">{{ $materi->nama_materi }}</h3>
+                                        <div class="flex items-center text-sm">
+                                            <span class="mr-2">📅 {{ $materi->kategoriProgram->nama_kategori }}
+                                                Video</span>
+                                        </div>
+                                        <div class="flex items-center text-sm mt-1">
+                                            <span class="mr-2">👤 {{ $materi->rating_count }}</span>
+                                        </div>
+                                        <div class="flex items-center mt-2">
+                                            @if ($materi->rating_count > 0)
+                                                <span class="text-yellow-500">
+                                                    @for ($i = 1; $i <= 5; $i++)
+                                                        @if ($i <= floor($materi->rating / $materi->rating_count))
+                                                            ★
+                                                        @else
+                                                            ☆
+                                                        @endif
+                                                    @endfor
+                                                </span>
                                             @endif
-                                            @endfor
-                                    </span>
-                                    @endif
-                                    <span class="ml-1 text-sm">
-                                        {{ $materi->rating_count > 0 ? number_format($materi->rating / $materi->rating_count, 1) . '/ 5' : 'No rating available' }}
+                                            <span class="ml-1 text-sm">
+                                                {{ $materi->rating_count > 0
+                                                    ? (fmod($materi->rating / $materi->rating_count, 1) == 0
+                                                            ? number_format($materi->rating / $materi->rating_count, 0)
+                                                            : number_format($materi->rating / $materi->rating_count, 1)) .
+                                                        '/5 ' .
+                                                        ' (' .
+                                                        $materi->rating_count .
+                                                        ' users)'
+                                                    : 'No rating available' }}
 
-                                    </span>
-                                </div>
+                                            </span>
+                                        </div>
 
                             </div>
                         </div>
