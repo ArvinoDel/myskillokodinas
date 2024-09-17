@@ -243,158 +243,31 @@
     <section id="learning" class="bg-gray-100 p-4 md:p-8">
         <div class="container mx-auto">
             <h2 class="text-2xl font-bold mb-4">Daftar Learning Path Rancangan Experts</h2>
-
+    
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-
-                <a href="/e-learning/program">
-                    <div
-                        class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                        <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                            class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                        <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                        <div class="flex items-center text-xs text-gray-500">
-                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
-                        </div>
-                        <div class="flex items-center mt-2">
-                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
+                @foreach($categories as $category)
+                <a href="{{ route('program.show', $category->id_kategori_program) }}" class="block">
+                        <!-- Card Element -->
+                        <div class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
+                            <img src="{{ url('assets/e-learning/' . $category->gambar) }}" alt="{{ $category->nama_kategori }}" class="w-full h-auto object-cover rounded-lg mb-2">
+                            <h3 class="font-bold text-sm mb-4">{{ $category->nama_kategori }}</h3>
+                            <div class="flex items-center text-xs text-gray-500">
+                                <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
+                            </div>
+                            <div class="flex items-center mt-2">
+                                <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span></div>
+                            </div>
+                            <div class="flex items-center mt-2">
+                                <span class="text-yellow-400 text-sm">★★★★★</span>
+                                <span class="ml-1 text-xs text-gray-600">4.7/5</span>
+                                <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">{{ $category->id_kategori_program }}</span>
                             </div>
                         </div>
-                        <div class="flex items-center mt-2">
-                            <span class="text-yellow-400 text-sm">★★★★★</span>
-                            <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                            <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
-                        </div>
-                    </div>
-                </a>
-                <div
-                    class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                    <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                        class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                    <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <span class="text-yellow-400 text-sm">★★★★★</span>
-                        <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                        <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
-                    </div>
-                </div>
-                <div
-                    class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                    <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                        class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                    <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <span class="text-yellow-400 text-sm">★★★★★</span>
-                        <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                        <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
-                    </div>
-                </div>
-                <div
-                    class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                    <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                        class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                    <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <span class="text-yellow-400 text-sm">★★★★★</span>
-                        <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                        <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
-                    </div>
-                </div>
-                <div
-                    class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                    <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                        class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                    <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <span class="text-yellow-400 text-sm">★★★★★</span>
-                        <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                        <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
-                    </div>
-                </div>
-                <div
-                    class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                    <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                        class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                    <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <span class="text-yellow-400 text-sm">★★★★★</span>
-                        <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                        <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
-                    </div>
-                </div>
-                <div
-                    class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                    <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                        class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                    <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <span class="text-yellow-400 text-sm">★★★★★</span>
-                        <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                        <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
-                    </div>
-                </div>
-                <div
-                    class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                    <img src="{{ asset('assets/e-learning/test.webp') }}" alt="Copywriting"
-                        class="w-4/5 justify-items-center mx-auto h-auto object-fit rounded-lg mb-2">
-                    <h3 class="font-bold text-sm mb-4">Copywriting Introduction</h3>
-                    <div class="flex items-center text-xs text-gray-500">
-                        <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center mt-2">
-                        <span class="text-yellow-400 text-sm">★★★★★</span>
-                        <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                        <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">1</span>
-                    </div>
-                </div>
-
+                    </a>
+                @endforeach
             </div>
-    </section>
+        </div>
+    </section>    
 
     {{-- Section : Mentors --}}
     <section class="bg-gray-100 py-3 my-3 px-4 lg:mt-20">

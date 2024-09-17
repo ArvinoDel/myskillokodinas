@@ -9,7 +9,7 @@
                     class="mb-4 md:mb-4 w-full h-auto max-sm:max-w-xs md:max-w-sm lg:w-1/2 rounded-lg">
 
                 <div class="text-center max-sm:text-start md:text-start lg:ml-6 lg:text-left">
-                    <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white max">Digital Marketing.</h1>
+                    <h1 class="text-3xl md:text-4xl font-bold mb-4 text-white max">{{ $category->nama_kategori }}</h1>
                     <p class="text-sm md:text-base text-white mb-4">
                         <i class="fa-solid fa-book-open mr-1"></i>12 Topik <i class="fa-solid fa-list ml-2"></i> 153 Materi
                     </p>

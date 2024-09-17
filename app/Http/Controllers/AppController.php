@@ -21,9 +21,9 @@ class AppController extends Controller
     //
 
     public function companyprofile(Request $request){
-        
+
         $identitas = Identitaswebsite::first();
-        $banners = Bannerslider::all();
+        $banners = Bannerslider::where('is_myskill', 0)->get();
         $alamat = Alamatkontak::first();
         $logo = Logo::orderBy('id_logo', 'DESC')->first();
         $links = Bannerhome::orderBy('id_iklantengah', 'ASC')->limit(10)->get();

@@ -40,7 +40,7 @@ class ProfileController extends Controller
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->move(public_path('assets/foto_profile'), $filename);
+            $file->move(public_path('./foto_user'), $filename);
             $user->foto = $filename;
         }
 
