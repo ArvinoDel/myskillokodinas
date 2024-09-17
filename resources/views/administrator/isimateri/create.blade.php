@@ -37,11 +37,8 @@
                                     <th style="padding: 5px;">Materi</th>
                                     <td style="padding: 5px;">
                                         <select class="form-control" name="id_materi" required>
-                                            <option value="">-- Pilih Materi --</option>
                                             @foreach ($materis as $materi)
-                                                <option value="{{ $materi->id_materi }}">
-                                                    {{ $materi->nama_materi }}
-                                                </option>
+                                            <option hidden value="{{ $materi->id_materi }}" {{ request('id_materi') == $materi->id_materi ? 'selected' : '' }}>{{ $materi->nama_materi }}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -50,7 +47,7 @@
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.materi.index') }}" class="btn btn-danger">Batal</a>
+                            <a href="{{ route('administrator.isimateri.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>

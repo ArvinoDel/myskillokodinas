@@ -44,7 +44,7 @@
                         </div>
                         @if (request('search') || request('masa_berlangganan'))
                             <div class="mt-2 d-flex justify-content-center">
-                                <a href="{{ route('administrator.berlangganan.index') }}"
+                                <a href="{{ route('administrator.programcv.index') }}"
                                     class="btn btn-primary text-white shadow">Seluruh Data</a>
                             </div>
                         @endif
