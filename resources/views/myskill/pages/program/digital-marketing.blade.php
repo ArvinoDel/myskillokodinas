@@ -8,10 +8,10 @@
         <div class="lg:ml-4 max-sm:text-black max-sm:w-full max-sm:text-center max-sm:mx-auto max-sm:py-4"
             style="width: 100%;">
             <p
-                class="lg:ml-4 md:ml-4 lg:text-white md:text-white lg:text-4xl font-bold lg:w-4/5 max-sm:text-2xl max-sm:text-left max-sm:w-full max-sm:px-3 lg:mt-4">
+                class="lg:ml-4 md:ml-4 text-white lg:text-4xl font-bold lg:w-4/5 max-sm:text-2xl max-sm:text-left max-sm:w-full max-sm:px-3 lg:mt-4">
                 DIGITAL MARKETING: FULLSTACK INTENSIVE BOOTCAMP</p>
             <br>
-            <div class="lg:w-48 lg:h-36 lg:ml-4 md:w-56 md:h-34 md:ml-4 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl shadow relative">
+            <div class="lg:w-48 lg:h-36 lg:ml-4 md:w-56 md:h-34 md:ml-4 max-sm:mb-1 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl shadow relative">
                 <p class="font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-2 md:text-lg">Batch 27</p>
                 <p class="text-black font-regular text-xl lg:ml-4 md:ml-2 md:text-base">Rp 590.000</p>
                 <p class="text-black font-regular text-xs lg:ml-4 line-through md:ml-2">Early sale: Rp 450.000</p>
@@ -27,7 +27,7 @@
                 </button>
             </a>
             <div class="flex items-center mt-1 max-sm:flex-col max-sm:items-center">
-                <p class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 lg:text-white text-md font-semibold max-sm:text-black max-sm:ml-0 max-sm:text-sm max-sm:mt-2">
+                <p class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 text-white text-md font-semibold max-sm:ml-0 max-sm:text-sm max-sm:mt-2">
                     5.000+ Alumni Bootcamp Tiap Bulan</p>
             </div>
         </div>
@@ -672,6 +672,21 @@
 <div class="w-full flex justify-center mt-8">
     <hr class="mb-6 mt-4 w-11/12 border-1 ">
 </div>
+
+<!-- footer hanya ada pada max-sm dan md -->
+<footer class="fixed bottom-0 left-0 w-full bg-white text-black max-sm:block md:block lg:hidden">
+    <div class="flex justify-between items-center p-3 border-t-2 border-gray-300">
+        <div class="flex flex-col text-left">
+            <p class="text-red-500 font-bold text-sm">Kuota Terbatas!</p>
+            <p class="text-black font-bold text-sm">Rp 590.000</p>
+        </div>
+        <a href="/payment" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg">
+            Daftar Sekarang
+        </a>
+    </div>
+</footer>
+
+
 <!-- script dropdown -->
 <script>
     function toggleDropdown(id, button) {
