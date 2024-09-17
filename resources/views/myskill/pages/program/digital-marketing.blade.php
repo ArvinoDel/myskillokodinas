@@ -8,10 +8,10 @@
         <div class="lg:ml-4 max-sm:text-black max-sm:w-full max-sm:text-center max-sm:mx-auto max-sm:py-4"
             style="width: 100%;">
             <p
-                class="lg:ml-4 md:ml-4 lg:text-white md:text-white lg:text-4xl font-bold lg:w-4/5 max-sm:text-2xl max-sm:text-left max-sm:w-full max-sm:px-3 lg:mt-4">
+                class="lg:ml-4 md:ml-4 text-white lg:text-4xl font-bold lg:w-4/5 max-sm:text-2xl max-sm:text-left max-sm:w-full max-sm:px-3 lg:mt-4">
                 DIGITAL MARKETING: FULLSTACK INTENSIVE BOOTCAMP</p>
             <br>
-            <div class="lg:w-48 lg:h-36 lg:ml-4 md:w-56 md:h-34 md:ml-4 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl shadow relative">
+            <div class="lg:w-48 lg:h-36 lg:ml-4 md:w-56 md:h-34 md:ml-4 max-sm:mb-1 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl shadow relative">
                 <p class="font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-2 md:text-lg">Batch 27</p>
                 <p class="text-black font-regular text-xl lg:ml-4 md:ml-2 md:text-base">Rp 590.000</p>
                 <p class="text-black font-regular text-xs lg:ml-4 line-through md:ml-2">Early sale: Rp 450.000</p>
@@ -27,7 +27,7 @@
                 </button>
             </a>
             <div class="flex items-center mt-1 max-sm:flex-col max-sm:items-center">
-                <p class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 lg:text-white text-md font-semibold max-sm:text-black max-sm:ml-0 max-sm:text-sm max-sm:mt-2">
+                <p class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 text-white text-md font-semibold max-sm:ml-0 max-sm:text-sm max-sm:mt-2">
                     5.000+ Alumni Bootcamp Tiap Bulan</p>
             </div>
         </div>
@@ -225,7 +225,8 @@
         </div>
         <div>
             <img src="{{ asset('./assets/bootcamp/trusted.png') }}"
-                class="lg:h-80 rounded-3xl w-auto lg:mt-4 lg:ml-2 py-2 max-sm:h-28 max-sm:w-20 max-sm:mx-auto max-sm:my-4 object-cover md:p-4">
+                class="lg:h-80 rounded-3xl w-full lg:w-auto lg:mt-4 lg:ml-2 py-2 max-sm:w-full max-sm:h-auto max-sm:mx-auto max-sm:my-4 object-cover md:p-4">
+
         </div>
         <!-- prospek karir end -->
         <!-- yang bisa kamu dapatkan start -->
@@ -233,15 +234,16 @@
         <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Upgrade skill mulai dari memahami konsep, analisa studi kasus, hingga praktik untuk mengoptimalkannya. Kuasai berbagai skill dan tools di bidang Digital Marketing untuk karier maupun bisnis kamu.
             <b>Contoh Skill & Portfolio yang bisa kamu miliki:</b>
         </p>
-        <img src="{{ asset('./assets/bootcamp/get.png') }}" class="lg:h-80 rounded-3xl w-auto lg:mt-4 lg:ml-2 py-2 max-sm:h-28 max-sm:w-12 max-sm:mx-auto max-sm:my-4 object-cover">
+        <img src="{{ asset('./assets/bootcamp/get.png') }}"
+            class="lg:h-80 rounded-3xl w-auto lg:mt-4 lg:ml-2 py-2 max-sm:w-full max-sm:mx-auto max-sm:my-4 object-cover">
         <!-- scrollbar-2 -->
         <div name="scrollbar-2 mb-4">
             <div class="flex overflow-x-auto space-x-4 no-scrollbar">
-                <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto">
-                <img src="{{ asset('./assets/bootcamp/get2.png') }}" class="h-64 w-auto">
-                <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto">
-                <img src="{{ asset('./assets/bootcamp/get2.png') }}" class="h-64 w-auto">
-                <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto">
+                <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
+                <img src="{{ asset('./assets/bootcamp/get2.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
+                <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
+                <img src="{{ asset('./assets/bootcamp/get2.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
+                <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
             </div>
         </div>
         <!-- yang bisa kamu dapatkan end -->
@@ -276,11 +278,12 @@
         <b class="max-sm:mt-6 max-sm:ml-2 md:ml-6 "><i>Akselerasi Karir</i></b>
         <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">✅ Mendapat template CV & Surat Lamaran kerja versi Bahasa Inggris & Bahasa Indonesia. <br>
             ✅ Akses Ratusan Video eLearning dengan ratusan sertifikat yang bisa didapatkan.</p>
-        <img src="{{ asset('./assets/bootcamp/sertifikat.png') }}" class="lg:h-72 md:h-72 md:p-4 rounded-3xl w-auto lg:mt-4 lg:ml-8 py-2 max-sm:h-28 max-sm:w-12 max-sm:mx-auto max-sm:my-4 object-cover">
+        <img src="{{ asset('./assets/bootcamp/sertifikat.png') }}" class="lg:h-80 rounded-3xl w-full lg:w-auto lg:mt-4 lg:ml-2 py-2 max-sm:w-full max-sm:h-auto max-sm:mx-auto max-sm:my-4 object-cover md:p-4">
         <!-- benefit end -->
+
         <!-- peserta bootcamp -->
         <p id="peserta" class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 lg:mt-6 font-bold md:text-xl md:mb-4 md:mt-4"><i class="fas fa-chevron-right text-orange-600 mr-3 md:ml-6 "></i>Peserta Bootcamp</p>
-        <img src="{{ asset('./assets/bootcamp/peserta.png') }}" class="lg:h-80 sm:h-auto rounded-3xl w-auto lg:mt-4 lg:ml-8 py-2 max-sm:h-28 max-sm:w-12 max-sm:mx-auto max-sm:my-4 object-cover">
+        <img src="{{ asset('./assets/bootcamp/peserta.png') }}" class="lg:h-80 rounded-3xl w-full lg:w-auto lg:mt-4 lg:ml-2 py-2 max-sm:w-full max-sm:h-auto max-sm:mx-auto max-sm:my-4 object-cover md:p-4">
         <!-- Kurikulum & Silabus -->
         <p id="kurikulum" class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 lg:mt-6 font-bold md:text-xl"><i class="fas fa-chevron-right text-orange-600 mr-3 md:ml-6"></i>Kurikulum & Silabus</p>
         <b class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Dirancang & Belajar Langsung Dari Yang Terbaik!</b>
@@ -502,62 +505,62 @@
         </div>
         <!-- FAQ 2 -->
         <div class="border border-gray-300 rounded mt-2 md:m-4">
-            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center" onclick="toggleDropdown('faq2', this)">
+            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center max-sm:text-xs" onclick="toggleDropdown('faq2', this)">
                 <p class="font-semibold"> Bagaimana jika saya tidak bisa menghadiri kelas, apakah saya masih bisa mengikuti materi ? </p>
                 <i class="fas fa-chevron-down" id="arrow2"></i>
             </button>
-            <div id="faq2" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0">
+            <div id="faq2" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0 max-sm:text-xs">
                 Tentu saja! Jika kamu tidak dapat hadir pada sesi kelas, kamu bisa mengikuti materi melalui video recording setiap sesinya sehingga kamu tidak tertinggal materi yang telah disampaikan di sesi kelas.
             </div>
         </div>
         <!-- FAQ 3 -->
         <div class="border border-gray-300 rounded mt-2 md:m-4">
-            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center" onclick="toggleDropdown('faq3', this)">
+            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center max-sm:text-xs" onclick="toggleDropdown('faq3', this)">
                 <p class="font-semibold md:w-11/12"> Bagaimana jika saya mengalami kesulitan untuk mengerjakan team project untuk portofolio saya ? </p>
                 <i class="fas fa-chevron-down" id="arrow2"></i>
             </button>
-            <div id="faq3" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0">
+            <div id="faq3" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0 max-sm:text-xs">
                 <p>Jangan khawatir! Kamu akan didampingi oleh <i>learning asisstant (mentor)</i> selama proses pengerjaan final team project, bersama mentor kamu bisa berdiskusi secara intensif dan interaktif</p>
             </div>
         </div>
         <!-- FAQ 4 -->
         <div class="border border-gray-300 rounded mt-2 md:m-4">
-            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center" onclick="toggleDropdown('faq4', this)">
+            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center max-sm:text-xs" onclick="toggleDropdown('faq4', this)">
                 <p class="font-semibold">Apakah final project portofolio, bisa saya gunakan untuk melamar kerja ? </p>
                 <i class="fas fa-chevron-down" id="arrow2"></i>
             </button>
-            <div id="faq4" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0">
+            <div id="faq4" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0 max-sm:text-xs">
                 Final project portofolio tentu bisa digunakan sebagai portofolio untuk melamar pekerjaan. Kamu akan mengerjakan final project secara real case secara end to end process sehingga sangat cukup untuk mendukung kamu dari segi pemahaman dan praktik pada pekerjaaan bidang Digital Marketing. Dengan final project yang dikerjakan terbukti MySkill sudah membantu banyak alumni dalam mencari pekerjaan. </div>
         </div>
         <!-- FAQ 5 -->
         <div class="border border-gray-300 rounded mt-2 md:m-4">
-            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center" onclick="toggleDropdown('faq5', this)">
+            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center max-sm:text-xs" onclick="toggleDropdown('faq5', this)">
                 <p class="font-semibold"> Bagaimana cara agar bisa mengikuti extra sesi tambahan ? </p>
                 <i class="fas fa-chevron-down" id="arrow2"></i>
             </button>
-            <div id="faq5" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0">
+            <div id="faq5" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0 max-sm:text-xs">
                 Peserta harus menghadiri setiap sesi kelas yang diselenggarakan, serta secara aktif berpartisipasi dalam mengerjakan mini portofolio yang dikerjakan pada tiap sesi. </div>
         </div>
         <!-- FAQ 6 -->
         <div class="border border-gray-300 rounded mt-2 md:m-4">
-            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center" onclick="toggleDropdown('faq6', this)">
+            <button class="w-full text-left bg-white p-2 rounded flex justify-between items-center max-sm:text-xs" onclick="toggleDropdown('faq6', this)">
                 <p class="font-semibold"> Seperti apa bentuk final project yang akan dikerjakan peserta ? </p>
                 <i class="fas fa-chevron-down" id="arrow2"></i>
             </button>
-            <div id="faq6" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0">
+            <div id="faq6" class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0 max-sm:text-xs">
                 Kamu akan diminta mempraktikkan semua materi yang telah dipelajari, dengan cara menghandle secara langsung sebuah bisnis UMKM. Kamu akan berperan aktif dalam membuat strategi, eksekusi, hingga evaluasi pada berbagai aspek.
             </div>
         </div>
         <!-- Komunitas -->
-        <p id="komunitas" class="md:ml-6 md:text-xl text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 lg:mt-6 max-sm:mt-6 font-bold lg:mb-1"><i class="fas fa-chevron-right text-orange-600 mr-3"></i>Komunitas</p>
-        <p class="md:ml-6 md:mb-4 lg:mt-4 sm:mt-2 ml-2 max-sm:mb-4 lg:text-base max-sm:text-sm md:w-11/12">Bukan sekadar join Bootcamp. Tapi, Komunitas berkembang bersama. Gabung grup untuk berdiskusi, berbagi info loker dan freelance, hingga kumpul offline dan networking. Bangun support system bersama yuk!</p>
+        <p id="komunitas" class="md:ml-6 md:text-xl text-orange-600 lg:text-xl max-sm:text-xs max-sm:ml-2 lg:mt-6 max-sm:mt-6 font-bold lg:mb-1 "><i class="fas fa-chevron-right text-orange-600 mr-3"></i>Komunitas</p>
+        <p class="md:ml-6 md:mb-4 lg:mt-4 sm:mt-2 ml-2 max-sm:mb-4 lg:text-base max-sm:text-xs md:w-11/12">Bukan sekadar join Bootcamp. Tapi, Komunitas berkembang bersama. Gabung grup untuk berdiskusi, berbagi info loker dan freelance, hingga kumpul offline dan networking. Bangun support system bersama yuk!</p>
         <!-- scrollbar-3 -->
         <div name="scrollbar-2 mb-8 ">
             <div class="flex overflow-x-auto space-x-4 max-sm:ps-2 no-scrollbar">
-                <img src="{{ asset('./assets/bootcamp/komun1.png') }}" class="lg:h-64 max-sm:h-60 lg:w-auto max-sm:w-[272px] md:p-4">
-                <img src="{{ asset('./assets/bootcamp/komun2.png') }}" class="lg:h-64 max-sm:h-60 lg:w-auto max-sm:w-[272px] md:p-4">
-                <img src="{{ asset('./assets/bootcamp/komun3.png') }}" class="lg:h-64 max-sm:h-60 lg:w-auto max-sm:w-[272px] md:p-4">
-                <img src="{{ asset('./assets/bootcamp/komun4.png') }}" class="lg:h-64 max-sm:h-60 lg:w-auto max-sm:w-[272px] md:p-4">
+                <img src="{{ asset('./assets/bootcamp/komun1.png') }}" class="lg:h-64 lg:w-auto max-sm:w-64 max-sm:h-32 md:p-4">
+                <img src="{{ asset('./assets/bootcamp/komun2.png') }}" class="lg:h-64 lg:w-auto max-sm:w-64 max-sm:h-32 md:p-4">
+                <img src="{{ asset('./assets/bootcamp/komun3.png') }}" class="lg:h-64 lg:w-auto max-sm:w-64 max-sm:h-32 md:p-4">
+                <img src="{{ asset('./assets/bootcamp/komun4.png') }}" class="lg:h-64 lg:w-auto max-sm:w-64 max-sm:h-32 md:p-4">
             </div>
         </div>
         <!-- komunitas end -->
@@ -568,9 +571,10 @@
                     class="fas fa-chevron-right text-orange-600 mr-3"></i>Daftar Sekarang</p>
         </a>
         <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6 md:mb-2">Ayo, persiapkan dirimu untuk mulai #RintisKarirImpian</p>
+
         <a href="/payment">
             <button type="button"
-                class="lg:mt-2 w-full md:w-11/12 md:ml-8 md:p-2 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm lg:px-5 lg:py-3 dark:focus:ring-yellow-900 max-sm:bg-yellow-500 max-sm:text-white max-sm:px-3 max-sm:py-2 max-sm:mt-1 max-sm:w-4/5 max-sm:mx-auto">
+                class="max-sm:w-full lg:mt-2 w-full md:w-11/12 md:ml-8 md:p-2 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm lg:px-5 lg:py-3 dark:focus:ring-yellow-900 max-sm:bg-yellow-500 max-sm:text-white max-sm:px-3 max-sm:py-2 max-sm:mt-1 max-sm:mx-auto">
                 <i class="fas fa-bolt"></i> Daftar Sekarang
             </button>
         </a>
@@ -672,6 +676,21 @@
 <div class="w-full flex justify-center mt-8">
     <hr class="mb-6 mt-4 w-11/12 border-1 ">
 </div>
+
+<!-- footer hanya ada pada max-sm dan md -->
+<footer class="fixed bottom-0 left-0 w-full bg-white text-black max-sm:block md:block lg:hidden">
+    <div class="flex justify-between items-center p-3 border-t-2 border-gray-300">
+        <div class="flex flex-col text-left">
+            <p class="text-red-500 font-bold text-sm">Kuota Terbatas!</p>
+            <p class="text-black font-bold text-sm">Rp 590.000</p>
+        </div>
+        <a href="/payment" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg">
+            Daftar Sekarang
+        </a>
+    </div>
+</footer>
+
+
 <!-- script dropdown -->
 <script>
     function toggleDropdown(id, button) {

@@ -415,6 +415,8 @@
                                         $cekMitra = $UserModul->umenu_akses("mitra", session('id_session'));
                                         $cekBerlangganan = $UserModul->umenu_akses("berlangganan", session('id_session'));
                                         $cekProgramcv = $UserModul->umenu_akses("programcv", session('id_session'));
+                                        $cekBootcamps = $UserModul->umenu_akses("bootcamps", session('id_session'));
+                                        $cekBenefitbootcamp = $UserModul->umenu_akses("benefitbootcamp", session('id_session'));
                                     @endphp
 
                                     @if($cekLogowebsite == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
@@ -441,6 +443,9 @@
                                     @if($cekBenefit == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/benefit') }}"><i class='ni ni-badge text-blue'></i>Benefit</a></li>
                                     @endif
+                                    @if($cekBenefitbootcamp == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/benefitbootcamp') }}"><i class='ni ni-badge text-blue'></i>Benefit Bootcamp</a></li>
+                                    @endif
                                     @if($cekMember == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/member') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Member</a></li>
                                     @endif
@@ -459,9 +464,12 @@
                                     @if($cekMitra == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/mitra') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
                                     @endif
-                            
+
                                     @if($cekProgramcv == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/programcv') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Program CV</a></li>
+                                    @endif
+                                    @if($cekBootcamps == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/bootcamps') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Bootcamp</a></li>
                                     @endif
                                 </ul>
                             </div>
