@@ -17,8 +17,8 @@
                         </div>
                         <h3 class="font-bold text-xs md:text-sm text-red-500 p-2">10.000+ Orang Berlangganan Tiap Bulan</h3>
                     </div>
-                    <div class="mx-4 md:mx-20 -mt-8 md:-mt-48">
-                        <h3 class="text-gray-500 font-semibold py-4">Materi</h3>
+                    <div class="mx-4 md:mx-28">
+                        <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Materi</h3>
                         @foreach ($materi->isimateri as $isi)
                             <button onclick="openFile('{{ asset('../video_files/' . $isi->file) }}', '{{ $isi->file }}')"
                                 class="w-full">
@@ -32,42 +32,40 @@
                                     </div>
                                 </div>
                             </button>
-
-
-                            <!-- Modal untuk video -->
-                            <div id="videoModal"
-                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-16">
-                                <div class="bg-white p-5 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
-                                    <span class="close" onclick="closeModal()">&times;</span>
-                                    <video id="videoPlayer" controls class="w-full">
-                                        <source id="videoSource" src="" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
-                            </div>
-
-                            <!-- Modal untuk PDF -->
-                            <div id="fileModal"
-                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-10">
-                                <div class="bg-white p-4 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
-                                    <span class="close" onclick="closeFileModal()">&times;</span>
-                                    <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
-                                </div>
-                            </div>
-
-                           <!-- Modal untuk Gambar -->
-                           <div id="imageModal"
-                           class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-12">
-                           <div class="bg-white p-4 rounded-lg max-w-2xl w-full"> <!-- Ubah max-w-3xl menjadi max-w-2xl untuk memperkecil lebar -->
-                               <span class="close" onclick="closeImageModal()">&times;</span>
-                               <div class="justify-center items-center">
-                                   <img id="imageViewer" class="w-96 h-96 justify-center items-center" src="" alt="Gambar">
-                               </div>
-                           </div>
-                       </div>
                         @endforeach
                     </div>
                 </div>
+                    <!-- Modal untuk video -->
+                    <div id="videoModal"
+                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-16">
+                        <div class="bg-white p-5 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <video id="videoPlayer" controls class="w-full">
+                                <source id="videoSource" src="" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                    <!-- Modal untuk PDF -->
+                    <div id="fileModal"
+                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-10">
+                        <div class="bg-white p-4 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
+                            <span class="close" onclick="closeFileModal()">&times;</span>
+                            <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Modal untuk Gambar -->
+                    <div id="imageModal"
+                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-12">
+                        <div class="bg-white p-4 rounded-lg max-w-2xl w-full"> <!-- Ubah max-w-3xl menjadi max-w-2xl untuk memperkecil lebar -->
+                            <span class="close" onclick="closeImageModal()">&times;</span>
+                            <div class="justify-center items-center">
+                                <img id="imageViewer" class="w-96 h-96 justify-center items-center" src="" alt="Gambar">
+                            </div>
+                        </div>
+                    </div>
             </div>
         </section>
 
@@ -291,53 +289,63 @@
             <!-- Judul -->
             <h2 class="text-lg font-semibold mb-4">Berikan Rating Untuk Materi Ini!</h2>
             @if (Auth::check())
-                <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST" id="ratingForm"
-                    class="text-center">
-                    @csrf
-                    <div id="starContainer" class="flex justify-center space-x-1 mb-3">
+                @php
+                    $user_id = Auth::user()->id;
+                    $materi_rated_users = json_decode($materi->rated_users);
+                @endphp
+
+                @if ($materi_rated_users && in_array($user_id, $materi_rated_users))
+                    <!-- Jika pengguna sudah memberikan rating -->
+                    <div id="ratedStarContainer" class="flex justify-center space-x-1 mb-3">
                         @for ($i = 1; $i <= 5; $i++)
                             <svg xmlns="http://www.w3.org/2000/svg"
-                                class="text-gray-400 w-8 h-8 fill-current cursor-pointer star"
-                                data-rating="{{ $i }}" viewBox="0 0 16 16"
-                                onclick="selectRating({{ $i }})">
+                                class="w-8 h-8 fill-current {{ $i <= $materi->rating / $materi->rating_count ? 'text-yellow-500' : 'text-gray-400' }}"
+                                viewBox="0 0 16 16">
                                 <path
                                     d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                             </svg>
                         @endfor
                     </div>
+                    {{ $materi->rating_count > 0
+                        ? (fmod($materi->rating / $materi->rating_count, 1) == 0
+                                ? number_format($materi->rating / $materi->rating_count, 0)
+                                : number_format($materi->rating / $materi->rating_count, 1)) . '/5 ' . ' ('.$materi->rating_count.' users)'
+                        : 'No rating available' }}
 
-                    <!-- Indicator jumlah rating -->
-                    <div id="ratingIndicator" class="text-lg font-semibold text-gray-700 mb-3">Rating: 0/5</div>
+                    <!-- Pesan bahwa pengguna sudah memberikan rating -->
+                    <div id="ratedMessage" class="text-lg font-semibold text-green-600 mb-3">Anda telah memberikan rating.
+                    </div>
+                @else
+                    <!-- Jika pengguna belum memberikan rating -->
+                    <form action="{{ route('materi.rate', $materi->id_materi) }}" method="POST" id="ratingFormNew"
+                        class="text-center">
+                        @csrf
+                        <div id="newStarContainer" class="flex justify-center space-x-1 mb-3">
+                            @for ($i = 1; $i <= 5; $i++)
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="text-gray-400 w-8 h-8 fill-current cursor-pointer new-star"
+                                    data-rating="{{ $i }}" viewBox="0 0 16 16"
+                                    onclick="selectNewRating({{ $i }})">
+                                    <path
+                                        d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                                </svg>
+                            @endfor
+                        </div>
 
-                    <input type="hidden" name="rating" id="ratingValue" required>
-                    <button type="submit" class="mt-3 px-4 py-2 bg-blue-500 text-white rounded">Submit Rating</button>
-                </form>
+                        <!-- Indicator jumlah rating -->
+                        <div id="newRatingIndicator" class="text-lg font-semibold text-gray-700 mb-3">Rating: 0/5</div>
+
+                        <input type="hidden" name="rating" id="newRatingValue" required>
+                        <button type="submit" class="mt-3 px-4 py-2 bg-blue-500 text-white rounded">Submit
+                            Rating</button>
+                    </form>
+                @endif
             @else
                 <p class="text-red-500">Silakan <a href="{{ route('login') }}"
                         class="underline text-indigo-600">login</a> untuk memberikan rating.</p>
             @endif
+
         </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto">
-            <h2 class="text-2xl font-bold mb-4 text-gray-800">Detail Rating Materi</h2>
-
-            <div class="flex items-center justify-between mb-4">
-                <span class="text-lg text-gray-600">Total Rating:</span>
-                <span id="totalRating" class="text-lg font-semibold text-gray-900">{{ $materi->rating }}</span>
-            </div>
-
-            <div class="flex items-center justify-between mb-4">
-                <span class="text-lg text-gray-600">Jumlah User yang Memberi Rating:</span>
-                <span id="jumlahUser" class="text-lg font-semibold text-gray-900">{{ $materi->rating_count }}</span>
-            </div>
-
-            <div class="flex items-center justify-between mb-4">
-                <span class="text-lg text-gray-600">Rata-rata Rating:</span>
-                <span id="averageRating" class="text-lg font-semibold text-indigo-600"></span>
-            </div>
-        </div>
-
-
 
         {{-- Section 4: Skills --}}
         <section class="overflow-x-auto bg-white p-4 md:p-8">
@@ -410,6 +418,34 @@
             });
         }
 
+        // Script untuk rating baru (belum memberikan rating)
+        let selectedNewRating = 0;
+
+        function selectNewRating(rating) {
+            selectedNewRating = rating;
+            document.getElementById('newRatingValue').value = rating;
+
+            // Debug: Log rating untuk memastikan telah dipilih
+            console.log("Rating yang dipilih: ", rating);
+
+            // Update indikator rating
+            document.getElementById('newRatingIndicator').textContent = `Rating: ${rating}/5`;
+
+            // Ambil semua elemen bintang
+            const newStars = document.querySelectorAll('.new-star');
+
+            // Ganti warna bintang yang dipilih
+            newStars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('text-gray-400');
+                    star.classList.add('text-yellow-500');
+                } else {
+                    star.classList.remove('text-yellow-500');
+                    star.classList.add('text-gray-400');
+                }
+            });
+        }
+
         // Prevent form submission if no rating is selected
         document.getElementById('ratingForm').addEventListener('submit', function(event) {
             if (selectedRating === 0) {
@@ -466,7 +502,7 @@
             }
 
             document.getElementById('averageRating').innerText = averageRating.toFixed(
-            1); // Membulatkan ke 1 angka desimal
+                1); // Membulatkan ke 1 angka desimal
         });
 
         // Tambahkan fungsi closeModal

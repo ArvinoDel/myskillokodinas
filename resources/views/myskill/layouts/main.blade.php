@@ -71,6 +71,17 @@
         src="https://rawcdn.githack.com/ArvinoDel/MySkill/db1485d305b176ef2fc16baac98bcef23eb790fd/resources/js/buttons.js"
         defer></script>
 
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '{{ session('error') }}',
+                timer: 3000,
+            });
+        </script>
+    @endif
+
 </body>
 
 </html>
