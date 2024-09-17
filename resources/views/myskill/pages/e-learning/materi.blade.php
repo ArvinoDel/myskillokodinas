@@ -17,8 +17,8 @@
                         </div>
                         <h3 class="font-bold text-xs md:text-sm text-red-500 p-2">10.000+ Orang Berlangganan Tiap Bulan</h3>
                     </div>
-                    <div class="mx-4 md:mx-20 -mt-8 md:-mt-48">
-                        <h3 class="text-gray-500 font-semibold py-4">Materi</h3>
+                    <div class="mx-4 md:mx-28">
+                        <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Materi</h3>
                         @foreach ($materi->isimateri as $isi)
                             <button onclick="openFile('{{ asset('../video_files/' . $isi->file) }}', '{{ $isi->file }}')"
                                 class="w-full">
@@ -32,42 +32,40 @@
                                     </div>
                                 </div>
                             </button>
-
-
-                            <!-- Modal untuk video -->
-                            <div id="videoModal"
-                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-16">
-                                <div class="bg-white p-5 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
-                                    <span class="close" onclick="closeModal()">&times;</span>
-                                    <video id="videoPlayer" controls class="w-full">
-                                        <source id="videoSource" src="" type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-                                </div>
-                            </div>
-
-                            <!-- Modal untuk PDF -->
-                            <div id="fileModal"
-                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-10">
-                                <div class="bg-white p-4 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
-                                    <span class="close" onclick="closeFileModal()">&times;</span>
-                                    <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
-                                </div>
-                            </div>
-
-                           <!-- Modal untuk Gambar -->
-                           <div id="imageModal"
-                           class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-12">
-                           <div class="bg-white p-4 rounded-lg max-w-2xl w-full"> <!-- Ubah max-w-3xl menjadi max-w-2xl untuk memperkecil lebar -->
-                               <span class="close" onclick="closeImageModal()">&times;</span>
-                               <div class="justify-center items-center">
-                                   <img id="imageViewer" class="w-96 h-96 justify-center items-center" src="" alt="Gambar">
-                               </div>
-                           </div>
-                       </div>
                         @endforeach
                     </div>
                 </div>
+                    <!-- Modal untuk video -->
+                    <div id="videoModal"
+                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-16">
+                        <div class="bg-white p-5 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
+                            <span class="close" onclick="closeModal()">&times;</span>
+                            <video id="videoPlayer" controls class="w-full">
+                                <source id="videoSource" src="" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+
+                    <!-- Modal untuk PDF -->
+                    <div id="fileModal"
+                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-10">
+                        <div class="bg-white p-4 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
+                            <span class="close" onclick="closeFileModal()">&times;</span>
+                            <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
+                        </div>
+                    </div>
+
+                    <!-- Modal untuk Gambar -->
+                    <div id="imageModal"
+                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-12">
+                        <div class="bg-white p-4 rounded-lg max-w-2xl w-full"> <!-- Ubah max-w-3xl menjadi max-w-2xl untuk memperkecil lebar -->
+                            <span class="close" onclick="closeImageModal()">&times;</span>
+                            <div class="justify-center items-center">
+                                <img id="imageViewer" class="w-96 h-96 justify-center items-center" src="" alt="Gambar">
+                            </div>
+                        </div>
+                    </div>
             </div>
         </section>
 
