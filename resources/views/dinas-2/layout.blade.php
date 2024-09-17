@@ -37,6 +37,19 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .navbar ul li a {
+      color: black !important;
+    }
+    .navbar ul li.parent-menu > a {
+      color: #ffc732 !important;
+    }
+    @media (max-width: 1279px) {
+      .mobile-nav-toggle {
+        color: #ffc732 !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -55,9 +68,9 @@
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul style="color:black;">
-          <li><a href="{{ url('/')}}" class="active">Home</a></li>
+          <li class="parent-menu"><a href="{{ url('/')}}" class="active">Home</a></li>
           @foreach($menus as $menu)
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown parent-menu">
               <a class="dropdown-toggle nav-link" href="{{ $menu->link }}" id="navbarDropdown{{ $menu->id_menu }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color:black;">
                   {{ $menu->nama_menu }}
               </a>
@@ -96,7 +109,7 @@
               @endif
           </li>
           @endforeach
-          <li><a href="#contact" style="color:black;">Contact</a></li>
+          <li class="parent-menu"><a href="#contact">Contact</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -164,6 +177,17 @@
 
   <!-- Template Main JS File -->
   <script src="{{ url('template/UpCons/assets/js/main.js') }}"></script>
+
+  <script>
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
 
 </body>
 
