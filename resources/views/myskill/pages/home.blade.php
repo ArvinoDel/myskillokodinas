@@ -33,7 +33,7 @@
                     @endphp
                     <a href="{{ $href }}" class="snap-always snap-center flex-shrink-0">
                         <img src="{{ url('foto_banner/' . $link->gambar) }}" alt="{{ $link->judul }}"
-                            class="h-32 lg:h-96 md:h-64 w-auto mx-auto rounded-2xl">
+                            class="h-28 lg:h-80 md:h-52 w-auto mx-auto rounded-2xl">
                     </a>
                 @endif
             @endforeach
