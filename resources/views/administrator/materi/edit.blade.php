@@ -47,7 +47,7 @@
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Perbarui</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                         <a href="{{ route('administrator.materi.index')}}" class="btn btn-danger">Batal</a>
                     </div>
                 </form>

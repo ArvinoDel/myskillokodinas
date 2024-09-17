@@ -49,6 +49,7 @@ use App\Http\Controllers\MenuwebsiteController;
 use App\Http\Controllers\SekilasinfoController;
 use App\Http\Controllers\AlamatkontakController;
 use App\Http\Controllers\BannersliderController;
+use App\Http\Controllers\BatchController;
 use App\Http\Controllers\BenefitbootcampController;
 use App\Http\Controllers\BerlanggananController;
 use App\Http\Controllers\BootcampController;
@@ -241,6 +242,9 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
     Route::resource('bootcamps', BootcampController::class)
         ->middleware('checkModul:bootcamps');
+
+    Route::resource('batch', BatchController::class)
+        ->middleware('checkModul:batch');
 
 
     // Rute untuk backup database

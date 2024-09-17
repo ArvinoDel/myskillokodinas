@@ -59,12 +59,10 @@
                                 <th class="text-center">Thumbnail</th>
                                 <th class="text-center">Harga</th>
                                 <th class="text-center">Harga Diskon</th>
-                                <th class="text-center">Tanggal Mulai</th>
-                                <th class="text-center">Tanggal Selesia</th>
-                                <th class="text-center">Sesi</th>
                                 <th class="text-center">Deskripsi</th>
                                 <th class="text-center">list benefits</th>
                                 <th class="text-center">Action</th>
+                                <th class="text-center">Tambah Batch</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,9 +73,6 @@
                                     <td><img src="{{ asset('thumbnail_bootcamp/' . $bootcamp->thumbnail) }}" alt="image" class="img-fluid"></td>
                                     <td>{{ $bootcamp->harga }}</td>
                                     <td>{{ $bootcamp->harga_diskon }}</td>
-                                    <td>{{ $bootcamp->tanggal_mulai }}</td>
-                                    <td>{{ $bootcamp->tanggal_selesai }}</td>
-                                    <td>{{ $bootcamp->sesi }}</td>
                                     <td>{{ $bootcamp->deskripsi }}</td>
                                     <td>
                                             @foreach ($bootcamp->benefit() as $benefi)
@@ -98,6 +93,13 @@
                                                 style="width: 32px; height: 32px;">
                                                 <i class="fa fa-trash"></i>
                                             </button>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div class="d-flex justify-content-center">
+                                            <a href="{{ route('administrator.batch.index', ['id_bootcamp' => $bootcamp->id_bootcamp]) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
