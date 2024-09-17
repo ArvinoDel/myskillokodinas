@@ -53,7 +53,7 @@ class IsimateriController extends Controller
             'url' => 'required|string|max:255', // Pastikan validasi string
             'judul_file' => 'required|string|max:255',
             'id_materi' => 'nullable|exists:materi,id_materi',
-            'file' => 'required|file|mimetypes:,video/mp4,video/avi,video/mpegpdf,doc,docx,xls,txt,xlsx,ppt,pptx,txt,png,jpg,jpeg,gif|max:20480',
+            'file' => 'required|file|mimetypes:video/mp4,video/avi,video/mpeg,application/pdf|max:20480',
         ]);
 
 

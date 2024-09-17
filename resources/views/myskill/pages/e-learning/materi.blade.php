@@ -36,8 +36,8 @@
 
                             <!-- Modal untuk video -->
                             <div id="videoModal"
-                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                                <div class="bg-white p-4 rounded-lg">
+                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-16">
+                                <div class="bg-white p-5 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
                                     <span class="close" onclick="closeModal()">&times;</span>
                                     <video id="videoPlayer" controls class="w-full">
                                         <source id="videoSource" src="" type="video/mp4">
@@ -48,21 +48,23 @@
 
                             <!-- Modal untuk PDF -->
                             <div id="fileModal"
-                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                                <div class="bg-white p-4 rounded-lg">
+                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-10">
+                                <div class="bg-white p-4 rounded-lg max-w-3xl w-full"> <!-- Tambahkan max-w-3xl untuk membatasi lebar -->
                                     <span class="close" onclick="closeFileModal()">&times;</span>
                                     <iframe id="fileViewer" class="w-full h-96" src=""></iframe>
                                 </div>
                             </div>
 
-                            <!-- Modal untuk Gambar -->
-                            <div id="imageModal"
-                                class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                                <div class="bg-white p-4 rounded-lg">
-                                    <span class="close" onclick="closeImageModal()">&times;</span>
-                                    <img id="imageViewer" class="w-full" src="" alt="Gambar">
-                                </div>
-                            </div>
+                           <!-- Modal untuk Gambar -->
+                           <div id="imageModal"
+                           class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-20 lg:pt-12">
+                           <div class="bg-white p-4 rounded-lg max-w-2xl w-full"> <!-- Ubah max-w-3xl menjadi max-w-2xl untuk memperkecil lebar -->
+                               <span class="close" onclick="closeImageModal()">&times;</span>
+                               <div class="justify-center items-center">
+                                   <img id="imageViewer" class="w-96 h-96 justify-center items-center" src="" alt="Gambar">
+                               </div>
+                           </div>
+                       </div>
                         @endforeach
                     </div>
                 </div>
@@ -504,5 +506,12 @@
             document.getElementById('averageRating').innerText = averageRating.toFixed(
                 1); // Membulatkan ke 1 angka desimal
         });
+
+        // Tambahkan fungsi closeModal
+        function closeModal() {
+            document.getElementById('videoModal').classList.add('hidden');
+            document.getElementById('videoSource').src = ''; // Reset video source
+            document.getElementById('videoPlayer').load(); // Reload video player
+        }
     </script>
 @endsection
