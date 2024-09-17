@@ -108,24 +108,32 @@ class ProgramController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show($id_kategori_program)
     {
-        $program = Program::findOrFail($id);
-    
+        // Fetch the program based on the category ID
+        $program = Program::where('id_kategori_program', $id_kategori_program)->firstOrFail();
+
         // Fetch additional data
         $trainer = Trainer::all();
         $testimonis = Testimoni::all();
-        $categories = Kategoriprogram::all();
+
+        // Fetch only the specific category based on the given id_kategori_program
+        $category = Kategoriprogram::where('id_kategori_program', $id_kategori_program)->firstOrFail();
+
+        // Assuming 'berlangganans' are for the specific program or category, you may want to filter them as well
         $berlangganans = Berlangganan::all();
         $materis = Materi::all();
-    
+
         // Decode JSON fields
         foreach ($berlangganans as $berlangganan) {
             $berlangganan->id_benefits = json_decode($berlangganan->id_benefits);
         }
-    
-        return view('myskill.pages.e-learning.program', compact(var_name: 'testimonis', 'berlangganans', 'trainer', 'categories', 'materis', 'program'));
+
+        // Pass the filtered category instead of all categories
+        return view('myskill.pages.e-learning.program', compact(['testimonis', 'berlangganans', 'trainer', 'category', 'materis', 'program']));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
