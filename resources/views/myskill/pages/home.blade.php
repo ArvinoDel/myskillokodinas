@@ -6,11 +6,14 @@
             ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
             onmouseup="this.classList.remove('touching')">
             @foreach ($banners as $link)
-                <div class="snap-always snap-center flex-shrink-0">
-                    <img src="{{ url('foto_banner/' . $link->gambar) }}" alt=""
-                        class="h-32 lg:h-96 md:h-64 w-auto mx-auto rounded-2xl">
-                </div>
+                @if ($link->is_myskill == 1)
+                    <div class="snap-always snap-center flex-shrink-0">
+                        <img src="{{ url('foto_banner/' . $link->gambar) }}" alt="{{ $link->judul }}"
+                            class="h-32 lg:h-96 md:h-64 w-auto mx-auto rounded-2xl">
+                    </div>
+                @endif
             @endforeach
+
         </div>
         <div>
             <h2 class="text-xl md:text-2xl text-center py-14 font-bold text-black">Mari Merintis Karir Bersama Pandai
@@ -18,7 +21,8 @@
         </div>
 
 
-        <div class="grid grid-flow-col lg:grid-cols-5 ps-6 gap-4 overflow-x-auto no-scrollbar no-scrollbar justify-center items-center">
+        <div
+            class="grid grid-flow-col lg:grid-cols-5 ps-6 gap-4 overflow-x-auto no-scrollbar no-scrollbar justify-center items-center">
             <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
                 <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/alumny.webp') }}" alt="" />
