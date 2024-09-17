@@ -54,7 +54,7 @@
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.materi.index') }}" class="btn btn-danger">Batal</a>
+                            <a href="{{ route('administrator.isimateri.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>

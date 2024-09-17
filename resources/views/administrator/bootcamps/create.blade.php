@@ -5,55 +5,105 @@
         <div class="col">
             <div class="card card-shadow">
                 <div class="card-header">
-                    <h3 class="mb-0">Isi Materi</h3>
+                    <h3 class="mb-0">Tambah Botcamp</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrator.isimateri.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('administrator.bootcamps.store') }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
                         @csrf
                         <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                             <tbody>
                                 <tr>
-                                    <th style="padding: 5px;">URL</th>
+                                    <th style="padding: 5px;">Judul Bootcamp</th>
                                     <td style="padding: 5px;">
-                                        <input type="text" class="form-control" id="url" name="url"
-                                            placeholder="Masukkan URL Materi" required>
+                                        <input type="text" class="form-control" id="judul_bootcamp"
+                                            name="judul_bootcamp" placeholder="Masukkan Judul Bootcamp" required>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="padding: 5px;">Judul File</th>
+                                    <th style="padding: 5px;">Thumbnail</th>
                                     <td style="padding: 5px;">
-                                        <input type="text" class="form-control" id="judul_file" name="judul_file"
-                                            placeholder="Masukkan Judul File" required>
+                                        <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/*" required>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="padding: 5px;">File</th>
+                                    <th style="padding: 5px;">Tgl s/d Selesai</th>
                                     <td style="padding: 5px;">
-                                        <input type="file" class="form-control" id="file" name="file">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="tanggal_mulai" name="tanggal_mulai" placeholder="Tanggal Mulai">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" id="tanggal_selesai" name="tanggal_selesai" placeholder="Tanggal Selesai">
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="padding: 5px;">Materi</th>
+                                    <th style="padding: 5px;">Harga</th>
                                     <td style="padding: 5px;">
-                                        <select class="form-control" name="id_materi" required>
-                                            @foreach ($materis as $materi)
-                                            <option hidden value="{{ $materi->id_materi }}" {{ request('id_materi') == $materi->id_materi ? 'selected' : '' }}>{{ $materi->nama_materi }}</option>
-                                            @endforeach
-                                        </select>
+                                        <input type="text" class="form-control" name="harga"
+                                            placeholder="Masukkan Harga Bootcamp" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Harga Diskon</th>
+                                    <td style="padding: 5px;">
+                                        <input type="text" class="form-control" name="harga_diskon"
+                                            placeholder="Masukkan Harga Diskon">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Sesi</th>
+                                    <td style="padding: 5px;">
+                                        <input type="text" class="form-control" id="sesi"
+                                            name="sesi" placeholder="Masukkan Sesi" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Deskripsi</th>
+                                    <td style="padding: 5px;">
+                                        <textarea class="form-control" name="deskripsi" required></textarea>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.isimateri.index') }}" class="btn btn-danger">Batal</a>
+                            <a href="{{ route('administrator.bootcamps.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr("#tanggal_mulai", {
+                dateFormat: "Y-m-d",
+                locale: {
+                    firstDayOfWeek: 1
+                }
+            });
+        
+            flatpickr("#tanggal_selesai", {
+                dateFormat: "Y-m-d",
+                locale: {
+                    firstDayOfWeek: 1
+                }
+            });
+        
+            document.querySelector('form').addEventListener('submit', function(e) {
+                var jamInput = document.getElementById('jam').value;
+                var jamPattern = /^([01]\d|2[0-3]):([0-5]\d) - ([01]\d|2[0-3]):([0-5]\d) WIB$/;
+                if (!jamPattern.test(jamInput)) {
+                    e.preventDefault();
+                    alert('Format jam tidak valid. Harus dalam format HH:MM - HH:MM WIB');
+                }
+            });
+        });
+        </script>
 @endsection
 
 @section('script')
@@ -69,7 +119,7 @@
                 let btn = $(this);
                 Swal.fire({
                     icon: 'warning',
-                    text: 'Data yang sudah di hapus tidak dapat dikembalikan!',
+                    text: 'Data yang sudah dihapus tidak dapat dikembalikan!',
                     title: 'Apakah Anda yakin ingin menghapus data ini?',
                     showCancelButton: true,
                     confirmButtonColor: '#D33',
@@ -79,7 +129,7 @@
                     if (result.isConfirmed) {
                         Swal.fire({
                             title: "Deleted!",
-                            text: "Your file has been deleted.",
+                            text: "Data Anda telah dihapus.",
                             icon: "success"
                         });
                         document.location = btn.data('url');
@@ -92,11 +142,6 @@
                     e.preventDefault();
 
                     let form = $(this);
-
-                    // Menyinkronkan data dari CKEditor ke textarea
-                    for (var instance in CKEDITOR.instances) {
-                        CKEDITOR.instances[instance].updateElement();
-                    }
 
                     $.ajax({
                         url: form.prop('action'),
