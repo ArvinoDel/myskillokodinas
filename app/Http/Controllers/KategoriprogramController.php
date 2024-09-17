@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kategoriprogram;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use App\Models\Testimoni;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\Kategoriprogram;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 class KategoriprogramController extends Controller
 {
@@ -45,7 +47,7 @@ class KategoriprogramController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create():View
+    public function create(): View
     {
         $kategoriprograms = Kategoriprogram::all();
         return view('administrator.kategoriprogram.create', compact(['kategoriprograms']));

@@ -4,6 +4,7 @@ use App\Models\User;
 use App\Models\Agenda;
 use App\Models\Berita;
 use App\Models\Materi;
+use App\Models\Program;
 use App\Models\Trainer;
 use App\Models\Testimoni;
 use App\Models\Halamanbaru;
@@ -278,9 +279,8 @@ Route::get('/e-learning', function () {
     return view('./myskill/pages/e-learning/e-learning', compact('testimonis', 'berlangganans', 'trainer', 'categories', 'materis'));
 })->name('E-learning');
 
-Route::get('/e-learning/program', function () {
-    return view('./myskill/pages/e-learning/program');
-})->name('Program');
+// routes/web.php
+Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
 
 Route::get('/my-profile', function () {
     return view('./myskill/pages/profile/my-profile');
@@ -290,6 +290,9 @@ Route::get('/e-learning/materi', function () {
     return view('./myskill/pages/e-learning/materi');
 })->name('Materi');
 
+Route::get('/e-learning/program', function () {
+    return view('./myskill/pages/e-learning/program');
+})->name('Program');
 // bootcamp
 // Route::get('/bootcamp', function () {
 // $testimonis = Testimoni::all();
@@ -388,3 +391,4 @@ Route::get('/about', function () {
 // Add a route for displaying a specific materi
 Route::get('/e-learning/materi/{id_materi}', [MateriController::class, 'show'])->name('materi.show');
 Route::post('/materi/{id_materi}/rate', [MateriController::class, 'rate'])->name('materi.rate')->middleware('auth');
+// Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
