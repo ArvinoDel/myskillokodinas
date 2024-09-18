@@ -16,6 +16,7 @@ class BatchController extends Controller
         //
         $search = $request->search;
         $nama_sesi = $request->nama_sesi;
+        $id_bootcamp = $request->id_bootcamp;
 
         $query = Batch::query();
 
@@ -25,6 +26,10 @@ class BatchController extends Controller
 
         if (!empty($nama_sesi)) {
             $query->where('nama_sesi', $nama_sesi);
+        }
+
+        if (!empty($id_bootcamp)) { // Tambahkan ini
+            $query->where('id_bootcamp', $id_bootcamp);
         }
 
         $batchs = $query->paginate(10);

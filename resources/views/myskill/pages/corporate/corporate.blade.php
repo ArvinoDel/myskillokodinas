@@ -47,7 +47,7 @@
     </section>
 
     <div class="flex flex-col items-center">
-        <h3 class="text-center mt-4 text-3xl font-bold mb-4 text-black">Mengapa Ratusan Perusahaan Memilih Pandai Digitalrainer?
+        <h3 class="text-center mt-4 text-3xl font-bold mb-4 text-black">Mengapa Ratusan Perusahaan Memilih Pandai Digital trainer?
         </h3>
         <div class="flex flex-col sm:flex-row justify-center mb-4 space-y-4 sm:space-y-0 sm:space-x-4 px-2">
             <div class="bg-white text-black p-4 rounded-lg w-full sm:w-56 border border-spacing-2 max-lg:text-sm">
@@ -71,7 +71,7 @@
     </div>
 
     <section class="w-full h-auto">
-        <h3 class="text-center mt-4 mr-12 text-3xl font-bold mb-4 text-black w-full">Berbagai Program Pandai Digitalrainer</h3>
+        <h3 class="text-center mt-4 mr-12 text-3xl font-bold mb-4 text-black w-full">Berbagai Program Pandai Digital trainer</h3>
         <!-- Corporate Training -->
         <div class="flex flex-col lg:flex-row gap-8 px-4 py-6 items-center">
             <img src="./assets/corporate/corporate-training.webp" alt="Corporate Training"
@@ -158,7 +158,7 @@
 
         <div class="min-h-screen flex items-center justify-center mt-9 px-4 sm:px-6 lg:px-8" id="call">
             <div class="w-full max-w-lg">
-                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Hubungi Pandai Digitalrainer untuk Diskusi
+                <h2 class="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">Hubungi Pandai Digital trainer untuk Diskusi
                     Lebih Lanjut</h2>
                 <form class="bg-white space-y-4 sm:space-y-6 p-4 sm:p-6">
                     <div class="grid grid-cols-1 gap-4 sm:gap-6">
