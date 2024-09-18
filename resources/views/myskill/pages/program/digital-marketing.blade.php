@@ -20,7 +20,7 @@
                         class="lg:w-52 lg:h-30 md:w-48 md:h-30 max-sm:w-[90%] max-sm:h-28 lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:mb-2 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl max-sm:rounded-lg shadow relative">
                         <div class="flex justify-between items-start max-sm:ml-2 max-sm:mr-2">
                             <p class="font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-3 md:text-lg max-sm:text-base">Batch
-                                {{ $bootcamp->sesi }}
+                                {{-- ini nama batch --}}
                             </p>
                             <span class="bg-red-500 text-white text-xs font-bold px-1 rounded-full max-sm:text-xs max-sm:mt-1 md:mt-1 md:mr-1">Limited</span>
                         </div>
@@ -34,25 +34,12 @@
                             {{ $bootcamp->harga }}
                         </p>
                         <p class="flex justify-start text-black font-base text-nowrap text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2">
-                            9 Okt 2024 - 22 Nov 2024
+                            {{-- ini tanggal di batch --}}
                         </p>
                     </div>
 
                     <!-- Batch ke-2 -->
-                    <div
-                        class="lg:w-48 lg:h-24 md:w-40 md:h-26 max-sm:w-44 max-sm:h-20 lg:ml-4 md:ml-3 max-sm:ml-1 max-sm:mr-2 max-sm:mb-2 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl max-sm:rounded-lg shadow relative">
-                        <div class="flex justify-between items-start max-sm:ml-2 max-sm:mr-2">
-                            <p class="flex justify-start font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-3 md:text-lg max-sm:text-base">Batch
-                                {{ $bootcamp->sesi }}
-                            </p>
-                        </div>
-                        <p class="flex justify-start text-black font-regular text-2xl lg:ml-4 md:ml-3 md:text-base max-sm:ml-2 max-sm:text-lg">Rp.
-                            {{ $bootcamp->harga }}
-                        </p>
-                        <p class="flex justify-start text-black font-base text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2 text-nowrap">
-                            13 Des 2024 - 5 Feb 2025
-                        </p>
-                    </div>
+                
                 </div>
             </div>
 
