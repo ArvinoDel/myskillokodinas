@@ -14,6 +14,7 @@ use App\Models\Poling;
 use App\Models\Trainer;
 use App\Models\Bootcamp;
 use App\Models\Template;
+use App\Models\Programcv;
 use App\Models\Testimoni;
 use App\Models\Background;
 use App\Models\Bannerhome;
@@ -59,11 +60,12 @@ class MainController extends Controller
         $templateDinas3 = Template::where('folder', 'dinas-3')->first();
         $templateDinas2 = Template::where('folder', 'dinas-2')->first();
         $templateDinas1 = Template::where('folder', '')->first();
-      
+
         return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod', 'logo_bawah', 'trainer'));
     }
 
-    public function learning(Request $request){
+    public function learning(Request $request)
+    {
 
         $trainer = Trainer::all();
         $testimonis = Testimoni::all();
@@ -107,11 +109,14 @@ class MainController extends Controller
         $testimonis = Testimoni::all();
         $banners = Bannerslider::all();
         $album = Album::all();
-        // dd($testimonis);
         $logo = Logo::orderBy('id_logo', 'DESC')->first();
         $links = Bannerhome::orderBy('id_iklantengah', 'ASC')->limit(10)->get();
-        // dd($menus);
-        $gambar = $request->query('gambar', 'default'); // Mengambil parameter 'gambar' dari query string
+        $gambar = $request->query('gambar', 'default');
+        $programs = Programcv::all();
+        foreach ($programs as $program) {
+            $program->id_benefits = json_decode($program->id_benefits); // Decode JSON
+        }
+        // Mengambil parameter 'gambar' dari query string
         // $background = Background::where('gambar', $gambar)->first();
 
         // if ($background) {
@@ -124,7 +129,7 @@ class MainController extends Controller
         $templateDinas2 = Template::where('folder', 'dinas-2')->first();
         $templateDinas1 = Template::where('folder', '')->first();
 
-        return view('myskill.pages.cv.review', compact('testimonis', 'logo', 'banners', 'links', 'album'));
+        return view('myskill.pages.cv.review', compact('testimonis', 'logo', 'banners', 'links', 'album', 'programs', 'program'));
     }
 
 

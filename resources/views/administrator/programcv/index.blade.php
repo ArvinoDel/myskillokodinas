@@ -74,7 +74,7 @@
                                         <td>{{ $programcv->is_active ? 'Yes' : 'No' }}</td>
                                         <td>{{ $programcv->is_populer ? 'Yes' : 'No' }}</td>
                                         <td>
-                                            @foreach ($programcv->benefits() as $benefit)
+                                            @foreach ($programcv->benefitscv() as $benefit)
                                                 <span>{{ $benefit->nama_benefit }}</span> <br>
                                             @endforeach
                                         </td>
