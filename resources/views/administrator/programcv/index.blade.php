@@ -55,6 +55,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th class="text-center">No</th>
+                                    <th class="text-center">Nama</th>
                                     <th class="text-center">Masa Berlangganan</th>
                                     <th class="text-center">Harga Berlangganan</th>
                                     <th class="text-center">Harga Diskon</th>
@@ -68,6 +69,7 @@
                                 @foreach ($programcvs as $index => $programcv)
                                     <tr>
                                         <td>{{ $loop->iteration + $programcvs->firstItem() - 1 }}</td>
+                                        <td>{{ $programcv->nama_programcv }}</td>
                                         <td>{{ $programcv->masa_berlangganan }}</td>
                                         <td>{{ $programcv->harga_berlangganan }}</td>
                                         <td>{{ $programcv->harga_diskon }}</td>
@@ -79,8 +81,6 @@
                                             @endforeach
                                         </td>
                                         <td>
-
-
                                             <div class="d-flex justify-content-center">
                                                 <a href="{{ route('administrator.programcv.edit', $programcv->id_programcv) }}"
                                                     class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2"

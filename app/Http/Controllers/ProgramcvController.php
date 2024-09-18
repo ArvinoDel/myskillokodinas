@@ -50,6 +50,7 @@ class ProgramcvController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nama_programcv' => 'required',
             'masa_berlangganan' => 'required',
             'harga_berlangganan' => 'required',
             'harga_diskon' => 'nullable',
@@ -92,6 +93,7 @@ class ProgramcvController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'nama_programcv' => 'required',
             'masa_berlangganan' => 'required',
             'harga_berlangganan' => 'required',
             'harga_diskon' => 'nullable',

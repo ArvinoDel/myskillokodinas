@@ -408,7 +408,9 @@
                                         $cekProgram = $UserModul->umenu_akses("program", session('id_session'));
                                         $cekMateri = $UserModul->umenu_akses("materi", session('id_session'));
                                         $cekMetode = $UserModul->umenu_akses("metode", session('id_session'));
+                                        $cekPayment = $UserModul->umenu_akses("payment", session('id_session'));
                                         $cekTopik = $UserModul->umenu_akses("member", session('id_session'));
+                                        $cekMember = $UserModul->umenu_akses("member", session('id_session'));
                                         $cekRating = $UserModul->umenu_akses("rating", session('id_session'));
                                         $cekKategoriprogram = $UserModul->umenu_akses("kategoriprogram", session('id_session'));
                                         $cekLogo = $UserModul->umenu_akses("metodepembayaran", session('id_session'));
@@ -470,6 +472,9 @@
                                     @endif
                                     @if($cekBootcamps == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
                                         <li class="nav-item"><a class="nav-link" href="{{ url('administrator/bootcamps') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Bootcamp</a></li>
+                                    @endif
+                                    @if($cekPayment == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                        <li class="nav-item"><a class="nav-link" href="{{ url('administrator/payment') }}"><i class='ni ni-settings-gear-65 text-orange'></i> Payment</a></li>
                                     @endif
                                 </ul>
                             </div>

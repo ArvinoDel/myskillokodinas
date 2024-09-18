@@ -247,6 +247,9 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('batch', BatchController::class)
         ->middleware('checkModul:batch');
 
+    Route::resource('payment', PaymentController::class)
+        ->middleware('checkModul:payment');
+
 
     // Rute untuk backup database
     // Rute untuk backup database
