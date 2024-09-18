@@ -15,6 +15,14 @@
                         <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                             <tbody>
                                 <tr>
+                                    <th style="padding: 5px;">Nama Program CV</th>
+                                    <td style="padding: 5px;">
+                                        <input type="text" class="form-control" id="nama_programcv"
+                                            name="nama_programcv" placeholder="Masukkan Nama Program CV"
+                                            value="{{ $programcvs->nama_programcv }}" required>
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th style="padding: 5px;">Masa Berlangganan</th>
                                     <td style="padding: 5px;">
                                         <input type="text" class="form-control" id="masa_berlangganan"

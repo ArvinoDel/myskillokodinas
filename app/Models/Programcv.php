@@ -13,6 +13,7 @@ class Programcv extends Model
     protected $table = 'program_cv';
     protected $primaryKey = 'id_programcv';
     protected $fillable = [
+        'nama_programcv',
         'masa_berlangganan',
         'harga_berlangganan',
         'harga_diskon',
