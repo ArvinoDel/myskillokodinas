@@ -70,6 +70,7 @@ use App\Http\Controllers\MetodepembayaranController;
 use App\Http\Controllers\ProgramcvController;
 use App\Http\Controllers\TopikController;
 
+
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
@@ -321,11 +322,14 @@ Route::get('/experience', function () {
 //payment
 Route::get('/payment/{id}', [PaymentController::class, 'show'])->name('payment');
 
+Route::post('/payment/store', [PaymentController::class, 'store'])->name('payment.store');
+
+Route::post('/payment/{id}/approve', [PaymentController::class, 'approve'])->name('administrator.payment.approve');
+Route::post('/payment/{id}/cancel', [PaymentController::class, 'cancel'])->name('administrator.payment.cancel');
 
 //profile
-Route::get('/profile/my-purchase', function () {
-    return view('./myskill/pages/profile/my-purchase');
-})->name('Purchased');
+Route::get('/profile/my-purchase', [PaymentController::class, 'show_user'])->name('Purchased');
+
 
 Route::get('/profile/my-activity', function () {
     return view('./myskill/pages/profile/my-activity');

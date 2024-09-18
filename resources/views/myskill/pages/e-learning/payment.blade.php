@@ -239,13 +239,10 @@
                         class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">&times;</button>
                     <div class="flex flex-col md:flex-row justify-between items-center mb-4">
                         <img src="{{ asset('assets/logo.png') }}" class="w-32 md:w-24" alt="Logo">
-                        <span class="text-gray-600 font-semibold mt-2 md:mt-0">No. Invoice: INV<span
+                        <span class="text-gray-600 font-semibold mt-2 md:mt-0">No. Invoice: <span
                                 id="invoice-number"></span></span>
 
-                        <script>
-                            document.getElementById('invoice-number').innerText = new Date().toISOString().slice(0, 10).replace(/-/g, '') + Math
-                                .floor(1000 + Math.random() * 9000);
-                        </script>
+
 
                     </div>
                     <ul class="text-gray-600 mb-4 text-sm md:text-base">
@@ -264,22 +261,60 @@
                             {{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}
                         </li>
                     </ul>
-                    <div class="flex justify-center mb-4">
-                        <img src="{{ asset('/foto_pembayaran/' . $met->pembayaran) }}" alt="paymentImage"
-                            id="paymentImage" class="rounded-lg w-32 md:w-32 mx-auto my-2">
-                    </div>
-                    <div class="flex justify-around items-center mb-4 space-x-4">
-                        <div class="relative">
-                            <input type="file" id="Upload"
-                                class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-                            <button class="bg-teal-600 text-white px-3 py-2 rounded-md text-sm md:text-base"><i
-                                    class="fa-solid fa-upload mx-2"></i>Upload Bukti</button>
+
+                    <form action="{{ route('payment.store') }}" method="POST" enctype="multipart/form-data"
+                        id="paymentForm" class="form-ajax">
+                        @csrf
+                        <input type="hidden" name="id_invoice" value="" id="invoice-number2">
+                        <input type="hidden" name="total"
+                            value="{{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}"
+                            id="total">
+                        <input type="hidden" name="payment_method" id="selectedMethod2">
+                        <input type="hidden" name="username" value="{{ Auth::user()->username }}">
+                        <input type="hidden" name="contact" value="{{ Auth::user()->email ?? Auth::user()->phone }}">
+                        <input type="hidden" name="program_name"
+                            value="Paket Video E-Learning {{ $berlanggananss->masa_berlangganan }}">
+
+                        <div class="flex justify-center mb-4">
+                            <img src="{{ asset('/foto_pembayaran/' . $met->pembayaran) }}" alt="paymentImage"
+                                id="paymentImage" class="rounded-lg w-32 md:w-32 mx-auto my-2">
                         </div>
 
-                        <button id="Kirim"
-                            class="bg-teal-600 text-white px-3 py-2 rounded-md text-sm md:text-base">Kirim Bukti
-                            Pembayaran</button>
-                    </div>
+                        @php
+                            // Mengambil data user
+                            $user = Auth::user();
+
+                            // Mengecek apakah ada record dengan contact yang sama dengan user saat ini
+                            // dan di kolom program_name terdapat kata "Paket Video E-Learning" serta username yang sama
+                            $isPaymentExist = \App\Models\Payment::where(function ($query) use ($user) {
+                                $query->where('contact', $user->email)->orWhere('contact', $user->phone);
+                            })
+                                ->where('program_name', 'like', '%Paket Video E-Learning%')
+                                ->where('username', $user->username)
+                                ->exists();
+                        @endphp
+
+
+                        <div class="flex items-center space-x-4">
+                            <div class="relative">
+                                <input type="file" name="gambar" id="Upload"
+                                    class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" required>
+                                <button type="button"
+                                    class="bg-teal-600 text-white px-3 py-2 rounded-md text-sm md:text-base">
+                                    <i class="fa-solid fa-upload mx-2"></i>Upload Bukti
+                                </button>
+                            </div>
+
+                            <button id="Kirim" type="submit"
+                                class="bg-teal-600 text-white px-3 py-2 rounded-md text-sm md:text-base"
+                                @if ($isPaymentExist) disabled @endif>
+                                Kirim Bukti Pembayaran
+                            </button>
+                        </div>
+
+                    </form>
+
+
 
                 </div>
             </div>
@@ -300,10 +335,36 @@
 
     </div>
 
+    <script>
+        // Jika ada pesan sukses
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        @endif
+
+        // Jika ada pesan error
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+            });
+        @endif
+    </script>
 
 
 
     <script>
+        var invoice = document.getElementById('invoice-number').innerText = 'INV-' + new Date().toISOString().slice(0, 10)
+            .replace(/-/g, '') + Math
+            .floor(1000 + Math.random() * 9000);
+
+        document.getElementById('invoice-number2').value = invoice;
+
+
         document.getElementById('dropdownButton').addEventListener('click', function() {
             var dropdownMenu = document.getElementById('dropdownMenu');
             dropdownMenu.classList.toggle('hidden');
@@ -341,6 +402,7 @@
 
             // Mengambil metode pembayaran yang dipilih
             var selectedMethod = document.getElementById('dropdownButton').textContent.trim();
+            document.getElementById('selectedMethod2').value = selectedMethod;
             document.getElementById('selectedMethod').textContent = selectedMethod;
         });
 
