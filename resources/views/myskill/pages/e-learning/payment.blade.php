@@ -239,7 +239,14 @@
                         class="absolute top-2 right-2 text-gray-600 hover:text-gray-900">&times;</button>
                     <div class="flex flex-col md:flex-row justify-between items-center mb-4">
                         <img src="{{ asset('assets/logo.png') }}" class="w-32 md:w-24" alt="Logo">
-                        <span class="text-gray-600 font-semibold mt-2 md:mt-0">No. Invoice: INV123456</span>
+                        <span class="text-gray-600 font-semibold mt-2 md:mt-0">No. Invoice: INV<span
+                                id="invoice-number"></span></span>
+
+                        <script>
+                            document.getElementById('invoice-number').innerText = new Date().toISOString().slice(0, 10).replace(/-/g, '') + Math
+                                .floor(1000 + Math.random() * 9000);
+                        </script>
+
                     </div>
                     <ul class="text-gray-600 mb-4 text-sm md:text-base">
                         <li><strong>Program:</strong> Paket Video E-Learning
