@@ -11,7 +11,7 @@
             $home = 'Home';
             $elearning = 'E-Learning';
             $review = 'Review CV';
-            $software = 'Experience';
+            $software = 'Software HRIS';
             ?>
             @foreach ($banners as $link)
                 @if ($link->is_myskill == 1)

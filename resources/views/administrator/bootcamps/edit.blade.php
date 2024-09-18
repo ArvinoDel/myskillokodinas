@@ -35,19 +35,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th style="padding: 5px;">Tgl s/d Selesai</th>
-                                <td style="padding: 5px;">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" id="tanggal_mulai" name="tanggal_mulai" value="{{ $bootcamps->tanggal_mulai }}">
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="text" class="form-control" id="tanggal_selesai" name="tanggal_selesai" value="{{ $bootcamps->tanggal_selesai }}">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
                                 <th style="padding: 5px;">Harga</th>
                                 <td style="padding: 5px;">
                                     <input type="text" class="form-control" name="harga"
@@ -60,13 +47,6 @@
                                 <td style="padding: 5px;">
                                     <input type="text" class="form-control" name="harga_diskon"
                                         placeholder="Masukkan Harga Diskon" value="{{ $bootcamps->harga_diskon }}">
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="padding: 5px;">Sesi</th>
-                                <td style="padding: 5px;">
-                                    <input type="text" class="form-control" id="sesi"
-                                        name="sesi" placeholder="Masukkan Sesi" value="{{ $bootcamps->sesi }}" required>
                                 </td>
                             </tr>
                             <tr>
@@ -98,7 +78,7 @@
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                         <a href="{{ route('administrator.bootcamps.index') }}" class="btn btn-danger">Batal</a>
                     </div>
                 </form>

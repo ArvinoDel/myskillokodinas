@@ -20,7 +20,7 @@ class BootcampController extends Controller
         $query = Bootcamp::query();
 
         if (!empty($search)) {
-            $query->where('judul_bootcamp', 'like', "%$search%")->orWhere('tanggal_mulai', 'like', "%$search%")->orWhere('tanggal_selesai', 'like', "%$search%");
+            $query->where('judul_bootcamp', 'like', "%$search%");
         }
 
         if (!empty($judul_bootcamp)) {
@@ -61,11 +61,8 @@ class BootcampController extends Controller
         //
         $request->validate([
             'judul_bootcamp' => 'required|string|max:255',
-            'tanggal_mulai' => 'required|date',
-            'tanggal_selesai' => 'required|date',
             'harga' => 'required',
             'harga_diskon' => 'nullable',
-            'sesi' => 'nullable|string',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'deskripsi' => 'required',
             'id_benefitcamps' => 'nullable|array'
@@ -82,11 +79,8 @@ class BootcampController extends Controller
         }
         Bootcamp::create([
             "judul_bootcamp" => $data['judul_bootcamp'],
-            "tanggal_mulai" => $data['tanggal_mulai'],
-            "tanggal_selesai" => $data['tanggal_selesai'],
             "harga" => $data['harga'],
             "harga_diskon" => $data['harga_diskon'],
-            "sesi" => $data['sesi'],
             "deskripsi" => $data['deskripsi'],
             "thumbnail" => $thumbnailName,
             "id_benefitcamps" => $data['id_benefitcamps'],
@@ -137,23 +131,17 @@ class BootcampController extends Controller
         //
         $validatedData = $request->validate([
             'judul_bootcamp' => 'required|string|max:255',
-            'tanggal_mulai' => 'required|date',
-            'tanggal_selesai' => 'required|date',
             'harga' => 'required',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'harga_diskon' => 'nullable',
-            'sesi' => 'nullable|string',
             'deskripsi' => 'required',
             'id_benefitcamps' => 'nullable|array'
         ]);
 
         $bootcamps = Bootcamp::findorfail($id);
         $bootcamps->judul_bootcamp = $validatedData['judul_bootcamp'];
-        $bootcamps->tanggal_mulai = $validatedData['tanggal_mulai'];
-        $bootcamps->tanggal_selesai = $validatedData['tanggal_selesai'];
         $bootcamps->harga = $validatedData['harga'];
         $bootcamps->harga_diskon = $validatedData['harga_diskon'];
-        $bootcamps->sesi = $validatedData['sesi'];
         $bootcamps->deskripsi = $validatedData['deskripsi'];
         $bootcamps->id_benefitcamps = json_encode($request->input('id_benefitcamps'));
 
