@@ -20,8 +20,7 @@
                     <p class="text-black font-regular text-xs lg:ml-4 line-through md:ml-2">Early sale: Rp.
                         {{ $bootcamp->harga_diskon }}</p>
                     <p class="text-black font-regular text-sm lg:ml-4 md:ml-2">Late sale: Rp. {{ $bootcamp->harga }}</p>
-                    <p class="text-black font-semibold text-sm lg:ml-4 lg:mb-1 md:ml-2 md:mb-1">
-                        {{ $bootcamp->tanggal_mulai }} - 2{{ $bootcamp->tanggal_selesai }}</p>
+                   
                     <span
                         class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-1 rounded-full">Limited</span>
                 </div>
