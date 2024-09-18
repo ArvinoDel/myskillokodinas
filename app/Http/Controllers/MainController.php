@@ -40,7 +40,7 @@ class MainController extends Controller
         $logo_bawah = Metodepembayaran::all();
         // dd($mitra);
         $trainer = Trainer::all();
-        $banners = Bannerslider::all();
+        $banners = Bannerslider::orderBy('id_banner', 'ASC')->get();
         $album = Album::all();
         $testimonis = Testimoni::all();
         // dd($testimonis);
@@ -59,7 +59,7 @@ class MainController extends Controller
         $templateDinas3 = Template::where('folder', 'dinas-3')->first();
         $templateDinas2 = Template::where('folder', 'dinas-2')->first();
         $templateDinas1 = Template::where('folder', '')->first();
-
+      
         return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod', 'logo_bawah', 'trainer'));
     }
 
