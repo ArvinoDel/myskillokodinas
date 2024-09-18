@@ -8,6 +8,7 @@ use App\Models\Mitra;
 use App\Models\Video;
 use App\Models\Agenda;
 use App\Models\Berita;
+use App\Models\Materi;
 use App\Models\Metode;
 use App\Models\Poling;
 use App\Models\Trainer;
@@ -20,7 +21,9 @@ use App\Models\Menuwebsite;
 use App\Models\Sekilasinfo;
 use App\Models\Alamatkontak;
 use App\Models\Bannerslider;
+use App\Models\Berlangganan;
 use Illuminate\Http\Request;
+use App\Models\Kategoriprogram;
 use App\Models\Identitaswebsite;
 use App\Models\Metodepembayaran;
 use Illuminate\Contracts\View\View;
@@ -58,6 +61,19 @@ class MainController extends Controller
         $templateDinas1 = Template::where('folder', '')->first();
 
         return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod', 'logo_bawah', 'trainer'));
+    }
+
+    public function learning(Request $request){
+
+        $trainer = Trainer::all();
+        $testimonis = Testimoni::all();
+        $categories = Kategoriprogram::all();
+        $berlangganans = Berlangganan::all();
+        $materis = Materi::all();
+        foreach ($berlangganans as $berlangganan) {
+            $berlangganan->id_benefits = json_decode($berlangganan->id_benefits); // Decode JSON
+        }
+        return view('./myskill/pages/e-learning/e-learning', compact('testimonis', 'berlangganans', 'trainer', 'categories', 'materis'));
     }
 
     public function bootcamp(Request $request)
