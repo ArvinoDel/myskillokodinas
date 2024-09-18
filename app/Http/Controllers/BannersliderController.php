@@ -55,7 +55,7 @@ class BannersliderController extends Controller
     {
         $validated = $request->validate([
             'judul' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif',
             'deskripsi' => 'required',
             'is_myskill' => 'nullable|boolean'
         ]);
