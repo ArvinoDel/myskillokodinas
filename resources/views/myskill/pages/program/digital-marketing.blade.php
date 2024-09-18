@@ -1,297 +1,308 @@
 @extends('./myskill/layouts.main')
 @section('container')
-<div class="digital-marketing">
-    <section
-        class="w-full h-auto bg-white bg-gradient-to-b from-orange-400 to-red-400 text-white lg:flex max-sm:text-black max-sm:bg-white lg:mb-4">
-        <img src="{{ asset('./assets/bootcamp/full.png') }}"
-            class="lg:h-96 md:h-full md:p-4 rounded-3xl w-auto lg:mt-4 lg:ml-16 py-2 max-sm:h-60  max-sm:mx-auto">
-        <div class="lg:ml-4 max-sm:text-black max-sm:w-full max-sm:text-center max-sm:mx-auto max-sm:py-4"
-            style="width: 100%;">
-            <p
-                class="lg:ml-4 md:ml-4 text-white lg:text-4xl font-bold lg:w-4/5 max-sm:text-2xl max-sm:text-left max-sm:w-full max-sm:px-3 lg:mt-4">
-                {{ $bootcamp->judul_bootcamp }}
+    <div class="digital-marketing">
+        <section
+            class="w-full h-auto bg-white bg-gradient-to-b from-orange-400 to-red-400 text-white lg:flex max-sm:text-black max-sm:bg-white lg:mb-4">
+            <img src="{{ asset('./assets/bootcamp/full.png') }}"
+                class="lg:h-96 md:h-full md:p-4 rounded-3xl w-auto lg:mt-4 lg:ml-16 py-2 max-sm:h-60  max-sm:mx-auto">
+            <div class="lg:ml-4 max-sm:text-black max-sm:w-full max-sm:text-center max-sm:mx-auto max-sm:py-4"
+                style="width: 100%;">
+                <p
+                    class="lg:ml-4 md:ml-4 text-white lg:text-4xl font-bold lg:w-4/5 max-sm:text-2xl max-sm:text-left max-sm:w-full max-sm:px-3 lg:mt-4">
+                    {{ $bootcamp->judul_bootcamp }}
+                </p>
+                <br>
+
+                <div class="max-sm:overflow-x-auto">
+                    <div class="flex flex-wrap justify-start max-sm:flex-nowrap">
+                        <!-- batch 1 -->
+                        @foreach ($bootcamp->batch as $batch)
+                            <div
+                                class="lg:w-52 lg:h-30 md:w-48 md:h-30 max-sm:w-[90%] max-sm:h-28 lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:mb-2 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl max-sm:rounded-lg shadow relative">
+                                <div class="flex justify-between items-start max-sm:ml-2 max-sm:mr-2">
+                                    <p
+                                        class="font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-3 md:text-lg max-sm:text-base">
+                                       {{ $batch->nama_sesi }}
+                                    </p>
+                                    <span
+                                        class="bg-red-500 text-white text-xs font-bold px-1 rounded-full max-sm:text-xs max-sm:mt-1 md:mt-1 md:mr-1">Limited</span>
+                                </div>
+                                <p
+                                    class="flex justify-start text-black font-regular text-xl lg:ml-4 md:ml-3 md:text-base max-sm:ml-2 max-sm:text-lg">
+                                    Rp.
+                                    {{ $bootcamp->harga }}
+                                </p>
+                                <p
+                                    class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 line-through md:ml-3 max-sm:ml-2">
+                                    Early sale: Rp.
+                                    {{ $bootcamp->harga_diskon }}
+                                </p>
+                                <p
+                                    class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:text-xs">
+                                    Late sale: Rp.
+                                    {{ $bootcamp->harga }}
+                                </p>
+                                <p
+                                    class="flex justify-start text-black font-base text-nowrap text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2">
+                                    {{ $batch->tanggal_mulai }} - {{ $batch->tanggal_selesai }}
+                                </p>
+                            </div>
+                        @endforeach
+
+                        <!-- Batch ke-2 -->
+
+                    </div>
+                </div>
+
+
+
+
+
+
+                <a href="/payment">
+                    <button type="button"
+                        class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 max-sm:bg-yellow-500 max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
+                        <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
+                    </button>
+                </a>
+                <div class="flex items-center mt-1 max-sm:flex-col max-sm:items-center">
+                    <p
+                        class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 text-white text-md font-semibold max-sm:ml-0 max-sm:text-sm max-sm:mt-2">
+                        5.000+ Alumni Bootcamp Tiap Bulan</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Modal -->
+    <div id="registrationModal" class="fixed inset-0 z-50 hidden justify-center">
+        <div class="flex items-center justify-center min-h-screen px-4 py-12 sm:px-0">
+            <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" aria-hidden="true"></div>
+            <div class="z-50 w-full max-w-md p-6 overflow-hidden transition-all transform bg-white rounded-lg shadow-xl">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-lg font-medium text-gray-900">Pendaftaran Bootcamp</h3>
+                    <button
+                        class="text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="mt-4">
+                    <div class="flex bg-yellow-100 px-5 py-3 rounded-xl">
+                        <i class="fa-solid fa-triangle-exclamation me-2 py-2" style="color: #FAB13A;"></i>
+                        <p class="text-sm text-stone-600">Sebelum mendaftar bootcamp, yuk cek kembali data profil yang akan
+                            digunakan di sertifikatmu nanti.</p>
+                    </div>
+                    <form>
+                        <div class="mt-4">
+                            <label for="fullName" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                            <input type="text" id="fullName"
+                                class="w-full mt-1 py-3 px-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="Masukan Nama Lengkap">
+                        </div>
+                        <div class="mt-4">
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="email" id="email"
+                                class="w-full mt-1 py-3 px-2  border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="Masukan Email Anda">
+                        </div>
+                        <div class="mt-4">
+                            <label for="phone" class="block text-sm font-medium text-gray-700">No. HP</label>
+                            <input type="text" id="phone"
+                                class="w-full mt-1 py-3 px-2  border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+                                placeholder="Masukkan No. HP">
+                        </div>
+                        <div class="mt-4">
+                            <label for="batch" class="block text-sm font-medium text-gray-700">Batch Bootcamp</label>
+                            <select id="batch"
+                                class="w-full mt-1 py-3 px-2  border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                <option selected>Silahkan pilih batch bootcamp...</option>
+                                <option value="batch1">Batch 1</option>
+                                <option value="batch2">Batch 2</option>
+                                <!-- Tambahkan batch lainnya di sini -->
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <button type="button"
+                        class="px-4 py-2 mr-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Tutup</button>
+                    <button type="button"
+                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Lanjut
+                        Pendaftaran</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="flex ">
+        <!-- Sidebar -->
+        <div class="w-64 md:w-1/4 px-4 pt-6 mb-8 sticky top-11 h-full max-sm:hidden lg:block md:hidden">
+            <div class="h-10/12 top-0 pb-10 bg-white rounded-lg shadow-md p-4 lg:ml-4 lg:mb-4 lg:mt-4">
+                <ul class="space-y-2">
+                    <p class="text-md font-semibold">Detail</p>
+                    <!-- Daftar item di sini -->
+                    <li class="flex items-center hover:bg-gray-300">
+                        <i class="fas fa-chevron-right text-black"></i>
+                        <a href="#tentang-bootcamp" class="text-black font-medium ml-2">Tentang Bootcamp</a>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-300">
+                        <i class="fas fa-chevron-right text-black"></i>
+                        <a href="#prospek" class="text-black font-medium ml-2">Prospek Karier</a>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-300">
+                        <i class="fas fa-chevron-right text-black"></i>
+                        <a href="#dapatkan" class="text-black font-medium ml-2">Yang Bisa Kamu Dapatkan</a>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-300">
+                        <i class="fas fa-chevron-right text-black"></i>
+                        <a href="#benefit" class="text-black font-medium ml-2">Benefit Bootcamp</a>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-300">
+                        <i class="fas fa-chevron-right text-black"></i>
+                        <a href="#peserta" class="text-black font-medium ml-2">Peserta Bootcamp</a>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-300">
+                        <i class="fas fa-chevron-right text-black"></i>
+                        <a href="#kurikulum" class="text-black font-medium ml-2">Kurikulum & Silabus</a>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-300">
+                        <i class="fas fa-chevron-right text-black"></i>
+                        <a href="#sistem" class="text-black font-medium ml-2">Sistem Belajar</a>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-300">
+                        <i class="fas fa-chevron-right text-black"></i>
+                        <a href="#faq" class="text-black font-medium ml-2">FAQ</a>
+                    </li>
+                    <li class="flex items-center hover:bg-gray-300">
+                        <i class="fas fa-chevron-right text-black"></i>
+                        <a href="#komunitas" class="text-black font-medium ml-2">Komunitas</a>
+                    </li>
+                    <!-- Tambahkan item lainnya di sini -->
+                </ul>
+            </div>
+            <!-- Tombol Daftar Sekarang dengan Ikon Petir -->
+            <div class="">
+                <a href="/payment">
+                    <button
+                        class="absolute top-[340px] left-4 w-9/12 bg-yellow-500 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 text-white rounded-lg flex items-center justify-center lg:p-1 lg:ml-7 lg:mb-4 lg:mt-12">
+                        <i class="fas fa-bolt mr-2"></i>
+                        Daftar Sekarang
+                    </button>
+                </a>
+            </div>
+        </div>
+        <!-- Main Content -->
+        <div class="flex-1 lg:p-8 max-sm:p-2">
+            <p id="tentang-bootcamp"
+                class="text-orange-600 lg:ml-4 lg:text-xl max-sm:text-base max-sm:ml-2 font-bold md:text-xl md:mt-4"><i
+                    class="fas fa-chevron-right sm:text-sm text-orange-600 mr-3 md:ml-6 md:text-xl"></i>Tentang Bootcamp
+            </p>
+            <p class="lg:mt-1 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">
+                {{ $bootcamp->deskripsi }}
             </p>
             <br>
-
-            <div class="max-sm:overflow-x-auto">
-                <div class="flex flex-wrap justify-start max-sm:flex-nowrap">
-                    <!-- batch 1 -->
-                    <div
-                        class="lg:w-52 lg:h-30 md:w-48 md:h-30 max-sm:w-[90%] max-sm:h-28 lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:mb-2 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl max-sm:rounded-lg shadow relative">
-                        <div class="flex justify-between items-start max-sm:ml-2 max-sm:mr-2">
-                            <p class="font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-3 md:text-lg max-sm:text-base">Batch
-                                {{-- ini nama batch --}}
-                            </p>
-                            <span class="bg-red-500 text-white text-xs font-bold px-1 rounded-full max-sm:text-xs max-sm:mt-1 md:mt-1 md:mr-1">Limited</span>
-                        </div>
-                        <p class="flex justify-start text-black font-regular text-xl lg:ml-4 md:ml-3 md:text-base max-sm:ml-2 max-sm:text-lg">Rp.
-                            {{ $bootcamp->harga }}
-                        </p>
-                        <p class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 line-through md:ml-3 max-sm:ml-2">Early sale: Rp.
-                            {{ $bootcamp->harga_diskon }}
-                        </p>
-                        <p class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:text-xs">Late sale: Rp.
-                            {{ $bootcamp->harga }}
-                        </p>
-                        <p class="flex justify-start text-black font-base text-nowrap text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2">
-                            {{-- ini tanggal di batch --}}
-                        </p>
-                    </div>
-
-                    <!-- Batch ke-2 -->
-                
+            <img src="{{ asset('./assets/bootcamp/adv.png') }}"
+                class="lg:h-64 rounded-3xl w-auto lg:mt-4 lg:ml-6 lg:py-2 max-sm:h-fit max-sm:w-12 max-sm:mx-auto max-sm:my-4">
+            <br class="max-sm:hidden">
+            <div class="max-sm:hidden md:hidden">
+                <!-- Konten ini akan hilang pada layar kecil -->
+                <div class="flex overflow-x-auto space-x-4 no-scrollbar">
+                    <img src="{{ asset('./assets/bootcamp/motivasi.png') }}"
+                        class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
+                    <img src="{{ asset('./assets/bootcamp/motivasi2.png') }}"
+                        class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
+                    <img src="{{ asset('./assets/bootcamp/motivasi.png') }}"
+                        class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
+                    <img src="{{ asset('./assets/bootcamp/motivasi2.png') }}"
+                        class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
+                    <img src="{{ asset('./assets/bootcamp/motivasi.png') }}"
+                        class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
                 </div>
             </div>
-
-
-
-
-
-
-            <a href="/payment">
-                <button type="button"
-                    class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 max-sm:bg-yellow-500 max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
-                    <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
-                </button>
-            </a>
-            <div class="flex items-center mt-1 max-sm:flex-col max-sm:items-center">
-                <p
-                    class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 text-white text-md font-semibold max-sm:ml-0 max-sm:text-sm max-sm:mt-2">
-                    5.000+ Alumni Bootcamp Tiap Bulan</p>
-            </div>
-        </div>
-    </section>
-</div>
-<!-- Modal -->
-<div id="registrationModal" class="fixed inset-0 z-50 hidden justify-center">
-    <div class="flex items-center justify-center min-h-screen px-4 py-12 sm:px-0">
-        <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" aria-hidden="true"></div>
-        <div class="z-50 w-full max-w-md p-6 overflow-hidden transition-all transform bg-white rounded-lg shadow-xl">
-            <div class="flex items-center justify-between">
-                <h3 class="text-lg font-medium text-gray-900">Pendaftaran Bootcamp</h3>
-                <button
-                    class="text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    <span class="sr-only">Close</span>
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
-            </div>
-            <div class="mt-4">
-                <div class="flex bg-yellow-100 px-5 py-3 rounded-xl">
-                    <i class="fa-solid fa-triangle-exclamation me-2 py-2" style="color: #FAB13A;"></i>
-                    <p class="text-sm text-stone-600">Sebelum mendaftar bootcamp, yuk cek kembali data profil yang akan
-                        digunakan di sertifikatmu nanti.</p>
+            <div class="lg:hidden">
+                <!-- Konten ini akan hilang pada layar besar -->
+                <div class="flex overflow-x-auto space-x-4 no-scrollbar">
+                    <img src="{{ asset('./assets/bootcamp/motiv1.png') }}" class="max-sm:w-96 object-fill">
+                    <img src="{{ asset('./assets/bootcamp/motif2.png') }}" class="max-sm:w-96 object-fill">
+                    <img src="{{ asset('./assets/bootcamp/motiv1.png') }}" class="max-sm:w-96 object-fill">
+                    <img src="{{ asset('./assets/bootcamp/motif2.png') }}" class="max-sm:w-96 object-fill">
                 </div>
-                <form>
-                    <div class="mt-4">
-                        <label for="fullName" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
-                        <input type="text" id="fullName"
-                            class="w-full mt-1 py-3 px-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                            placeholder="Masukan Nama Lengkap">
-                    </div>
-                    <div class="mt-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" id="email"
-                            class="w-full mt-1 py-3 px-2  border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                            placeholder="Masukan Email Anda">
-                    </div>
-                    <div class="mt-4">
-                        <label for="phone" class="block text-sm font-medium text-gray-700">No. HP</label>
-                        <input type="text" id="phone"
-                            class="w-full mt-1 py-3 px-2  border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
-                            placeholder="Masukkan No. HP">
-                    </div>
-                    <div class="mt-4">
-                        <label for="batch" class="block text-sm font-medium text-gray-700">Batch Bootcamp</label>
-                        <select id="batch"
-                            class="w-full mt-1 py-3 px-2  border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
-                            <option selected>Silahkan pilih batch bootcamp...</option>
-                            <option value="batch1">Batch 1</option>
-                            <option value="batch2">Batch 2</option>
-                            <!-- Tambahkan batch lainnya di sini -->
-                        </select>
-                    </div>
-                </form>
             </div>
-            <div class="flex justify-end mt-4">
-                <button type="button"
-                    class="px-4 py-2 mr-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Tutup</button>
-                <button type="button"
-                    class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Lanjut
-                    Pendaftaran</button>
+            <br>
+            <div>
+                <!-- prospek karir start -->
+                <p id="prospek"
+                    class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 font-bold md:ml-6 md:text-xl"><i
+                        class="fas fa-chevron-right text-orange-600 mr-3 md:ml-1 md:text-xl"></i>Prospek Karir</p>
+                <p class="lg:mt-4 sm:mt-2 lg:ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Ikuti Intensive Bootcamp
+                    dan dapatkan balik modal secara berlipat dari
+                    gaji pertamamu. Berbagai pilihan profesi yang bisa dijalani saat memiliki skill digital marketing:
+                    <br>
+                    💎 Social Media Specialist : Rp 5-15 Juta/bulan.
+                    <br>
+                    💎 Copywriter : Rp 4-12 Juta/bulan.
+                    <br>
+                    💎 Content Writer : Rp 4-13 Juta/bulan.
+                    <br>
+                    💎 SEO/SEM Specialist : Rp 6-15 Juta/bulan.
+                    <br>
+                    💎 Performance Marketing : Rp 8- 15 Juta/bulan.
+                    <br>
+                    💎 Brand Strategist : Rp 6-17 Juta/bulan.
+                    <br>
+                    💎 KOL Management : Rp 3,5 - 12 Juta/bulan.
+                    <br>
+                    💎 Customer Relationship Management : Rp 3,5-16 Juta/bulan.
+                    <br>
+                    *Source: Glasdoor
+                </p>
+                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">
+                    MySkill percaya, kamu pun bisa belajar dari nol dan rintis karir impianmu meski awalnya terasa sulit.
+                    Maka, tak perlu diperumit dengan harus memikirkan biaya selangit. <b>Saat ini, para peserta Bootcamp
+                        MySkill telah diterima bekerja di berbagai multinational dan top local companies seperti:</b>
+                </p>
             </div>
-        </div>
-    </div>
-</div>
-<div class="flex ">
-    <!-- Sidebar -->
-    <div class="w-64 md:w-1/4 px-4 pt-6 mb-8 sticky top-11 h-full max-sm:hidden lg:block md:hidden">
-        <div class="h-10/12 top-0 pb-10 bg-white rounded-lg shadow-md p-4 lg:ml-4 lg:mb-4 lg:mt-4">
-            <ul class="space-y-2">
-                <p class="text-md font-semibold">Detail</p>
-                <!-- Daftar item di sini -->
-                <li class="flex items-center hover:bg-gray-300">
-                    <i class="fas fa-chevron-right text-black"></i>
-                    <a href="#tentang-bootcamp" class="text-black font-medium ml-2">Tentang Bootcamp</a>
-                </li>
-                <li class="flex items-center hover:bg-gray-300">
-                    <i class="fas fa-chevron-right text-black"></i>
-                    <a href="#prospek" class="text-black font-medium ml-2">Prospek Karier</a>
-                </li>
-                <li class="flex items-center hover:bg-gray-300">
-                    <i class="fas fa-chevron-right text-black"></i>
-                    <a href="#dapatkan" class="text-black font-medium ml-2">Yang Bisa Kamu Dapatkan</a>
-                </li>
-                <li class="flex items-center hover:bg-gray-300">
-                    <i class="fas fa-chevron-right text-black"></i>
-                    <a href="#benefit" class="text-black font-medium ml-2">Benefit Bootcamp</a>
-                </li>
-                <li class="flex items-center hover:bg-gray-300">
-                    <i class="fas fa-chevron-right text-black"></i>
-                    <a href="#peserta" class="text-black font-medium ml-2">Peserta Bootcamp</a>
-                </li>
-                <li class="flex items-center hover:bg-gray-300">
-                    <i class="fas fa-chevron-right text-black"></i>
-                    <a href="#kurikulum" class="text-black font-medium ml-2">Kurikulum & Silabus</a>
-                </li>
-                <li class="flex items-center hover:bg-gray-300">
-                    <i class="fas fa-chevron-right text-black"></i>
-                    <a href="#sistem" class="text-black font-medium ml-2">Sistem Belajar</a>
-                </li>
-                <li class="flex items-center hover:bg-gray-300">
-                    <i class="fas fa-chevron-right text-black"></i>
-                    <a href="#faq" class="text-black font-medium ml-2">FAQ</a>
-                </li>
-                <li class="flex items-center hover:bg-gray-300">
-                    <i class="fas fa-chevron-right text-black"></i>
-                    <a href="#komunitas" class="text-black font-medium ml-2">Komunitas</a>
-                </li>
-                <!-- Tambahkan item lainnya di sini -->
-            </ul>
-        </div>
-        <!-- Tombol Daftar Sekarang dengan Ikon Petir -->
-        <div class="">
-            <a href="/payment">
-                <button
-                    class="absolute top-[340px] left-4 w-9/12 bg-yellow-500 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 text-white rounded-lg flex items-center justify-center lg:p-1 lg:ml-7 lg:mb-4 lg:mt-12">
-                    <i class="fas fa-bolt mr-2"></i>
-                    Daftar Sekarang
-                </button>
-            </a>
-        </div>
-    </div>
-    <!-- Main Content -->
-    <div class="flex-1 lg:p-8 max-sm:p-2">
-        <p id="tentang-bootcamp"
-            class="text-orange-600 lg:ml-4 lg:text-xl max-sm:text-base max-sm:ml-2 font-bold md:text-xl md:mt-4"><i
-                class="fas fa-chevron-right sm:text-sm text-orange-600 mr-3 md:ml-6 md:text-xl"></i>Tentang Bootcamp
-        </p>
-        <p class="lg:mt-1 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">
-            {{ $bootcamp->deskripsi }}
-        </p>
-        <br>
-        <img src="{{ asset('./assets/bootcamp/adv.png') }}"
-            class="lg:h-64 rounded-3xl w-auto lg:mt-4 lg:ml-6 lg:py-2 max-sm:h-fit max-sm:w-12 max-sm:mx-auto max-sm:my-4">
-        <br class="max-sm:hidden">
-        <div class="max-sm:hidden md:hidden">
-            <!-- Konten ini akan hilang pada layar kecil -->
-            <div class="flex overflow-x-auto space-x-4 no-scrollbar">
-                <img src="{{ asset('./assets/bootcamp/motivasi.png') }}"
-                    class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
-                <img src="{{ asset('./assets/bootcamp/motivasi2.png') }}"
-                    class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
-                <img src="{{ asset('./assets/bootcamp/motivasi.png') }}"
-                    class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
-                <img src="{{ asset('./assets/bootcamp/motivasi2.png') }}"
-                    class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
-                <img src="{{ asset('./assets/bootcamp/motivasi.png') }}"
-                    class="lg:h-64 max-sm:h-44 lg:w-auto object-fill">
-            </div>
-        </div>
-        <div class="lg:hidden">
-            <!-- Konten ini akan hilang pada layar besar -->
-            <div class="flex overflow-x-auto space-x-4 no-scrollbar">
-                <img src="{{ asset('./assets/bootcamp/motiv1.png') }}" class="max-sm:w-96 object-fill">
-                <img src="{{ asset('./assets/bootcamp/motif2.png') }}" class="max-sm:w-96 object-fill">
-                <img src="{{ asset('./assets/bootcamp/motiv1.png') }}" class="max-sm:w-96 object-fill">
-                <img src="{{ asset('./assets/bootcamp/motif2.png') }}" class="max-sm:w-96 object-fill">
-            </div>
-        </div>
-        <br>
-        <div>
-            <!-- prospek karir start -->
-            <p id="prospek"
-                class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 font-bold md:ml-6 md:text-xl"><i
-                    class="fas fa-chevron-right text-orange-600 mr-3 md:ml-1 md:text-xl"></i>Prospek Karir</p>
-            <p class="lg:mt-4 sm:mt-2 lg:ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Ikuti Intensive Bootcamp
-                dan dapatkan balik modal secara berlipat dari
-                gaji pertamamu. Berbagai pilihan profesi yang bisa dijalani saat memiliki skill digital marketing:
-                <br>
-                💎 Social Media Specialist : Rp 5-15 Juta/bulan.
-                <br>
-                💎 Copywriter : Rp 4-12 Juta/bulan.
-                <br>
-                💎 Content Writer : Rp 4-13 Juta/bulan.
-                <br>
-                💎 SEO/SEM Specialist : Rp 6-15 Juta/bulan.
-                <br>
-                💎 Performance Marketing : Rp 8- 15 Juta/bulan.
-                <br>
-                💎 Brand Strategist : Rp 6-17 Juta/bulan.
-                <br>
-                💎 KOL Management : Rp 3,5 - 12 Juta/bulan.
-                <br>
-                💎 Customer Relationship Management : Rp 3,5-16 Juta/bulan.
-                <br>
-                *Source: Glasdoor
-            </p>
-            <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">
-                MySkill percaya, kamu pun bisa belajar dari nol dan rintis karir impianmu meski awalnya terasa sulit.
-                Maka, tak perlu diperumit dengan harus memikirkan biaya selangit. <b>Saat ini, para peserta Bootcamp
-                    MySkill telah diterima bekerja di berbagai multinational dan top local companies seperti:</b>
-            </p>
-        </div>
-        <div>
-            <img src="{{ asset('./assets/bootcamp/trusted.png') }}"
-                class="lg:h-80 rounded-3xl w-full lg:w-auto lg:mt-4 lg:ml-2 py-2 max-sm:w-full max-sm:h-auto max-sm:mx-auto max-sm:my-4 object-cover md:p-4">
+            <div>
+                <img src="{{ asset('./assets/bootcamp/trusted.png') }}"
+                    class="lg:h-80 rounded-3xl w-full lg:w-auto lg:mt-4 lg:ml-2 py-2 max-sm:w-full max-sm:h-auto max-sm:mx-auto max-sm:my-4 object-cover md:p-4">
 
-        </div>
-        <!-- prospek karir end -->
-        <!-- yang bisa kamu dapatkan start -->
-        <p id="dapatkan" class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 font-bold md:text-xl"><i
-                class="fas fa-chevron-right text-orange-600 mr-3 md:ml-6 md:text-xl"></i>Apa Yang Bisa Kamu Dapatkan
-        </p>
-        <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Upgrade skill mulai dari
-            memahami konsep, analisa studi kasus, hingga praktik untuk mengoptimalkannya. Kuasai berbagai skill dan
-            tools di bidang Digital Marketing untuk karier maupun bisnis kamu.
-            <b>Contoh Skill & Portfolio yang bisa kamu miliki:</b>
-        </p>
-        <img src="{{ asset('./assets/bootcamp/get.png') }}"
-            class="lg:h-80 rounded-3xl w-auto lg:mt-4 lg:ml-2 py-2 max-sm:w-full max-sm:mx-auto max-sm:my-4 object-cover">
-        <!-- scrollbar-2 -->
-        <div name="scrollbar-2 mb-4">
-            <div class="flex overflow-x-auto space-x-4 no-scrollbar">
-                <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
-                <img src="{{ asset('./assets/bootcamp/get2.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
-                <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
-                <img src="{{ asset('./assets/bootcamp/get2.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
-                <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
             </div>
-        </div>
-        <!-- yang bisa kamu dapatkan end -->
-        <!-- benefit start -->
-        <p id="benefit"
-            class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 lg:mt-6 max-sm:mt-2 font-bold md:text-xl"><i
-                class="fas fa-chevron-right text-orange-600 mr-3 md:ml-6"></i>Benefit Bootcamp</p>
-        <p class="lg:mt-2 lg:mb-1 max-sm:ml-2 max-sm:mt-2 md:text-base md:ml-6 md:mt-2"><b>Materi Kelas:</b></p>
-        @foreach ($bootcamp->benefit() as $benefit)
-        <span><br>
-            <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">✅
-                {{ $benefit->nama_benefit }}
+            <!-- prospek karir end -->
+            <!-- yang bisa kamu dapatkan start -->
+            <p id="dapatkan" class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 font-bold md:text-xl"><i
+                    class="fas fa-chevron-right text-orange-600 mr-3 md:ml-6 md:text-xl"></i>Apa Yang Bisa Kamu Dapatkan
             </p>
+            <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Upgrade skill mulai dari
+                memahami konsep, analisa studi kasus, hingga praktik untuk mengoptimalkannya. Kuasai berbagai skill dan
+                tools di bidang Digital Marketing untuk karier maupun bisnis kamu.
+                <b>Contoh Skill & Portfolio yang bisa kamu miliki:</b>
+            </p>
+            <img src="{{ asset('./assets/bootcamp/get.png') }}"
+                class="lg:h-80 rounded-3xl w-auto lg:mt-4 lg:ml-2 py-2 max-sm:w-full max-sm:mx-auto max-sm:my-4 object-cover">
+            <!-- scrollbar-2 -->
+            <div name="scrollbar-2 mb-4">
+                <div class="flex overflow-x-auto space-x-4 no-scrollbar">
+                    <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
+                    <img src="{{ asset('./assets/bootcamp/get2.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
+                    <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
+                    <img src="{{ asset('./assets/bootcamp/get2.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
+                    <img src="{{ asset('./assets/bootcamp/get3.png') }}" class="h-64 w-auto max-sm:w-64 max-sm:h-32">
+                </div>
+            </div>
+            <!-- yang bisa kamu dapatkan end -->
+            <!-- benefit start -->
+            <p id="benefit"
+                class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 lg:mt-6 max-sm:mt-2 font-bold md:text-xl"><i
+                    class="fas fa-chevron-right text-orange-600 mr-3 md:ml-6"></i>Benefit Bootcamp</p>
+            <p class="lg:mt-2 lg:mb-1 max-sm:ml-2 max-sm:mt-2 md:text-base md:ml-6 md:mt-2"><b>Materi Kelas:</b></p>
+            @foreach ($bootcamp->benefit() as $benefit)
+                <span><br>
+                    <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">✅
+                        {{ $benefit->nama_benefit }}
+                    </p>
             @endforeach
 
             <p class="lg:mt-6 lg:mb-6 max-sm:ml-2 md:ml-6 md:mt-2 "><b>Seletah Kelas:</b></p>
@@ -674,166 +685,167 @@
                     <i class="fas fa-bolt"></i> Daftar Sekarang
                 </button>
             </a>
+        </div>
     </div>
-</div>
-<div class="w-full flex justify-center">
-    <hr class="mb-6 mt-2 w-11/12 border-1 ">
-</div>
-<!-- second content -->
-<p class="font-semibold text-3xl lg:ml-12 max-sm:ml-4 md:ml-6">Ikuti Juga Bootcamp Lainnya</p>
-<p class="lg:mt-1 sm:mt-2 lg:ml-12 max-sm:ml-4 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Lanjut pelajari skill
-    bersama tutor terbaik berpengalaman di bidangnya.</p>
-<!-- scrollbar horizontal 3 -->
-<div name="mb-8" class="overflow-x-auto no-scrollbar">
-    <div class="flex space-x-4 w-max lg:px-12 max-sm:px-4 py-3">
-        <!-- Item Bootcamp 1 -->
-        <div
-            class="bg-white rounded-lg shadow-md lg:ml-0 lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:ml-6 md:p-4">
-            <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
-            <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
-                MARKETING : FULLSTACK INTENSIVE</p>
-            <div class="flex flex-col mt-2 text-gray-500">
-                <div class="flex items-center">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    <p class="text-sm">1 Januari 2025</p>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-tag mr-2"></i>
-                    <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
-                            800.000</span></p>
-                </div>
-            </div>
-        </div>
-        <!-- Item Bootcamp 2 -->
-        <div
-            class="bg-white rounded-lg shadow-md lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:p-4">
-            <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
-            <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
-                MARKETING : FULLSTACK INTENSIVE</p>
-            <div class="flex flex-col mt-2 text-gray-500">
-                <div class="flex items-center">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    <p class="text-sm">1 Januari 2025</p>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-tag mr-2"></i>
-                    <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
-                            800.000</span></p>
-                </div>
-            </div>
-        </div>
-        <!-- Item Bootcamp 3 -->
-        <div
-            class="bg-white rounded-lg shadow-md lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:p-4">
-            <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
-            <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
-                MARKETING : FULLSTACK INTENSIVE</p>
-            <div class="flex flex-col mt-2 text-gray-500">
-                <div class="flex items-center">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    <p class="text-sm">1 Januari 2025</p>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-tag mr-2"></i>
-                    <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
-                            800.000</span></p>
-                </div>
-            </div>
-        </div>
-        <!-- Item Bootcamp 4 -->
-        <div
-            class="bg-white rounded-lg shadow-md lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:p-4">
-            <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
-            <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
-                MARKETING : FULLSTACK INTENSIVE</p>
-            <div class="flex flex-col mt-2 text-gray-500">
-                <div class="flex items-center">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    <p class="text-sm">1 Januari 2025</p>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-tag mr-2"></i>
-                    <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
-                            800.000</span></p>
-                </div>
-            </div>
-        </div>
-        <!-- Item Bootcamp 5 -->
-        <div
-            class="bg-white rounded-lg shadow-md lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:p-4">
-            <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
-            <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
-                MARKETING : FULLSTACK INTENSIVE</p>
-            <div class="flex flex-col mt-2 text-gray-500">
-                <div class="flex items-center">
-                    <i class="fas fa-calendar-alt mr-2"></i>
-                    <p class="text-sm">1 Januari 2025</p>
-                </div>
-                <div class="flex items-center">
-                    <i class="fas fa-tag mr-2"></i>
-                    <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
-                            800.000</span></p>
-                </div>
-            </div>
-        </div>
-        <!-- Item More -->
-        <a href="/bootcamp">
+    <div class="w-full flex justify-center">
+        <hr class="mb-6 mt-2 w-11/12 border-1 ">
+    </div>
+    <!-- second content -->
+    <p class="font-semibold text-3xl lg:ml-12 max-sm:ml-4 md:ml-6">Ikuti Juga Bootcamp Lainnya</p>
+    <p class="lg:mt-1 sm:mt-2 lg:ml-12 max-sm:ml-4 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Lanjut pelajari skill
+        bersama tutor terbaik berpengalaman di bidangnya.</p>
+    <!-- scrollbar horizontal 3 -->
+    <div name="mb-8" class="overflow-x-auto no-scrollbar">
+        <div class="flex space-x-4 w-max lg:px-12 max-sm:px-4 py-3">
+            <!-- Item Bootcamp 1 -->
             <div
-                class="bg-gray-100 rounded-lg shadow-md lg:p-4 lg:w-64 lg:h-80 max-sm:w-40 max-sm:h-56 md:w-80 md:h-full flex flex-col justify-center items-center md:p-4">
-                <p class="lg:text-4xl max-sm:text-center max-sm:text-2xl md:text-6xl text-gray-400 mb-4">+</p>
-                <p class="text-gray-500 max-sm:text-center">lihat bootcamp lainnya...</p>
+                class="bg-white rounded-lg shadow-md lg:ml-0 lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:ml-6 md:p-4">
+                <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
+                <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
+                    MARKETING : FULLSTACK INTENSIVE</p>
+                <div class="flex flex-col mt-2 text-gray-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <p class="text-sm">1 Januari 2025</p>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-tag mr-2"></i>
+                        <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
+                                800.000</span></p>
+                    </div>
+                </div>
             </div>
-        </a>
-    </div>
-</div>
-<div class="w-full flex justify-center mt-8">
-    <hr class="mb-6 mt-4 w-11/12 border-1 ">
-</div>
-
-<!-- footer hanya ada pada max-sm dan md -->
-<footer class="fixed bottom-0 left-0 w-full bg-white text-black max-sm:block md:block lg:hidden">
-    <div class="flex justify-between items-center p-3 border-t-2 border-gray-300">
-        <div class="flex flex-col text-left">
-            <p class="text-red-500 font-bold text-sm">Kuota Terbatas!</p>
-            <p class="text-black font-bold text-sm">Rp. {{ $bootcamp->harga }}</p>
+            <!-- Item Bootcamp 2 -->
+            <div
+                class="bg-white rounded-lg shadow-md lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:p-4">
+                <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
+                <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
+                    MARKETING : FULLSTACK INTENSIVE</p>
+                <div class="flex flex-col mt-2 text-gray-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <p class="text-sm">1 Januari 2025</p>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-tag mr-2"></i>
+                        <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
+                                800.000</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Item Bootcamp 3 -->
+            <div
+                class="bg-white rounded-lg shadow-md lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:p-4">
+                <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
+                <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
+                    MARKETING : FULLSTACK INTENSIVE</p>
+                <div class="flex flex-col mt-2 text-gray-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <p class="text-sm">1 Januari 2025</p>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-tag mr-2"></i>
+                        <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
+                                800.000</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Item Bootcamp 4 -->
+            <div
+                class="bg-white rounded-lg shadow-md lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:p-4">
+                <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
+                <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
+                    MARKETING : FULLSTACK INTENSIVE</p>
+                <div class="flex flex-col mt-2 text-gray-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <p class="text-sm">1 Januari 2025</p>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-tag mr-2"></i>
+                        <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
+                                800.000</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Item Bootcamp 5 -->
+            <div
+                class="bg-white rounded-lg shadow-md lg:p-4 max-sm:p-2 max-sm:w-40 lg:w-64 flex flex-col justify-between md:p-4">
+                <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}" class="h-34 w-full rounded-sm">
+                <p class="mt-2 text-gray-700 font-semibold font-sans lg:text-lg max-sm:text-base max-sm:truncate">DIGITAL
+                    MARKETING : FULLSTACK INTENSIVE</p>
+                <div class="flex flex-col mt-2 text-gray-500">
+                    <div class="flex items-center">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        <p class="text-sm">1 Januari 2025</p>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-tag mr-2"></i>
+                        <p class="text-sm">Rp 500.000 <span class="line-through text-red-500 max-sm:hidden">Rp
+                                800.000</span></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Item More -->
+            <a href="/bootcamp">
+                <div
+                    class="bg-gray-100 rounded-lg shadow-md lg:p-4 lg:w-64 lg:h-80 max-sm:w-40 max-sm:h-56 md:w-80 md:h-full flex flex-col justify-center items-center md:p-4">
+                    <p class="lg:text-4xl max-sm:text-center max-sm:text-2xl md:text-6xl text-gray-400 mb-4">+</p>
+                    <p class="text-gray-500 max-sm:text-center">lihat bootcamp lainnya...</p>
+                </div>
+            </a>
         </div>
-        <a href="/payment" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg focus:ring-2 focus:ring-yellow-300">
-            Daftar Sekarang
-        </a>
     </div>
-</footer>
+    <div class="w-full flex justify-center mt-8">
+        <hr class="mb-6 mt-4 w-11/12 border-1 ">
+    </div>
+
+    <!-- footer hanya ada pada max-sm dan md -->
+    <footer class="fixed bottom-0 left-0 w-full bg-white text-black max-sm:block md:block lg:hidden">
+        <div class="flex justify-between items-center p-3 border-t-2 border-gray-300">
+            <div class="flex flex-col text-left">
+                <p class="text-red-500 font-bold text-sm">Kuota Terbatas!</p>
+                <p class="text-black font-bold text-sm">Rp. {{ $bootcamp->harga }}</p>
+            </div>
+            <a href="/payment"
+                class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg focus:ring-2 focus:ring-yellow-300">
+                Daftar Sekarang
+            </a>
+        </div>
+    </footer>
 
 
-<!-- script dropdown -->
-<script>
-    function toggleDropdown(id, button) {
-        const dropdown = document.getElementById(id);
-        const isHidden = dropdown.classList.contains('hidden');
-        if (isHidden) {
-            dropdown.classList.remove('hidden');
-            setTimeout(() => {
-                dropdown.classList.remove('opacity-0');
-                dropdown.classList.add('opacity-100');
-            }, 10); // Delay to allow the transition to take effect
-        } else {
-            dropdown.classList.remove('opacity-100');
-            dropdown.classList.add('opacity-0');
-            dropdown.addEventListener('transitionend', function() {
-                dropdown.classList.add('hidden');
-            }, {
-                once: true
-            });
+    <!-- script dropdown -->
+    <script>
+        function toggleDropdown(id, button) {
+            const dropdown = document.getElementById(id);
+            const isHidden = dropdown.classList.contains('hidden');
+            if (isHidden) {
+                dropdown.classList.remove('hidden');
+                setTimeout(() => {
+                    dropdown.classList.remove('opacity-0');
+                    dropdown.classList.add('opacity-100');
+                }, 10); // Delay to allow the transition to take effect
+            } else {
+                dropdown.classList.remove('opacity-100');
+                dropdown.classList.add('opacity-0');
+                dropdown.addEventListener('transitionend', function() {
+                    dropdown.classList.add('hidden');
+                }, {
+                    once: true
+                });
+            }
+            const arrow = button.querySelector('i');
+            arrow.classList.toggle('fa-chevron-down');
+            arrow.classList.toggle('fa-chevron-up');
         }
-        const arrow = button.querySelector('i');
-        arrow.classList.toggle('fa-chevron-down');
-        arrow.classList.toggle('fa-chevron-up');
-    }
-</script>
-<script>
-    function toggleModal(modalID) {
-        const modal = document.getElementById(modalID);
-        modal.classList.toggle('hidden');
-        modal.classList.toggle('flex');
-    }
-</script>
+    </script>
+    <script>
+        function toggleModal(modalID) {
+            const modal = document.getElementById(modalID);
+            modal.classList.toggle('hidden');
+            modal.classList.toggle('flex');
+        }
+    </script>
 @endsection
