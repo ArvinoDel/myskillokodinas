@@ -112,22 +112,31 @@ class ProgramController extends Controller
     {
         // Fetch the program based on the category ID
         $program = Program::where('id_kategori_program', $id_kategori_program)->firstOrFail();
-
+        
         // Fetch additional data
         $trainer = Trainer::all();
         $testimonis = Testimoni::all();
-
+        
         // Fetch only the specific category based on the given id_kategori_program
         $category = Kategoriprogram::where('id_kategori_program', $id_kategori_program)->firstOrFail();
-
+        
         // Correct this line to make sure you're fetching the category and its associated materi
         $kategoriProgram = Kategoriprogram::with('materi')->find($id_kategori_program);
-
+        
         $kategoriProgram = Kategoriprogram::with('materi')->findOrFail($id_kategori_program);
-
+        
         // Assuming 'berlangganans' are for the specific program or category, you may want to filter them as well
         $berlangganans = Berlangganan::all();
-        $materis = Materi::where('id_kategori_program', $id_kategori_program)->get();
+        // $materis = Materi::where('id_kategori_program', $id_kategori_program)->get();
+        $materis = Materi::join('topik', 'materi.id_topik', '=', 'topik.id_topik') // Join tabel topik
+                ->where('materi.id_kategori_program', $id_kategori_program)
+                ->orderBy('materi.id_topik', 'asc')
+                ->get(['materi.*', 'topik.nama_topik']) // Mengambil semua data materi dan nama_topik
+                ->groupBy('nama_topik') // Mengelompokkan berdasarkan nama_topik
+                ->toArray();
+
+
+        // dd($materis);
 
         // Decode JSON fields for 'berlangganans'
         foreach ($berlangganans as $berlangganan) {

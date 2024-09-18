@@ -28,4 +28,8 @@ class Materi extends Model
     {
         return $this->hasMany(Rating::class);
     }
+    public function topik()
+    {
+        return $this->belongsTo(Topik::class);
+    }
 }
