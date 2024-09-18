@@ -41,7 +41,7 @@
 
     </div>
     <div>
-        <h2 class="text-xl md:text-2xl text-center py-14 font-bold text-white">Mari Merintis Karir Bersama Pandai
+        <h2 class="text-xl md:text-2xl text-center lg:py-14 md:py-12 max-sm:py-6 font-bold text-white">Mari Merintis Karir Bersama Pandai
             Digital</h2>
     </div>
 
