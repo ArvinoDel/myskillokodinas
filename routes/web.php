@@ -264,36 +264,15 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
         ->name('database.backup.remove');
 });
 
-// Route::prefix('dinas-1')->name('dinas-1.')->group(function () {
-// Route::resource('dashboard',MainController::class );
-// });
-
-// index
-// Route::get('/home', function () {
-// return view('./myskill/pages/hotrame');
-// })->name('Home');
-
 Route::get('/home', [MainController::class, 'index'])->name('home');
-Route::get('/bootcamp', [MainController::class, 'bootcamp']);
-Route::get('/review', [MainController::class, 'review']);
+Route::get('/bootcamp', [MainController::class, 'bootcamp'])->name('Program & Bootcamp');
+Route::get('/review', [MainController::class, 'review'])->name('Review');
+Route::get('/e-learning', [MainController::class, 'learning'])->name('E-Learning');
+
 Route::get('/company-profile', [AppController::class, 'companyprofile']);
 
 
 Route::get('/', [MainController::class, 'index']);
-
-
-// e-learning
-Route::get('/e-learning', function () {
-    $trainer = Trainer::all();
-    $testimonis = Testimoni::all();
-    $categories = Kategoriprogram::all();
-    $berlangganans = Berlangganan::all();
-    $materis = Materi::all();
-    foreach ($berlangganans as $berlangganan) {
-        $berlangganan->id_benefits = json_decode($berlangganan->id_benefits); // Decode JSON
-    }
-    return view('./myskill/pages/e-learning/e-learning', compact('testimonis', 'berlangganans', 'trainer', 'categories', 'materis'));
-})->name('E-learning');
 
 // routes/web.php
 Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
@@ -309,22 +288,10 @@ Route::get('/e-learning/materi', function () {
 Route::get('/e-learning/program', function () {
     return view('./myskill/pages/e-learning/program');
 })->name('Program');
-// bootcamp
-// Route::get('/bootcamp', function () {
-// $testimonis = Testimoni::all();
-
-// return view('./myskill/pages/program/bootcamp', compact('testimonis'));
-// })->name('Program & Bootcamp');
 
 Route::get('/bootcamp/digital-marketing', function () {
     return view('./myskill/pages/program/digital-marketing');
 })->name('Digital Marketing');
-
-//cv
-Route::get('/review', function () {
-    $testimonis = Testimoni::all();
-    return view('./myskill/pages/cv/review', compact('testimonis'));
-})->name('Review CV');
 
 //corporate
 Route::get('/corporate-service', function () {

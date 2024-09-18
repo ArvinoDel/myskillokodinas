@@ -4,7 +4,7 @@
     <section
         class="w-full h-auto bg-white bg-gradient-to-b from-orange-400 to-red-400 text-white lg:flex max-sm:text-black max-sm:bg-white lg:mb-4">
         <img src="{{ asset('./assets/bootcamp/full.png') }}"
-            class="lg:h-96 md:h-full md:p-4 rounded-3xl w-auto lg:mt-4 lg:ml-16 py-2 max-sm:h-60  max-sm:mx-auto">
+            class="lg:h-96 md:h-full md:p-4 rounded-3xl w-auto lg:mt-4 lg:ml-16 py-2 max-sm:h-60 max-sm:mx-auto">
         <div class="lg:ml-4 max-sm:text-black max-sm:w-full max-sm:text-center max-sm:mx-auto max-sm:py-4"
             style="width: 100%;">
             <p
@@ -16,43 +16,41 @@
             <div class="max-sm:overflow-x-auto">
                 <div class="flex flex-wrap justify-start max-sm:flex-nowrap">
                     <!-- batch 1 -->
+                    @foreach ($bootcamp->batch as $batch)
                     <div
                         class="lg:w-52 lg:h-30 md:w-48 md:h-30 max-sm:w-[90%] max-sm:h-28 lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:mb-2 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl max-sm:rounded-lg shadow relative">
                         <div class="flex justify-between items-start max-sm:ml-2 max-sm:mr-2">
-                            <p class="font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-3 md:text-lg max-sm:text-base">Batch
-                                {{ $bootcamp->sesi }}
+                            <p
+                                class="font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-3 md:text-lg max-sm:text-base">
+                                {{ $batch->nama_sesi }}
                             </p>
-                            <span class="bg-red-500 text-white text-xs font-bold px-1 rounded-full max-sm:text-xs max-sm:mt-1 md:mt-1 md:mr-1">Limited</span>
+                            <span
+                                class="bg-red-500 text-white text-xs font-bold px-1 rounded-full max-sm:text-xs max-sm:mt-1 md:mt-1 md:mr-1">Limited</span>
                         </div>
-                        <p class="flex justify-start text-black font-regular text-xl lg:ml-4 md:ml-3 md:text-base max-sm:ml-2 max-sm:text-lg">Rp.
+                        <p
+                            class="flex justify-start text-black font-regular text-xl lg:ml-4 md:ml-3 md:text-base max-sm:ml-2 max-sm:text-lg">
+                            Rp.
                             {{ $bootcamp->harga }}
                         </p>
-                        <p class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 line-through md:ml-3 max-sm:ml-2">Early sale: Rp.
+                        <p
+                            class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 line-through md:ml-3 max-sm:ml-2">
+                            Early sale: Rp.
                             {{ $bootcamp->harga_diskon }}
                         </p>
-                        <p class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:text-xs">Late sale: Rp.
+                        <p
+                            class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:text-xs">
+                            Late sale: Rp.
                             {{ $bootcamp->harga }}
                         </p>
-                        <p class="flex justify-start text-black font-base text-nowrap text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2">
-                            9 Okt 2024 - 22 Nov 2024
+                        <p
+                            class="flex justify-start text-black font-base text-nowrap text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2">
+                            {{ $batch->tanggal_mulai }} - {{ $batch->tanggal_selesai }}
                         </p>
                     </div>
+                    @endforeach
 
                     <!-- Batch ke-2 -->
-                    <div
-                        class="lg:w-48 lg:h-24 md:w-40 md:h-26 max-sm:w-44 max-sm:h-20 lg:ml-4 md:ml-3 max-sm:ml-1 max-sm:mr-2 max-sm:mb-2 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl max-sm:rounded-lg shadow relative">
-                        <div class="flex justify-between items-start max-sm:ml-2 max-sm:mr-2">
-                            <p class="flex justify-start font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-3 md:text-lg max-sm:text-base">Batch
-                                {{ $bootcamp->sesi }}
-                            </p>
-                        </div>
-                        <p class="flex justify-start text-black font-regular text-2xl lg:ml-4 md:ml-3 md:text-base max-sm:ml-2 max-sm:text-lg">Rp.
-                            {{ $bootcamp->harga }}
-                        </p>
-                        <p class="flex justify-start text-black font-base text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2 text-nowrap">
-                            13 Des 2024 - 5 Feb 2025
-                        </p>
-                    </div>
+
                 </div>
             </div>
 
@@ -810,7 +808,8 @@
             <p class="text-red-500 font-bold text-sm">Kuota Terbatas!</p>
             <p class="text-black font-bold text-sm">Rp. {{ $bootcamp->harga }}</p>
         </div>
-        <a href="/payment" class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg focus:ring-2 focus:ring-yellow-300">
+        <a href="/payment"
+            class="bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded-lg focus:ring-2 focus:ring-yellow-300">
             Daftar Sekarang
         </a>
     </div>

@@ -98,14 +98,17 @@ class BootcampController extends Controller
      */
     public function show(string $id_bootcamp)
     {
-        // Fetch a single bootcamp by its ID
-        $bootcamp = Bootcamp::findOrFail($id_bootcamp);
+        // Fetch bootcamp by ID with its related 'batch'
+        $bootcamp = Bootcamp::with('batch')->findOrFail($id_bootcamp);
 
         // Decode JSON for `id_benefitcamps` if it's not null, otherwise return an empty array
         $bootcamp->id_benefitcamps = json_decode($bootcamp->id_benefitcamps) ?? [];
 
-        // Pass the single bootcamp to the view
-        return view('myskill.pages.program.digital-marketing', compact('bootcamp'));
+        // Fetch all bootcamps
+        $bootcamps = Bootcamp::all();
+
+        // Pass the single bootcamp and all bootcamps to the view
+        return view('myskill.pages.program.digital-marketing', compact('bootcamp', 'bootcamps'));
     }
 
 
