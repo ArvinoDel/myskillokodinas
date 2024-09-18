@@ -68,6 +68,7 @@ use App\Http\Controllers\TemplatewebsiteController;
 use App\Http\Controllers\IdentitaswebsiteController;
 use App\Http\Controllers\MetodepembayaranController;
 use App\Http\Controllers\ProgramcvController;
+use App\Http\Controllers\TopikController;
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -218,8 +219,8 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
     Route::resource('isimateri', IsimateriController::class)
         ->middleware('checkModul:isimateri');
 
-    Route::resource('member', MemberController::class)
-        ->middleware('checkModul:member');
+    Route::resource('topik', TopikController::class)
+        ->middleware('checkModul:topik');
 
     Route::resource('metodepembayaran', MetodepembayaranController::class)
         ->middleware('checkModul:metodepembayaran');
@@ -245,6 +246,9 @@ Route::prefix('administrator')->name('administrator.')->group(function () {
 
     Route::resource('batch', BatchController::class)
         ->middleware('checkModul:batch');
+
+    Route::resource('payment', PaymentController::class)
+        ->middleware('checkModul:payment');
 
 
     // Rute untuk backup database
