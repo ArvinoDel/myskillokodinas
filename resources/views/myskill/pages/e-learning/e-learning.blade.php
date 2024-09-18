@@ -270,7 +270,7 @@
     </section>    
 
     {{-- Section : Mentors --}}
-    <section class="bg-gray-100 py-3 my-3 px-4 lg:mt-20">
+    <section class="bg-gray-100 py-3 my-1 px-4 lg:mt-20">
         <div class="container mx-auto">
             <h3 class="text-2xl text-center font-bold py-3">Belajar Bersama Senior Operator Langsung di Kantor</h3>
             <p class="text-center text-gray-600 mb-8">Belajar langsung dari experienced professional yang mengajarkan

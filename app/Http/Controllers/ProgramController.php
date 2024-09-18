@@ -120,18 +120,24 @@ class ProgramController extends Controller
         // Fetch only the specific category based on the given id_kategori_program
         $category = Kategoriprogram::where('id_kategori_program', $id_kategori_program)->firstOrFail();
 
+        // Correct this line to make sure you're fetching the category and its associated materi
+        $kategoriProgram = Kategoriprogram::with('materi')->find($id_kategori_program);
+
+        $kategoriProgram = Kategoriprogram::with('materi')->findOrFail($id_kategori_program);
+
         // Assuming 'berlangganans' are for the specific program or category, you may want to filter them as well
         $berlangganans = Berlangganan::all();
-        $materis = Materi::all();
+        $materis = Materi::where('id_kategori_program', $id_kategori_program)->get();
 
-        // Decode JSON fields
+        // Decode JSON fields for 'berlangganans'
         foreach ($berlangganans as $berlangganan) {
             $berlangganan->id_benefits = json_decode($berlangganan->id_benefits);
         }
 
-        // Pass the filtered category instead of all categories
-        return view('myskill.pages.e-learning.program', compact(['testimonis', 'berlangganans', 'trainer', 'category', 'materis', 'program']));
+        // Pass the necessary variables to the view, including $kategoriProgram
+        return view('myskill.pages.e-learning.program', compact('testimonis', 'berlangganans', 'trainer', 'category', 'materis', 'program', 'kategoriProgram'));
     }
+
 
 
 

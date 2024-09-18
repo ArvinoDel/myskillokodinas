@@ -12,8 +12,8 @@ class Bootcamp extends Model
     public $timestamps = false;
     protected $table = 'bootcamps';
     protected $primaryKey = 'id_bootcamp';
-    protected $fillable = ['id_bootcamp', 'judul_bootcamp', 'thumbnail', 'tanggal_mulai', 'tanggal_selesai', 'harga', 'harga_diskon', 'sesi', 'deskripsi','id_benefitcamps']; 
-    
+    protected $fillable = ['id_bootcamp', 'judul_bootcamp', 'thumbnail', 'harga', 'harga_diskon', 'deskripsi','id_benefitcamps'];
+
     protected $casts = [
         'id_benefitcamps' => 'array', // Cast id_benefits to an array
     ];
@@ -21,5 +21,10 @@ class Bootcamp extends Model
     public function benefit()
     {
         return Benefitbootcamp::whereIn('id_benefitcamp', $this->id_benefitcamps)->get();
+    }
+
+    public function batch()
+    {
+        return $this->hasMany(Batch::class, 'id_bootcamp', 'id_bootcamp');
     }
 }
