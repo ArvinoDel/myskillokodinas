@@ -309,7 +309,6 @@
             <p class="text-3xl font-bold text-center mb-2">Langganan Sekarang dan Jadi Lebih Hebat</p>
             <p class="text-center mb-8 text-gray-600">Langganan bulanan untuk akses semua materi, tanpa batas. Makin
                 lama, makin hemat dan untung banyak.</p>
-
             @php
             // Memisahkan item aktif dan mengelompokkan item populer untuk ditempatkan di tengah
             $activeItems = $berlangganans->filter(fn($item) => $item->is_active); // Hanya item yang aktif

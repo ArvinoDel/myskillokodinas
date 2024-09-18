@@ -27,7 +27,7 @@ class Programcv extends Model
     ];
 
     // Method to get the associated benefits
-    public function benefits()
+    public function benefitscv()
     {
         return Benefit::whereIn('id_benefit', $this->id_benefits)->get();
     }
