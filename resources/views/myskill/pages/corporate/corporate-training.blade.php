@@ -12,7 +12,7 @@
 
         <div class="lg:ml-4 lg:mt-8 p-4 lg:p-0">
             <button type="button"
-                class="focus:outline-none text-white bg-gray-900 font-medium rounded-full text-sm px-5 py-2.5 me-2 dark:focus:ring-yellow-900 mb-4 lg:mb-0">MySkill
+                class="focus:outline-none text-white bg-gray-900 font-medium rounded-full text-sm px-5 py-2.5 me-2 dark:focus:ring-yellow-900 mb-4 lg:mb-0">Pandai Digital
                 for Business</button>
             <p class="text-base lg:text-4xl font-bold text-black lg:text-white">
                 Tingkatkan Skill & Performa Karyawan
@@ -20,7 +20,7 @@
             <p class="text-base lg:text-4xl font-bold text-black lg:text-white mb-0">
                 dengan Corporate Training
             </p>
-            <p class="mt-2 text-sm lg:text-lg text-black lg:text-white">MySkill membantu ratusan enterprise, startup,
+            <p class="mt-2 text-sm lg:text-lg text-black lg:text-white">Pandai Digital membantu ratusan enterprise, startup,
                 badan pemerintahan dan</p>
             <p class="text-sm lg:text-lg text-black lg:text-white"> institusi lainnya untuk mengembangkan potensi
                 karyawan melalui </p>
@@ -45,7 +45,7 @@
         </div>
     </section>
 
-    <h3 class="text-center mt-4 mr-100 text-3xl font-bold mb-4 text-black">MySkill Dipercaya Ratusan Institusi Sebagai
+    <h3 class="text-center mt-4 mr-100 text-3xl font-bold mb-4 text-black">Pandai Digital Dipercaya Ratusan Institusi Sebagai
         Learning Partner Karena</h3>
     <div class="flex flex-wrap justify-center mb-4 space-x-4">
         <!-- Customizable Program -->
@@ -58,13 +58,13 @@
         <div class="bg-white text-black p-6 rounded-lg w-64 border border-spacing-1 flex flex-col items-center">
             <img src="./assets/corporate/senior-practicioner.webp" alt="" class="mx-auto mb-4 w-3/4 max-w-xs h-32 object-fill">
             <p class="text-md font-bold text-center">Dibawakan Praktisi Senior</p>
-            <p class="text-sm text-center">MySkill menggandeng professional terkurasi dari notable companies.</p>
+            <p class="text-sm text-center">Pandai Digital menggandeng professional terkurasi dari notable companies.</p>
         </div>
         <!-- Workshop & Practice Driven -->
         <div class="bg-white text-black p-6 rounded-lg w-64 border border-spacing-1 flex flex-col items-center">
             <img src="./assets/corporate/workshop.webp" alt="" class="mx-auto mb-4 w-3/4 max-w-xs h-32 object-fill">
             <p class="text-md font-bold text-center">Workshop & Practice Driven</p>
-            <p class="text-sm text-center">Pelatihan MySkill mengkombinasikan pemahaman, praktik dan case study.</p>
+            <p class="text-sm text-center">Pelatihan Pandai Digital mengkombinasikan pemahaman, praktik dan case study.</p>
         </div>
         <!-- Before & After yang Terukur -->
         <div class="bg-white text-black p-6 rounded-lg w-64 border border-spacing-1 flex flex-col items-center">
@@ -171,7 +171,7 @@
     </div>
 
 
-    @include('./myskill/partials.hubungi-kami')
+    @include('./Pandai Digital/partials.hubungi-kami')
 
 </section>
 </div>

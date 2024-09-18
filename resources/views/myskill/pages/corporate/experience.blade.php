@@ -30,7 +30,7 @@ $activeButton = request()->query('activeButton');
                 Solusi Meningkatkan Performa Tim & Perusahaan
             </p>
             <p class="mt-2 text-base lg:text-lg mb-2 w-4/5">
-                MySkill Experience adalah software bagi karyawan untuk UpSkilling serta mengelola Onboarding, Project & Target KPI.
+                Pandai Digital Experience adalah software bagi karyawan untuk UpSkilling serta mengelola Onboarding, Project & Target KPI.
             </p>
             <br>
             <!-- Container for buttons -->
@@ -224,7 +224,7 @@ $activeButton = request()->query('activeButton');
     <section
         class="mt-12 py-14 lg:flex-row-reverse h-auto bg-white lg:bg-gradient-to-b from-orange-400 to-red-400 text-white w-full">
         <div class="flex flex-col items-center">
-            <p class="text-center mt-4 text-4xl w-9/12 font-bold text-black mb-4">Dirancang oleh MySkill. Platform Upskilling #1 dengan 1 Juta lebih Pengguna.
+            <p class="text-center mt-4 text-4xl w-9/12 font-bold text-black mb-4">Dirancang oleh Pandai Digital. Platform Upskilling #1 dengan 1 Juta lebih Pengguna.
             </p>
             <p class="text-xl mb-4 w-4/5 text-black">
                 Kembangkan bisnis perusahaan Kamu dengan mendorong tiap karyawan bekerja dan berkembang dengan lebih efektif.
@@ -271,7 +271,7 @@ $activeButton = request()->query('activeButton');
 
     <section class="w-full h-auto px-4" id="form">
         <p class="bg-clip-text bg-gradient-to-r from-orange-400 to-pink-500 mt-4 text-transparent text-xl text-center">
-            MySkill Experience akan Rilis Segera!
+            Pandai Digital Experience akan Rilis Segera!
         </p>
         <h3 class="mt-4 text-2xl lg:text-4xl font-bold mb-4 text-center text-black">
             Daftar sekarang untuk mendapat info detail produk dan promo.
@@ -280,7 +280,7 @@ $activeButton = request()->query('activeButton');
             Kembangkan bisnis perusahaan Kamu dengan mengembangkan SDM di
         </p>
         <p class="text-black mb-4 text-transparent text-lg text-center">
-            dalamnya melalui LMS MySkill segera.
+            dalamnya melalui LMS Pandai Digital segera.
         </p>
 
         <div class="flex justify-center">
