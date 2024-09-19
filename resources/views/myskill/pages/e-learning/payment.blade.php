@@ -9,33 +9,62 @@
                     <div
                         class="bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg p-6 flex flex-col md:flex-row items-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
                         <div class="md:w-1/2">
-                            <h2 class="text-2xl font-bold text-white mb-2">eLearning</h2>
-                            <p class="text-white mb-4">Pelajari Ratusan Skill Bersertifikat Sekali Bayar. Fleksibel &
-                                Praktikal.</p>
+                            <h2 class="text-2xl font-bold text-white mb-2">
+                                @if ($langganan === 'e-learning')
+                                    eLearning
+                                @elseif ($langganan === 'bootcamp')
+                                    Bootcamp
+                                @elseif ($langganan === 'review')
+                                    Review
+                                @else
+                                    Paket tidak tersedia
+                                @endif
+                            </h2>
+                            <p class="text-white mb-4">
+                                @if ($langganan === 'e-learning')
+                                    Pelajari Ratusan Skill Bersertifikat Sekali Bayar. Fleksibel & Praktikal.
+                                @elseif ($langganan === 'bootcamp')
+                                    Program intensif untuk menguasai skill tertentu dengan pembelajaran terstruktur.
+                                @elseif ($langganan === 'review')
+                                    Dapatkan akses ke ulasan dan panduan belajar secara menyeluruh.
+                                @else
+                                    Informasi paket belum tersedia.
+                                @endif
+                            </p>
                             <button
                                 class="bg-yellow-400 text-black px-4 py-2 rounded-full font-semibold">Selengkapnya</button>
                         </div>
-                        <div class="md:w-1/2">
-                            <img src="https://placehold.co/250x150" alt="eLearning Image" class="rounded-lg mx-auto">
+                        <div class="md:w-3/4">
+                            <img src="
+                                @if ($langganan === 'e-learning') {{ asset('foto_banner/2.png') }}
+                                @elseif ($langganan === 'bootcamp')
+                                    {{ asset('foto_banner/1.png') }}
+                                @elseif ($langganan === 'review')
+                                    {{ asset('foto_banner/5.png') }}
+                                @else
+                                    https://placehold.co/250x150 @endif
+                            "
+                                alt="Banner Image" class="rounded-lg mx-auto">
                         </div>
+
                     </div>
 
                     <!-- Testimonial Section -->
                     <div class="mt-8 px-4 border-b mb-4 pb-4">
                         <h3 class="text-lg font-semibold text-gray-800 mb-4">Testimoni</h3>
-                        <div class="flex items-center mb-6 flex-col sm:flex-row sm:items-start">
-                            <img src="https://placehold.co/50x50" alt="Course Report"
+                        <div class="flex items-center mb-6 flex-col sm:flex-row max-sm:items-start">
+                            <img src="{{ asset('assets/corporate/course-report.webp') }}" alt="Course Report"
                                 class="mb-2 sm:mb-0 sm:mr-2 max-w-[50px]">
                             <span class="text-green-600 font-semibold text-center sm:text-left">4.9 rating on Course
                                 Report</span>
-                            <div class="flex items-center mt-2 sm:mt-0">
-                                <img src="https://placehold.co/50x50" alt="Course Report"
+                            <div class="flex items-center ml-2 mt-2 sm:mt-0">
+                                <img src="{{ asset('./assets/bootcamp/hero-header.png') }}" alt="Course Report"
                                     class="rounded-full mr-1 max-w-[30px]">
-                                <img src="https://placehold.co/50x50" alt="Course Report"
+                                <img src="{{ asset('./assets/bootcamp/hero-header.png') }}" alt="Course Report"
                                     class="rounded-full mr-1 max-w-[30px]">
-                                <img src="https://placehold.co/50x50" alt="Course Report"
+                                <img src="{{ asset('./assets/bootcamp/hero-header.png') }}" alt="Course Report"
                                     class="rounded-full mr-1 max-w-[30px]">
-                                <img src="https://placehold.co/50x50" alt="Course Report"
+                                <img src="{{ asset('./assets/bootcamp/hero-header.png') }}" alt="Course Report"
                                     class="rounded-full mr-1 max-w-[30px]">
                             </div>
                             <span class="text-gray-500 mx-2">></span>
@@ -46,7 +75,7 @@
                             <div class="flex space-x-4">
                                 <div
                                     class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
-                                    <img src="https://placehold.co/60x60" alt="Paksi Cahyo Baskoro"
+                                    <img src="{{ asset('foto_user/1726534293_avatar5.png') }}" alt="Paksi Cahyo Baskoro"
                                         class="rounded-lg mr-4 max-w-[60px]">
                                     <div>
                                         <p class="font-semibold text-gray-800 text-sm">Paksi Cahyo Baskoro</p>
@@ -56,7 +85,7 @@
                                 </div>
                                 <div
                                     class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
-                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                    <img src="{{ asset('foto_user/1726534293_avatar5.png') }}" alt="M. Arkhan Doohan"
                                         class="rounded-lg mr-4 max-w-[60px]">
                                     <div>
                                         <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
@@ -66,7 +95,7 @@
                                 </div>
                                 <div
                                     class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
-                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                    <img src="{{ asset('foto_user/1726534293_avatar5.png') }}" alt="M. Arkhan Doohan"
                                         class="rounded-lg mr-4 max-w-[60px]">
                                     <div>
                                         <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
@@ -76,7 +105,7 @@
                                 </div>
                                 <div
                                     class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
-                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                    <img src="{{ asset('foto_user/1726534293_avatar5.png') }}" alt="M. Arkhan Doohan"
                                         class="rounded-lg mr-4 max-w-[60px]">
                                     <div>
                                         <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
@@ -86,7 +115,7 @@
                                 </div>
                                 <div
                                     class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
-                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                    <img src="{{ asset('foto_user/1726534293_avatar5.png') }}" alt="M. Arkhan Doohan"
                                         class="rounded-lg mr-4 max-w-[60px]">
                                     <div>
                                         <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>
@@ -96,7 +125,7 @@
                                 </div>
                                 <div
                                     class="flex-shrink-0 flex items-center p-4 bg-white rounded-lg shadow w-[300px] my-1 ml-2">
-                                    <img src="https://placehold.co/60x60" alt="M. Arkhan Doohan"
+                                    <img src="{{ asset('foto_user/1726534293_avatar5.png') }}" alt="M. Arkhan Doohan"
                                         class="rounded-lg mr-4 max-w-[60px]">
                                     <div>
                                         <p class="font-semibold text-gray-800 text-sm">M. Arkhan Doohan</p>

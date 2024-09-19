@@ -210,13 +210,13 @@
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
         <div class="col-lg-8">
             <div class="image-container">
-                <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src=""></iframe>
+                <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="{{ $identitas->maps }}"></iframe>
             </div>
         </div>
         <div class="col-lg-4">
             <h3>Kirimkan pesan kepada kami!</h3>
             <hr>
-            <form method="post" action="{{ route('administrator.pesanmasuk.store') }}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('administrator.pesanmasuk.store') }}" enctype="multipart/form-data" id="pesanForm">
                 @csrf
                 <div class="input">
                     <input type="text" required="" name="nama" autocomplete="off">
@@ -263,24 +263,26 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
-                <form>
+                <form action="{{ route('polling.store') }}" method="POST" id="pollingForm">
                     <h2>Polling</h2>
+                    @csrf
                     @foreach($pilihan as $p)
-                    <p>{{ $p->pilihan }}</p>
+                        <p>{{ $p->pilihan }}</p>
                     @endforeach
                     @foreach($jawaban as $j)
-                    <label>
-                        <input type="radio" name="radio" checked="">
-                        <span>{{ $j->pilihan }}</span>
-                    </label>
+                        <label>
+                            <input type="radio" name="pilihan_id" value="{{ $j->id_poling }}" required>
+                            <span>{{ $j->pilihan }}</span>
+                        </label>
                     @endforeach
-                    <button type="submit" class="btn-outline-sm" style="margin: 0 auto; padding: 0.5rem 1rem;">Konfirmasi Pilihan</button>
-                    <a class="btn-solid-reg popup-with-move-anim" href="#details-lightbox2"> Lihat Hasil</a>
+                    <button type="submit" class="btn-solid-reg">Konfirmasi Pilihan</button>
+                    <br>
+                    <a class="btn-solid-reg popup-with-move-anim text-center" href="#details-lightbox2"> Lihat Hasil</a> <!-- Menambahkan kelas text-center -->
                 </form>
             </div>
         </div>
     </div>
-</div>
+</div>  
 <div id="details-lightbox2" class="lightbox-basic2 zoom-anim-dialog mfp-hide">
     <div class="row">
         <button title="Close (Esc)" type="button" class="mfp-close x-button">×</button>
@@ -298,7 +300,96 @@
         </div>
     </div>
 </div>
-@section('script')
+
+<script>
+    // Pastikan ini adalah bagian dari script yang mengirim data polling
+document.getElementById('pollingForm').onsubmit = function(event) {
+    event.preventDefault(); // Mencegah form dari pengiriman default
+    const formData = new FormData(this);
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+                title: 'Berhasil!',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '/company-profile'; // Ganti dengan URL yang sesuai
+                }
+            });
+        } else {
+            // Tampilkan pesan error jika ada
+            Swal.fire({
+                title: 'Error!',
+                text: data.message || 'Terjadi kesalahan.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'Terjadi kesalahan saat mengirim jawaban.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    });
+};
+</script>
+
+<script>
+    document.getElementById('pesanForm').onsubmit = function(event) {
+        event.preventDefault(); // Mencegah form dari pengiriman default
+        const formData = new FormData(this);
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Menggunakan SweetAlert untuk menampilkan pesan sukses
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Arahkan ke halaman /company-profile setelah menekan OK
+                        window.location.href = '/company-profile';
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Terjadi kesalahan saat mengirim jawaban.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    };
+</script>
+
 <script>
     function lihatHasil() {
         // Ambil data hasil polling dari server
@@ -314,6 +405,4 @@
             });
     }
 </script>
-@endsection
-
 @endsection

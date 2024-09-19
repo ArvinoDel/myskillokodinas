@@ -47,27 +47,67 @@
                             {{ $batch->tanggal_mulai }} - {{ $batch->tanggal_selesai }}
                         </p>
                     </div>
+                    <div class="max-sm:overflow-x-auto">
+                        <div class="flex flex-wrap justify-start max-sm:flex-nowrap">
+                            <!-- batch 1 -->
+                            @foreach ($bootcamp->batch as $batch)
+                            <div
+                                class="lg:w-52 lg:h-30 md:w-48 md:h-30 max-sm:w-[90%] max-sm:h-28 lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:mb-2 bg-white border border-gray-400 lg:rounded-2xl md:rounded-xl max-sm:rounded-lg shadow relative">
+                                <div class="flex justify-between items-start max-sm:ml-2 max-sm:mr-2">
+                                    <p
+                                        class="font-bold text-orange-600 text-2xl lg:ml-4 lg:mt-2 md:ml-3 md:text-lg max-sm:text-base">
+                                        {{ $batch->nama_sesi }}
+                                    </p>
+                                    <span
+                                        class="bg-red-500 text-white text-xs font-bold px-1 rounded-full max-sm:text-xs max-sm:mt-1 md:mt-1 md:mr-1">Limited</span>
+                                </div>
+                                <p
+                                    class="flex justify-start text-black font-regular text-xl lg:ml-4 md:ml-3 md:text-base max-sm:ml-2 max-sm:text-lg">
+                                    Rp. {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}
+                                </p>
+                                <p
+                                    class="flex justify-start text-red-500 font-regular text-xs lg:ml-4 line-through md:ml-3 max-sm:ml-2">
+
+                                    Rp. {{ number_format($bootcamp->harga, 0, ',', '.') }}
+
+                                </p>
+                                <p
+                                    class="flex justify-start text-black font-base text-nowrap text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2">
+                                    {{ $batch->tanggal_mulai }} - {{ $batch->tanggal_selesai }}
+                                </p>
+                            </div>
+                        </div>
+                        <a href="{{ route('payment.bootcamp', ['id' => $batch->id_bootcamp]) }}">
+                            <button type="button"
+                                class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 max-sm:bg-yellow-500 max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
+                                <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
+                            </button>
+                        </a>
+                        @endforeach
+
+
+
+                    </div>
+                    <a href="{{ route('payment.bootcamp', ['id' => $batch->id_batch]) }}">
+                        <button type="button"
+                            class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 max-sm:bg-yellow-500 max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
+                            <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
+                        </button>
+                    </a>
+                    @endforeach
+
+
+
                 </div>
-                <a href="{{ route('payment.bootcamp', ['id' => $batch->id_batch]) }}">
-                    <button type="button"
-                        class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 max-sm:bg-yellow-500 max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
-                        <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
-                    </button>
-                </a>
-                @endforeach
 
 
 
+                <div class="flex items-center mt-1 max-sm:flex-col max-sm:items-center">
+                    <p
+                        class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 text-white text-md font-semibold max-sm:ml-0 max-sm:text-sm max-sm:mt-2">
+                        5.000+ Alumni Bootcamp Tiap Bulan</p>
+                </div>
             </div>
-
-
-
-            <div class="flex items-center mt-1 max-sm:flex-col max-sm:items-center">
-                <p
-                    class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 text-white text-md font-semibold max-sm:ml-0 max-sm:text-sm max-sm:mt-2">
-                    5.000+ Alumni Bootcamp Tiap Bulan</p>
-            </div>
-        </div>
     </section>
 </div>
 <!-- Modal -->

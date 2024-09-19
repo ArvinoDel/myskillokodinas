@@ -358,6 +358,7 @@ Route::get('playlist', [HalamanController::class, 'video']);
 Route::get('agenda', [HalamanController::class, 'agenda']);
 Route::get('sliderlogo', [MainController::class, 'create']);
 Route::post('/polling/store', [JejakpendapatController::class, 'storePollingChoice'])->name('polling.store');
+Route::post('/polling/store', [JejakpendapatController::class, 'storePollingChoice3'])->name('polling.store');
 
 // Route::get('administrator/layout', [TestingController::class, 'layout']);
 

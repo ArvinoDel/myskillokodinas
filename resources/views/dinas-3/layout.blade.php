@@ -35,7 +35,7 @@
 
     <style>
         /* Navbar Styles */
-        .navbar {
+        .navbar {  
             background-color: #FFFFFF; /* Mengubah warna navbar menjadi putih */
             backdrop-filter: none; /* Nonaktifkan efek blur jika ada */
             -webkit-backdrop-filter: none; /* Nonaktifkan efek blur untuk Safari */
@@ -53,7 +53,7 @@
         }
     
         .navbar-dark .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 0.5)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(0, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); /* Ubah warna icon toggler menjadi hitam */
         }
     
         .navbar-dark .navbar-toggler {
@@ -91,13 +91,13 @@
             <a href="#" class="navbar-brand logo-image"><img src="{{ asset('logo/' . $logo->gambar) }}" style="margin: auto; display: block;" /></a>
     
             <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'30\' height=\'30\' viewBox=\'0 0 30 30\'%3e%3cpath stroke=\'rgba(0, 0, 0, 1)\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' stroke-width=\'2\' d=\'M4 7h22M4 15h22M4 23h22\'/%3e%3c/svg%3e');"></span>
             </button>
     
             <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link page-scroll" href="{{ url('/') }}" style="color: white;">HOME <span class="sr-only">(current)</span></a>
+                        <a class="nav-link page-scroll" href="{{ url('/company-profile') }}" style="color: white;">HOME <span class="sr-only">(current)</span></a>
                     </li>
                     @foreach($menus as $menu)
                         <li class="nav-item dropdown">
@@ -141,6 +141,9 @@
                     @endforeach
                     <li class="nav-item">
                         <a class="nav-link page-scroll" href="#hubungi" style="color: white;">HUBUNGI KAMI</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="{{ url('/') }}" style="color: white;">Pandai Digital <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
             </div> <!-- end of navbar-collapse -->
@@ -215,14 +218,9 @@
 
 
     <!-- Scripts -->
-
-    <script>
-        
-    </script>
-
-
+    <script src="{{ url('assets/js/sweetalert2.js') }}"></script>
     <script src="{{ url('template/revo/js/jquery.min.js') }}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-    <script src="{{ url('template/revo/js/bootstrap.min.js') }}"></script> <!-- Bootstrap framework -->
+    <script src="{{ url('template/UpCons/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url('template/revo/js/jquery.easing.min.js') }}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
     <script src="{{ url('template/revo/js/swiper.min.js') }}"></script> <!-- Swiper for image and text sliders -->
     <script src="{{ url('template/revo/js/jquery.magnific-popup.js') }}"></script> <!-- Magnific Popup for lightboxes -->

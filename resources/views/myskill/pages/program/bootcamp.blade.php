@@ -68,10 +68,60 @@
                 <a href="{{ $testimoni->link }}">
                     <button class="w-full bg-violet-500 text-white py-2 rounded-md font-semibold">Baca
                         Cerita</button>
-                </a>
+                    <!-- start grid -->
+                    <div
+                        class="grid grid-cols-2 max-sm:p-2 max-sm:m-2 max-sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 lg:px-14 md:gap-8 md:px-14 max-sm:mt-2">
+                        <!-- grid card here -->
+
+                        <!-- garis batas -->
+                        @foreach ($bootcamps as $bootcamp)
+                        <a href="/bootcamp/digital-marketing/{{ $bootcamp->id_bootcamp }}">
+                            <div
+                                class="bg-white mt-2 mb-2 border rounded-lg shadow-md max-sm:p-2 max-sm:mr-2 max-sm:flex max-sm:flex-col max-sm:items-center max-sm:justify-start">
+                                <img src="{{ asset('./assets/bootcamp/contentdummy.png') }}"
+                                    class="lg:h-48 lg:w-full md:h-32 md:w-full sm:h-48 sm:w-full rounded-sm">
+                                <div class="text-left sm:text-left sm:mt-4">
+                                    <p class="mt-4 text-gray-700 font-semibold font-sans max-sm:text-xs md:text-lg lg:text-lg ml-2">
+                                        {{ $bootcamp->judul_bootcamp }} <!-- Replace with your bootcamp field -->
+                                    </p>
+                                    <div
+                                        class="flex items-center justify-start sm:justify-start max-sm:mt-1 max-sm:text-nowrap md:mt-4 lg:mt-4 text-gray-500">
+                                        <i class="fas ml-2 fa-calendar-alt mr-2"></i>
+                                        @php
+                                        // Mengambil batch terakhir dari koleksi
+                                        $lastBatch = $bootcamp->batch->last();
+                                        @endphp
+
+
+
+                                        <p class="text-sm">
+                                            @if ($lastBatch)
+                                            {{ $lastBatch->tanggal_mulai }}
+                                            @else
+                                            Tidak ada batch yang tersedia.
+                                            @endif
+                                        </p> <!-- Replace with date field -->
+                                    </div>
+                                    <div
+                                        class="flex items-center justify-start sm:justify-start max-sm:mt-1 md:mt-4 lg:mt-4 lg:mb-4 text-gray-500">
+                                        <i class="fas ml-2 fa-tag mr-2"></i>
+                                        @if ($lastBatch)
+                                        <p class="text-sm">Rp {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}<span
+                                                class="line-through text-xs/tight max-sm:hidden text-red-500">Rp
+                                                {{ number_format($bootcamp->harga, 0, ',', '.') }}
+                                            </span>
+                                        </p>
+                                        @else
+                                        Tidak ada batch yang tersedia.
+                                        @endif
+
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    @endforeach
             </div>
-            @endforeach
-        </div>
     </section>
 
 

@@ -47,7 +47,7 @@
                 </div>
 
                 <div class="col-lg-5" data-aos="fade">
-                    <form action="{{ route('administrator.pesanmasuk.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('administrator.pesanmasuk.store') }}" method="post" enctype="multipart/form-data" id="pesanForm">
                         @csrf
                         <h3>Contact Us</h3>
                         <div class="row gy-3">
@@ -364,6 +364,47 @@
 
 <script>
     document.getElementById('pollingForm').onsubmit = function(event) {
+        event.preventDefault(); // Mencegah form dari pengiriman default
+        const formData = new FormData(this);
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Menggunakan SweetAlert untuk menampilkan pesan sukses
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Arahkan ke halaman /company-profile setelah menekan OK
+                        window.location.href = '/company-profile';
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Terjadi kesalahan saat mengirim jawaban.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    };
+</script>
+
+<script>
+    document.getElementById('pesanForm').onsubmit = function(event) {
         event.preventDefault(); // Mencegah form dari pengiriman default
         const formData = new FormData(this);
         fetch(this.action, {

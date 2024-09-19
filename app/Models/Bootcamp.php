@@ -15,8 +15,8 @@ class Bootcamp extends Model
 
     protected $keyType = 'string';
     public $incrementing = false;
-    
-    protected $fillable = ['id_bootcamp', 'judul_bootcamp', 'thumbnail', 'harga', 'harga_diskon', 'deskripsi','id_benefitcamps'];
+
+    protected $fillable = ['id_bootcamp', 'judul_bootcamp', 'thumbnail', 'harga', 'harga_diskon', 'deskripsi', 'id_benefitcamps'];
 
     protected $casts = [
         'id_benefitcamps' => 'array', // Cast id_benefits to an array
@@ -24,6 +24,10 @@ class Bootcamp extends Model
 
     public function benefit()
     {
+        if (is_string($this->id_benefitcamps)) {
+            $this->id_benefitcamps = json_decode($this->id_benefitcamps, true); // Ubah string JSON menjadi array
+        }
+
         return Benefitbootcamp::whereIn('id_benefitcamp', $this->id_benefitcamps)->get();
     }
 
