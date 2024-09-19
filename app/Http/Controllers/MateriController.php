@@ -127,15 +127,17 @@ class MateriController extends Controller
 
         $payments = Payment::where(function ($query) use ($user, $berlanggananIds) {
             $query->whereIn('berlangganan_id', $berlanggananIds)
-            ->where('status', 'completed')
+                ->where('status', 'completed')
                 ->where(function ($query) use ($user) {
                     $query->where('contact', $user->email)
-                            ->orWhere('contact', $user->phone);
+                        ->orWhere('contact', $user->phone);
                 });
         })->first();
 
         // Debug output to check the result
         // dd($payments);
+        // dd($berlanggananIds);
+
 
         if ($payments) {
             $vidActive = true;

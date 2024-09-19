@@ -202,7 +202,7 @@ class PaymentController extends Controller
             ]);
 
             // Mengirim pesan sukses ke view
-            return redirect()->route('home')->with('success', 'Pembayaran berhasil dikirim!');
+            return redirect()->route('Purchased')->with('success', 'Pembayaran berhasil dikirim!');
         } catch (\Exception $e) {
             // Mengirim pesan error ke view
             // dd($request);

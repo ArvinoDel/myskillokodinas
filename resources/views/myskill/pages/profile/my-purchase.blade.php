@@ -403,5 +403,27 @@
     </div>
 
     </div>
+    <script>
+        // Jika ada pesan sukses
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+                timer: 2000,
+            });
+        @endif
+
+        // Jika ada pesan error
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+                timer: 3000,
+            });
+        @endif
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3" defer></script>
 @endsection
