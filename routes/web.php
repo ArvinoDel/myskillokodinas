@@ -354,9 +354,10 @@ Route::get('detailberita/{judul_seo}', [HalamanController::class, 'detailBerita'
 Route::get('detailagenda/{tema_seo}', [HalamanController::class, 'detailAgenda'])->name('detailagenda');
 Route::get('detailalbum/{album_seo}', [HalamanController::class, 'detailalbum'])->name('detailalbum');
 Route::get('albums', [HalamanController::class, 'album']);
-Route::get('video', [HalamanController::class, 'video']);
+Route::get('playlist', [HalamanController::class, 'video']);
 Route::get('agenda', [HalamanController::class, 'agenda']);
 Route::get('sliderlogo', [MainController::class, 'create']);
+Route::post('/polling/store', [JejakpendapatController::class, 'storePollingChoice'])->name('polling.store');
 
 // Route::get('administrator/layout', [TestingController::class, 'layout']);
 

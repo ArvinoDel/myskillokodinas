@@ -58,17 +58,17 @@
   <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+    <a href="/company-profile" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{{ asset('logo/' . $logo->gambar) }}" alt="">
         <!-- <h1>UpConstruction<span>.</span></h1> -->
-      </a>
+    </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul style="color: #ffc732;">
-          <li class="parent-menu"><a href="{{ url('/')}}" class="active">Home</a></li>
+          <li class="parent-menu"><a href="{{ url('/company-profile')}}" class="active">Home</a></li>
           @foreach($menus as $menu)
           <li class="nav-item dropdown parent-menu">
               <a class="dropdown-toggle nav-link" href="{{ $menu->link }}" id="navbarDropdown{{ $menu->id_menu }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color:black;">
@@ -110,6 +110,7 @@
           </li>
           @endforeach
           <li class="parent-menu"><a href="#contact">Contact</a></li>
+          <li class="parent-menu"><a href="{{ url('/')}}">Pandai Digital</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -167,6 +168,7 @@
   <div id="preloader"></div>
 
   <!-- Vendor JS Files -->
+  <script src="{{ url('assets/js/sweetalert2.js') }}"></script>
   <script src="{{ url('template/UpCons/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ url('template/UpCons/assets/vendor/aos/aos.js') }}"></script>
   <script src="{{ url('template/UpCons/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>

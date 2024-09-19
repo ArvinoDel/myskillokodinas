@@ -93,6 +93,22 @@ class JejakpendapatController extends Controller
         ]);
     }
 
+    public function storePollingChoice(Request $request)
+    {
+        $request->validate([
+            'pilihan_id' => 'required|exists:poling,id_poling',
+        ]);
+
+        // Temukan polling berdasarkan ID
+        $polling = Poling::find($request->pilihan_id);
+        $polling->increment('rating'); // Tambah rating
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Pilihan berhasil disimpan!'
+        ]);
+    }
+
     /**
      * Display the specified resource.
      */

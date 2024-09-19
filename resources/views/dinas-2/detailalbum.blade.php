@@ -2,9 +2,10 @@
 
 @section('content')
 <br>
+<br>
 <div class="ecommerce-gallery vertical" data-mdb-ecommerce-gallery-init>
   <div class="row d-flex justify-content-center">
-    <div class="col-lg-10" style="margin-top: 5rem;">
+    <div class="col-lg-10" style="margin-top: 3rem; margin-bottom: 3rem;">
       <h2 class="h2-heading text-center">Detail Album</h2>
       <div class="carousel-container">
         <div id="gallery-carousel" class="carousel slide carousel-vertical" data-bs-ride="carousel" data-bs-interval="3500">
@@ -14,18 +15,19 @@
               <div class="d-flex justify-content-center">
                 <!-- Card component -->
                 <div class="card" style="width: 80%; max-width: 800px;">
-                  <div class="row no-gutters">
-                    <div class="col-lg-8 col-xl-7">
-                      <img class="card-img img-fluid" src="{{ asset('img_gallery/' . $item->gbr_gallery) }}" alt="{{ $item->jdl_gallery }}">
-                    </div>
-                    <div class="col-lg-6 col-xl-5">
-                      <div class="card-body">
-                        <h5 class="card-title">{{ $item->jdl_gallery }}</h5>
-                        <p class="card-text">{{ $item->keterangan }}</p>
+                    <div class="row no-gutters">
+                      <div class="col-lg-8 col-xl-7">
+                        <img class="card-img img-fluid" src="{{ asset('img_gallery/' . $item->gbr_gallery) }}" alt="{{ $item->jdl_gallery }}">
+                      </div>
+                      <div class="col-lg-6 col-xl-5">
+                        <div class="card-body">
+                          <h5 class="card-title text-center font-weight-bold">{{ $item->jdl_gallery }}</h5> <!-- Text judul gambar -->
+                          <p class="card-text">{{ $item->keterangan }}</p> <!-- Keterangan gambar -->
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                    <a href="/albums" class="btn btn-primary">Kembali ke Album</a>
+                  </div>                  
               </div>
             </div>
             @endforeach
@@ -37,31 +39,24 @@
             <span class="carousel-control-next-icon bi bi-chevron-down" aria-hidden="true"></span>
           </a>
         </div>
-      </div>
-    </div>   
 
-    <!-- Section for horizontally aligned images in cards -->
-    <div class="col-lg-12 d-flex justify-content-center">
-      <div class="card" style="width: 100%; max-width: 1000px;">
-        <div class="card-body d-flex flex-row justify-content-center">
-          @foreach($gallery as $item)
-          <div class="p-2">
-            <div class="card" style="width: 100px;">
-              <img
-                src="{{ asset('img_gallery/' . $item->gbr_gallery) }}"
-                alt="{{ $item->jdl_gallery }}"
-                class="card-img-top img-fluid"
-                style="cursor: pointer;"
-                onclick="changeMainImage(this)"
-                data-bs-slide-to="{{ $loop->index }}">
-              <div class="card-body p-1">
-                <h6 class="card-title text-center">{{ $item->jdl_gallery }}</h6>
+        <!-- Section for horizontally aligned images in cards -->
+        <div class="card-body d-flex flex-row justify-content-center mb-3">
+            @foreach($gallery as $item)
+            <div class="p-2">
+              <div class="card" style="width: 100px;">
+                <img
+                  src="{{ asset('img_gallery/' . $item->gbr_gallery) }}"
+                  alt="{{ $item->jdl_gallery }}"
+                  class="card-img-top img-fluid"
+                  style="cursor: pointer;"
+                  onclick="changeMainImage(this)"
+                  data-bs-slide-to="{{ $loop->index }}">
               </div>
             </div>
-          </div>
-          @endforeach
+            @endforeach
         </div>
-      </div>
+      </div>   
     </div> 
   </div>
 </div>
@@ -106,11 +101,21 @@
 
   /* Styling for the card container with horizontally aligned images */
   .card-body {
-    display: flex;
-    flex-direction: row; /* Images aligned horizontally */
-    justify-content: center;
-    width: 100%;
-  }
+  display: flex;
+  flex-direction: column; /* Stack title and text vertically */
+  justify-content: center;
+  padding: 1rem;
+}
+
+.card-title {
+  font-weight: bold; /* Bold text for the title */
+  margin-bottom: 0.5rem; /* Space between title and description */
+}
+
+.card-text {
+  text-align: left; /* Align the description text to the left */
+}
+
 
   /* Adjusting the padding and width of the image cards */
   .card-body .card {
@@ -122,9 +127,16 @@
     object-fit: cover;
   }
 
-  /* Center the text in image cards */
-  .card-title {
-    font-size: 0.9rem;
-    text-align: center;
+  @media (max-width: 767px) {
+  .card-body.d-flex.flex-row {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent line breaks */
+    padding: 0; /* Remove padding if needed */
   }
+
+  .card-body .card {
+    display: inline-block; /* Ensure cards are inline for horizontal scrolling */
+    width: 100px; /* Adjust width if needed */
+  }
+}
 </style>
