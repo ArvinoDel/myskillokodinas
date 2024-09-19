@@ -41,46 +41,42 @@
 
     </div>
     <div>
-        <h2 class="text-xl md:text-2xl text-center lg:py-14 md:py-12 max-sm:py-6 font-bold text-white">Mari Merintis Karir Bersama Pandai
+        <h2 class="lg:text-xl max-sm:text-lg md:text-2xl text-center lg:py-14 md:py-12 max-sm:py-6 font-bold text-white">Mari Merintis Karir Bersama Pandai
             Digital</h2>
     </div>
 
 
     <div
-        class="grid grid-flow-col lg:grid-cols-5 ps-6 gap-4 overflow-x-auto no-scrollbar no-scrollbar justify-center items-center">
-        <div class="lg:w-44 lg:h-64 md:w-52 md:h-64 max-sm:w-32 bg-white border border-black rounded-2xl shadow flex-shrink-0">
+        class="flex md:grid md:grid-cols-5 md:ps-6 max-sm:ps-2 md:gap-4 max-sm:gap-2 overflow-x-auto no-scrollbar max-sm:flex-nowrap">
+        <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0 snap-start max-sm:mb-2">
             <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                 src="{{ asset('../home-myskill/alumny.webp') }}" alt="" />
             <div class="p-5">
-                <h5 class="text-sm text-center font-bold text-gray-900">Noteworthy Lebih dari 1.5 Juta+ Member Belajar
-                    Bersama</h5>
+                <h5 class="text-sm text-center font-bold text-gray-900">Noteworthy Lebih dari 1.5 Juta+ Member Belajar Bersama</h5>
             </div>
         </div>
         <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
             <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                 src="{{ asset('../home-myskill/existing-member.webp') }}" alt="" />
             <div class="p-5">
-                <h5 class="text-sm text-center font-bold text-gray-900">Ribuan Alumni Bekerja di National & Global
-                    Company</h5>
+                <h5 class="text-sm text-center font-bold text-gray-900">Ribuan Alumni Bekerja di National & Global Company</h5>
             </div>
         </div>
         <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
             <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                 src="{{ asset('../home-myskill/new-member.webp') }}" alt="" />
             <div class="p-5">
-                <h5 class="text-sm text-center font-bold text-gray-900">Praktikal & Bersertifikat. Bangun Skill dan
-                    Portfolio</h5>
+                <h5 class="text-sm text-center font-bold text-gray-900">Praktikal & Bersertifikat. Bangun Skill dan Portfolio</h5>
             </div>
         </div>
         <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
             <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                 src="{{ asset('../home-myskill/practical.webp') }}" alt="" />
             <div class="p-5">
-                <h5 class="text-sm text-center font-bold text-gray-900">4.9 Rating di Course Report & Award LinkedIn Top
-                    Startup</h5>
+                <h5 class="text-sm text-center font-bold text-gray-900">4.9 Rating di Course Report & Award LinkedIn Top Startup</h5>
             </div>
         </div>
-        <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0">
+        <div class="w-44 h-64 md:w-52 md:h-64 bg-white border border-black rounded-2xl shadow flex-shrink-0 max-sm:mr-2">
             <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
                 src="{{ asset('../home-myskill/rating.webp') }}" alt="" />
             <div class="p-5">
@@ -88,6 +84,7 @@
             </div>
         </div>
     </div>
+
 </div>
 <div class="py-12">
     <h2 class="text-2xl text-center font-bold">Terbukti Memberi Hasil dan Membuka Batasan Diri</h2>
