@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Berlangganan; // Pastikan ini benar
 use App\Models\Metode;
 use App\Models\Payment;
+use App\Models\Programcv;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Berlangganan; // Pastikan ini benar
+use App\Models\Bootcamp;
 
 class PaymentController extends Controller
 {
@@ -61,11 +63,27 @@ class PaymentController extends Controller
     }
 
 
-    public function show($id)
+    // public function show($id)
+    // {
+    //     // Mengambil semua data berlangganan
+    //     $berlanggananss = Berlangganan::all();
+    //     $metod = Metode::all();
+
+
+    //     // Menyaring data berlangganan berdasarkan $id
+    //     $berlanggananss = $berlanggananss->where('id_berlangganan', $id)->first();
+    //     $berlanggananss->id_benefits = json_decode($berlanggananss->id_benefits); // Decode JSON
+
+    //     // Logika untuk menampilkan halaman pembayaran
+    //     // Anda bisa mengambil data berlangganan berdasarkan $id di sini
+    //     return view('myskill.pages.e-learning.payment', compact('id', 'berlanggananss', 'metod'));
+    // }
+
+    public function learning($id)
     {
-        // Mengambil semua data berlangganan
         $berlanggananss = Berlangganan::all();
         $metod = Metode::all();
+        $langganan = "e-learning";
 
 
         // Menyaring data berlangganan berdasarkan $id
@@ -74,7 +92,37 @@ class PaymentController extends Controller
 
         // Logika untuk menampilkan halaman pembayaran
         // Anda bisa mengambil data berlangganan berdasarkan $id di sini
-        return view('myskill.pages.e-learning.payment', compact('id', 'berlanggananss', 'metod'));
+        return view('myskill.pages.e-learning.payment', compact('id', 'berlanggananss', 'metod', 'langganan'));
+    }
+
+    public function bootcamp($id)
+    {
+        $bootcamps = Bootcamp::all();
+        $metod = Metode::all();
+        $langganan = "bootcamp";
+
+
+        // Menyaring data berlangganan berdasarkan $id
+        $bootcamps = $bootcamps->where('id_bootcamp', $id)->first();
+        $bootcamps->id_benefits = json_decode($bootcamps->id_benefits); // Decode JSON
+
+        // Logika untuk menampilkan halaman pembayaran
+        // Anda bisa mengambil data berlangganan berdasarkan $id di sini
+        return view('myskill.pages.e-learning.payment', compact('id', 'bootcamps', 'metod', 'langganan'));
+    }
+
+    public function review($id)
+    {
+        $metod = Metode::all();
+        $programs = Programcv::all();
+        $langganan = "review";
+
+
+        $programs = $programs->where('id_programcv', $id)->first();
+        $programs->id_benefits = json_decode($programs->id_benefits); // Decode JSON
+        // Logika untuk menampilkan halaman pembayaran
+        // Anda bisa mengambil data berlangganan berdasarkan $id di sini
+        return view('myskill.pages.e-learning.payment', compact('id', 'programs', 'metod', 'program', 'langganan'));
     }
 
     public function approve($id)

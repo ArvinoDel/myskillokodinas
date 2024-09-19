@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berlangganan;
 use App\Models\Benefit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BerlanggananController extends Controller
 {
@@ -60,6 +61,7 @@ class BerlanggananController extends Controller
 
         $data = $request->all();
         $data['id_benefits'] = json_encode($request->input('id_benefits')); // Convert to JSON
+        $data['id_berlangganan'] = Str::uuid(); // Contoh menggunakan uniqid()
 
         Berlangganan::create($data);
 

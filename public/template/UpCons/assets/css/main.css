@@ -455,7 +455,7 @@ section {
       inset: 0;
       padding: 50px 0 10px 0;
       margin: 0;
-      background: white;
+      background: #222428;
       overflow-y: auto;
       transition: 0.3s;
       z-index: 9998;
@@ -470,7 +470,7 @@ section {
       font-family: var(--font-primary);
       font-size: 15px;
       font-weight: 500;
-      color: white !important;
+      color: #ffc732 !important;
       white-space: nowrap;
       text-transform: uppercase;
       transition: 0.3s;
@@ -497,7 +497,7 @@ section {
       padding: 10px 0;
       margin: 10px 20px;
       transition: all 0.5s ease-in-out;
-      border: 1px solid #222428;
+      border: 1px solid #ffc732;
     }
 
     .navbar .dropdown>.dropdown-active,
@@ -507,7 +507,7 @@ section {
 
     .mobile-nav-show {
       position: relative;
-      color: #fff;
+      color: #222428;
       font-size: 28px;
       cursor: pointer;
       line-height: 0;
@@ -517,7 +517,7 @@ section {
     }
 
     .mobile-nav-hide {
-      color: #fff;
+      color: #222428;
       font-size: 32px;
       cursor: pointer;
       line-height: 0;

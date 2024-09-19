@@ -62,7 +62,7 @@
                         x-transition:leave-start="transform opacity-100 scale-100">
                         <div class="flex justify-center items-center space-x-3 cursor-pointer">
                             <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-900">
-                                <img src="{{ Auth::user()->foto ? asset('./foto_user/' . Auth::user()->foto) : './foto_user/blank.png' }}"
+                                <img src="{{ Auth::user()->foto ? asset('../foto_user/' . Auth::user()->foto) : '../foto_user/blank.png' }}"
                                     alt="User Profile Picture" class="w-full h-full object-cover">
                             </div>
                             <div class="font-semibold text-gray-900 text-lg">

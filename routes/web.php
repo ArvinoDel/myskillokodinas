@@ -320,7 +320,10 @@ Route::get('/experience', function () {
 // })->name('Register');
 
 //payment
-Route::get('/payment/{id}', [PaymentController::class, 'show'])->name('payment');
+Route::get('/payment/learning/{id}', [PaymentController::class, 'learning'])->name('payment.learning');
+Route::get('/payment/bootcamp/{id}', [PaymentController::class, 'bootcamp'])->name('payment.bootcamp');
+Route::get('/payment/review/{id}', [PaymentController::class, 'review'])->name('payment.review');
+
 
 Route::post('/payment/store', [PaymentController::class, 'store'])->name('payment.store');
 
