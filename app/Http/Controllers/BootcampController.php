@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Benefitbootcamp;
 use App\Models\Bootcamp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BootcampController extends Controller
 {
@@ -70,6 +71,7 @@ class BootcampController extends Controller
 
         $data = $request->all();
         $data['id_benefitcamps'] = json_encode($request->input('id_benefitcamps'));
+        $data['id_bootcamp'] = Str::uuid();
 
 
         if ($request->hasFile('thumbnail')) {
@@ -78,6 +80,7 @@ class BootcampController extends Controller
             $thumbnail->move("./thumbnail_bootcamp/", $thumbnailName);
         }
         Bootcamp::create([
+            "id_bootcamp" => $data['id_bootcamp'],
             "judul_bootcamp" => $data['judul_bootcamp'],
             "harga" => $data['harga'],
             "harga_diskon" => $data['harga_diskon'],

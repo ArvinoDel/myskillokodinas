@@ -210,6 +210,7 @@ class ManajemenuserController extends Controller
 
         $validated = $request->validate([
             "username" => 'required|string|max:255',
+            'foto' => 'nullable|image|mimes:jpg,jpeg,png',
             "email" => 'required|string|email|max:255',
             'password' => 'nullable|string|min:6',
             'level' => 'required|string|in:admin,user,kontributor'
@@ -234,9 +235,13 @@ class ManajemenuserController extends Controller
 
         if ($request->hasFile('foto')) {
             $foto = $request->file("foto");
-            $fotoName = $foto->getClientOriginalName();
+            Log::info('File foto diterima: ', [$foto]); // Log file untuk debugging
+    
+            $fotoName = time() . '_' . $foto->getClientOriginalName();
             $foto->move("./foto_user/", $fotoName);
-            $users->foto = $fotoName;
+            $users->foto = $fotoName; // Simpan nama file baru
+        } else {
+            Log::info('Tidak ada file foto yang diterima.'); // Log jika tidak ada file
         }
 
         if ($request->nama_modul != '') {
@@ -253,7 +258,8 @@ class ManajemenuserController extends Controller
             "level" => $validated['level'],
             "foto" => $fotoName,
             "no_telp" => $no_telp,
-            "blokir" => 'N'
+            "blokir" => 'N',
+            "id_session" => md5($username . '-' . date('YmdHis')),
         ]);
 
         if (isset($validated['password'])) {

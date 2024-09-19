@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Benefit;
 use App\Models\Programcv;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProgramcvController extends Controller
 {
@@ -60,7 +61,8 @@ class ProgramcvController extends Controller
         ]);
 
         $data = $request->all();
-        $data['id_benefits'] = json_encode($request->input('id_benefits')); // Convert to JSON
+        $data['id_benefits'] = json_encode($request->input('id_benefits'));
+        $data['id_programcv'] = Str::uuid();
 
         Programcv::create($data);
 

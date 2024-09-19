@@ -12,6 +12,10 @@ class Bootcamp extends Model
     public $timestamps = false;
     protected $table = 'bootcamps';
     protected $primaryKey = 'id_bootcamp';
+
+    protected $keyType = 'string';
+    public $incrementing = false;
+    
     protected $fillable = ['id_bootcamp', 'judul_bootcamp', 'thumbnail', 'harga', 'harga_diskon', 'deskripsi','id_benefitcamps'];
 
     protected $casts = [

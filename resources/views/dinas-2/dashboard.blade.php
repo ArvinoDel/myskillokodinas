@@ -293,7 +293,7 @@
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-6">
-                            <form action="" method="POST" onsubmit="return false;">
+                            <form action="{{ route('polling.store') }}" method="POST" id="pollingForm">
                                 @csrf
                                 @foreach($pilihan as $p)
                                 <p>{{ $p->pilihan }}</p>
@@ -304,7 +304,7 @@
                                     <span>{{ $j->pilihan }}</span>
                                 </label>
                                 @endforeach
-                                <button type="button" class="btn-outline-sm p-2" style="margin: 0 auto; margin-bottom: 10px;" data-bs-target="#exampleModalToggle">Konfirmasi Pilihan</button>
+                                <button type="submit" class="btn-outline-sm p-2" style="margin: 0 auto; margin-bottom: 10px;" data-bs-target="#exampleModalToggle">Konfirmasi Pilihan</button>
                                 <button type="button" class="btn-outline-sm" style="margin: 0 auto;" data-bs-toggle="modal" data-bs-target="#exampleModalToggle">Lihat Hasil</button>
                             </form>
                         </div>
@@ -361,5 +361,46 @@
     <!-- End Recent Blog Posts Section -->
 
 </main>
+
+<script>
+    document.getElementById('pollingForm').onsubmit = function(event) {
+        event.preventDefault(); // Mencegah form dari pengiriman default
+        const formData = new FormData(this);
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Menggunakan SweetAlert untuk menampilkan pesan sukses
+                Swal.fire({
+                    title: 'Berhasil!',
+                    text: data.message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Arahkan ke halaman /company-profile setelah menekan OK
+                        window.location.href = '/company-profile';
+                    }
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Terjadi kesalahan saat mengirim jawaban.',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        });
+    };
+</script>
 
 @endsection
