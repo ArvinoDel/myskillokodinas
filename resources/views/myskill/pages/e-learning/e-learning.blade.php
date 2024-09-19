@@ -275,27 +275,22 @@
     <section class="bg-white">
         <div class="container mx-auto">
             <h3 class="text-2xl text-center font-bold py-3">Belajar Bersama Senior Operator Langsung di Kantor</h3>
-            <p class="text-center text-gray-600 mb-8">Belajar langsung dari experienced professional yang mengajarkan
-                pengalaman, case study & best practices.</p>
-            <div
-                class="flex flex-nowrap md:mx-24 justify-start md:justify-center overflow-x-auto pb-3 space-x-4 snap-x no-scrollbar">
-                <!-- Repeat this card structure for each professional -->
+            <p class="text-center text-gray-600 mb-8">Belajar langsung dari experienced professional yang mengajarkan pengalaman, case study & best practices.</p>
+            <div class="flex flex-nowrap md:mx-24 justify-start md:justify-center overflow-x-auto pb-3 space-x-4 snap-x no-scrollbar">
                 @foreach ($trainer as $train)
-                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto relative group">
-                    <img src="{{ asset('foto_trainer/' . $train->foto) }}" alt="Professional"
-                        class="w-full h-full object-cover rounded-lg">
-                    <div
-                        class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-lg">
-                        <a href="{{ $train->link }}">
-                            <button
-                                class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 mt-48 md:mt-64 transition">Lihat
-                                Materi</button>
-                        </a>
+                <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto group">
+                    <!-- Div untuk gambar -->
+                    <div class="relative">
+                        <img src="{{ asset('foto_trainer/' . $train->foto) }}" alt="Professional" class="w-full h-full object-cover rounded-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                            <a href="{{ $train->link }}">
+                                <button class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 transition">Lihat Materi</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 @endforeach
             </div>
-            <!-- Repeat the above card structure for each professional (total of 7 cards) -->
         </div>
         </div>
     </section>

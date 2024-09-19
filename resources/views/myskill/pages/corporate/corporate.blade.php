@@ -129,7 +129,7 @@
 
         <!-- Corporate Campaign, Partnership & CSR -->
         <div class="flex flex-col lg:flex-row gap-12 py-6 justify-items-center px-4">
-            <img src="./assets/corporate/corporate-campaign.webp" alt="Corporate Training"
+            <img src="./assets/corporate/corporate.jpg" alt="Corporate Training"
                 class="h-48 w-auto lg:h-80 lg:w-auto object-cover rounded-md">
             <div>
                 <h2 class="text-pink-600 text-2xl font-bold">Corporate Campaign, Partnership & CSR</h2>
