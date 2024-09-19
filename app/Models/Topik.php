@@ -13,9 +13,9 @@ class Topik extends Model
     protected $table = 'topik';
     protected $primaryKey = 'id_topik';
     protected $fillable = ['id_topik', 'nama_topik'];
-    
+
     public function materi()
     {
-        return $this->hasMany(Materi::class);
+        return $this->hasMany(Materi::class, 'id_topik');
     }
 }

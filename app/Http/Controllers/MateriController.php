@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use App\Models\Berlangganan;
 use Illuminate\Http\Request;
 use App\Models\Kategoriprogram;
+use App\Models\Topik;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -28,6 +29,7 @@ class MateriController extends Controller
         $search = $request->search;
         $nama_materi = $request->nama_materi;
         $id_kategori_program = $request->id_kategori_program; // Tambahkan ini
+        $id_topik = $request->id_topik; // Tambahkan ini
 
         $query = Materi::query(); // Tambahkan eager loading
 
@@ -43,8 +45,13 @@ class MateriController extends Controller
             $query->where('id_kategori_program', $id_kategori_program);
         }
 
+        if (!empty($id_topik)) { // Tambahkan ini
+            $query->where('id_topik', $id_topik);
+        }
+
         $materis = $query->paginate(10);
         $kategoriprograms = Kategoriprogram::all();
+        $topiks = Topik::all();
 
         // Ambil semua data kategori program
         // dd($kategoriprograms);
@@ -52,7 +59,7 @@ class MateriController extends Controller
             ->groupBy('nama_materi')
             ->get();
 
-        return view('administrator.materi.index', compact(['materis', 'nama_materis', 'kategoriprograms']));
+        return view('administrator.materi.index', compact(['materis', 'nama_materis', 'kategoriprograms', 'topiks']));
     }
 
 
@@ -62,8 +69,9 @@ class MateriController extends Controller
     public function create()
     {
         $kategoriprograms = Kategoriprogram::all();
+        $topiks = Topik::all();
         // dd($programs); // Debugging // Mengambil semua data program
-        return view('administrator.materi.create', compact('kategoriprograms'));
+        return view('administrator.materi.create', compact('kategoriprograms', 'topiks'));
     }
 
     /**
@@ -77,19 +85,22 @@ class MateriController extends Controller
             'nama_materi' => 'required|string|max:255',
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'id_kategori_program' => 'nullable|exists:kategori_program,id_kategori_program',
+            'id_topik' => 'nullable|exists:topik,id_topik',
         ]);
 
         $gambarName = null;
 
         if ($request->hasFile('thumbnail')) {
             $gambar = $request->file("thumbnail");
-            $gambarName = $gambar->getClientOriginalName(); // Menggunakan nama file asli
+            // $gambarName = $gambar->getClientOriginalName(); // Menggunakan nama file asli
+            $gambarName = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $gambar->getClientOriginalName());
             $gambar->move("./thumbnail/", $gambarName);
         }
 
         Materi::create([
             'nama_materi' => $request->nama_materi,
             'id_kategori_program' => $request->id_kategori_program,
+            'id_topik' => $request->id_topik,
             'thumbnail' => $gambarName
         ]);
 
@@ -125,7 +136,7 @@ class MateriController extends Controller
 
         // Debug output to check the result
         // dd($payments);
-        
+
         if ($payments) {
             $vidActive = true;
         } else {
@@ -146,7 +157,8 @@ class MateriController extends Controller
         $materis = Materi::findOrFail($id);
 
         $kategoriprograms = Kategoriprogram::all();
-        return view('administrator.materi.edit', compact('materis', 'kategoriprograms'));
+        $topiks = Topik::all();
+        return view('administrator.materi.edit', compact('materis', 'kategoriprograms', 'topiks'));
     }
 
     /**
@@ -160,11 +172,12 @@ class MateriController extends Controller
         $updateData = [
             'nama_materi' => $request->nama_materi,
             'id_kategori_program' => $request->id_kategori_program,
+            'id_topik' => $request->id_topik,
         ];
 
         if ($request->hasFile('thumbnail')) {
             $gambar = $request->file("thumbnail");
-            $gambarName = $gambar->getClientOriginalName();
+            $gambarName = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $gambar->getClientOriginalName());
             $gambar->move("./thumbnail/", $gambarName);
 
             // Menghapus gambar lama jika ada

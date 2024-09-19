@@ -12,7 +12,7 @@ class Materi extends Model
     public $timestamps = false;
     protected $primaryKey = 'id_materi';
     protected $table = 'materi';
-    protected $fillable = ['id_materi', 'nama_materi', 'thumbnail', 'id_kategori_program', 'rating'];
+    protected $fillable = ['id_materi', 'nama_materi', 'thumbnail', 'id_kategori_program', 'rating', 'id_topik'];
 
 
     public function kategoriprogram()
@@ -30,6 +30,6 @@ class Materi extends Model
     }
     public function topik()
     {
-        return $this->belongsTo(Topik::class);
+        return $this->belongsTo(Topik::class, 'id_topik', 'id_topik');
     }
 }

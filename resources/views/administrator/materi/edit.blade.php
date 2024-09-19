@@ -44,6 +44,19 @@
                                     </select>
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="padding: 5px;">Topik</th>
+                                <td style="padding: 5px;">
+                                    <select class="form-control" name="id_topik" required>
+                                    <option value="">-- Pilih Topik --</option>
+                                        @foreach ($topiks as $topik)
+                                            <option value="{{ $topik->id_topik }}" {{ $topik->id_topik == $materis->id_topik ? 'selected' : '' }}>
+                                                {{ $topik->nama_topik }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">

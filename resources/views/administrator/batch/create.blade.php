@@ -38,7 +38,7 @@
                                     <td style="padding: 5px;">
                                         <select class="form-control" name="id_bootcamp" required>
                                             @foreach ($bootcamps as $bootcamp)
-                                            <option hidden value="{{ $bootcamp->id_bootcamp }}" {{ request('id_bootcamp') == $bootcamp->id_bootcamp ? 'selected' : '' }}>{{ $bootcamp->judul_bootcamp }}</option>
+                                            <option hidden value="{{ $bootcamp->id_bootcamp }}">{{ $bootcamp->judul_bootcamp }}</option>
                                             @endforeach
                                         </select>
                                     </td>

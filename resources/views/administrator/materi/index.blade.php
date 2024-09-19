@@ -56,6 +56,7 @@
                                 <th class="text-center">Judul Materi</th>
                                 <th class="text-center">Kategori</th>
                                 <th class="text-center">Gambar</th>
+                                <th class="text-center">Topik</th>
                                 <th class="text-center">Action</th>
                                 <th class="text-center">Isi Materi</th>
                             </tr>
@@ -74,6 +75,7 @@
                                     ?>
                                     <img style="width: 80px" src="{{ url('thumbnail/'.$materi->thumbnail) }}">
                                 </td>
+                                <td>{{ $materi->topik->nama_topik }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('administrator.materi.edit', $materi->id_materi) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
