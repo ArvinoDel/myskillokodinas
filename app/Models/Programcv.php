@@ -12,7 +12,12 @@ class Programcv extends Model
     public $timestamps = false;
     protected $table = 'program_cv';
     protected $primaryKey = 'id_programcv';
+
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     protected $fillable = [
+        'id_programcv',
         'nama_programcv',
         'masa_berlangganan',
         'harga_berlangganan',
