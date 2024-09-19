@@ -173,6 +173,7 @@
             </div>
 
             <!-- Carousel Container -->
+            {{-- DISINI IMAGE NYA FULL SETENGAH CARDS --}}
             <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
                 <div id="card-container" class="flex space-x-4">
                     @foreach ($materis as $materi)
@@ -244,12 +245,13 @@
         <div class="container mx-auto">
             <h2 class="text-2xl font-bold mb-4">Daftar Learning Path Rancangan Experts</h2>
 
+            {{-- DISINI SESUAIKAN CARDS NYA SEJAJAR --}}
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 @foreach($categories as $category)
                 <a href="{{ route('program.show', $category->id_kategori_program) }}" class="block">
                     <!-- Card Element -->
                     <div class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                        <img src="{{ url('assets/e-learning/' . $category->gambar) }}" alt="{{ $category->nama_kategori }}" class="w-full h-auto object-cover rounded-lg mb-2">
+                        <img src="{{ url('./kategori_program/' . $category->gambar) }}" alt="{{ $category->nama_kategori }}" class="w-full h-auto object-cover rounded-lg mb-2">
                         <h3 class="font-bold text-sm mb-4">{{ $category->nama_kategori }}</h3>
                         <div class="flex items-center text-xs text-gray-500">
                             <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
