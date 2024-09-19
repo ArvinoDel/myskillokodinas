@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login | MySkill</title>
+    <title>Login | Pandai Digital</title>
     @vite('./resources/css/appskill.css')
 </head>
 
@@ -16,7 +16,7 @@
         </div>
         <div class="w-full px-6 py-8 md:mx-24 lg:w-1/2">
             <p class="mt-3 text-xl text-start text-gray-900 font-bold :text-gray-200">
-                Masuk ke MySkill
+                Masuk ke Pandai Digital
             </p>
 
             <p class="mt-1 text-sm text-start text-gray-600 :text-gray-200">

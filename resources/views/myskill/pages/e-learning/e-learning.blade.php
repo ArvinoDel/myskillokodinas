@@ -44,7 +44,7 @@
                             src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}" alt="Testimoni Image" />
                     </div>
                     <a href="{{ $testimoni->link }}">
-                        <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Baca
+                        <button class="w-full bg-violet-500 text-white py-2 rounded-md font-semibold">Baca
                             Cerita</button>
                     </a>
                 </div>
@@ -172,42 +172,42 @@
                 @endforeach
             </div>
 
-                <!-- Carousel Container -->
-                <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
-                    <div id="card-container" class="flex space-x-4">
-                        @foreach ($materis as $materi)
-                            <a href="{{ url('/e-learning/materi/' . $materi->id_materi) }}">
-                                <div id="card-{{ $materi->kategoriprogram->id_kategori_program }}"
-                                    data-category-id="{{ $materi->kategoriprogram->id_kategori_program }}"
-                                    class="card flex-none bg-white rounded-lg shadow-md h-80 w-64 flex flex-col">
-                                    <div class="relative w-full h-40">
-                                        <img src="{{ asset('./thumbnail/' . $materi->thumbnail) }}"
-                                            alt="{{ $materi->nama_materi }}"
-                                            class="absolute inset-0 w-full h-full object-contain rounded-t-lg">
-                                    </div>
-                                    <div class="p-4 flex flex-col flex-grow">
-                                        <h3 class="font-bold text-lg mb-2">{{ $materi->nama_materi }}</h3>
-                                        <div class="flex items-center text-sm">
-                                            <span class="mr-2">📅 {{ $materi->kategoriProgram->nama_kategori }}
-                                                Video</span>
-                                        </div>
-                                        <div class="flex items-center text-sm mt-1">
-                                            <span class="mr-2">👤 {{ $materi->rating_count }} users</span>
-                                        </div>
-                                        <div class="flex items-center mt-2">
-                                            @if ($materi->rating_count > 0)
-                                                <span class="text-yellow-500">
-                                                    @for ($i = 1; $i <= 5; $i++)
-                                                        @if ($i <= floor($materi->rating / $materi->rating_count))
-                                                            ★
-                                                        @else
-                                                            ☆
-                                                        @endif
-                                                    @endfor
-                                                </span>
+            <!-- Carousel Container -->
+            <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
+                <div id="card-container" class="flex space-x-4">
+                    @foreach ($materis as $materi)
+                    <a href="{{ url('/e-learning/materi/' . $materi->id_materi) }}">
+                        <div id="card-{{ $materi->kategoriprogram->id_kategori_program }}"
+                            data-category-id="{{ $materi->kategoriprogram->id_kategori_program }}"
+                            class="card flex-none bg-white rounded-lg shadow-md h-80 w-64 flex flex-col">
+                            <div class="relative w-full h-40">
+                                <img src="{{ asset('./thumbnail/' . $materi->thumbnail) }}"
+                                    alt="{{ $materi->nama_materi }}"
+                                    class="absolute inset-0 w-full h-full object-contain rounded-t-lg">
+                            </div>
+                            <div class="p-4 flex flex-col flex-grow">
+                                <h3 class="font-bold text-lg mb-2">{{ $materi->nama_materi }}</h3>
+                                <div class="flex items-center text-sm">
+                                    <span class="mr-2">📅 {{ $materi->kategoriProgram->nama_kategori }}
+                                        Video</span>
+                                </div>
+                                <div class="flex items-center text-sm mt-1">
+                                    <span class="mr-2">👤 {{ $materi->rating_count }} users</span>
+                                </div>
+                                <div class="flex items-center mt-2">
+                                    @if ($materi->rating_count > 0)
+                                    <span class="text-yellow-500">
+                                        @for ($i = 1; $i <= 5; $i++)
+                                            @if ($i <=floor($materi->rating / $materi->rating_count))
+                                            ★
+                                            @else
+                                            ☆
                                             @endif
-                                            <span class="ml-1 text-sm">
-                                                {{ $materi->rating_count > 0
+                                            @endfor
+                                    </span>
+                                    @endif
+                                    <span class="ml-1 text-sm">
+                                        {{ $materi->rating_count > 0
                                                     ? (fmod($materi->rating / $materi->rating_count, 1) == 0
                                                             ? number_format($materi->rating / $materi->rating_count, 0)
                                                             : number_format($materi->rating / $materi->rating_count, 1)) .
@@ -217,8 +217,8 @@
                                                         ' users)'
                                                     : 'No rating available' }}
 
-                                            </span>
-                                        </div>
+                                    </span>
+                                </div>
 
                             </div>
                         </div>
@@ -231,7 +231,7 @@
 
             <div class="flex justify-center mt-4 gap-4">
                 <a href="#pricing" class="scroll-smooth"><button
-                        class="bg-yellow-500 text-white px-4 py-2 rounded-full">Mulai Berlangganan</button></a>
+                        class="bg-yelloww-500 text-white px-4 py-2 rounded-full">Mulai Berlangganan</button></a>
                 <a href="#learning" class="scroll-smooth"><button
                         class="border border-cyan-500 text-cyan-300 px-4 py-2 rounded-full">Lihat Semua
                         Materi</button></a>
@@ -243,39 +243,38 @@
     <section id="learning" class="bg-gray-100 p-4 md:p-8">
         <div class="container mx-auto">
             <h2 class="text-2xl font-bold mb-4">Daftar Learning Path Rancangan Experts</h2>
-    
+
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 @foreach($categories as $category)
                 <a href="{{ route('program.show', $category->id_kategori_program) }}" class="block">
-                        <!-- Card Element -->
-                        <div class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
-                            <img src="{{ url('assets/e-learning/' . $category->gambar) }}" alt="{{ $category->nama_kategori }}" class="w-full h-auto object-cover rounded-lg mb-2">
-                            <h3 class="font-bold text-sm mb-4">{{ $category->nama_kategori }}</h3>
-                            <div class="flex items-center text-xs text-gray-500">
-                                <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
-                            </div>
-                            <div class="flex items-center mt-2">
-                                <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span></div>
-                            </div>
-                            <div class="flex items-center mt-2">
-                                <span class="text-yellow-400 text-sm">★★★★★</span>
-                                <span class="ml-1 text-xs text-gray-600">4.7/5</span>
-                                <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">{{ $category->id_kategori_program }}</span>
-                            </div>
+                    <!-- Card Element -->
+                    <div class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
+                        <img src="{{ url('assets/e-learning/' . $category->gambar) }}" alt="{{ $category->nama_kategori }}" class="w-full h-auto object-cover rounded-lg mb-2">
+                        <h3 class="font-bold text-sm mb-4">{{ $category->nama_kategori }}</h3>
+                        <div class="flex items-center text-xs text-gray-500">
+                            <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span></div>
                         </div>
-                    </a>
+                        <div class="flex items-center mt-2">
+                            <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147 Materi</span></div>
+                        </div>
+                        <div class="flex items-center mt-2">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="ml-1 text-xs text-gray-600">4.7/5</span>
+                            <span class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">{{ $category->id_kategori_program }}</span>
+                        </div>
+                    </div>
+                </a>
                 @endforeach
             </div>
         </div>
-    </section>    
+    </section>
 
     {{-- Section : Mentors --}}
-    <section class="bg-gray-100 py-3 my-1 px-4 lg:mt-20">
+    <section class="bg-white">
         <div class="container mx-auto">
             <h3 class="text-2xl text-center font-bold py-3">Belajar Bersama Senior Operator Langsung di Kantor</h3>
             <p class="text-center text-gray-600 mb-8">Belajar langsung dari experienced professional yang mengajarkan
                 pengalaman, case study & best practices.</p>
-
             <div
                 class="flex flex-nowrap md:mx-24 justify-start md:justify-center overflow-x-auto pb-3 space-x-4 snap-x no-scrollbar">
                 <!-- Repeat this card structure for each professional -->
@@ -293,12 +292,8 @@
                     </div>
                 </div>
                 @endforeach
-
-
             </div>
-
             <!-- Repeat the above card structure for each professional (total of 7 cards) -->
-
         </div>
         </div>
     </section>
@@ -501,7 +496,7 @@
     </section>
 
     <!-- akses konten premium -->
-    <section class="w-full h-auto rounded-b-3xl bg-white lg:flex items-center mt-12 mb-14 p-4">
+    <section class="w-full h-auto rounded-b-3xl bg-orange-100 lg:flex items-center p-4">
         <img src="{{ asset('./assets/bootcamp/pembelajaran.png') }}" class="h-72 w-100 lg:ml-20 mx-auto py-4">
         <div class="mx-auto">
             <p class="text-4xl font-bold w-4/5 ml-4">E-learning & Training Untuk Perusahaan</p>

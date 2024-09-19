@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sign Up | MySkill</title>
+    <title>Sign Up | Pandai Digital</title>
     @vite('resources/css/appskill.css')
 
 </head>
@@ -17,7 +17,7 @@
         </div>
         <div class="w-full me-16 py-8 lg:w-1/2 max-sm:justify-center ml-6">
             <p class="mt-3 text-xl text-start text-gray-900 font-bold :text-gray-200">
-                Buat Akun MySkill
+                Buat Akun Pandai Digital
             </p>
 
             <p class="mt-1 text-sm text-start text-gray-600 :text-gray-200">
@@ -73,7 +73,7 @@
                     </span>
                 </label>
                 <label class="mt-px text-xs font-light text-gray-700 cursor-pointer select-none" htmlFor="check">
-                    Saya bersedia menerima update informasi dari MySkill
+                    Saya bersedia menerima update informasi dari Pandai Digital
                 </label>
             </div>
 
@@ -119,7 +119,7 @@
                 </span>
                 , dan
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-pink-500">
-                    Ketentuan Privasi MySkill
+                    Ketentuan Privasi Pandai Digital
                 </span>
             </label>
 
