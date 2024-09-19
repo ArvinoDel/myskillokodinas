@@ -378,23 +378,23 @@
                         <input type="hidden" name="id_invoice" value="" id="invoice-number2">
 
                         @if ($langganan === 'e-learning')
-                            <input type="hidden" name="id_berlangganan" value="{{ $berlanggananss->id_berlangganan }}"
-                                id="id_berlangganan">
+                            <input type="hidden" name="berlangganan_id" value="{{ $berlanggananss->id_berlangganan }}"
+                                id="berlangganan_id">
                             <input type="hidden" name="total"
                                 value="{{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}"
                                 id="total">
                             <input type="hidden" name="program_name"
                                 value="Paket Video E-Learning {{ $berlanggananss->masa_berlangganan }}">
                         @elseif ($langganan === 'bootcamp')
-                            <input type="hidden" name="id_berlangganan" value="{{ $bootcamps->id_bootcamp }}"
-                                id="id_berlangganan">
+                            <input type="hidden" name="berlangganan_id" value="{{ $bootcamps->id_bootcamp }}"
+                                id="berlangganan_id">
                             <input type="hidden" name="total"
                                 value="{{ number_format($bootcamps->harga_diskon + $bootcamps->harga_diskon * 0.11, 0, ',', '.') }}"
                                 id="total">
                             <input type="hidden" name="program_name"
                                 value="Paket Bootcamp {{ $bootcamps->judul_bootcamp }}">
                         @elseif ($langganan === 'review')
-                        <input type="hidden" name="id_berlangganan" value="{{ $programs->id_programcv }}" id="id_berlangganan">
+                        <input type="hidden" name="berlangganan_id" value="{{ $programs->id_programcv }}" id="berlangganan_id">
                             <input type="hidden" name="total"
                                 value="{{ number_format($programs->harga_diskon + $programs->harga_diskon * 0.11, 0, ',', '.') }}"
                                 id="total">

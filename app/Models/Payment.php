@@ -12,5 +12,5 @@ class Payment extends Model
     public $timestamps = false;
     protected $table = 'payments';
     protected $primaryKey = 'id';
-    protected $fillable = ['id_invoice','program_name','payment_datetime','username','contact','payment_method','gambar','total','status'];
+    protected $fillable = ['berlangganan_id','id_invoice','program_name','payment_datetime','username','contact','payment_method','gambar','total','status'];
 }

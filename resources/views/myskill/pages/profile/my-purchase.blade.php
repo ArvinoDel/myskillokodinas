@@ -106,12 +106,14 @@
                 <div class="flex space-x-4">
                     <a href="#" id="show-elearning" class="text-lg tab active-tab">E-Learning</a>
                     <a href="#" id="show-bootcamp" class="text-lg tab">Bootcamp</a>
-                    <a href="#" id="show-mentoring" class="text-lg tab">Mentoring</a>
+                    <a href="#" id="show-mentoring" class="text-lg tab">Review CV</a>
                 </div>
                 <span class="underline" id="underline"></span>
             </div>
 
             <div id="elearning-content" class="text-start">
+                <h2 class="text-xl font-semibold text-gray-800">Semua E-learning Saya</h2>
+
                 @if ($elearningPayments->isEmpty())
                     <h2 class="text-xl font-semibold text-gray-800">Oops, sepertinya Kamu Tidak Memiliki Langganan Aktif.
                     </h2>
@@ -189,25 +191,145 @@
 
             <div id="bootcamp-content" class="text-start hidden">
                 <h2 class="text-xl font-semibold text-gray-800">Semua Bootcamp Saya</h2>
-                <p class="mt-2 text-gray-600">Hmm, sepertinya kamu belum pernah bergabung bootcamp MySkill. Yuk eksplor
-                    bootcamp yang tersedia di MySkill dengan mengklik tombol dibawah.</p>
-                <button class="mt-4 bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600">
-                    ⚡ Mulai Berlangganan Bootcamp
-                </button>
+                @if ($bootcampPayments->isEmpty())
+                    <p class="mt-2 text-gray-600">Hmm, sepertinya kamu belum pernah bergabung bootcamp MySkill. Yuk eksplor
+                        bootcamp yang tersedia di MySkill dengan mengklik tombol dibawah.</p>
+                    <button class="mt-4 bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600">
+                        ⚡ Mulai Berlangganan Bootcamp
+                    </button>
+                @else
+                    @php
+                        $canceledPayments = $bootcampPayments->filter(function ($payment) {
+                            return $payment->status === 'canceled';
+                        });
+
+                        $pendingPayments = $bootcampPayments->filter(function ($payment) {
+                            return $payment->status === 'pending';
+                        });
+
+                        $activePayments = $bootcampPayments->filter(function ($payment) {
+                            return $payment->status === 'completed';
+                        });
+                    @endphp
+
+                    @if ($activePayments->isNotEmpty())
+                        <h2 class="text-xl font-semibold text-gray-800">Langganan Aktif:</h2>
+                        @foreach ($activePayments as $payment)
+                            <div class="mt-4 p-4 border border-gray-300 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-800">{{ $payment->program_name }}</h3>
+                                <p class="my-2 text-gray-600">Tanggal Pembayaran:
+                                    {{ $payment->payment_datetime }}</p>
+                                Status: <p class=" text-gray-600"> {{ ucfirst($payment->status) }}</p>
+                            </div>
+                        @endforeach
+                    @else
+                        <h2 class="text-xl font-semibold text-gray-800">Langganan Aktif: </h2>
+                        <p class="mt-2 text-gray-600">Belum ada langganan aktif. </p>
+                    @endif
+
+                    @if ($pendingPayments->isNotEmpty())
+                        <div class="mt-10">
+                            <h2 class="text-xl font-semibold text-gray-800">Langganan Menunggu:</h2>
+                            @foreach ($pendingPayments as $payment)
+                                <div class="mt-4 p-4 border border-gray-300 rounded-lg bg-yellow-100">
+                                    <h3 class="text-lg font-semibold text-gray-800">{{ $payment->program_name }}</h3>
+                                    <p class="my-2 text-gray-600">Tanggal Pembayaran:
+                                        {{ $payment->payment_datetime }}</p>
+                                    Status:<p class=" text-yellow-600"> Menunggu Konfirmasi</p>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    @if ($canceledPayments->isNotEmpty())
+                        <div class="mt-10">
+                            <h2 class="text-xl font-semibold text-gray-800">Langganan Dibatalkan:</h2>
+                            @foreach ($canceledPayments as $payment)
+                                <div class="mt-4 p-4 border border-gray-300 rounded-lg bg-red-100">
+                                    <h3 class="text-lg font-semibold text-gray-800">{{ $payment->program_name }}</h3>
+                                    <p class="mt-2 text-gray-600">Tanggal Pembayaran:
+                                        {{ $payment->payment_datetime }}</p>
+                                    Status: <p class=" text-red-600"> Dibatalkan</p>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                @endif
             </div>
 
             <div id="mentoring-content" class="text-start hidden">
-                <h2 class="text-xl font-semibold text-gray-800">Oops, sepertinya Kamu Tidak Memiliki Langganan Mentoring
-                    Aktif.</h2>
-                <p class="mt-2 text-gray-600">Ayo beli sekarang dan dapatkan review CV dari MySkill!</p>
-                <button class="mt-4 bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600">
-                    ⚡ Mulai Berlangganan Mentoring
-                </button>
-                <div class="mt-10">
-                    <h3 class="text-lg font-semibold text-gray-800">Pembelian Sebelumnya</h3>
-                    <p class="mt-2 text-gray-600">Hmm, sepertinya kamu belum pernah berlangganan review CV. Yuk segera
-                        berlangganan untuk dapatkan akses untuk review CV MySkill.</p>
-                </div>
+                <h2 class="text-xl font-semibold text-gray-800">Semua Mentoring Review CV Saya</h2>
+                @if ($reviewPayments->isEmpty())
+                    <h2 class="text-xl font-semibold text-gray-800">Oops, sepertinya Kamu Tidak Memiliki Langganan
+                        Mentoring
+                        Aktif.</h2>
+                    <p class="mt-2 text-gray-600">Ayo beli sekarang dan dapatkan review CV dari MySkill!</p>
+                    <button class="mt-4 bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600">
+                        ⚡ Mulai Berlangganan Mentoring
+                    </button>
+                    <div class="mt-10">
+                        <h3 class="text-lg font-semibold text-gray-800">Pembelian Sebelumnya</h3>
+                        <p class="mt-2 text-gray-600">Hmm, sepertinya kamu belum pernah berlangganan review CV. Yuk segera
+                            berlangganan untuk dapatkan akses untuk review CV MySkill.</p>
+                    </div>
+                @else
+                    @php
+                        $canceledPayments = $reviewPayments->filter(function ($payment) {
+                            return $payment->status === 'canceled';
+                        });
+
+                        $pendingPayments = $reviewPayments->filter(function ($payment) {
+                            return $payment->status === 'pending';
+                        });
+
+                        $activePayments = $reviewPayments->filter(function ($payment) {
+                            return $payment->status === 'completed';
+                        });
+                    @endphp
+
+                    @if ($activePayments->isNotEmpty())
+                        <h2 class="text-xl font-semibold text-gray-800">Langganan Aktif:</h2>
+                        @foreach ($activePayments as $payment)
+                            <div class="mt-4 p-4 border border-gray-300 rounded-lg">
+                                <h3 class="text-lg font-semibold text-gray-800">{{ $payment->program_name }}</h3>
+                                <p class="my-2 text-gray-600">Tanggal Pembayaran:
+                                    {{ $payment->payment_datetime }}</p>
+                                Status: <p class=" text-gray-600"> {{ ucfirst($payment->status) }}</p>
+                            </div>
+                        @endforeach
+                    @else
+                        <h2 class="text-xl font-semibold text-gray-800">Langganan Aktif: </h2>
+                        <p class="mt-2 text-gray-600">Belum ada langganan aktif. </p>
+                    @endif
+
+                    @if ($pendingPayments->isNotEmpty())
+                        <div class="mt-10">
+                            <h2 class="text-xl font-semibold text-gray-800">Langganan Menunggu:</h2>
+                            @foreach ($pendingPayments as $payment)
+                                <div class="mt-4 p-4 border border-gray-300 rounded-lg bg-yellow-100">
+                                    <h3 class="text-lg font-semibold text-gray-800">{{ $payment->program_name }}</h3>
+                                    <p class="my-2 text-gray-600">Tanggal Pembayaran:
+                                        {{ $payment->payment_datetime }}</p>
+                                    Status:<p class=" text-yellow-600"> Menunggu Konfirmasi</p>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    @if ($canceledPayments->isNotEmpty())
+                        <div class="mt-10">
+                            <h2 class="text-xl font-semibold text-gray-800">Langganan Dibatalkan:</h2>
+                            @foreach ($canceledPayments as $payment)
+                                <div class="mt-4 p-4 border border-gray-300 rounded-lg bg-red-100">
+                                    <h3 class="text-lg font-semibold text-gray-800">{{ $payment->program_name }}</h3>
+                                    <p class="mt-2 text-gray-600">Tanggal Pembayaran:
+                                        {{ $payment->payment_datetime }}</p>
+                                    Status: <p class=" text-red-600"> Dibatalkan</p>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endif
+                @endif
             </div>
 
 

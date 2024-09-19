@@ -47,20 +47,21 @@
                                     {{ $batch->tanggal_mulai }} - {{ $batch->tanggal_selesai }}
                                 </p>
                             </div>
-                        @endforeach
-
-                        <!-- Batch ke-2 -->
-
                     </div>
+                    <a href="{{ route('payment.bootcamp', ['id' => $batch->id_batch]) }}">
+                        <button type="button"
+                            class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 max-sm:bg-yellow-500 max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
+                            <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
+                        </button>
+                    </a>
+                    @endforeach
+
+
+
                 </div>
 
 
-                <a href="/payment">
-                    <button type="button"
-                        class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 max-sm:bg-yellow-500 max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
-                        <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
-                    </button>
-                </a>
+
                 <div class="flex items-center mt-1 max-sm:flex-col max-sm:items-center">
                     <p
                         class="lg:ml-4 md:ml-4 md:text-sm md:mb-4 text-white text-md font-semibold max-sm:ml-0 max-sm:text-sm max-sm:mt-2">

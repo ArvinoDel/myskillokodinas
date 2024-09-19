@@ -55,10 +55,20 @@ class PaymentController extends Controller
             return stripos($payment->program_name, 'Paket Video E-Learning') !== false;
         });
 
+        $reviewPayments = $payments->filter(function ($payment){
+            return stripos($payment->program_name, 'Paket Review') !== false;
+        });
+
+        $bootcampPayments = $payments->filter(function ($payment){
+            return stripos($payment->program_name, 'Paket Bootcamp') !== false;
+        });
+
         // dd($elearningPayments); // Pastikan filter diterapkan dengan benar
 
         return view('myskill.pages.profile.my-purchase', [
-            'elearningPayments' => $elearningPayments
+            'elearningPayments' => $elearningPayments,
+            'reviewPayments' => $reviewPayments,
+            'bootcampPayments' => $bootcampPayments,
         ]);
     }
 
@@ -122,7 +132,7 @@ class PaymentController extends Controller
         $programs->id_benefits = json_decode($programs->id_benefits); // Decode JSON
         // Logika untuk menampilkan halaman pembayaran
         // Anda bisa mengambil data berlangganan berdasarkan $id di sini
-        return view('myskill.pages.e-learning.payment', compact('id', 'programs', 'metod', 'program', 'langganan'));
+        return view('myskill.pages.e-learning.payment', compact('id', 'programs', 'metod', 'langganan'));
     }
 
     public function approve($id)
@@ -154,6 +164,7 @@ class PaymentController extends Controller
         try {
             // Validasi input
             $request->validate([
+                'berlangganan_id' => 'required|string',
                 'id_invoice' => 'required|string',
                 'gambar' => 'required|mimes:jpeg,png,jpg', // Validasi gambar
                 'payment_method' => 'required',
@@ -178,6 +189,7 @@ class PaymentController extends Controller
 
             // Simpan data pembayaran
             Payment::create([
+                'berlangganan_id' => $request->input('berlangganan_id'),
                 'id_invoice' => $request->input('id_invoice'),
                 'program_name' => $request->input('program_name'),
                 'username' => $request->input('username'),

@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Isimateri;
-use App\Models\Kategoriprogram;
 use App\Models\Materi;
+use App\Models\Payment;
 use App\Models\Program;
+use App\Models\Isimateri;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
+use App\Models\Berlangganan;
 use Illuminate\Http\Request;
+use App\Models\Kategoriprogram;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
-
-
-
 use Illuminate\Support\Facades\Log; // Tambahkan ini untuk mengatasi undefined type Log
 
 class MateriController extends Controller
@@ -108,9 +108,30 @@ class MateriController extends Controller
         // Fetch the materi by id_materi
         $materi = Materi::with('isimateri')->where('id_materi', $id_materi)->firstOrFail();
         $materis = Materi::all();
+        $user = Auth::user();
+        $berlanggananss = Berlangganan::all();
 
+        // Extract the IDs from the collection
+        $berlanggananIds = $berlanggananss->pluck('id_berlangganan')->toArray();
+
+        $payments = Payment::where(function ($query) use ($user, $berlanggananIds) {
+            $query->whereIn('berlangganan_id', $berlanggananIds)
+                ->where(function ($query) use ($user) {
+                    $query->where('contact', $user->email)
+                            ->orWhere('contact', $user->phone);
+                });
+        })->first();
+
+        // Debug output to check the result
+        // dd($payments);
+        
+        if ($payments) {
+            $vidActive = true;
+        } else {
+            $vidActive = false;
+        }
         // Pass the fetched materi to the view
-        return view('myskill.pages.e-learning.materi', compact('materi', 'materis'));
+        return view('myskill.pages.e-learning.materi', compact('materi', 'materis', 'vidActive'));
     }
 
 
@@ -189,29 +210,29 @@ class MateriController extends Controller
         $request->validate([
             'rating' => 'required|integer|min:1|max:5',
         ]);
-    
+
         $materi = Materi::findOrFail($id_materi);
         $user_id = auth()->id(); // Ambil ID user yang sedang login
-    
+
         // Cek apakah user sudah memberikan rating
         if ($materi->rated_users && in_array($user_id, json_decode($materi->rated_users))) {
             return redirect()->back()->with('error', 'Anda sudah memberikan rating sebelumnya.');
         }
-    
+
         // Tambahkan rating ke total rating
         $materi->rating += $request->input('rating');
-    
+
         // Tambah jumlah user yang memberikan rating
         $materi->rating_count += 1;
-    
+
         // Simpan user yang sudah memberikan rating
         $rated_users = json_decode($materi->rated_users, true) ?? [];
         $rated_users[] = $user_id;
         $materi->rated_users = json_encode($rated_users);
-    
+
         // Simpan perubahan
         $materi->save();
-    
+
         return redirect()->back()->with('success', 'Rating berhasil dikirim');
-    }    
+    }
 }
