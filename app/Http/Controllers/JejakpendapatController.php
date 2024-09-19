@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class JejakpendapatController extends Controller
 {
@@ -94,6 +95,22 @@ class JejakpendapatController extends Controller
     }
 
     public function storePollingChoice(Request $request)
+    {
+        $request->validate([
+            'pilihan_id' => 'required|exists:poling,id_poling',
+        ]);
+
+        // Temukan polling berdasarkan ID
+        $polling = Poling::find($request->pilihan_id);
+        $polling->increment('rating'); // Tambah rating
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Pilihan berhasil disimpan!'
+        ]);
+    }
+
+    public function storePollingChoice3(Request $request)
     {
         $request->validate([
             'pilihan_id' => 'required|exists:poling,id_poling',

@@ -158,7 +158,10 @@ class PesanmasukController extends Controller
         Pesanmasuk::create($validatedData);
 
         // Redirect atau response sesuai kebutuhan
-        return redirect()->back();
+        return response()->json([
+            'success' => true,
+            'message' => 'Pesan berhasil dikirim!'
+        ]);
     }
 
     /**
