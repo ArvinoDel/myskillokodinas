@@ -39,7 +39,7 @@
   ======================================================== -->
   <style>
     .navbar ul li a {
-      color: black !important;
+      color: #ffc732 !important;
     }
     .navbar ul li.parent-menu > a {
       color: #ffc732 !important;
@@ -67,7 +67,7 @@
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
-        <ul style="color:black;">
+        <ul style="color: #ffc732;">
           <li class="parent-menu"><a href="{{ url('/')}}" class="active">Home</a></li>
           @foreach($menus as $menu)
           <li class="nav-item dropdown parent-menu">
