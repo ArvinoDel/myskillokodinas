@@ -394,7 +394,8 @@
                             <input type="hidden" name="program_name"
                                 value="Paket Bootcamp {{ $bootcamps->judul_bootcamp }}">
                         @elseif ($langganan === 'review')
-                        <input type="hidden" name="berlangganan_id" value="{{ $programs->id_programcv }}" id="berlangganan_id">
+                            <input type="hidden" name="berlangganan_id" value="{{ $programs->id_programcv }}"
+                                id="berlangganan_id">
                             <input type="hidden" name="total"
                                 value="{{ number_format($programs->harga_diskon + $programs->harga_diskon * 0.11, 0, ',', '.') }}"
                                 id="total">
@@ -411,7 +412,7 @@
 
                         <div class="flex justify-center mb-4">
                             <img src="{{ asset('/foto_pembayaran/' . $met->pembayaran) }}" alt="paymentImage"
-                                id="paymentImage" class="rounded-lg w-32 md:w-32 mx-auto my-2">
+                                id="paymentImage" class="rounded-lg w-32 md:w-32 mx-auto">
                         </div>
 
                         @php
@@ -439,7 +440,7 @@
                         @endphp
 
 
-                        <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-4 lg:mb-4">
                             <div class="relative">
                                 <input type="file" name="gambar" id="Upload"
                                     class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" required>

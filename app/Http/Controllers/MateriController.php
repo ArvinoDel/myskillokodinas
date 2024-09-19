@@ -116,6 +116,7 @@ class MateriController extends Controller
 
         $payments = Payment::where(function ($query) use ($user, $berlanggananIds) {
             $query->whereIn('berlangganan_id', $berlanggananIds)
+            ->where('status', 'completed')
                 ->where(function ($query) use ($user) {
                     $query->where('contact', $user->email)
                             ->orWhere('contact', $user->phone);
