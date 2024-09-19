@@ -3,7 +3,7 @@
 <div class="digital-marketing">
     <section
         class="w-full h-auto bg-white bg-gradient-to-b from-orange-400 to-red-400 text-white lg:flex max-sm:text-black max-sm:bg-white lg:mb-4">
-        <img src="{{ asset('./assets/bootcamp/full.png') }}"
+        <img src="{{ asset('./assets/bootcamp/content.png') }}"
             class="lg:h-96 md:h-full md:p-4 rounded-3xl w-auto lg:mt-4 lg:ml-16 py-2 max-sm:h-60 max-sm:mx-auto">
         <div class="lg:ml-4 max-sm:text-black max-sm:w-full max-sm:text-center max-sm:mx-auto max-sm:py-4"
             style="width: 100%;">
