@@ -146,10 +146,20 @@
                                     value="{{ old('blokir', $user->blokir) }}">
                             </div>
                         @else
+                            <div class="hidden">
+                                <label for="level" class="block text-gray-700">Level</label>
+                                <input type="text" id="level" name="level"
+                                    class="mt-2 p-2 w-full border rounded" value="{{ old('level', $user->level) }}">
+                            </div>
+                            <div class="hidden">
+                                <label for="blokir" class="block text-gray-700">Blokir</label>
+                                <input type="text" id="blokir" name="blokir"
+                                    class="mt-2 p-2 w-full border rounded" value="{{ old('blokir', $user->blokir) }}">
+                            </div>
                         @endif
 
                         <div class="mt-6 flex items-center ml-6">
-                            <input type="checkbox" id="subscribe" class="form-checkbox">
+                            <input type="checkbox" id="subscribe" class="form-checkbox" required>
                             <label for="subscribe" class="ml-2 text-gray-700">Saya bersedia menerima update informasi dari
                                 MySkill</label>
                         </div>

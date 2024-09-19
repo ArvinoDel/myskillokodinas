@@ -115,11 +115,25 @@
                     <div class="bg-white p-6 rounded-lg shadow">
                         <h3 class="text-gray-700 font-semibold mb-4">RINGKASAN PRODUK</h3>
                         <div class="border-b border-gray-300 pb-4 mb-4">
-                            <p class="text-gray-800">Paket Video E-Learning
-                                {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
-                            </p>
-                            <p class="text-gray-600">Rp. {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}
-                            </p>
+                            @if ($langganan === 'e-learning')
+                                <p class="text-gray-800">Paket Video E-Learning
+                                    {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
+                                </p>
+                                <p class="text-gray-600">Rp. {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}
+                                </p>
+                            @elseif ($langganan === 'bootcamp')
+                                <p class="text-gray-800">Paket Bootcamp
+                                    {{ $bootcamps->judul_bootcamp ?? 'Data tidak tersedia' }}
+                                </p>
+                                <p class="text-gray-600">Rp. {{ number_format($bootcamps->harga_diskon, 0, ',', '.') }}</p>
+                            @elseif ($langganan === 'review')
+                                <p class="text-gray-800">Paket Bootcamp
+                                    {{ $programs->masa_berlangganan ?? 'Data tidak tersedia' }}
+                                </p>
+                                <p class="text-gray-600">Rp. {{ number_format($programs->harga_diskon, 0, ',', '.') }}</p>
+                            @else
+                                <p class="text-gray-800">Paket tidak tersedia</p>
+                            @endif
                         </div>
                         <div class="mb-4">
                             <label for="promo" class="text-gray-700 text-sm mb-2 block">Kode Promo / Kupon</label>
@@ -144,22 +158,56 @@
                             </div>
                         </div>
                         <div class="border-b border-gray-300 pb-4 mb-4">
-                            <div class="flex justify-between text-gray-700">
-                                <span>Subtotal</span>
-                                <span>Rp {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}</span>
-                                <!-- Format harga tanpa desimal -->
-                            </div>
-                            <div class="flex justify-between text-gray-500 text-sm font-medium">
-                                <span>PPN (11%)</span>
-                                <span>Rp {{ number_format($berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}</span>
-                                <!-- Menghitung PPN 11% dari harga -->
-                            </div>
+                            @if ($langganan === 'e-learning')
+                                <div class="flex justify-between text-gray-700">
+                                    <span>Subtotal</span>
+                                    <span>Rp {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}</span>
+                                </div>
+                                <div class="flex justify-between text-gray-500 text-sm font-medium">
+                                    <span>PPN (11%)</span>
+                                    <span>Rp {{ number_format($berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}</span>
+                                </div>
+                            @elseif ($langganan === 'bootcamp')
+                                <div class="flex justify-between text-gray-700">
+                                    <span>Subtotal</span>
+                                    <span>Rp {{ number_format($bootcamps->harga_diskon, 0, ',', '.') }}</span>
+                                </div>
+                                <div class="flex justify-between text-gray-500 text-sm font-medium">
+                                    <span>PPN (11%)</span>
+                                    <span>Rp {{ number_format($bootcamps->harga_diskon * 0.11, 0, ',', '.') }}</span>
+                                </div>
+                            @elseif ($langganan === 'review')
+                                <div class="flex justify-between text-gray-700">
+                                    <span>Subtotal</span>
+                                    <span>Rp {{ number_format($programs->harga_diskon, 0, ',', '.') }}</span>
+                                </div>
+                                <div class="flex justify-between text-gray-500 text-sm font-medium">
+                                    <span>PPN (11%)</span>
+                                    <span>Rp {{ number_format($programs->harga_diskon * 0.11, 0, ',', '.') }}</span>
+                                </div>
+                            @else
+                                <p class="text-gray-800">Paket tidak tersedia</p>
+                            @endif
+
                         </div>
                         <div class="flex justify-between font-semibold text-gray-800 text-lg">
                             <span>Total</span>
-                            <span>Rp
-                                {{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}</span>
-                            <!-- Total = Subtotal + PPN -->
+                            @if ($langganan === 'e-learning')
+                                <span>Rp
+                                    {{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}
+                                </span>
+                            @elseif ($langganan === 'bootcamp')
+                                <span>Rp
+                                    {{ number_format($bootcamps->harga_diskon + $bootcamps->harga_diskon * 0.11, 0, ',', '.') }}
+                                </span>
+                            @elseif ($langganan === 'review')
+                                <span>Rp
+                                    {{ number_format($programs->harga_diskon + $programs->harga_diskon * 0.11, 0, ',', '.') }}
+                                </span>
+                            @else
+                                <p class="text-gray-800">Paket tidak tersedia</p>
+                            @endif
+
                         </div>
                         <p class="text-gray-500 text-xs mt-2 text-right ml-auto">+ kode unik</p>
                         <button id="payButton" class="w-full bg-gray-200 text-gray-600 py-2 rounded-md mt-4"
@@ -171,15 +219,39 @@
 
             <div class="mt-9">
                 <!-- Header Section -->
-                <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan E-Learning</h2>
-                <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Video E-Learning
-                    {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
-                </h1>
-                <div class="text-2xl font-semibold text-gray-700">
-                    Rp. {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }} <span
-                        class="text-sm line-through text-gray-500">Rp.
-                        {{ number_format($berlanggananss->harga_berlangganan, 0, ',', '.') }}</span>
-                </div>
+                @if ($langganan === 'e-learning')
+                    <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan E-Learning</h2>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Video E-Learning
+                        {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
+                    </h1>
+                    <div class="text-2xl font-semibold text-gray-700">
+                        Rp. {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }} <span
+                            class="text-sm line-through text-gray-500">Rp.
+                            {{ number_format($berlanggananss->harga_berlangganan, 0, ',', '.') }}</span>
+                    </div>
+                @elseif ($langganan === 'bootcamp')
+                    <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan Bootcamp</h2>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Bootcamp
+                        {{ $bootcamps->judul_bootcamp ?? 'Data tidak tersedia' }}
+                    </h1>
+                    <div class="text-2xl font-semibold text-gray-700">
+                        Rp. {{ number_format($bootcamps->harga_diskon, 0, ',', '.') }} <span
+                            class="text-sm line-through text-gray-500">Rp.
+                            {{ number_format($bootcamps->harga, 0, ',', '.') }}</span>
+                    </div>
+                @elseif ($langganan === 'review')
+                    <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan Review</h2>
+                    <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Review
+                        {{ $programs->masa_berlangganan ?? 'Data tidak tersedia' }}
+                    </h1>
+                    <div class="text-2xl font-semibold text-gray-700">
+                        Rp. {{ number_format($programs->harga_diskon, 0, ',', '.') }} <span
+                            class="text-sm line-through text-gray-500">Rp.
+                            {{ number_format($programs->harga_berlangganan, 0, ',', '.') }}</span>
+                    </div>
+                @else
+                    <p class="text-gray-800">Paket tidak tersedia</p>
+                @endif
 
                 <!-- Product Description -->
                 <div class="mt-6">
@@ -195,12 +267,31 @@
                 <div class="mt-6">
                     <h3 class="text-lg font-semibold text-teal-600 mb-2">Benefits</h3>
                     <ul class="text-gray-700 space-y-2">
-                        @foreach ($berlanggananss->benefits() as $benefit)
-                            <li class="flex items-start">
-                                <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
-                                <span>{{ $benefit->nama_benefit }}</span>
-                            </li>
-                        @endforeach
+                        @if ($langganan === 'e-learning')
+                            @foreach ($berlanggananss->benefits() as $benefit)
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
+                                    <span>{{ $benefit->nama_benefit }}</span>
+                                </li>
+                            @endforeach
+                        @elseif ($langganan === 'bootcamp')
+                            @foreach ($bootcamps->benefit() as $benefit)
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
+                                    <span>{{ $benefit->nama_benefit }}</span>
+                                </li>
+                            @endforeach
+                        @elseif ($langganan === 'review')
+                            @foreach ($programs->benefitscv() as $benefit)
+                                <li class="flex items-start">
+                                    <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
+                                    <span>{{ $benefit->nama_benefit }}</span>
+                                </li>
+                            @endforeach
+                        @else
+                            <p class="text-gray-800">Paket tidak tersedia</p>
+                        @endif
+
                     </ul>
                 </div>
 
@@ -241,39 +332,82 @@
                         <img src="{{ asset('assets/logo.png') }}" class="w-32 md:w-24" alt="Logo">
                         <span class="text-gray-600 font-semibold mt-2 md:mt-0">No. Invoice: <span
                                 id="invoice-number"></span></span>
-
-
-
                     </div>
                     <ul class="text-gray-600 mb-4 text-sm md:text-base">
-                        <li><strong>Program:</strong> Paket Video E-Learning
-                            {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
-                        </li>
+                        @if ($langganan === 'e-learning')
+                            <li><strong>Program:</strong> Paket Video E-Learning
+                                {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
+                            </li>
+                            <li>Total:
+                                {{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}
+                            </li>
+                        @elseif ($langganan === 'bootcamp')
+                            <li><strong>Program:</strong> Paket Bootcamp
+                                {{ $bootcamps->judul_bootcamp ?? 'Data tidak tersedia' }}
+                            </li>
+                            <li>Total:
+                                {{ number_format($bootcamps->harga_diskon + $bootcamps->harga_diskon * 0.11, 0, ',', '.') }}
+                            </li>
+                        @elseif ($langganan === 'review')
+                            <li><strong>Program:</strong> Paket Review
+                                {{ $programs->masa_berlangganan ?? 'Data tidak tersedia' }}
+                            </li>
+                            <li>Total:
+                                {{ number_format($programs->harga_diskon + $programs->harga_diskon * 0.11, 0, ',', '.') }}
+                            </li>
+                        @else
+                            <li><strong>Program:</strong> Paket tidak tersedia</li>
+                        @endif
+
                         <li><strong>Tanggal & Waktu:</strong> <span id="datetime"></span></li>
                         <li><strong>Username:</strong> {{ Auth::user()->username }}</li>
+
                         @if (Auth::user()->email)
                             <li><strong>Email:</strong> {{ Auth::user()->email }}</li>
                         @elseif (Auth::user()->phone)
                             <li><strong>Phone:</strong> {{ Auth::user()->phone }}</li>
                         @endif
+
                         <li><strong>Metode Pembayaran:</strong> <span id="selectedMethod"></span></li>
-                        <li>Total:
-                            {{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}
-                        </li>
                     </ul>
+
 
                     <form action="{{ route('payment.store') }}" method="POST" enctype="multipart/form-data"
                         id="paymentForm" class="form-ajax">
                         @csrf
                         <input type="hidden" name="id_invoice" value="" id="invoice-number2">
-                        <input type="hidden" name="total"
-                            value="{{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}"
-                            id="total">
+
+                        @if ($langganan === 'e-learning')
+                            <input type="hidden" name="id_berlangganan" value="{{ $berlanggananss->id_berlangganan }}"
+                                id="id_berlangganan">
+                            <input type="hidden" name="total"
+                                value="{{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}"
+                                id="total">
+                            <input type="hidden" name="program_name"
+                                value="Paket Video E-Learning {{ $berlanggananss->masa_berlangganan }}">
+                        @elseif ($langganan === 'bootcamp')
+                            <input type="hidden" name="id_berlangganan" value="{{ $bootcamps->id_bootcamp }}"
+                                id="id_berlangganan">
+                            <input type="hidden" name="total"
+                                value="{{ number_format($bootcamps->harga_diskon + $bootcamps->harga_diskon * 0.11, 0, ',', '.') }}"
+                                id="total">
+                            <input type="hidden" name="program_name"
+                                value="Paket Bootcamp {{ $bootcamps->judul_bootcamp }}">
+                        @elseif ($langganan === 'review')
+                        <input type="hidden" name="id_berlangganan" value="{{ $programs->id_programcv }}" id="id_berlangganan">
+                            <input type="hidden" name="total"
+                                value="{{ number_format($programs->harga_diskon + $programs->harga_diskon * 0.11, 0, ',', '.') }}"
+                                id="total">
+                            <input type="hidden" name="program_name"
+                                value="Paket Review {{ $programs->masa_berlangganan }}">
+                        @else
+                            <input type="hidden" name="total" value="0" id="total">
+                            <input type="hidden" name="program_name" value="Paket tidak tersedia">
+                        @endif
+
                         <input type="hidden" name="payment_method" id="selectedMethod2">
                         <input type="hidden" name="username" value="{{ Auth::user()->username }}">
                         <input type="hidden" name="contact" value="{{ Auth::user()->email ?? Auth::user()->phone }}">
-                        <input type="hidden" name="program_name"
-                            value="Paket Video E-Learning {{ $berlanggananss->masa_berlangganan }}">
 
                         <div class="flex justify-center mb-4">
                             <img src="{{ asset('/foto_pembayaran/' . $met->pembayaran) }}" alt="paymentImage"
@@ -284,12 +418,22 @@
                             // Mengambil data user
                             $user = Auth::user();
 
+                            // Menentukan nama program berdasarkan nilai $langganan
+                            $programName = '';
+                            if ($langganan === 'e-learning') {
+                                $programName = 'Paket Video E-Learning';
+                            } elseif ($langganan === 'bootcamp') {
+                                $programName = 'Paket Bootcamp';
+                            } elseif ($langganan === 'review') {
+                                $programName = 'Paket Review';
+                            }
+
                             // Mengecek apakah ada record dengan contact yang sama dengan user saat ini
-                            // dan di kolom program_name terdapat kata "Paket Video E-Learning" serta username yang sama
+                            // dan di kolom program_name sesuai dengan nilai $programName serta username yang sama
                             $isPaymentExist = \App\Models\Payment::where(function ($query) use ($user) {
                                 $query->where('contact', $user->email)->orWhere('contact', $user->phone);
                             })
-                                ->where('program_name', 'like', '%Paket Video E-Learning%')
+                                ->where('program_name', $programName)
                                 ->where('username', $user->username)
                                 ->exists();
                         @endphp
@@ -311,10 +455,7 @@
                                 Kirim Bukti Pembayaran
                             </button>
                         </div>
-
                     </form>
-
-
 
                 </div>
             </div>
@@ -342,6 +483,7 @@
                 icon: 'success',
                 title: 'Success',
                 text: '{{ session('success') }}',
+                timer: 2000,
             });
         @endif
 
@@ -351,6 +493,7 @@
                 icon: 'error',
                 title: 'Error',
                 text: '{{ session('error') }}',
+                timer: 3000,
             });
         @endif
     </script>

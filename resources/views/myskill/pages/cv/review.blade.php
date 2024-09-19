@@ -269,7 +269,7 @@
                                         <p class="text-2xl font-bold text-orange-600 whitespace-nowrap">Rp
                                             {{ number_format($program->harga_diskon, 0, ',', '.') }}</p>
                                     </div>
-                                    <a href="{{ route('payment', ['id' => $program->id_programcv]) }}">
+                                    <a href="{{ route('payment.review', ['id' => $program->id_programcv]) }}">
                                         <button class="bg-orange-500 text-white font-bold py-2 px-4 rounded-lg w-full">
                                             Daftar Sekarang
                                         </button>
