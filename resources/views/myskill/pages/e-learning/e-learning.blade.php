@@ -361,7 +361,7 @@
                                     </li>
                                     @endforeach
                                 </ul>
-                                <a href="{{ route('payment', ['id' => $berlangganan->id_berlangganan]) }}">
+                                <a href="{{ route('payment.learning', ['id' => $berlangganan->id_berlangganan]) }}">
                                     <button
                                         class="w-full bg-blue-500 text-white font-semibold py-2 rounded text-sm hover:bg-blue-600 transition-colors">
                                         Mulai Berlangganan

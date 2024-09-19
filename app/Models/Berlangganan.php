@@ -12,7 +12,12 @@ class Berlangganan extends Model
     public $timestamps = false;
     protected $table = 'berlangganan';
     protected $primaryKey = 'id_berlangganan';
+
+    protected $keyType = 'string';
+    public $incrementing = false;
+
     protected $fillable = [
+        'id_berlangganan',
         'masa_berlangganan',
         'harga_berlangganan',
         'harga_diskon',
