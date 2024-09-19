@@ -55,11 +55,11 @@ class PaymentController extends Controller
             return stripos($payment->program_name, 'Paket Video E-Learning') !== false;
         });
 
-        $reviewPayments = $payments->filter(function ($payment){
+        $reviewPayments = $payments->filter(function ($payment) {
             return stripos($payment->program_name, 'Paket Review') !== false;
         });
 
-        $bootcampPayments = $payments->filter(function ($payment){
+        $bootcampPayments = $payments->filter(function ($payment) {
             return stripos($payment->program_name, 'Paket Bootcamp') !== false;
         });
 
@@ -202,7 +202,7 @@ class PaymentController extends Controller
             ]);
 
             // Mengirim pesan sukses ke view
-            return redirect()->back()->with('success', 'Pembayaran berhasil dikirim!');
+            return redirect()->route('home')->with('success', 'Pembayaran berhasil dikirim!');
         } catch (\Exception $e) {
             // Mengirim pesan error ke view
             // dd($request);

@@ -123,9 +123,10 @@
                                 class="flex items-center justify-start sm:justify-start max-sm:mt-1 md:mt-4 lg:mt-4 lg:mb-4 text-gray-500">
                                 <i class="fas ml-2 fa-tag mr-2"></i>
                                 @if ($lastBatch)
-                                    <p class="text-sm">Rp {{ number_format($bootcamp->harga, 0, ',', '.') }}<span
+                                    <p class="text-sm">Rp {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}<span
                                             class="line-through text-xs/tight max-sm:hidden text-red-500">Rp
-                                            {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}</span>
+                                            {{ number_format($bootcamp->harga, 0, ',', '.') }}
+                                        </span>
                                     </p>
                                 @else
                                     Tidak ada batch yang tersedia.

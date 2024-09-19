@@ -29,18 +29,13 @@
                                 </div>
                                 <p
                                     class="flex justify-start text-black font-regular text-xl lg:ml-4 md:ml-3 md:text-base max-sm:ml-2 max-sm:text-lg">
-                                    Rp.
-                                    {{ $bootcamp->harga }}
+                                    Rp. {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}
                                 </p>
                                 <p
-                                    class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 line-through md:ml-3 max-sm:ml-2">
-                                    Early sale: Rp.
-                                    {{ $bootcamp->harga_diskon }}
-                                </p>
-                                <p
-                                    class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:text-xs">
-                                    Late sale: Rp.
-                                    {{ $bootcamp->harga }}
+                                    class="flex justify-start text-red-500 font-regular text-xs lg:ml-4 line-through md:ml-3 max-sm:ml-2">
+                                    
+                                    Rp. {{ number_format($bootcamp->harga, 0, ',', '.') }}
+
                                 </p>
                                 <p
                                     class="flex justify-start text-black font-base text-nowrap text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2">
