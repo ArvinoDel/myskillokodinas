@@ -48,7 +48,7 @@
                                 </p>
                             </div>
                     </div>
-                    <a href="{{ route('payment.bootcamp', ['id' => $batch->id_batch]) }}">
+                    <a href="{{ route('payment.bootcamp', ['id' => $batch->id_bootcamp]) }}">
                         <button type="button"
                             class="lg:ml-4 lg:mt-2 md:ml-4  md:text-base md:mt-4 md:p-4 focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2 max-sm:bg-yellow-500 max-sm:px-3 max-sm:py-1.5 max-sm:w-4/5 max-sm:mx-auto">
                             <i class="fas fa-bolt ml-2"></i> Daftar Sekarang
