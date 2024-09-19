@@ -282,9 +282,9 @@
                     <!-- Div untuk gambar -->
                     <div class="relative">
                         <img src="{{ asset('foto_trainer/' . $train->foto) }}" alt="Professional" class="w-full h-full object-cover rounded-lg">
-                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center">
                             <a href="{{ $train->link }}">
-                                <button class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 transition">Lihat Materi</button>
+                                <button class="bg-white text-black py-2 px-4 rounded-full text-sm font-medium hover:bg-gray-200 transition mb-5">Lihat Materi</button>
                             </a>
                         </div>
                     </div>
