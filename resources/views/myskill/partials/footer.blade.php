@@ -4,10 +4,10 @@
         <div class="text-center">
             <h2 class="text-xl font-bold">Pandai Digital</h2>
             <p class="mt-2">Mari Kejar Impian Bersama Pandai Digital</p>
-            <p class="mt-2">PT. Pandai Digital</p>
+            <p class="mt-2">PT. Creative Millenial</p>
             <p>Kota Baru Keandra, Cluster DrosiaF10</p>
             <p>Sumber - Cirebon</p>
-            <p class="mt-2">0882002077497</p>
+            <p class="mt-2">085224216499</p>
         </div>
 
         {{-- <div class="ml-36 mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left"> --}}

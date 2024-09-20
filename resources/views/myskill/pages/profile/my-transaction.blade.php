@@ -86,7 +86,7 @@
 
     <div class="w-full h-full">
         <h2 class="text-2xl font-semibold text-left mr-4 ml-4 md:ml-6 max-sm:ml-6 lg:mt-4 md:mt-2 max-sm:mt-8">Transaksi Saya</h2>
-        <p class="text-sm text-left mb-4 ml-4 md:ml-6 ">Lihat semua transaksi kamu di MySkill.</p>
+        <p class="text-sm text-left mb-4 ml-4 md:ml-6 ">Lihat semua transaksi kamu di Pandai Digital.</p>
         <div class="p-4">
             <div class="bg-white border border-gray-200 rounded-lg shadow-md p-4 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
                 <!-- Left Section -->

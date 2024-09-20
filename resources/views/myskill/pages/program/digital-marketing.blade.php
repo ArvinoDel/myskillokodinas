@@ -30,17 +30,18 @@
                                 <p
                                     class="flex justify-start text-black font-regular text-xl lg:ml-4 md:ml-3 md:text-base max-sm:ml-2 max-sm:text-lg">
                                     Rp.
-                                    {{ number_format($bootcamp->harga, 0, ',', '.') }}
+                                    {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}
+
                                 </p>
                                 <p
                                     class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 line-through md:ml-3 max-sm:ml-2">
-                                    Early sale: Rp.
-                                    {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}
+                                    Harga Awal: Rp.
+                                    {{ number_format($bootcamp->harga, 0, ',', '.') }}
                                 </p>
                                 <p
                                     class="flex justify-start text-gray-500 font-regular text-xs lg:ml-4 md:ml-3 max-sm:ml-2 max-sm:text-xs">
-                                    Late sale: Rp.
-                                    {{ number_format($bootcamp->harga, 0, ',', '.') }}
+                                    Harga Diskon: Rp.
+                                    {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}
                                 </p>
                                 <p
                                     class="flex justify-start text-black font-base text-nowrap text-sm lg:ml-4 lg:mb-1 md:ml-3 md:mb-1 max-sm:ml-2 max-sm:mb-2">

@@ -94,7 +94,7 @@
             <!-- Content Section -->
             <div class="ml-4 flex-1 pt-2 ">
                 <h3 class="text-gray-800 font-semibold">Sepertinya Kamu Belum Mulai Belajar...</h3>
-                <p class="text-sm text-gray-500">Yuk mulai belajar beragam materi pilihan terbaik di MySkill.</p>
+                <p class="text-sm text-gray-500">Yuk mulai belajar beragam materi pilihan terbaik di Pandai Digital.</p>
 
                 <!-- Progress Bar -->
                 <div class="relative pt-2 mt-2">

@@ -55,7 +55,7 @@
 
         <!-- Horizontal Scrollable Section -->
 
-        <p class="mt-4 font-bold text-2xl flex justify-center px-14">Testimoni Alumni Bootcamp MySkill</p>
+        <p class="mt-4 font-bold text-2xl flex justify-center px-14">Testimoni Alumni Bootcamp Pandai Digital</p>
         <section class="mt-8 whitespace-nowrap px-8 md:px-2 py-4 mb-12 ">
             <div class="flex overflow-x-auto space-x-4 mx-5 px-1 pb-4 no-scrollbar">
                 @foreach ($testimonis as $testimoni)
@@ -123,9 +123,9 @@
                                 class="flex items-center justify-start sm:justify-start max-sm:mt-1 md:mt-4 lg:mt-4 lg:mb-4 text-gray-500">
                                 <i class="fas ml-2 fa-tag mr-2"></i>
                                 @if ($lastBatch)
-                                    <p class="text-sm">Rp {{ number_format($bootcamp->harga, 0, ',', '.') }}<span
+                                    <p class="text-sm px-2">Rp {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}<span
                                             class="line-through text-xs/tight max-sm:hidden text-red-500">Rp
-                                            {{ number_format($bootcamp->harga_diskon, 0, ',', '.') }}</span>
+                                            {{ number_format($bootcamp->harga, 0, ',', '.') }}</span>
                                     </p>
                                 @else
                                     Tidak ada batch yang tersedia.
@@ -147,13 +147,13 @@
             <div class="mx-auto">
                 <p class="text-4xl font-bold w-4/5 ml-4">E-learning & Training Untuk Perusahaan</p>
                 <br>
-                <p class="w-4/5 ml-4">Miliki akses ratusan konten elearning MySkill serta dukungan corporate training untuk
+                <p class="w-4/5 ml-4">Miliki akses ratusan konten elearning Pandai Digital serta dukungan corporate training untuk
                     perusahaan.
                     Miliki juga berbagai fitur khusus untuk mendorong employee performance and development.</p>
                 <br>
                 <a href="/corporate-service" type="button"
                     class="ml-4 focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-3 me-2 mb-2 dark:focus:ring-yellow-900">Hubungi
-                    Tim MySkill</a>
+                    Tim Pandai Digital</a>
             </div>
         </section>
         </div>

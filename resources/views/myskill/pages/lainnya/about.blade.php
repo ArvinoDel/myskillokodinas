@@ -33,13 +33,13 @@
             <div class="flex justify-center gap-4 flex-wrap">
                 <div
                     class="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-4 sm:p-6 md:p-8 rounded-2xl text-white text-center max-w-xs">
-                    <img src="/path/to/angga-photo.png" alt="Angga" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
+                    <img src="{{ asset('foto_trainer/mentors3.webp') }}" alt="Angga" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
                     <p class="font-semibold">Angga</p>
                     <p>Pandai Digital</p>
                 </div>
                 <div
                     class="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-4 sm:p-6 md:p-8 rounded-2xl text-white text-center max-w-xs">
-                    <img src="/path/to/erahmat-photo.png" alt="Erahmat" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
+                    <img src="{{ asset('foto_trainer/mentors5.webp') }}" alt="Erahmat" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
                     <p class="font-semibold">Erahmat</p>
                     <p>Pandai Digital</p>
                 </div>

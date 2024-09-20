@@ -117,7 +117,7 @@
                 @if ($elearningPayments->isEmpty())
                     <h2 class="text-xl font-semibold text-gray-800">Oops, sepertinya Kamu Tidak Memiliki Langganan Aktif.
                     </h2>
-                    <p class="mt-2 text-gray-600">Ayo berlangganan sekarang untuk akses ratusan materi e-learning MySkill!
+                    <p class="mt-2 text-gray-600">Ayo berlangganan sekarang untuk akses ratusan materi e-learning Pandai Digital!
                     </p>
                     <button class="mt-4 bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600">
                         ⚡ Mulai Berlangganan
@@ -125,7 +125,7 @@
                     <div class="mt-10">
                         <h3 class="text-lg font-semibold text-gray-800">Pembelian Sebelumnya</h3>
                         <p class="mt-2 text-gray-600">Hmm, sepertinya kamu belum pernah berlangganan e-learning. Yuk segera
-                            berlangganan untuk dapatkan akses penuh ke materi MySkill.</p>
+                            berlangganan untuk dapatkan akses penuh ke materi Pandai Digital.</p>
                     </div>
                 @else
                     @php
@@ -192,8 +192,8 @@
             <div id="bootcamp-content" class="text-start hidden">
                 <h2 class="text-xl font-semibold text-gray-800">Semua Bootcamp Saya</h2>
                 @if ($bootcampPayments->isEmpty())
-                    <p class="mt-2 text-gray-600">Hmm, sepertinya kamu belum pernah bergabung bootcamp MySkill. Yuk eksplor
-                        bootcamp yang tersedia di MySkill dengan mengklik tombol dibawah.</p>
+                    <p class="mt-2 text-gray-600">Hmm, sepertinya kamu belum pernah bergabung bootcamp Pandai Digital. Yuk eksplor
+                        bootcamp yang tersedia di Pandai Digital dengan mengklik tombol dibawah.</p>
                     <button class="mt-4 bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600">
                         ⚡ Mulai Berlangganan Bootcamp
                     </button>
@@ -263,14 +263,14 @@
                     <h2 class="text-xl font-semibold text-gray-800">Oops, sepertinya Kamu Tidak Memiliki Langganan
                         Mentoring
                         Aktif.</h2>
-                    <p class="mt-2 text-gray-600">Ayo beli sekarang dan dapatkan review CV dari MySkill!</p>
+                    <p class="mt-2 text-gray-600">Ayo beli sekarang dan dapatkan review CV dari Pandai Digital!</p>
                     <button class="mt-4 bg-teal-500 text-white px-6 py-2 rounded-lg hover:bg-teal-600">
                         ⚡ Mulai Berlangganan Mentoring
                     </button>
                     <div class="mt-10">
                         <h3 class="text-lg font-semibold text-gray-800">Pembelian Sebelumnya</h3>
                         <p class="mt-2 text-gray-600">Hmm, sepertinya kamu belum pernah berlangganan review CV. Yuk segera
-                            berlangganan untuk dapatkan akses untuk review CV MySkill.</p>
+                            berlangganan untuk dapatkan akses untuk review CV Pandai Digital.</p>
                     </div>
                 @else
                     @php

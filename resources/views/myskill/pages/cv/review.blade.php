@@ -40,7 +40,7 @@
         <section class="bg-red-400 text-white lg:flex max-sm:hidden">
             <div class="flex justify-center items-center w-full">
                 <p class="text-center text-2xl font-bold text-white">Testimoni Peserta Review CV
-                    MySkill</p>
+                    Pandai Digital</p>
             </div>
         </section>
         <section class="bg-white bg-gradient-to-b from-red-400 to-red-500 text-white lg:flex ">
@@ -96,10 +96,10 @@
                             <i class="fas fa-chevron-right sm:text-base text-orange-600 mr-3"></i>Tentang Bootcamp
                         </p>
                         <!-- Gambar di sebelah kiri -->
-                        <p class="mb-4 lg:ml-4 lg:text-base max-sm:ml-2 text-black">MySkill paham, proses melamar magang
+                        <p class="mb-4 lg:ml-4 lg:text-base max-sm:ml-2 text-black">Pandai Digital paham, proses melamar magang
                             atau kerja
                             amat membingungkan. Kita seolah menebak-nebak standar HRD dalam menilai CV kita akan seperti
-                            apa? Untuk itu, HR Consultant MySkill hadir untuk membantu mereview CV kamu. Dalam waktu 7 hari
+                            apa? Untuk itu, HR Consultant Pandai Digital hadir untuk membantu mereview CV kamu. Dalam waktu 7 hari
                             kerja, kamu akan mendapatkan saran terperinci untuk meningkatkan kualitas CV lamaranmu.</p>
                         <div class="flex flex-col md:flex-row items-start">
 

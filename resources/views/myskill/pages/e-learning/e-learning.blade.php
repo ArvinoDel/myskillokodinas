@@ -33,7 +33,7 @@
         <!-- Section 2: Testimonials -->
         <section class="bg-gray-100 p-4 md:p-8">
             <div class="container mx-auto">
-                <h2 class="text-2xl font-bold mb-6 text-center">Testimoni Member E-learning MySkill</h2>
+                <h2 class="text-2xl font-bold mb-6 text-center">Testimoni Member E-learning Pandai Digital</h2>
 
                 <div class="flex overflow-x-auto space-x-4 pb-4 no-scrollbar">
                     @foreach ($testimonis as $testimoni)
@@ -99,7 +99,7 @@
                         class="w-full h-auto object-cover rounded-t-lg">
                     <div class="p-4 w-64">
                         <h3 class="font-bold mb-2 ">Ratusan Ribu Member. Terbukti Berdampak</h3>
-                        <p class="text-sm text-gray-600">Member MySkill telah terbukti diterima di National & Multinational
+                        <p class="text-sm text-gray-600">Member Pandai Digital telah terbukti diterima di National & Multinational
                             companies, membangun bisnis hingga freelance.</p>
                     </div>
                 </div>
@@ -130,7 +130,7 @@
                     <div id="card4" data-target="img4"
                         class="cards bg-white border border-gray-300 rounded-xl p-4 transition-transform duration-300 ease-in-out transform hover:scale-105 hover:border-indigo-500 focus:ring-2 focus:ring-light-blue-500 cursor-pointer shadow-md">
                         <h3 class="font-bold mb-2">Ratusan Ribu Member. Terbukti Berdampak</h3>
-                        <p class="text-sm text-gray-600">Member MySkill telah terbukti diterima di National & Multinational
+                        <p class="text-sm text-gray-600">Member Pandai Digital telah terbukti diterima di National & Multinational
                             companies, membangun bisnis hingga freelance.</p>
                     </div>
                 </div>
@@ -395,9 +395,9 @@
         {{-- Section 8: Portofolio --}}
         <section class="bg-gray-100 p-4 md:p-8">
             <div class="container mx-auto">
-                <h2 class="text-2xl font-bold mb-2 text-center">Portfolio Member MySkill</h2>
+                <h2 class="text-2xl font-bold mb-2 text-center">Portfolio Member Pandai Digital</h2>
                 <p class="mb-4 text-gray-600 text-center">Bangun Portfoliomu dengan belajar secara praktikal dan direct di
-                    MySkill.</p>
+                    Pandai Digital.</p>
 
                 <div class="flex overflow-x-auto space-x-4 pb-4 no-scrollbar">
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
@@ -519,13 +519,13 @@
             <div class="mx-auto">
                 <p class="text-4xl font-bold w-4/5 ml-4">E-learning & Training Untuk Perusahaan</p>
                 <br>
-                <p class="w-4/5 ml-4">Miliki akses ratusan konten elearning MySkill serta dukungan corporate training untuk
+                <p class="w-4/5 ml-4">Miliki akses ratusan konten elearning Pandai Digital serta dukungan corporate training untuk
                     perusahaan.
                     Miliki juga berbagai fitur khusus untuk mendorong employee performance and development.</p>
                 <br>
                 <a href="/corporate-service" type="button"
                     class="ml-4 focus:outline-none text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-4 py-3 me-2 mb-2 dark:focus:ring-yellow-900">Hubungi
-                    Tim MySkill</a>
+                    Tim Pandai Digital</a>
             </div>
 
         </section>

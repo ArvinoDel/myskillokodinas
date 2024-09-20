@@ -48,53 +48,55 @@
         </div>
 
 
-        <div
-            class="md:overflow-x-auto max-sm:overflow-x-auto flex md:ps-4 max-sm:ps-2 md:gap-x-2 lg:gap-5 max-sm:gap-2 no-scrollbar max-sm:flex-nowrap">
+        <div class="md:overflow-x-auto max-sm:overflow-x-auto flex md:ps-4 max-sm:ps-2 md:gap-x-2 lg:gap-5 max-sm:gap-2 no-scrollbar max-sm:flex-nowrap mx-4">
             <div
-                class="w-48 h-64 md:w-56 md:h-60 md:mb-2 md:mr-2 bg-white border border-black rounded-2xl shadow flex-shrink-0 snap-start max-sm:mb-2">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
+                class="w-48 h-64 max-sm:w-36 max-sm:h-52 max-md:w-40 max-md:h-56 md:w-56 md:h-60 md:mb-2 md:mr-2 bg-white border border-black rounded-2xl shadow flex-shrink-0 snap-start max-sm:mb-2">
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 max-sm:h-16 max-md:h-18 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/alumny.webp') }}" alt="" />
-                <div class="p-5">
-                    <h5 class="text-sm text-center font-bold text-gray-900">Noteworthy Lebih dari 1.5 Juta+ Member Belajar
-                        Bersama</h5>
+                <div class="p-6 max-sm:p-4"> <!-- Padding ditingkatkan -->
+                    <h5 class="text-sm max-sm:text-xs text-center font-bold text-gray-900">Noteworthy Lebih dari 1.5 Juta+ Member
+                        Belajar Bersama</h5>
                 </div>
             </div>
             <div
-                class="w-48 h-64 md:w-56 md:h-60 md:mb-2 md:mr-2 bg-white border border-black rounded-2xl shadow flex-shrink-0 snap-start max-sm:mb-2">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
+                class="w-48 h-64 max-sm:w-36 max-sm:h-52 max-md:w-40 max-md:h-56 md:w-56 md:h-60 md:mb-2 md:mr-2 bg-white border border-black rounded-2xl shadow flex-shrink-0 snap-start max-sm:mb-2">
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 max-sm:h-16 max-md:h-18 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/existing-member.webp') }}" alt="" />
-                <div class="p-5">
-                    <h5 class="text-sm text-center font-bold text-gray-900">Ribuan Alumni Bekerja di National & Global
-                        Company</h5>
+                <div class="p-6 max-sm:p-4"> <!-- Padding ditingkatkan -->
+                    <h5 class="text-sm max-sm:text-xs text-center font-bold text-gray-900">Ribuan Alumni Bekerja di National &
+                        Global Company</h5>
                 </div>
             </div>
             <div
-                class="w-48 h-64 md:w-56 md:h-60 md:mb-2 md:mr-2 bg-white border border-black rounded-2xl shadow flex-shrink-0 snap-start max-sm:mb-2">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
+                class="w-48 h-64 max-sm:w-36 max-sm:h-52 max-md:w-40 max-md:h-56 md:w-56 md:h-60 md:mb-2 md:mr-2 bg-white border border-black rounded-2xl shadow flex-shrink-0 snap-start max-sm:mb-2">
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 max-sm:h-16 max-md:h-18 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/new-member.webp') }}" alt="" />
-                <div class="p-5">
-                    <h5 class="text-sm text-center font-bold text-gray-900">Praktikal & Bersertifikat. Bangun Skill dan
-                        Portfolio</h5>
+                <div class="p-6 max-sm:p-4"> <!-- Padding ditingkatkan -->
+                    <h5 class="text-sm max-sm:text-xs text-center font-bold text-gray-900">Praktikal & Bersertifikat. Bangun Skill
+                        dan Portfolio</h5>
                 </div>
             </div>
             <div
-                class="w-48 h-64 md:w-56 md:h-60 md:mb-2 md:mr-2 bg-white border border-black rounded-2xl shadow flex-shrink-0 snap-start max-sm:mb-2">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
+                class="w-48 h-64 max-sm:w-36 max-sm:h-52 max-md:w-40 max-md:h-56 md:w-56 md:h-60 md:mb-2 md:mr-2 bg-white border border-black rounded-2xl shadow flex-shrink-0 snap-start max-sm:mb-2">
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 max-sm:h-16 max-md:h-18 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/practical.webp') }}" alt="" />
-                <div class="p-5">
-                    <h5 class="text-sm text-center font-bold text-gray-900">4.9 Rating di Course Report & Award LinkedIn Top
-                        Startup</h5>
+                <div class="p-6 max-sm:p-4"> <!-- Padding ditingkatkan -->
+                    <h5 class="text-sm max-sm:text-xs text-center font-bold text-gray-900">4.9 Rating di Course Report & Award
+                        LinkedIn Top Startup</h5>
                 </div>
             </div>
             <div
-                class="w-44 h-64 md:w-56 md:h-60 bg-white border md:mr-2 border-black rounded-2xl shadow flex-shrink-0 max-sm:mr-2">
-                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 lg:w-28 lg:h-28"
+                class="w-44 h-64 max-sm:w-32 max-sm:h-52 max-md:w-36 max-md:h-56 md:w-56 md:h-60 bg-white border md:mr-2 border-black rounded-2xl shadow flex-shrink-0 max-sm:mr-2">
+                <img class="mx-auto rounded-t-lg my-4 w-auto h-24 max-sm:h-16 max-md:h-18 lg:w-28 lg:h-28"
                     src="{{ asset('../home-myskill/rating.webp') }}" alt="" />
-                <div class="p-5">
-                    <h5 class="text-sm text-center font-bold text-gray-900">50k++ New Member Ikut Belajar Bulan</h5>
+                <div class="p-6 max-sm:p-4"> <!-- Padding ditingkatkan -->
+                    <h5 class="text-sm max-sm:text-xs text-center font-bold text-gray-900">50k++ New Member Ikut Belajar Bulan
+                    </h5>
                 </div>
             </div>
         </div>
+        
+
 
 
     </div>
@@ -235,20 +237,20 @@
         Ngoding
     </h2>
 
-<div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar ps-6 gap-11"
-    style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
-    ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
-    onmouseup="this.classList.remove('touching')">
-    @foreach ($album as $album)
-    <div class="snap-always snap-center flex-shrink-0 w-52 h-full mb-4 bg-white shadow-lg border rounded-lg">
-        <div class="flex flex-col justify-center items-center">
-            <img class="rounded-2xl py-2 w-32 h-32 object-cover"
-                src="{{ asset('img_album/' . $album->gbr_album) }}" alt="Album Image" />
-        </div>
-        <p class="text-base font-semibold text-black text-center p-4">{{ $album->jdl_album }}</p>
+    <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar ps-6 gap-11"
+        style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
+        ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
+        onmouseup="this.classList.remove('touching')">
+        @foreach ($album as $album)
+            <div class="snap-always snap-center flex-shrink-0 w-52 h-full mb-4 bg-white shadow-lg border rounded-lg">
+                <div class="flex flex-col justify-center items-center">
+                    <img class="rounded-2xl py-2 w-32 h-32 object-cover"
+                        src="{{ asset('img_album/' . $album->gbr_album) }}" alt="Album Image" />
+                </div>
+                <p class="text-base font-semibold text-black text-center p-4">{{ $album->jdl_album }}</p>
+            </div>
+        @endforeach
     </div>
-    @endforeach
-</div>
 
     {{-- Section : Mentors --}}
     <section class="bg-gray-100 py-3 my-3 px-4 lg:mt-20">
