@@ -62,7 +62,7 @@
                         x-transition:leave-start="transform opacity-100 scale-100">
                         <div class="flex justify-center items-center space-x-3 cursor-pointer">
                             <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-900">
-                                <img src="{{ Auth::user()->foto ? asset('../foto_user/' . Auth::user()->foto) : '../foto_user/blank.png' }}"
+                                <img src="{{ Auth::user()->foto ? asset('./foto_user/' . Auth::user()->foto) : './foto_user/blank.png' }}"
                                     alt="User Profile Picture" class="w-full h-full object-cover">
                             </div>
                             <div class="font-semibold text-gray-900 text-lg">
@@ -218,8 +218,8 @@
                     <a href="/my-profile">
                         <div class="flex justify-center items-center space-x-3 cursor-pointer">
                             <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-900">
-                                <img src="https://images.unsplash.com/photo-1610397095767-84a5b4736cbd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
-                                    alt="" class="w-full h-full object-cover">
+                                <img src="{{ Auth::user()->foto ? asset('./foto_user/' . Auth::user()->foto) : './foto_user/blank.png' }}"
+                                    alt="Profile User" class="w-full h-full object-cover">
                             </div>
                         </div>
                     </a>

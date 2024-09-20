@@ -67,7 +67,7 @@
                 <div class="header-body text-center mb-7">
                     <div class="row justify-content-center">
                         <div class="col-lg-6 col-md-8 col-sm-10 col-12"> <!-- Responsive column adjustment -->
-                            <img src="{{ asset('foto_identitas/favpertmin.png') }}" alt="Your Icon" class="mb-3"
+                            <img src="{{ asset('assets/logo.png') }}" alt="Your Icon" class="mb-3"
                                 style="width: 50px; height: 50px;">
                             <div class="card bg-secondary border-0 form-container">
                                 <div class="card-body px-lg-5 py-lg-5">

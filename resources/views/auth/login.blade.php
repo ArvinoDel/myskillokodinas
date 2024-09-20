@@ -26,7 +26,7 @@
                  <div class="header-body text-center mb-7">
                      <div class="row justify-content-center">
                          <div class="col-lg-5 col-md-7 col-sm-10 col-12">
-                             <img src="{{ asset('foto_identitas/favpertmin.png') }}" alt="Your Icon"
+                             <img src="{{ asset('assets/logo.png') }}" alt="Your Icon"
                                  class="mb-3 mx-auto d-block" style="width: 50px; height: 50px;">
                              <div class="card bg-secondary border-0 mb-0">
                                  <div class="card-body px-lg-5 py-lg-5">

@@ -10,22 +10,22 @@
                         class="bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg p-6 flex flex-col md:flex-row items-center space-x-0 md:space-x-4 space-y-4 md:space-y-0">
                         <div class="md:w-1/2">
                             <h2 class="text-2xl font-bold text-white mb-2">
-                                @if ($langganan === 'e-learning')
+                                @if ($langganan === 'E-Learning')
                                     eLearning
-                                @elseif ($langganan === 'bootcamp')
+                                @elseif ($langganan === 'Bootcamp')
                                     Bootcamp
-                                @elseif ($langganan === 'review')
+                                @elseif ($langganan === 'Review CV')
                                     Review
                                 @else
                                     Paket tidak tersedia
                                 @endif
                             </h2>
                             <p class="text-white mb-4">
-                                @if ($langganan === 'e-learning')
+                                @if ($langganan === 'E-Learning')
                                     Pelajari Ratusan Skill Bersertifikat Sekali Bayar. Fleksibel & Praktikal.
-                                @elseif ($langganan === 'bootcamp')
+                                @elseif ($langganan === 'Bootcamp')
                                     Program intensif untuk menguasai skill tertentu dengan pembelajaran terstruktur.
-                                @elseif ($langganan === 'review')
+                                @elseif ($langganan === 'Review CV')
                                     Dapatkan akses ke ulasan dan panduan belajar secara menyeluruh.
                                 @else
                                     Informasi paket belum tersedia.
@@ -143,19 +143,19 @@
                     <div class="bg-white p-6 rounded-lg shadow">
                         <h3 class="text-gray-700 font-semibold mb-4">RINGKASAN PRODUK</h3>
                         <div class="border-b border-gray-300 pb-4 mb-4">
-                            @if ($langganan === 'e-learning')
+                            @if ($langganan === 'E-Learning')
                                 <p class="text-gray-800">Paket Video E-Learning
                                     {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
                                 </p>
                                 <p class="text-gray-600">Rp.
                                     {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}
                                 </p>
-                            @elseif ($langganan === 'bootcamp')
+                            @elseif ($langganan === 'Bootcamp')
                                 <p class="text-gray-800">Paket Bootcamp
                                     {{ $bootcamps->judul_bootcamp ?? 'Data tidak tersedia' }}
                                 </p>
                                 <p class="text-gray-600">Rp. {{ number_format($bootcamps->harga_diskon, 0, ',', '.') }}</p>
-                            @elseif ($langganan === 'review')
+                            @elseif ($langganan === 'Review CV')
                                 <p class="text-gray-800">Paket Bootcamp
                                     {{ $programs->masa_berlangganan ?? 'Data tidak tersedia' }}
                                 </p>
@@ -187,7 +187,7 @@
                             </div>
                         </div>
                         <div class="border-b border-gray-300 pb-4 mb-4">
-                            @if ($langganan === 'e-learning')
+                            @if ($langganan === 'E-Learning')
                                 <div class="flex justify-between text-gray-700">
                                     <span>Subtotal</span>
                                     <span>Rp {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}</span>
@@ -196,7 +196,7 @@
                                     <span>PPN (11%)</span>
                                     <span>Rp {{ number_format($berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}</span>
                                 </div>
-                            @elseif ($langganan === 'bootcamp')
+                            @elseif ($langganan === 'Bootcamp')
                                 <div class="flex justify-between text-gray-700">
                                     <span>Subtotal</span>
                                     <span>Rp {{ number_format($bootcamps->harga_diskon, 0, ',', '.') }}</span>
@@ -205,7 +205,7 @@
                                     <span>PPN (11%)</span>
                                     <span>Rp {{ number_format($bootcamps->harga_diskon * 0.11, 0, ',', '.') }}</span>
                                 </div>
-                            @elseif ($langganan === 'review')
+                            @elseif ($langganan === 'Review CV')
                                 <div class="flex justify-between text-gray-700">
                                     <span>Subtotal</span>
                                     <span>Rp {{ number_format($programs->harga_diskon, 0, ',', '.') }}</span>
@@ -221,15 +221,15 @@
                         </div>
                         <div class="flex justify-between font-semibold text-gray-800 text-lg">
                             <span>Total</span>
-                            @if ($langganan === 'e-learning')
+                            @if ($langganan === 'E-Learning')
                                 <span>Rp
                                     {{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}
                                 </span>
-                            @elseif ($langganan === 'bootcamp')
+                            @elseif ($langganan === 'Bootcamp')
                                 <span>Rp
                                     {{ number_format($bootcamps->harga_diskon + $bootcamps->harga_diskon * 0.11, 0, ',', '.') }}
                                 </span>
-                            @elseif ($langganan === 'review')
+                            @elseif ($langganan === 'Review CV')
                                 <span>Rp
                                     {{ number_format($programs->harga_diskon + $programs->harga_diskon * 0.11, 0, ',', '.') }}
                                 </span>
@@ -248,7 +248,7 @@
 
             <div class="mt-9">
                 <!-- Header Section -->
-                @if ($langganan === 'e-learning')
+                @if ($langganan === 'E-Learning')
                     <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan E-Learning</h2>
                     <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Video E-Learning
                         {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
@@ -258,7 +258,7 @@
                             class="text-sm line-through text-gray-500">Rp.
                             {{ number_format($berlanggananss->harga_berlangganan, 0, ',', '.') }}</span>
                     </div>
-                @elseif ($langganan === 'bootcamp')
+                @elseif ($langganan === 'Bootcamp')
                     <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan Bootcamp</h2>
                     <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Bootcamp
                         {{ $bootcamps->judul_bootcamp ?? 'Data tidak tersedia' }}
@@ -268,7 +268,7 @@
                             class="text-sm line-through text-gray-500">Rp.
                             {{ number_format($bootcamps->harga, 0, ',', '.') }}</span>
                     </div>
-                @elseif ($langganan === 'review')
+                @elseif ($langganan === 'Review CV')
                     <h2 class="text-gray-500 font-semibold text-sm mb-2">Berlangganan Review</h2>
                     <h1 class="text-3xl font-bold text-gray-900 mb-4">Paket Review
                         {{ $programs->masa_berlangganan ?? 'Data tidak tersedia' }}
@@ -296,21 +296,21 @@
                 <div class="mt-6">
                     <h3 class="text-lg font-semibold text-teal-600 mb-2">Benefits</h3>
                     <ul class="text-gray-700 space-y-2">
-                        @if ($langganan === 'e-learning')
+                        @if ($langganan === 'E-Learning')
                             @foreach ($berlanggananss->benefits() as $benefit)
                                 <li class="flex items-start">
                                     <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
                                     <span>{{ $benefit->nama_benefit }}</span>
                                 </li>
                             @endforeach
-                        @elseif ($langganan === 'bootcamp')
+                        @elseif ($langganan === 'Bootcamp')
                             @foreach ($bootcamps->benefit() as $benefit)
                                 <li class="flex items-start">
                                     <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
                                     <span>{{ $benefit->nama_benefit }}</span>
                                 </li>
                             @endforeach
-                        @elseif ($langganan === 'review')
+                        @elseif ($langganan === 'Review CV')
                             @foreach ($programs->benefitscv() as $benefit)
                                 <li class="flex items-start">
                                     <i class="fa-solid fa-check-circle text-teal-600 mr-2"></i>
@@ -363,21 +363,21 @@
                                 id="invoice-number"></span></span>
                     </div>
                     <ul class="text-gray-600 mb-4 text-sm md:text-base">
-                        @if ($langganan === 'e-learning')
+                        @if ($langganan === 'E-Learning')
                             <li><strong>Program:</strong> Paket Video E-Learning
                                 {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
                             </li>
                             <li>Total:
                                 {{ number_format($berlanggananss->harga_diskon + $berlanggananss->harga_diskon * 0.11, 0, ',', '.') }}
                             </li>
-                        @elseif ($langganan === 'bootcamp')
+                        @elseif ($langganan === 'Bootcamp')
                             <li><strong>Program:</strong> Paket Bootcamp
                                 {{ $bootcamps->judul_bootcamp ?? 'Data tidak tersedia' }}
                             </li>
                             <li>Total:
                                 {{ number_format($bootcamps->harga_diskon + $bootcamps->harga_diskon * 0.11, 0, ',', '.') }}
                             </li>
-                        @elseif ($langganan === 'review')
+                        @elseif ($langganan === 'Review CV')
                             <li><strong>Program:</strong> Paket Review
                                 {{ $programs->masa_berlangganan ?? 'Data tidak tersedia' }}
                             </li>
@@ -406,7 +406,7 @@
                         @csrf
                         <input type="hidden" name="id_invoice" value="" id="invoice-number2">
 
-                        @if ($langganan === 'e-learning')
+                        @if ($langganan === 'E-Learning')
                             <input type="hidden" name="berlangganan_id" value="{{ $berlanggananss->id_berlangganan }}"
                                 id="berlangganan_id">
                             <input type="hidden" name="total"
@@ -414,7 +414,7 @@
                                 id="total">
                             <input type="hidden" name="program_name"
                                 value="Paket Video E-Learning {{ $berlanggananss->masa_berlangganan }}">
-                        @elseif ($langganan === 'bootcamp')
+                        @elseif ($langganan === 'Bootcamp')
                             <input type="hidden" name="berlangganan_id" value="{{ $bootcamps->id_bootcamp }}"
                                 id="berlangganan_id">
                             <input type="hidden" name="total"
@@ -422,7 +422,7 @@
                                 id="total">
                             <input type="hidden" name="program_name"
                                 value="Paket Bootcamp {{ $bootcamps->judul_bootcamp }}">
-                        @elseif ($langganan === 'review')
+                        @elseif ($langganan === 'Review CV')
                             <input type="hidden" name="berlangganan_id" value="{{ $programs->id_programcv }}"
                                 id="berlangganan_id">
                             <input type="hidden" name="total"
