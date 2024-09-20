@@ -5,7 +5,75 @@
         <section class="bg-gradient-to-b from-orange-400 to-red-500 p-4 md:p-8 h-1/6">
             <div class="container mx-auto">
                 <div class="grid grid-flow-row md:grid-flow-col bg-white rounded-3xl items-center h-auto md:h-96">
-                    @if ($vidActive)
+                    @if (Auth::check())
+                        @if ($vidActive)
+                            <div class="grid grid-flow-row text-center mx-4 md:mx-32 p-4">
+                                <h3 class="font-bold text-lg md:text-xl py-2">Yuk Berlangganan Untuk Akses Materinya!</h3>
+                                <h3 class="text-sm md:text-md py-2">Berlangganan sekarang juga untuk mulai. Pilih skill
+                                    apapun
+                                    dan pelajari kapanpun. Dapatkan video materi terstruktur, modul praktik plus webinar
+                                    series
+                                    rancangan para experts dari top companies.</h3>
+                                <div class="py-2">
+                                    <button class="font-semibold py-3 px-4 md:px-6 bg-yellow-400 rounded-xl">Berlangganan
+                                        Sekarang!</button>
+                                </div>
+                                <h3 class="font-bold text-xs md:text-sm text-red-500 p-2">10.000+ Orang Berlangganan Tiap
+                                    Bulan
+                                </h3>
+                            </div>
+                            <div class="mx-4 md:mx-28">
+                                <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Materi</h3>
+                                @foreach ($materi->isimateri as $isi)
+                                    <button
+                                        onclick="openFile('{{ asset('../video_files/' . $isi->file) }}', '{{ $isi->file }}')"
+                                        class="w-full">
+                                        <div class="py-2 flex items-center justify-between">
+                                            <div class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow">
+                                                <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
+                                                <h3 class="text-sm md:text-base">{{ $isi->judul_file }}</h3>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <i class="fa-regular fa-square text-lg md:text-xl"></i>
+                                            </div>
+                                        </div>
+                                    </button>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="grid grid-flow-row text-center mx-4 md:mx-32 p-4">
+                                <h3 class="font-bold text-lg md:text-xl py-2">Yuk Berlangganan Untuk Akses Materinya!</h3>
+                                <h3 class="text-sm md:text-md py-2">Berlangganan sekarang juga untuk mulai. Pilih skill
+                                    apapun
+                                    dan pelajari kapanpun. Dapatkan video materi terstruktur, modul praktik plus webinar
+                                    series
+                                    rancangan para experts dari top companies.</h3>
+                                <div class="py-2">
+                                    <button class="font-semibold py-3 px-4 md:px-6 bg-yellow-400 rounded-xl"
+                                        disabled>Berlangganan Sekarang!</button>
+                                </div>
+                                <h3 class="font-bold text-xs md:text-sm text-red-500 p-2">10.000+ Orang Berlangganan Tiap
+                                    Bulan
+                                </h3>
+                            </div>
+                            <div class="mx-4 md:mx-28">
+                                <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Materi</h3>
+                                @foreach ($materi->isimateri as $isi)
+                                    <button class="w-full" disabled>
+                                        <div class="py-2 flex items-center justify-between">
+                                            <div class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow">
+                                                <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
+                                                <h3 class="text-sm md:text-base">{{ $isi->judul_file }}</h3>
+                                            </div>
+                                            <div class="ml-auto">
+                                                <i class="fa-regular fa-square text-lg md:text-xl"></i>
+                                            </div>
+                                        </div>
+                                    </button>
+                                @endforeach
+                            </div>
+                        @endif
+                    @else
                         <div class="grid grid-flow-row text-center mx-4 md:mx-32 p-4">
                             <h3 class="font-bold text-lg md:text-xl py-2">Yuk Berlangganan Untuk Akses Materinya!</h3>
                             <h3 class="text-sm md:text-md py-2">Berlangganan sekarang juga untuk mulai. Pilih skill apapun
@@ -18,54 +86,8 @@
                             <h3 class="font-bold text-xs md:text-sm text-red-500 p-2">10.000+ Orang Berlangganan Tiap Bulan
                             </h3>
                         </div>
-                        <div class="mx-4 md:mx-28">
-                            <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Materi</h3>
-                            @foreach ($materi->isimateri as $isi)
-                                <button
-                                    onclick="openFile('{{ asset('../video_files/' . $isi->file) }}', '{{ $isi->file }}')"
-                                    class="w-full">
-                                    <div class="py-2 flex items-center justify-between">
-                                        <div class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow">
-                                            <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
-                                            <h3 class="text-sm md:text-base">{{ $isi->judul_file }}</h3>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <i class="fa-regular fa-square text-lg md:text-xl"></i>
-                                        </div>
-                                    </div>
-                                </button>
-                            @endforeach
-                        </div>
-                    @else
-                        <div class="grid grid-flow-row text-center mx-4 md:mx-32 p-4">
-                            <h3 class="font-bold text-lg md:text-xl py-2">Yuk Berlangganan Untuk Akses Materinya!</h3>
-                            <h3 class="text-sm md:text-md py-2">Berlangganan sekarang juga untuk mulai. Pilih skill apapun
-                                dan pelajari kapanpun. Dapatkan video materi terstruktur, modul praktik plus webinar series
-                                rancangan para experts dari top companies.</h3>
-                            <div class="py-2">
-                                <button class="font-semibold py-3 px-4 md:px-6 bg-yellow-400 rounded-xl"
-                                    disabled>Berlangganan Sekarang!</button>
-                            </div>
-                            <h3 class="font-bold text-xs md:text-sm text-red-500 p-2">10.000+ Orang Berlangganan Tiap Bulan
-                            </h3>
-                        </div>
-                        <div class="mx-4 md:mx-28">
-                            <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Materi</h3>
-                            @foreach ($materi->isimateri as $isi)
-                                <button class="w-full" disabled>
-                                    <div class="py-2 flex items-center justify-between">
-                                        <div class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow">
-                                            <i class="fa-regular fa-circle-play text-sm md:text-lg"></i>
-                                            <h3 class="text-sm md:text-base">{{ $isi->judul_file }}</h3>
-                                        </div>
-                                        <div class="ml-auto">
-                                            <i class="fa-regular fa-square text-lg md:text-xl"></i>
-                                        </div>
-                                    </div>
-                                </button>
-                            @endforeach
-                        </div>
                     @endif
+
 
                 </div>
                 <!-- Modal untuk video -->
