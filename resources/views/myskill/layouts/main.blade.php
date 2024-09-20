@@ -48,7 +48,7 @@
     <a target="_blank"
         href="https://wa.me/6285224216499?text=Saya%20tertarik%20untuk%20berlangganan%20bimbel%20online%20MySkill.%20Mohon%20informasi%20lebih%20lanjut%20mengenai%20paket%20langganan%2C%20harga%2C%20dan%20fitur%20yang%20tersedia.%20Terima%20kasih.">
         <button
-            class="fixed md:mb-4 max-sm:mb-10 end-12 max-sm:end-2 justify-center bottom-8  bg-orange-500 text-white p-3 rounded-full shadow-lg">
+            class="fixed md:mb-10 max-sm:mb-10 end-4 max-sm:end-4 justify-center bottom-8  bg-orange-500 text-white p-3 rounded-full shadow-lg">
             <i class="fab fa-whatsapp " style="font-size: 20px; padding: 4px; margin-left: 4px;"></i>
             <span class="max-sm:hidden">Whatsapp</span>
         </button>
