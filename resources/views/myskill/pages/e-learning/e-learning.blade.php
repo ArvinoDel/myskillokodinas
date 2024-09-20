@@ -257,12 +257,20 @@
                                 </div>
                                 <h3 class="font-bold text-sm mb-4">{{ $category->nama_kategori }}</h3>
                                 <div class="flex items-center text-xs text-gray-500">
-                                    <div class="flex items-center text-sm mt-1"><span class="mr-2">👤 21.439</span>
-                                    </div>
                                 </div>
                                 <div class="flex items-center mt-2">
-                                    <div class="flex items-center text-sm"><span class="mr-2">📅 9 Topik - 147
-                                            Materi</span></div>
+                                    <div class="flex items-center text-sm"> @php
+                                        $topiks = $materis
+                                            ->where('id_kategori_program', $category->id_kategori_program)
+                                            ->groupBy('id_topik')
+                                            ->count();
+                                        $materiCount = $materis
+                                            ->where('id_kategori_program', $category->id_kategori_program)
+                                            ->count();
+                                    @endphp
+                                        <span class="mr-2">📅 {{ $topiks }} Topik - {{ $materiCount }}
+                                            Materi</span>
+                                    </div>
                                 </div>
                                 <div class="flex items-center mt-2">
                                     <span class="text-yellow-400 text-sm">★★★★★</span>

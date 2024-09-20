@@ -116,6 +116,9 @@ class MateriController extends Controller
      */
     public function show(string $id_materi)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login'); // Ganti 'login' dengan nama rute login kamu
+        }
         // Fetch the materi by id_materi
         $materi = Materi::with('isimateri')->where('id_materi', $id_materi)->firstOrFail();
         $materis = Materi::all();
