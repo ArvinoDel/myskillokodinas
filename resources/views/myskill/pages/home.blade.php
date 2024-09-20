@@ -275,7 +275,7 @@
     @foreach ($logo_bawah as $lb)
     <div
         class="snap-always snap-center object-cover p-3 flex-shrink-0 w-48 h-24 border border-black rounded-xl flex items-center justify-center">
-        <img class="w-auto" src="{{ asset('foto_metode/' . $lb->gambar) }}" alt="" />
+        <img class="w-auto h-auto" src="{{ asset('foto_metode/' . $lb->gambar) }}" alt="" />
     </div>
     @endforeach
 
