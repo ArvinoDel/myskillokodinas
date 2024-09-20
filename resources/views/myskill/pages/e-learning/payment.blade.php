@@ -36,17 +36,16 @@
                         </div>
                         <div class="md:w-3/4">
                             <img src="
-                                @if ($langganan === 'e-learning') {{ asset('foto_banner/2.png') }}
-                                @elseif ($langganan === 'bootcamp')
-                                    {{ asset('foto_banner/1.png') }}
-                                @elseif ($langganan === 'review')
-                                    {{ asset('foto_banner/5.png') }}
+                                @if ($langganan === 'E-Learning') {{ asset('foto_banner/' . $banner->gambar) }}
+                                @elseif ($langganan === 'Bootcamp')
+                                 {{ asset('foto_banner/' . $banner->gambar) }}
+                                @elseif ($langganan === 'Review CV')
+                                 {{ asset('foto_banner/' . $banner->gambar) }}
                                 @else
                                     https://placehold.co/250x150 @endif
                             "
                                 alt="Banner Image" class="rounded-lg mx-auto">
                         </div>
-
                     </div>
 
                     <!-- Testimonial Section -->
@@ -148,7 +147,8 @@
                                 <p class="text-gray-800">Paket Video E-Learning
                                     {{ $berlanggananss->masa_berlangganan ?? 'Data tidak tersedia' }}
                                 </p>
-                                <p class="text-gray-600">Rp. {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}
+                                <p class="text-gray-600">Rp.
+                                    {{ number_format($berlanggananss->harga_diskon, 0, ',', '.') }}
                                 </p>
                             @elseif ($langganan === 'bootcamp')
                                 <p class="text-gray-800">Paket Bootcamp

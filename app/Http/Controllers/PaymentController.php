@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bannerslider;
 use App\Models\Metode;
 use App\Models\Payment;
 use App\Models\Programcv;
@@ -93,7 +94,8 @@ class PaymentController extends Controller
     {
         $berlanggananss = Berlangganan::all();
         $metod = Metode::all();
-        $langganan = "e-learning";
+        $langganan = "E-Learning";
+        $banner = Bannerslider::where('judul', $langganan)->first();
 
 
         // Menyaring data berlangganan berdasarkan $id
@@ -102,14 +104,15 @@ class PaymentController extends Controller
 
         // Logika untuk menampilkan halaman pembayaran
         // Anda bisa mengambil data berlangganan berdasarkan $id di sini
-        return view('myskill.pages.e-learning.payment', compact('id', 'berlanggananss', 'metod', 'langganan'));
+        return view('myskill.pages.e-learning.payment', compact('id', 'berlanggananss', 'banner', 'metod', 'langganan'));
     }
 
     public function bootcamp($id)
     {
         $bootcamps = Bootcamp::all();
         $metod = Metode::all();
-        $langganan = "bootcamp";
+        $langganan = "Bootcamp";
+        $banner = Bannerslider::where('judul', $langganan)->first();
 
 
         // Menyaring data berlangganan berdasarkan $id
@@ -118,21 +121,23 @@ class PaymentController extends Controller
 
         // Logika untuk menampilkan halaman pembayaran
         // Anda bisa mengambil data berlangganan berdasarkan $id di sini
-        return view('myskill.pages.e-learning.payment', compact('id', 'bootcamps', 'metod', 'langganan'));
+        return view('myskill.pages.e-learning.payment', compact('id', 'bootcamps', 'banner', 'metod', 'langganan'));
     }
 
     public function review($id)
     {
         $metod = Metode::all();
         $programs = Programcv::all();
-        $langganan = "review";
+        $langganan = "Review CV";
+        $banner = Bannerslider::where('judul', $langganan)->first();
+
 
 
         $programs = $programs->where('id_programcv', $id)->first();
         $programs->id_benefits = json_decode($programs->id_benefits); // Decode JSON
         // Logika untuk menampilkan halaman pembayaran
         // Anda bisa mengambil data berlangganan berdasarkan $id di sini
-        return view('myskill.pages.e-learning.payment', compact('id', 'programs', 'metod', 'langganan'));
+        return view('myskill.pages.e-learning.payment', compact('id', 'programs', 'banner', 'metod', 'langganan'));
     }
 
     public function approve($id)
@@ -181,7 +186,7 @@ class PaymentController extends Controller
             if ($request->hasFile('gambar')) {
                 $file = $request->file('gambar');
                 $fileName = time() . '_' . $file->getClientOriginalName();
-                $file->move(public_path('bukti_payment'), $fileName); // Simpan di public/bukti_payment
+                $file->move("./bukti_payment", $fileName); // Simpan di public/bukti_payment
             }
 
             // Bersihkan format angka 'total' (hapus titik pemisah ribuan)

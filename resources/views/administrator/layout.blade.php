@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Welcome Administrator-</title>
-  <link rel="icon" href="{{ asset('foto_identitas/Website DPPKB Karawang 2_JUgtyyIC4x6eZLRfKWazW.png')}}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('foto_identitas/favpertmin.png')}}" type="image/x-icon">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <link rel="stylesheet" href="{{ url('assets/css/sweetalert2.min.css') }}" type="text/css">
   <link rel="stylesheet" href="{{ url('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
