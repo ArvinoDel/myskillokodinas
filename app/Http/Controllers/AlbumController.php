@@ -38,7 +38,7 @@ class AlbumController extends Controller
         if (!empty($search)) {
             $query->where('jdl_album', 'like', "%$search%")->orWhere('keterangan', 'like', "%$search%");
         }
-  
+
         if (!empty($hari)) {
             $query->where('hari', $hari);
         }
@@ -80,10 +80,10 @@ class AlbumController extends Controller
         $judul = $request->judul;
         $gambarName = null;
 
-        if ($request->hasFile('cover')) {
+        if ($request->hasFile('gbr_album')) {
             $gambar = $request->file("cover");
             $gambarName = $gambar->getClientOriginalName();
-            $gambar->move("./img_album/", $gambarName);
+            $gambar->move("./gbr_album/", $gambarName);
         }
 
         Album::create([
@@ -135,36 +135,36 @@ class AlbumController extends Controller
             'keterangan' => 'required|string|max:255',
             'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-        
+
         $album = Album::findOrFail($id_album); // Temukan record yang ingin diperbarui
-        
+
         $judul = $request->judul;
         $gambarName = $album->gbr_album;
-        
-        if ($request->hasFile('cover')) {
-            $gambar = $request->file("cover");
+
+        if ($request->hasFile('gbr_album')) {
+            $gambar = $request->file("gbr_album");
             $gambarName = $gambar->getClientOriginalName();
             $gambar->move("./img_album/", $gambarName);
-            
+
             // Hapus gambar lama jika ada
             if ($album->gbr_album && file_exists("./img_album/" . $album->gbr_album)) {
                 unlink("./img_album/" . $album->gbr_album);
             }
         }
-        
+
         $album->update([
             "jdl_album" => $judul,
             "keterangan" => $validated['keterangan'],
             "gbr_album" => $gambarName,
-            "aktif" => $request->aktif ?? 'Y', 
+            "aktif" => $request->aktif ?? 'Y',
         ]);
-        
+
         return response()->json([
             'url' => route('administrator.album.index'),
             'success' => true,
             'message' => 'Data Album Berhasil Diperbarui'
         ]);
-        
+
     }
 
     /**

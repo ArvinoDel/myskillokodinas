@@ -235,20 +235,20 @@
         Ngoding
     </h2>
 
-    <div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar ps-6 gap-11"
-        style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
-        ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
-        onmouseup="this.classList.remove('touching')">
-        @foreach ($album as $album)
-            <div class="snap-always snap-center flex-shrink-0 w-52 h-full mb-4 bg-white shadow-lg border rounded-lg">
-                <div class="flex flex-col justify-center items-center">
-                    <img class="rounded-2xl py-2 w-32 h-32 object-cover"
-                        src="{{ asset('img_album/' . $album->gbr_album) }}" alt="Album Image" />
-                </div>
-                <p class="text-base font-semibold text-black text-center p-4">Main di Perusahaan</p>
-            </div>
-        @endforeach
+<div class="snap-x snap-mandatory flex overflow-x-auto no-scrollbar ps-6 gap-11"
+    style="scrollbar-width: none; -ms-overflow-style: none;" ontouchstart="this.classList.add('touching')"
+    ontouchend="this.classList.remove('touching')" onmousedown="this.classList.add('touching')"
+    onmouseup="this.classList.remove('touching')">
+    @foreach ($album as $album)
+    <div class="snap-always snap-center flex-shrink-0 w-52 h-full mb-4 bg-white shadow-lg border rounded-lg">
+        <div class="flex flex-col justify-center items-center">
+            <img class="rounded-2xl py-2 w-32 h-32 object-cover"
+                src="{{ asset('img_album/' . $album->gbr_album) }}" alt="Album Image" />
+        </div>
+        <p class="text-base font-semibold text-black text-center p-4">{{ $album->jdl_album }}</p>
     </div>
+    @endforeach
+</div>
 
     {{-- Section : Mentors --}}
     <section class="bg-gray-100 py-3 my-3 px-4 lg:mt-20">

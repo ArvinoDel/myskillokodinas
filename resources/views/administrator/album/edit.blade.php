@@ -35,7 +35,7 @@
                             <div class="d-flex align-items-center">
                                 <img id="preview" src="{{ url('img_album/'.$album->gbr_album) }}" alt="Preview" style="max-width: 100px; margin-top: 5px;" class="mr-3">
                                 <div class="flex-grow-1">
-                                    <input type="file" class="form-control" onchange="previewImage(event)" name="gbr_video" id="gbr_video">
+                                    <input type="file" class="form-control" onchange="previewImage(event)" name="gbr_album" id="gbr_album">
                                     <small class="form-text text-muted">Biarkan kosong jika tidak ingin mengubah gambar.</small>
                                 </div>
                             </div>

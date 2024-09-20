@@ -26,7 +26,7 @@
                         <tr>
                             <th style="padding: 5px;">Cover</th>
                             <td style="padding: 5px;">
-                                <input type="file" class="form-control" id="cover" name="cover">
+                                <input type="file" class="form-control" id="gbr_album" name="cover">
                             </td>
                         </tr>
                     </tbody>
