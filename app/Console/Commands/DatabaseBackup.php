@@ -29,7 +29,11 @@ class DatabaseBackup extends Command
     {
         $type = $this->option('type');
         $filename = "backup-{$type}-" . Carbon::now()->format('Y-m-d-H-i') . ".sql";
-        $command = "mysqldump --user=" . config("database.connections.mysql.username") ." --password=" . config("database.connections.mysql.password") . " --host=" . config("database.connections.mysql.host") . " " . config("database.connections.mysql.database") . " > " .  storage_path() . "/app/backup/" . $filename;
+        $command = "mysqldump --user=" . config("database.connections.mysql.username") .
+                   " --password=" . config("database.connections.mysql.password") .
+                   " --host=" . config("database.connections.mysql.host") .
+                   " --column-statistics=0 --no-tablespaces " . config("database.connections.mysql.database") .
+                   " > " . storage_path() . "/app/backup/" . $filename;
         $returnVar = NULL;
         $output  = NULL;
         exec($command, $output, $returnVar);

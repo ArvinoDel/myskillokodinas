@@ -64,8 +64,8 @@
         <!-- <h1>UpConstruction<span>.</span></h1> -->
     </a>
 
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list" id="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x" id="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
         <ul style="color: #ffc732;">
           <li class="parent-menu"><a href="{{ url('/company-profile')}}" class="active">Home</a></li>
@@ -167,6 +167,35 @@
 
   <div id="preloader"></div>
 
+
+  <script>
+    const mobileNavToggle = document.querySelector('.mobile-nav-toggle.mobile-nav-show');
+    const mobileNavHide = document.querySelector('.mobile-nav-toggle.mobile-nav-show');
+
+    // Tampilkan menu saat ikon menu diklik
+    mobileNavToggle.addEventListener('click', function() {
+        document.body.classList.add('mobile-nav-active');
+    });
+
+    // Sembunyikan menu saat ikon close diklik
+    mobileNavHide.addEventListener('click', function() {
+        document.body.classList.remove('mobile-nav-active');
+    });
+
+    // Tambahkan event listener untuk semua tautan navbar
+    const navLinks = document.querySelectorAll('.navbar a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const hasDropdown = link.nextElementSibling; // Cek apakah ada submenu
+            if (!hasDropdown) {
+                document.body.classList.remove('mobile-nav-active'); // Tutup navbar jika tidak ada submenu
+            }
+        });
+    });
+</script>
+
+
   <!-- Vendor JS Files -->
   <script src="{{ url('assets/js/sweetalert2.js') }}"></script>
   <script src="{{ url('template/UpCons/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -176,6 +205,8 @@
   <script src="{{ url('template/UpCons/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ url('template/UpCons/assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
   <script src="{{ url('template/UpCons/assets/vendor/php-email-form/validate.js') }}"></script>
+
+  <!-- Di bagian bawah layout, sebelum tag </body> -->
 
   <!-- Template Main JS File -->
   <script src="{{ url('template/UpCons/assets/js/main.js') }}"></script>
