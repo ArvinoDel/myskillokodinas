@@ -313,6 +313,7 @@ section {
   .navbar a,
   .navbar a:focus {
     display: flex;
+    pointer-events: auto; /* Pastikan bisa diklik */
     align-items: center;
     justify-content: space-between;
     padding: 0 3px;
@@ -359,6 +360,7 @@ section {
   .navbar li:hover>a {
     color: black;
   }
+  
 
   .navbar .dropdown ul {
     display: block;
@@ -447,7 +449,7 @@ section {
       max-width: 400px;
       bottom: 0;
       transition: 0.3s;
-      z-index: 9997;
+      z-index: 9998;
     }
 
     .navbar ul {
@@ -458,7 +460,7 @@ section {
       background: #222428;
       overflow-y: auto;
       transition: 0.3s;
-      z-index: 9998;
+      z-index: 9995;
     }
 
     .navbar a,
@@ -541,7 +543,7 @@ section {
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.6);
-      z-index: 9996;
+      z-index: 9991; /* Pastikan ini lebih rendah dari navbar */
     }
   }
 
