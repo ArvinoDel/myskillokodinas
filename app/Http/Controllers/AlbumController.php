@@ -75,15 +75,15 @@ class AlbumController extends Controller
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
             'keterangan' => 'required|string|max:255',
-            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'gbr_album' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
         $judul = $request->judul;
         $gambarName = null;
 
         if ($request->hasFile('gbr_album')) {
-            $gambar = $request->file("cover");
+            $gambar = $request->file("gbr_album");
             $gambarName = $gambar->getClientOriginalName();
-            $gambar->move("./gbr_album/", $gambarName);
+            $gambar->move("./img_album/", $gambarName);
         }
 
         Album::create([
@@ -133,7 +133,7 @@ class AlbumController extends Controller
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
             'keterangan' => 'required|string|max:255',
-            'cover' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'gbr_album' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $album = Album::findOrFail($id_album); // Temukan record yang ingin diperbarui

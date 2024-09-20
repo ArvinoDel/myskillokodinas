@@ -26,12 +26,12 @@
                         <tr>
                             <th style="padding: 5px;">Cover</th>
                             <td style="padding: 5px;">
-                                <input type="file" class="form-control" id="gbr_album" name="cover">
+                                <input type="file" class="form-control" id="gbr_album" name="gbr_album">
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="mt-4 d-flex justify-content-between">
+                <div class="mt-4 mb-4 d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <a href="{{ route('administrator.album.index') }}" class="btn btn-danger">Batal</a>
                 </div>

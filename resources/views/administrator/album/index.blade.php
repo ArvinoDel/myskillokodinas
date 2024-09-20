@@ -18,7 +18,7 @@
                             <option value="{{ $hari->hari }}" {{ request('hari') == $hari->hari ? 'selected' : '' }}>
                                 {{ $hari->hari }}
                             </option>
-                        @endforeach  
+                        @endforeach
                     </select>
                     <div class="input-group-append">
                         <button class="btn btn-outline-primary" type="submit">Filter</button>
@@ -49,7 +49,7 @@
                         <th>Aktif</th>
                         <th>Action</th>
                     </tr>
-                </thead>  
+                </thead>
                 <tbody>
                     @foreach ( $albums as $index => $album )
                     <tr>
@@ -153,7 +153,7 @@
                             });
                         }
                     });
-                } 
+                }
             });
         });
 

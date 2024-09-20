@@ -56,7 +56,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="mt-4 d-flex justify-content-between">
+            <div class="mt-4 mb-4 d-flex justify-content-between">
                 <button type="submit" class="btn btn-primary">Perbarui</button>
                 <a href="{{ route('administrator.album.index') }}" class="btn btn-danger">Batal</a>
             </div>
