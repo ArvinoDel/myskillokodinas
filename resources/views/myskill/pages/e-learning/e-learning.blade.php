@@ -5,7 +5,7 @@
         <section class="bg-gradient-to-b from-orange-400 to-red-500 p-4 md:p-8">
             <div class="container mx-auto">
                 <div class="flex flex-col md:flex-col lg:flex-row items-center">
-                    <img src="{{ asset('assets/e-learning/header.webp') }}" alt="Woman with laptop"
+                    <img loading="lazy"  src="{{ asset('assets/e-learning/header.webp') }}" alt="Woman with laptop"
                         class="mb-4 md:mb-4 w-full h-auto max-sm:max-w-xs md:max-w-sm lg:w-1/2 rounded-lg">
 
                     <div class="text-center lg:ml-6 lg:text-left">
@@ -40,7 +40,7 @@
                         <div
                             class="bg-white p-4 rounded-2xl shadow-md max-w-[220px] sm:max-w-[180px] md:max-w-[200px] flex-shrink-0">
                             <div class="flex items-center justify-center mb-4">
-                                <img class="rounded-lg w-full max-h-[220px] object-cover"
+                                <img loading="lazy"  class="rounded-lg w-full max-h-[220px] object-cover"
                                     src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}" alt="Testimoni Image" />
                             </div>
                             <a href="{{ $testimoni->link }}">
@@ -67,7 +67,7 @@
                 class="flex overflow-x-auto whitespace-wrap w-auto scroll-smooth sm:hidden md:hidden lg:hidden no-scrollbar b-3">
                 <!-- Card: Digital Marketing -->
                 <div class="flex flex-col w-64 bg-white border border-gray-300 rounded-lg shadow-md mr-4">
-                    <img src="{{ asset('assets/e-learning/1.webp') }}" alt="Digital Marketing"
+                    <img loading="lazy"  src="{{ asset('assets/e-learning/1.webp') }}" alt="Digital Marketing"
                         class="w-full h-auto object-cover rounded-t-lg">
                     <div class="p-4 w-64">
                         <h3 class="font-bold mb-2 ">Belajar Fleksibel dan Bersertifikat</h3>
@@ -77,7 +77,7 @@
                 </div>
                 <!-- Card: Digital Marketing -->
                 <div class="flex flex-col w-64 bg-white border border-gray-300 rounded-lg shadow-md mr-4">
-                    <img src="{{ asset('assets/e-learning/2.webp') }}" alt="Digital Marketing"
+                    <img loading="lazy"  src="{{ asset('assets/e-learning/2.webp') }}" alt="Digital Marketing"
                         class="w-full h-auto object-cover rounded-t-lg">
                     <div class="p-4 w-64">
                         <h3 class="font-bold mb-2 ">Kombinasi Strategi, Praktek & Portfolio</h3>
@@ -86,7 +86,7 @@
                     </div>
                 </div><!-- Card: Digital Marketing -->
                 <div class="flex flex-col w-64 bg-white border border-gray-300 rounded-lg shadow-md mr-4">
-                    <img src="{{ asset('assets/e-learning/4.webp') }}" alt="Digital Marketing"
+                    <img loading="lazy"  src="{{ asset('assets/e-learning/4.webp') }}" alt="Digital Marketing"
                         class="w-full h-auto object-cover rounded-t-lg">
                     <div class="p-4 w-64">
                         <h3 class="font-bold mb-2 ">Gabung Komunitas Diskusi secara Lifetime</h3>
@@ -95,7 +95,7 @@
                     </div>
                 </div><!-- Card: Digital Marketing -->
                 <div class="flex flex-col w-64 bg-white border border-gray-300 rounded-lg shadow-md mr-4">
-                    <img src="{{ asset('assets/e-learning/3.webp') }}" alt="Digital Marketing"
+                    <img loading="lazy"  src="{{ asset('assets/e-learning/3.webp') }}" alt="Digital Marketing"
                         class="w-full h-auto object-cover rounded-t-lg">
                     <div class="p-4 w-64">
                         <h3 class="font-bold mb-2 ">Ratusan Ribu Member. Terbukti Berdampak</h3>
@@ -138,16 +138,16 @@
                 <div class="w-full md:w-1/2 flex items-center justify-center">
                     <!-- Images for the Cards -->
                     <div class="w-11/12 h-auto max-w-[90%] object-cover fade-in-left" id="img1">
-                        <img src="{{ asset('assets/e-learning/1.webp') }}" alt="Image 1">
+                        <img loading="lazy"  src="{{ asset('assets/e-learning/1.webp') }}" alt="Image 1">
                     </div>
                     <div class="w-11/12 h-auto max-w-[90%] object-cover hidden" id="img2">
-                        <img src="{{ asset('assets/e-learning/2.webp') }}" alt="Image 2">
+                        <img loading="lazy"  src="{{ asset('assets/e-learning/2.webp') }}" alt="Image 2">
                     </div>
                     <div class="w-11/12 h-auto max-w-[90%] object-cover hidden" id="img3">
-                        <img src="{{ asset('assets/e-learning/4.webp') }}" alt="Image 3">
+                        <img loading="lazy"  src="{{ asset('assets/e-learning/4.webp') }}" alt="Image 3">
                     </div>
                     <div class="w-11/12 h-auto max-w-[90%] object-cover hidden" id="img4">
-                        <img src="{{ asset('assets/e-learning/3.webp') }}" alt="Image 4">
+                        <img loading="lazy"  src="{{ asset('assets/e-learning/3.webp') }}" alt="Image 4">
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@
                                     data-category-id="{{ $materi->kategoriprogram->id_kategori_program }}"
                                     class="card flex flex-col bg-white rounded-lg shadow-md h-full w-64">
                                     <div class="relative w-full h-64">
-                                        <img src="{{ asset('./thumbnail/' . $materi->thumbnail) }}"
+                                        <img loading="lazy"  src="{{ asset('./thumbnail/' . $materi->thumbnail) }}"
                                             alt="{{ $materi->nama_materi }}"
                                             class="absolute inset-0 w-full h-full object-contain rounded-t-lg">
                                     </div>
@@ -251,7 +251,7 @@
                             <div
                                 class="bg-white p-4 rounded-lg shadow-sm transition-transform duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
                                 <div class="w-full aspect-w-16 aspect-h-9">
-                                    <img src="{{ url('./kategori_program/' . $category->gambar) }}"
+                                    <img loading="lazy"  src="{{ url('./kategori_program/' . $category->gambar) }}"
                                         alt="{{ $category->nama_kategori }}"
                                         class="w-full h-full object-contain rounded-lg mb-2">
                                 </div>
@@ -298,7 +298,7 @@
                         <div class="snap-start flex-shrink-0 w-40 md:w-48 h-auto group">
                             <!-- Div untuk gambar -->
                             <div class="relative">
-                                <img src="{{ asset('foto_trainer/' . $train->foto) }}" alt="Professional"
+                                <img loading="lazy"  src="{{ asset('foto_trainer/' . $train->foto) }}" alt="Professional"
                                     class="w-full h-full object-cover rounded-lg">
                                 <div
                                     class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center">
@@ -402,7 +402,7 @@
                 <div class="flex overflow-x-auto space-x-4 pb-4 no-scrollbar">
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/DM.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/DM.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -412,7 +412,7 @@
                     </div>
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/UI.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/UI.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -422,7 +422,7 @@
                     </div>
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/DA.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/DA.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -432,7 +432,7 @@
                     </div>
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/ME.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/ME.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -442,7 +442,7 @@
                     </div>
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/DA.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/DA.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -452,7 +452,7 @@
                     </div>
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/DM.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/DM.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -461,17 +461,7 @@
                     </div>
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/UI.webp') }}" alt="" class="rounded-lg">
-                        </div>
-                        <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
-                        <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
-                        <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
-                            Portofolio</button>
-
-                    </div>
-                    <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
-                        <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/ME.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/UI.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -481,7 +471,7 @@
                     </div>
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/DM.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/ME.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -491,7 +481,7 @@
                     </div>
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/DA.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/DM.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -501,7 +491,17 @@
                     </div>
                     <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
                         <div class="flex items-center mb-4">
-                            <img src="{{ asset('assets/e-learning/UI.webp') }}" alt="" class="rounded-lg">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/DA.webp') }}" alt="" class="rounded-lg">
+                        </div>
+                        <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
+                        <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
+                        <button class="w-full bg-teal-500 text-white py-2 rounded-md font-semibold">Lihat
+                            Portofolio</button>
+
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-md min-w-[180px] sm:min-w-[200px] md:min-w-[220px]">
+                        <div class="flex items-center mb-4">
+                            <img loading="lazy"  src="{{ asset('assets/e-learning/UI.webp') }}" alt="" class="rounded-lg">
                         </div>
                         <h3 class="font-bold text-sm mb-4">Digital Marketing</h3>
                         <p class="text-xs text-gray-600 mb-2">Marketing Strategy for Pandora Catering</p>
@@ -515,7 +515,7 @@
 
         <!-- akses konten premium -->
         <section class="w-full h-auto rounded-b-3xl bg-orange-100 lg:flex items-center p-4">
-            <img src="{{ asset('./assets/bootcamp/pembelajaran.png') }}" class="h-72 w-100 lg:ml-20 mx-auto py-4">
+            <img loading="lazy"  src="{{ asset('./assets/bootcamp/pembelajaran.png') }}" class="h-72 w-100 lg:ml-20 mx-auto py-4">
             <div class="mx-auto">
                 <p class="text-4xl font-bold w-4/5 ml-4">E-learning & Training Untuk Perusahaan</p>
                 <br>

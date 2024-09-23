@@ -17,11 +17,11 @@
             <div class="flex flex-wrap gap-4 mb-10 w-screen">
                 <div class="flex-1 ">
                     <div class="flex gap-4 items-center bg-orange-100 justify-center">
-                        <img src="{{ asset('./foto_metode/startup.svg') }}" alt="Startup Studio"
+                        <img loading="lazy" src="{{ asset('./foto_metode/startup.svg') }}" alt="Startup Studio"
                             class="lg:w-40 max-sm:w-16 md:w-30  rounded-lg object-cover lg:p-6">
-                        <img src="{{ asset('./foto_metode/techinasia.svg') }}" alt="TECHINASIA"
+                        <img loading="lazy" src="{{ asset('./foto_metode/techinasia.svg') }}" alt="TECHINASIA"
                             class="lg:w-40 max-sm:w-16 md:w-30 rounded-lg object-cover lg:p-6">
-                        <img src="{{ asset('./foto_metode/technode.svg') }}" alt="Technode global"
+                        <img loading="lazy" src="{{ asset('./foto_metode/technode.svg') }}" alt="Technode global"
                             class="lg:w-40 max-sm:w-16 md:w-30 rounded-lg object-cover lg:p-6 max-sm:mr-8">
                     </div>
                 </div>
@@ -33,13 +33,13 @@
             <div class="flex justify-center gap-4 flex-wrap">
                 <div
                     class="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-4 sm:p-6 md:p-8 rounded-2xl text-white text-center max-w-xs">
-                    <img src="{{ asset('foto_trainer/mentors3.webp') }}" alt="Angga" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
+                    <img loading="lazy" src="{{ asset('foto_trainer/mentors3.webp') }}" alt="Angga" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
                     <p class="font-semibold">Angga</p>
                     <p>Pandai Digital</p>
                 </div>
                 <div
                     class="bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-4 sm:p-6 md:p-8 rounded-2xl text-white text-center max-w-xs">
-                    <img src="{{ asset('foto_trainer/mentors5.webp') }}" alt="Erahmat" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
+                    <img loading="lazy" src="{{ asset('foto_trainer/mentors5.webp') }}" alt="Erahmat" class="w-20 h-20 sm:w-24 sm:h-24 rounded-full mx-auto mb-4">
                     <p class="font-semibold">Erahmat</p>
                     <p>Pandai Digital</p>
                 </div>

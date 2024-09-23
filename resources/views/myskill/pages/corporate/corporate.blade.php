@@ -5,7 +5,7 @@
         class="flex flex-col lg:flex-row h-auto rounded-b-3xl bg-gradient-to-b from-orange-400 to-red-400 text-white w-screen">
         <!-- Adjust margin and padding for the image container -->
         <div class="flex justify-center lg:justify-start mb-4 lg:mb-0 lg:ml-16 mt-4 lg:mt-0">
-            <img src="{{ asset('./assets/corporate/corporate.webp') }}" alt="Corporate"
+            <img loading="lazy" src="{{ asset('./assets/corporate/corporate.webp') }}" alt="Corporate"
                 class="h-48 lg:mt-5 w-auto lg:h-64 lg:w-auto object-cover">
         </div>
 
@@ -37,11 +37,11 @@
             </div>
 
             <div class="flex flex-wrap justify-center lg:justify-start items-center space-x-4 mb-4">
-                <img src="./assets/corporate/microsoft.webp" alt="Microsoft" class="h-6">
-                <img src="./assets/corporate/kemenkeu.webp" alt="kemenkeu" class="h-6">
-                <img src="./assets/corporate/bank-mandiri.webp" alt="mandiri" class="h-6">
-                <img src="./assets/corporate/bank-indonesia.webp" alt="bi" class="h-6">
-                <img src="./assets/corporate/mizan.webp" alt="mizan" class="h-6">
+                <img loading="lazy" src="./assets/corporate/microsoft.webp" alt="Microsoft" class="h-6">
+                <img loading="lazy" src="./assets/corporate/kemenkeu.webp" alt="kemenkeu" class="h-6">
+                <img loading="lazy" src="./assets/corporate/bank-mandiri.webp" alt="mandiri" class="h-6">
+                <img loading="lazy" src="./assets/corporate/bank-indonesia.webp" alt="bi" class="h-6">
+                <img loading="lazy" src="./assets/corporate/mizan.webp" alt="mizan" class="h-6">
             </div>
         </div>
     </section>
@@ -51,18 +51,18 @@
         </h3>
         <div class="flex flex-col sm:flex-row justify-center mb-4 space-y-4 sm:space-y-0 sm:space-x-4 px-2">
             <div class="bg-white text-black p-4 rounded-lg w-full sm:w-56 border border-spacing-2 max-lg:text-sm">
-                <img src="./assets/corporate/linkedin-top-startup.webp" alt="LinkedIn Top Startup Award"
+                <img loading="lazy" src="./assets/corporate/linkedin-top-startup.webp" alt="LinkedIn Top Startup Award"
                     class="mx-auto mb-2 max-lg:w-3/4">
                 <p class="text-sm font-medium">2X LinkedIn Top Startup Award</p>
                 <p class="text-xs">Satu-satunya startup Education Technology di Indonesia.</p>
             </div>
             <div class="bg-white text-black p-4 rounded-lg w-full sm:w-56 border border-spacing-2 max-lg:text-sm">
-                <img src="./assets/corporate/course-report.webp" alt="Course Report" class="mx-auto mb-2 max-lg:w-3/4">
+                <img loading="lazy" src="./assets/corporate/course-report.webp" alt="Course Report" class="mx-auto mb-2 max-lg:w-3/4">
                 <p class="text-sm font-medium">Rating 4.99 di Course Report</p>
                 <p class="text-xs">Mendapatkan rating sangat memuaskan dari para peserta.</p>
             </div>
             <div class="bg-white text-black p-4 rounded-lg w-full sm:w-56 border border-spacing-2 max-lg:text-sm">
-                <img src="./assets/corporate/userbase.webp" alt="Users" class="mx-auto mb-2 max-lg:w-3/4">
+                <img loading="lazy" src="./assets/corporate/userbase.webp" alt="Users" class="mx-auto mb-2 max-lg:w-3/4">
                 <p class="text-sm font-medium">Lebih dari 1.5 Juta Pengguna</p>
                 <p class="text-xs">Komunitas pengembangan skill terbesar di Indonesia.</p>
             </div>
@@ -74,7 +74,7 @@
         <h3 class="text-center mt-4 mr-12 text-3xl font-bold mb-4 text-black w-full">Berbagai Program Pandai Digital trainer</h3>
         <!-- Corporate Training -->
         <div class="flex flex-col lg:flex-row gap-8 px-4 py-6 items-center">
-            <img src="./assets/corporate/corporate-training.webp" alt="Corporate Training"
+            <img loading="lazy" src="./assets/corporate/corporate-training.webp" alt="Corporate Training"
                 class="h-56 w-full lg:h-72 lg:w-1/2 object-cover rounded-md mb-4 lg:mb-0">
             <div class="lg:w-1/2">
                 <h2 class="text-pink-600 text-xl lg:text-2xl font-bold ">Corporate Training</h2>
@@ -122,14 +122,14 @@
                     class="focus:outline-none text-white bg-pink-600 font-medium rounded-md max-sm:text-xs px-5 py-2.5 mb-4 dark:focus:ring-yellow-900">Pelajari
                     Performance Management Software</a>
             </div>
-            <img src="./assets/corporate/experience.webp" alt="Performance Management Software"
+            <img loading="lazy" src="./assets/corporate/experience.webp" alt="Performance Management Software"
                 class="h-64 object-cover shadow-lg rounded-lg md:mr-10 md:h-auto max-w-xs md:max-w-none mx-4 md:mx-0">
         </div>
 
 
         <!-- Corporate Campaign, Partnership & CSR -->
         <div class="flex flex-col lg:flex-row gap-12 py-6 justify-items-center px-4">
-            <img src="./assets/corporate/corporate.jpg" alt="Corporate Training"
+            <img loading="lazy" src="./assets/corporate/corporate.jpg" alt="Corporate Training"
                 class="h-48 w-auto lg:h-80 lg:w-auto object-cover rounded-md">
             <div>
                 <h2 class="text-pink-600 text-2xl font-bold">Corporate Campaign, Partnership & CSR</h2>

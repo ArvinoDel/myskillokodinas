@@ -3,7 +3,7 @@
     <!-- header here -->
     <section class="review w-screen h-auto">
         <section class="bg-white bg-gradient-to-b from-orange-400 to-red-400 text-white lg:flex md:flex md:flex-row">
-            <img src="{{ asset('./assets/review/reviewcv.png') }}"
+            <img loading="lazy"  src="{{ asset('./assets/review/reviewcv.png') }}"
                 class="lg:h-72 md:h-64 md:w-56 max-lg:w-1/4 lg:ml-16 py-2 max-sm:h-64 max-sm:w-64 md:ml-10 mx-auto">
             <!-- Added mx-auto for centering -->
             <div class="p-4"> <!-- Added text-center for centering text -->
@@ -23,11 +23,11 @@
                 </button>
                 <div class="flex items-center mt-2 max-sm:hidden md:hidden lg:flex lg:justify-start">
                     <div class="flex space-x-1">
-                        <img src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
-                        <img src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
-                        <img src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
-                        <img src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
-                        <img src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
+                        <img loading="lazy"  src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
+                        <img loading="lazy"  src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
+                        <img loading="lazy"  src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
+                        <img loading="lazy"  src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
+                        <img loading="lazy"  src="{{ asset('./assets/bootcamp/hero-header.png') }}" class="h-6 w-6 rounded-full">
                     </div>
                     <p class="ml-4 text-white text-md font-semibold text-nowrap">> 10.000 CV Telah Direview</p>
                 </div>
@@ -51,7 +51,7 @@
                     <div
                         class="bg-white p-4 rounded-2xl shadow-md max-w-[220px] sm:max-w-[180px] md:max-w-[200px] flex-shrink-0">
                         <div class="flex items-center justify-center mb-4">
-                            <img class="rounded-lg w-full max-h-[220px] object-cover"
+                            <img loading="lazy"  class="rounded-lg w-full max-h-[220px] object-cover"
                                 src="{{ asset('foto_testimoni/' . $testimoni->gambar) }}" alt="Testimoni Image" />
                         </div>
                         <a href="{{ $testimoni->link }}">
@@ -103,7 +103,7 @@
                             kerja, kamu akan mendapatkan saran terperinci untuk meningkatkan kualitas CV lamaranmu.</p>
                         <div class="flex flex-col md:flex-row items-start">
 
-                            <img src="./assets/corporate/benefit-main.webp" alt=""
+                            <img loading="lazy"  src="./assets/corporate/benefit-main.webp" alt=""
                                 class="w-60 mx-auto max-sm:justify-items-center md:w-1/3 mb-4 md:mb-0 md:mr-4">
                             <!-- Tulisan di sebelah kanan -->
                             <div>
@@ -150,7 +150,7 @@
                                 <div class="border rounded-lg p-4 flex-shrink-0 w-80">
                                     <div class="flex items-center">
                                         <!-- Gambar di sebelah kiri -->
-                                        <img src="./assets/corporate/benefit-additional-1.webp" alt=""
+                                        <img loading="lazy"  src="./assets/corporate/benefit-additional-1.webp" alt=""
                                             class="w-24 h-24 object-cover mr-4">
                                         <!-- Tulisan di sebelah kanan -->
                                         <div>
@@ -163,7 +163,7 @@
 
                                 <div class="border rounded-lg p-4 flex-shrink-0 w-80">
                                     <div class="flex items-center">
-                                        <img src="./assets/corporate/benefit-additional-2.webp" alt=""
+                                        <img loading="lazy"  src="./assets/corporate/benefit-additional-2.webp" alt=""
                                             class="w-24 h-24 object-cover mr-4">
                                         <div>
                                             <h5 class="font-bold text-lg mb-2">20 Template Surat Lamaran</h5>
@@ -175,7 +175,7 @@
 
                                 <div class="border rounded-lg p-4 flex-shrink-0 w-80">
                                     <div class="flex items-center">
-                                        <img src="./assets/corporate/benefit-additional-3.webp" alt=""
+                                        <img loading="lazy"  src="./assets/corporate/benefit-additional-3.webp" alt=""
                                             class="w-24 h-24 object-cover mr-4">
                                         <div>
                                             <h5 class="font-bold text-lg mb-2">100+ Powerful Keywords for CV</h5>
@@ -187,7 +187,7 @@
 
                                 <div class="border rounded-lg p-4 flex-shrink-0 w-80">
                                     <div class="flex items-center">
-                                        <img src="./assets/corporate/benefit-additional-4.webp" alt=""
+                                        <img loading="lazy"  src="./assets/corporate/benefit-additional-4.webp" alt=""
                                             class="w-24 h-24 object-cover mr-4">
                                         <div>
                                             <h5 class="font-bold text-lg mb-2">10 Template Email Lamaran</h5>
@@ -199,7 +199,7 @@
 
                                 <div class="border rounded-lg p-4 flex-shrink-0 w-80">
                                     <div class="flex items-center">
-                                        <img src="./assets/corporate/benefit-additional-5.webp" alt=""
+                                        <img loading="lazy"  src="./assets/corporate/benefit-additional-5.webp" alt=""
                                             class="w-24 h-24 object-cover mr-4">
                                         <div>
                                             <h5 class="font-bold text-lg mb-2">Interview Question & Tips</h5>
@@ -211,7 +211,7 @@
 
                                 <div class="border rounded-lg p-4 flex-shrink-0 w-80">
                                     <div class="flex items-center">
-                                        <img src="./assets/corporate/benefit-additional-6.webp" alt=""
+                                        <img loading="lazy"  src="./assets/corporate/benefit-additional-6.webp" alt=""
                                             class="w-24 h-24 object-cover mr-4">
                                         <div>
                                             <h5 class="font-bold text-lg mb-2">LinkedIn Guideline</h5>

@@ -12,7 +12,7 @@
 <body>
     <div class="flex w-full mt-5 mx-auto overflow-hidden bg-white rounded-lg lg:max-w-4xl">
         <div class="hidden lg:flex ms-10 lg:w-1/2 items-center justify-center image-container">
-            <img class="w-full h-full object-contain" src="{{ asset('assets/login.svg') }}">
+            <img loading="lazy" class="w-full h-full object-contain" src="{{ asset('assets/login.svg') }}">
         </div>
         <div class="w-full px-6 py-8 md:mx-24 lg:w-1/2">
             <p class="mt-3 text-xl text-start text-gray-900 font-bold :text-gray-200">

@@ -41,12 +41,12 @@
 
         <div class="flex lg:mx-32 lg:justify-start max-lg:justify-center space-x-1 mt-8">
             <!-- Social Media Icons -->
-            <a href="#"><img src="https://img.icons8.com/color/38/000000/tiktok--v1.png" alt="TikTok"></a>
-            <a href="#"><img src="https://img.icons8.com/color/38/000000/instagram-new--v1.png"
+            <a href="#"><img loading="lazy" src="https://img.icons8.com/color/38/000000/tiktok--v1.png" alt="TikTok"></a>
+            <a href="#"><img loading="lazy" src="https://img.icons8.com/color/38/000000/instagram-new--v1.png"
                     alt="Instagram"></a>
-            <a href="#"><img src="https://img.icons8.com/color/38/000000/linkedin.png" alt="LinkedIn"></a>
-            <a href="#"><img src="https://img.icons8.com/color/38/000000/twitter.png" alt="Twitter"></a>
-            <a href="#"><img src="https://img.icons8.com/color/38/000000/youtube-play.png" alt="YouTube"></a>
+            <a href="#"><img loading="lazy" src="https://img.icons8.com/color/38/000000/linkedin.png" alt="LinkedIn"></a>
+            <a href="#"><img loading="lazy" src="https://img.icons8.com/color/38/000000/twitter.png" alt="Twitter"></a>
+            <a href="#"><img loading="lazy" src="https://img.icons8.com/color/38/000000/youtube-play.png" alt="YouTube"></a>
         </div>
 
         <div class="mt-8">
@@ -54,8 +54,8 @@
             <div class="flex lg:mx-32 lg:justify-start max-lg:justify-center space-x-1 mt-2">
                 <!-- Payment Method Icons -->
                 @foreach ($metod as $pay)
-                    <img src="{{ asset('foto_metode/' . $pay->gambar) }}" class="w-16 h-16 object-contain mx-1"
-                        alt="Bank">
+                <img loading="lazy" src="{{ asset('foto_metode/' . $pay->gambar) }}" class="w-16 h-16 object-contain mx-1"
+                    alt="Bank">
                 @endforeach
                 <!-- Add more payment icons as needed -->
             </div>
