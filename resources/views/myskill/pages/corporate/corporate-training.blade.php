@@ -171,7 +171,7 @@
     </div>
 
 
-    @include('./Pandai Digital/partials.hubungi-kami')
+    @include('./myskill/partials.hubungi-kami')
 
 </section>
 </div>
