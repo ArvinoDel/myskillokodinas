@@ -71,6 +71,20 @@
         src="https://rawcdn.githack.com/ArvinoDel/MySkill/db1485d305b176ef2fc16baac98bcef23eb790fd/resources/js/buttons.js"
         defer></script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                // Jika gambar adalah gambar LCP, jangan gunakan lazy loading
+                if (img.src.includes('testimoni.png')) {
+                    img.removeAttribute('loading');
+                } else {
+                    img.setAttribute('loading', 'lazy');
+                }
+            });
+        });
+    </script>
+
     @if (session('error'))
         <script>
             Swal.fire({
