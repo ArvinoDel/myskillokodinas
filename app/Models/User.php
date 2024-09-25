@@ -31,7 +31,9 @@ class User extends Authenticatable
         'blokir',
         'no_telp',
         'id_session',
-        'password'
+        'password',
+        'is_subscribed', 
+        'paket_langganan' 
     ];
 
     /**

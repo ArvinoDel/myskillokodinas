@@ -52,6 +52,7 @@
                                 <th>Foto</th>
                                 <th>Blokir</th>
                                 <th>Level</th>
+                                <th>Status Berlangganan</th> <!-- Kolom baru -->
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -71,6 +72,13 @@
                                 </td>
                                 <td>{{ $user->blokir }}</td>
                                 <td>{{ $user->level }}</td>
+                                <td>
+                                    @if($user->payment && $user->payment->berlangganan_id)
+                                        Berlangganan (ID: {{ $user->payment->berlangganan_id }})
+                                    @else
+                                        Tidak Berlangganan
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <a href="{{ route('administrator.manajemenuser.edit', $user->id) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                         <i class="fa fa-edit"></i>

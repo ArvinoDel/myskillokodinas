@@ -114,6 +114,29 @@ if($users->foto != NULL){
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="padding: 5px; border: 1px solid #ddd;">Status Berlangganan</th>
+                                <td style="padding: 5px; border: 1px solid #ddd;">
+                                    <div class="form-check">
+                                        <input type="checkbox" class="form-check-input" id="is_subscribed" name="is_subscribed" value="1" 
+                                        {{ old('is_subscribed', $users->is_subscribed) ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="is_subscribed">Berlangganan</label>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr id="subscription_package_row" style="{{ old('is_subscribed', $users->is_subscribed) ? '' : 'display:none;' }}">
+                                <th style="padding: 5px; border: 1px solid #ddd;">Paket Langganan</th>
+                                <td style="padding: 5px; border: 1px solid #ddd;">
+                                    <select name="berlangganan_id" id="berlangganan_id" class="form-control">
+                                        <option value="">Pilih Paket</option> <!-- Opsi default -->
+                                        @foreach($subscription_packages as $id => $berlangganan_id)
+                                            <option value="{{ $id }}" {{ old('berlangganan_id', $users->paket_berlangganan) == $id ? 'selected' : '' }}>
+                                                {{ $berlangganan_id }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>                                                
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
@@ -219,6 +242,14 @@ if($users->foto != NULL){
                 });
             });
         });
+    });
+    document.getElementById('is_subscribed').addEventListener('change', function() {
+        var subscriptionPackageRow = document.getElementById('subscription_package_row');
+        if (this.checked) {
+            subscriptionPackageRow.style.display = '';
+        } else {
+            subscriptionPackageRow.style.display = 'none';
+        }
     });
 </script>
 @endsection
