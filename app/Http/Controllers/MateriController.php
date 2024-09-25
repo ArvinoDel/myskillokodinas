@@ -12,6 +12,7 @@ use App\Models\Berlangganan;
 use Illuminate\Http\Request;
 use App\Models\Kategoriprogram;
 use App\Models\Topik;
+use App\Models\Trainer;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -68,10 +69,11 @@ class MateriController extends Controller
      */
     public function create()
     {
+        $trainers = Trainer::all();
         $kategoriprograms = Kategoriprogram::all();
         $topiks = Topik::all();
         // dd($programs); // Debugging // Mengambil semua data program
-        return view('administrator.materi.create', compact('kategoriprograms', 'topiks'));
+        return view('administrator.materi.create', compact('trainers', 'kategoriprograms', 'topiks'));
     }
 
     /**
@@ -86,6 +88,7 @@ class MateriController extends Controller
             'thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'id_kategori_program' => 'nullable|exists:kategori_program,id_kategori_program',
             'id_topik' => 'nullable|exists:topik,id_topik',
+            'id_trainer' => 'nullable|exists:trainer,id_trainer',
         ]);
 
         $gambarName = null;
@@ -101,6 +104,7 @@ class MateriController extends Controller
             'nama_materi' => $request->nama_materi,
             'id_kategori_program' => $request->id_kategori_program,
             'id_topik' => $request->id_topik,
+            'id_trainer' => $request->id_trainer,
             'thumbnail' => $gambarName
         ]);
 
@@ -160,10 +164,10 @@ class MateriController extends Controller
     public function edit(string $id)
     {
         $materis = Materi::findOrFail($id);
-
+        $trainers = Trainer::all();
         $kategoriprograms = Kategoriprogram::all();
         $topiks = Topik::all();
-        return view('administrator.materi.edit', compact('materis', 'kategoriprograms', 'topiks'));
+        return view('administrator.materi.edit', compact('trainers', 'materis', 'kategoriprograms', 'topiks'));
     }
 
     /**
@@ -178,6 +182,7 @@ class MateriController extends Controller
             'nama_materi' => $request->nama_materi,
             'id_kategori_program' => $request->id_kategori_program,
             'id_topik' => $request->id_topik,
+            'id_trainer' => $request->id_trainer,
         ];
 
         if ($request->hasFile('thumbnail')) {

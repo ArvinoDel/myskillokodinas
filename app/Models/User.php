@@ -17,7 +17,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'menu_access' => 'array',
-    ];  
+    ];
 
      public $timestamps = false;
      protected $primaryKey = 'id';
@@ -83,5 +83,10 @@ class User extends Authenticatable
     public function ratings()
     {
         return $this->hasMany(Rating::class, 'id', 'id');
+    }
+
+    public function pengajar()
+    {
+        return $this->hasMany(Trainer::class, 'id');
     }
 }

@@ -51,6 +51,10 @@
                                         <input class="form-check-input" type="radio" name="level" id="user" value="user">
                                         <label class="form-check-label" for="user_biasa">User Biasa</label>
                                     </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="level" id="pengajar" value="pengajar">
+                                        <label class="form-check-label" for="pengajar">Pengajar</label>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>

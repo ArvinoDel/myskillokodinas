@@ -52,6 +52,19 @@
                                         </select>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Trainer</th>
+                                    <td style="padding: 5px;">
+                                        <select class="form-control" name="id_trainer" required>
+                                            <option value="">-- Pilih Trainer --</option>
+                                            @foreach ($trainers as $trainer)
+                                                <option value="{{ $trainer->id_trainer }}">
+                                                    {{ $trainer->nama_trainer }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
