@@ -69,18 +69,18 @@
                                         $UserModul = new \App\Models\UserModul();
                                        
                                         $cekMateri = $UserModul->umenu_akses('materi', session('id_session'));
-                                        // $cekTugas = $UserModul->umenu_akses('tugas', session('id_session'));
+                                        $cekPengumpulantugas = $UserModul->umenu_akses('pengumpulantugas', session('id_session'));
                                     @endphp
                                     @if ($cekMateri == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                         <li class="nav-item"><a class="nav-link"
                                                 href="{{ url('pengajar/materi') }}"><i
                                                     class='ni ni-settings-gear-65 text-orange'></i> Materi</a></li>
                                     @endif
-                                    {{-- @if ($cekTugas == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
+                                    @if ($cekPengumpulantugas == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                         <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('pengajar/tugas') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Tugas</a></li>
-                                    @endif --}}
+                                                href="{{ url('pengajar/pengumpulantugas') }}"><i
+                                                    class='ni ni-settings-gear-65 text-orange'></i> Pengumpulan Tugas</a></li>
+                                    @endif
                                 </ul>
                             </div>
                         </li>

@@ -157,7 +157,7 @@ class ManajemenuserController extends Controller
      */
     public function show(string $id)
     {
-        //   
+        //
         $users = User::all();
 
         foreach ($users as $user) {
@@ -224,7 +224,7 @@ class ManajemenuserController extends Controller
             'foto' => 'nullable|image|mimes:jpg,jpeg,png',
             "email" => 'required|string|email|max:255',
             'password' => 'nullable|string|min:6',
-            'level' => 'required|string|in:admin,user,kontributor'
+            'level' => 'required|string|in:admin,user,pengajar'
         ]);
 
         // $validated['password'] = bcrypt($validated['password']);

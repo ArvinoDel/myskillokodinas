@@ -69,6 +69,7 @@ use App\Http\Controllers\IdentitaswebsiteController;
 use App\Http\Controllers\IsimateripengajarController;
 use App\Http\Controllers\MateripengajarController;
 use App\Http\Controllers\MetodepembayaranController;
+use App\Http\Controllers\PengumpulantugasController;
 use App\Http\Controllers\ProgramcvController;
 use App\Http\Controllers\TopikController;
 use App\Http\Controllers\TugasController;
@@ -104,6 +105,11 @@ Route::prefix('pengajar')->name('pengajar.')->group(function () {
 
     Route::resource('tugas', TugasController::class)
         ->middleware('checkModul:tugas');
+
+    Route::resource('pengumpulantugas', PengumpulantugasController::class)
+        ->middleware('checkModul:pengumpulantugas');
+
+    Route::get('/pengumpulantugas/{id_pengumpulan}/edit', [PengumpulantugasController::class, 'edit'])->name('pengumpulantugas.edit');
 });
 
 Route::prefix('administrator')->name('administrator.')->group(function () {

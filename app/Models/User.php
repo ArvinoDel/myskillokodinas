@@ -77,4 +77,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function pengumpulantugas()
+    {
+        return $this->hasMany(Pengumpulantugas::class, 'id_tugas', 'id_tugas');
+    }
 }
