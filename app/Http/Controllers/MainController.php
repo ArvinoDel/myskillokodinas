@@ -64,6 +64,15 @@ class MainController extends Controller
         return view('myskill.pages.home', compact('logo', 'banners', 'links', 'album', 'testimonis', 'mitra', 'metod', 'logo_bawah', 'trainer'));
     }
 
+    public function layout(Request $request)
+    {
+        $logo = Logo::orderBy('id_logo', 'DESC')->first();
+
+
+        return view('myskill.layouts.main', compact('logo', ));
+
+    }
+
     public function learning(Request $request)
     {
 

@@ -6,6 +6,7 @@ use App\Models\Kategoriprogram;
 use App\Models\Program;
 use App\Models\Trainer;
 use App\Models\Trainerprogramgroup;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -37,7 +38,7 @@ class TrainerController extends Controller
             $query->where('nama_trainer', $nama_trainer);
         }
 
-        $trainers = $query->paginate(10);
+        $trainers = $query->with('pengajar')->paginate(10); // Tambahkan relasi user
 
         $nama_trainers = Trainer::select('nama_trainer')
                     ->groupBy('nama_trainer')
@@ -52,9 +53,10 @@ class TrainerController extends Controller
     public function create()
     {
         //
-        $programs = Program::all();
         $kategoriprogram = Kategoriprogram::all();
-        return view('administrator.trainer.create', compact('programs', 'kategoriprogram'));
+        $manajemenusers = User::where('level', 'pengajar')->get();
+
+        return view('administrator.trainer.create', compact('kategoriprogram', 'manajemenusers'));
     }
 
     /**
@@ -66,6 +68,7 @@ class TrainerController extends Controller
             'nama_trainer' => 'required|string|max:255',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'link' => 'nullable|string|max:9999',
+            'id' => 'nullable|exists:users,id',
         ]);
 
         $gambarName = null;
@@ -81,6 +84,7 @@ class TrainerController extends Controller
             'nama_trainer' => $validated['nama_trainer'],
             'foto' => $gambarName,
             'link' => $validated['link'],
+            'id' => $request->id,
         ]);
 
 
@@ -106,7 +110,9 @@ class TrainerController extends Controller
     {
         //
         $trainers = Trainer::findOrFail($id_trainer);
-        return view('administrator.trainer.edit', compact('trainers'));
+        $manajemenusers = User::where('level', 'pengajar')->get();
+
+        return view('administrator.trainer.edit', compact('trainers', 'manajemenusers'));
     }
 
     /**
@@ -119,6 +125,7 @@ class TrainerController extends Controller
         $updateData = [
             "nama_trainer" => $request->nama_trainer,
             "link" => $request->link,
+            'id' => $request->id,
         ];
 
         if ($request->hasFile('foto')) {
