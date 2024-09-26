@@ -40,20 +40,16 @@
                                 <th style="padding: 5px; border: 1px solid #ddd;">Level</th>
                                 <td style="padding: 5px; border: 1px solid #ddd;">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="level" id="kontributor" value="kontributor">
-                                        <label class="form-check-label" for="kontributor">Kontributor</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="level" id="admin" value="admin" checked>
-                                        <label class="form-check-label" for="administrator">Administrator</label>
+                                        <label class="form-check-label" for="administrator">admin</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="level" id="user" value="user">
-                                        <label class="form-check-label" for="user_biasa">User Biasa</label>
+                                        <label class="form-check-label" for="user_biasa">user</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="level" id="pengajar" value="pengajar">
-                                        <label class="form-check-label" for="pengajar">Pengajar</label>
+                                        <label class="form-check-label" for="pengajar">pengajar</label>
                                     </div>
                                 </td>
                             </tr>

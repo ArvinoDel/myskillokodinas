@@ -66,10 +66,12 @@ use App\Http\Controllers\SensorkomentarController;
 use App\Http\Controllers\KategoriprogramController;
 use App\Http\Controllers\TemplatewebsiteController;
 use App\Http\Controllers\IdentitaswebsiteController;
+use App\Http\Controllers\IsimateripengajarController;
+use App\Http\Controllers\MateripengajarController;
 use App\Http\Controllers\MetodepembayaranController;
 use App\Http\Controllers\ProgramcvController;
 use App\Http\Controllers\TopikController;
-
+use App\Http\Controllers\TugasController;
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -92,6 +94,17 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 // Route::get('administrator/dashboard', [DashboardController::class, "dashboard"]);
+
+Route::prefix('pengajar')->name('pengajar.')->group(function () {
+    Route::resource('materi', MateripengajarController::class)
+        ->middleware('checkModul:materi');
+
+    Route::resource('isimateri', IsimateripengajarController::class)
+        ->middleware('checkModul:isimateri');
+
+    Route::resource('tugas', TugasController::class)
+        ->middleware('checkModul:tugas');
+});
 
 Route::prefix('administrator')->name('administrator.')->group(function () {
     // Route::resource('halamanbaru', HalamanbaruController::class);
@@ -279,7 +292,7 @@ Route::get('/company-profile', [AppController::class, 'companyprofile']);
 Route::get('/', [MainController::class, 'index']);
 
 // routes/web.php
-Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
+// Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
 
 Route::get('/my-profile', function () {
     return view('./myskill/pages/profile/my-profile');

@@ -36,9 +36,9 @@ class DashboardController extends Controller
 
             $view = 'administrator.dashboard';
             return view($view, compact('manajemenmodul', 'berita', 'halamanbaru', 'agenda', 'users'));
-        } elseif ($user->level === 'kontributor') {
-            $users['kontributor'] = $user;
-            $view = 'administrator.dashkontributor';
+        } elseif ($user->level === 'pengajar') {
+            $users['pengajar'] = $user;
+            $view = 'pengajar.dashpengajar';
             return view($view, compact('berita', 'halamanbaru', 'agenda', 'users'));
         } else {
             return redirect()->route('home');
