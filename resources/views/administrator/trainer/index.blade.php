@@ -56,6 +56,7 @@
                                 <th class="text-center">Foto</th>
                                 <th class="text-center">Nama Trainer</th>
                                 <th class="text-center">Link Trainer</th>
+                                <th class="text-center">Username Pengajar</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -73,6 +74,7 @@
                                 </td>
                                 <td>{{ $trainer->nama_trainer }}</td>
                                 <td>{{ $trainer->link }}</td>
+                                <td>{{ $trainer->pengajar->username ?? 'data kosong' }}</td> <!-- Menampilkan username -->
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('administrator.trainer.edit', $trainer->id_trainer) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">

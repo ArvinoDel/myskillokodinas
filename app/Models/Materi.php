@@ -12,7 +12,7 @@ class Materi extends Model
     public $timestamps = false;
     protected $primaryKey = 'id_materi';
     protected $table = 'materi';
-    protected $fillable = ['id_materi', 'nama_materi', 'thumbnail', 'id_kategori_program', 'rating', 'id_topik'];
+    protected $fillable = ['id_materi', 'nama_materi', 'thumbnail', 'id_kategori_program', 'rating', 'id_topik', 'id_trainer'];
 
 
     public function kategoriprogram()
@@ -24,6 +24,12 @@ class Materi extends Model
     {
         return $this->hasMany(Isimateri::class, 'id_materi', 'id_materi');
     }
+
+    public function tugas()
+    {
+        return $this->hasMany(Tugas::class, 'id_materi', 'id_materi');
+    }
+
     public function ratings()
     {
         return $this->hasMany(Rating::class);
@@ -31,5 +37,9 @@ class Materi extends Model
     public function topik()
     {
         return $this->belongsTo(Topik::class, 'id_topik', 'id_topik');
+    }
+    public function trainer()
+    {
+        return $this->belongsTo(Trainer::class, 'id_trainer', 'id_trainer');
     }
 }

@@ -1,42 +1,49 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
 
+<style>
+    .table td {
+        word-wrap: break-word;
+        white-space: normal;
+    }
+</style>
+
 <div class="row">
     <div class="col">
-        <div class="card card-shadow">
-            <!-- Card header -->
+        <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="mb-0">Manajemen Users</h3>
-                <a href="{{ route('administrator.manajemenuser.create') }}" class="btn btn-primary btn-sm">Tambahkan Data</a>
+                <h3 class="mb-0">Materi</h3>
+                <a href="{{ route('pengajar.materi.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
+            <!-- Tambahkan form pencarian -->
             <div class="card-body">
-                <form action="{{ route('administrator.manajemenuser.index') }}" method="GET" class="mb-1">
+                <form action="{{ route('pengajar.materi.index') }}" method="GET" class="mb-1">
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
-                            <select class="form-control" name="level">
-                                <option value="">Pilih Level User</option>
-                                @foreach ($levels as $level)
-                                    <option value="{{ $level->level }}" {{ request('level') == $level->level ? 'selected' : '' }}>
-                                        {{ $level->level }}
+                            <select class="form-control" name="id_kategori_program">
+                                <option value="">Pilih Kategori</option>
+                                @foreach ($kategoriprograms as $kategori)
+                                    <option value="{{ $kategori->id_kategori_program }}" {{ request('id_kategori_program') == $kategori->id_kategori_program ? 'selected' : '' }}>
+                                        {{ $kategori->nama_kategori }}
                                     </option>
-                                @endforeach  
+                                @endforeach
                             </select>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Filter</button>
                             </div>
                         </div>
                         <div class="input-group" style="max-width: 300px;">
-                            <input type="text" class="form-control" placeholder="Cari User..." name="search" value="{{ request('search') }}">
+                            <input type="text" class="form-control" placeholder="Cari Materi..." name="search" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Cari</button>
                             </div>
                         </div>
                     </div>
-                    @if(request('search') || request('level'))
+                    @if(request('search') || request('nama_materi') || request('id_kategori_program'))
                     <div class="mt-2 d-flex justify-content-center">
-                        <a href="{{ route('administrator.manajemenuser.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
+                        <a href="{{ route('pengajar.materi.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
                     </div>
                     @endif
                 </form>
@@ -45,61 +52,67 @@
                     <table class="table table-bordered" id="datatable-basic">
                         <thead class="thead-light">
                             <tr>
-                                <th>No</th>
-                                <th>Username</th>
-                                <th>Nama Lengkap</th>
-                                <th>Email</th>
-                                <th>Foto</th>
-                                <th>Blokir</th>
-                                <th>Level</th>
-                                <th>Status Berlangganan</th> <!-- Kolom baru -->
+                                <th class="text-center">No</th>
+                                <th class="text-center">Judul Materi</th>
+                                <th class="text-center">Kategori</th>
+                                <th class="text-center">Gambar</th>
+                                <th class="text-center">Topik</th>
+                                <th class="text-center">Nama Pengajar</th> <!-- Tambahkan ini untuk Nama Trainer -->
                                 <th class="text-center">Action</th>
+                                <th class="text-center">Isi Materi</th>
+                                <th class="text-center">+ Tugas</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $index => $user)
+                            @foreach ($materis as $index => $materi)
                             <tr>
-                                <td>{{ $loop->iteration + $users->firstItem() - 1 }}</td>
-                                <td>{{ $user->username }}</td>
-                                <td>{{ $user->nama_lengkap }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $loop->iteration + $materis->firstItem() - 1 }}</td>
+                                <td>{{ $materi->nama_materi }}</td>
+                                <td>{{ $materi->kategoriprogram->nama_kategori }}</td>
                                 <td>
-                                    @if($user->foto != NULL)
-                                        <img style='width:32px; height:32px' src="{{ url('foto_user/'.$user->foto )}}">
+                                    @if($materi->thumbnail)
+                                        <img style="width: 80px" src="{{ url('thumbnail/'.$materi->thumbnail) }}">
                                     @else
-                                        <img style='width:32px; height:32px' src="{{ url('foto_user/default.png') }}">
+                                        <p>No Image</p>
                                     @endif
                                 </td>
-                                <td>{{ $user->blokir }}</td>
-                                <td>{{ $user->level }}</td>
-                                <td>
-                                    @if($user->payment && $user->payment->berlangganan_id)
-                                        Berlangganan (ID: {{ $user->payment->berlangganan_id }})
-                                    @else
-                                        Tidak Berlangganan
-                                    @endif
+                                <td>{{ $materi->topik->nama_topik }}</td>
+                                <td>{{ $materi->trainer->pengajar->username }}</td> <!-- Menampilkan Nama Trainer dari user yang terkait -->
+                                <td class="text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('pengajar.materi.edit', $materi->id_materi) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <button data-url="{{ route('pengajar.materi.destroy', $materi->id_materi) }}" type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('administrator.manajemenuser.edit', $user->id) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <button data-url="{{ route('administrator.manajemenuser.destroy', $user->id) }}"
-                                        type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('pengajar.isimateri.index', ['id_materi' => $materi->id_materi]) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="text-center">
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('pengajar.tugas.index', ['id_materi' => $materi->id_materi]) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                            <i class="fa fa-plus"></i>
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <br>
-                    {{ $users->links('vendor.pagination.bootstrap-4') }}
+                    {{ $materis->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('script')
@@ -169,13 +182,13 @@
                             });
                         }
                     });
-                } 
+                }
             });
         });
 
         // Fungsi untuk memperbarui nomor urut
         function updateRowNumbers() {
-            let startingIndex = {{ $users->firstItem() - 1 }};
+            let startingIndex = {{ $materis->firstItem() - 1 }};
             $('table tbody tr').each(function(index) {
                 $(this).find('td:first-child').text(startingIndex + index + 1);
             });

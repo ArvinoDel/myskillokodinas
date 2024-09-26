@@ -1,66 +1,44 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card card-shadow">
                 <div class="card-header">
-                    <h3 class="mb-0">Tambah Materi</h3>
+                    <h3 class="mb-0">Isi Materi</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrator.materi.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('pengajar.isimateri.store') }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
                         @csrf
                         <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                             <tbody>
                                 <tr>
+                                    <th style="padding: 5px;">URL</th>
+                                    <td style="padding: 5px;">
+                                        <input type="text" class="form-control" id="url" name="url"
+                                            placeholder="Masukkan URL Materi" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Judul File</th>
+                                    <td style="padding: 5px;">
+                                        <input type="text" class="form-control" id="judul_file" name="judul_file"
+                                            placeholder="Masukkan Judul File" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">File</th>
+                                    <td style="padding: 5px;">
+                                        <input type="file" class="form-control" id="file" name="file">
+                                    </td>
+                                </tr>
+                                <tr>
                                     <th style="padding: 5px;">Materi</th>
                                     <td style="padding: 5px;">
-                                        <input type="text" class="form-control" id="nama_materi" name="nama_materi"
-                                            placeholder="Masukkan Nama Materi" required>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style="padding: 5px;">Thumbnail</th>
-                                    <td style="padding: 5px;">
-                                        <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/*">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style="padding: 5px;">Kategori</th>
-                                    <td style="padding: 5px;">
-                                        <select class="form-control" name="id_kategori_program" required>
-                                            <option value="">-- Pilih Kategori --</option>
-                                            @foreach ($kategoriprograms as $katprogram)
-                                                <option value="{{ $katprogram->id_kategori_program }}">
-                                                    {{ $katprogram->nama_kategori }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style="padding: 5px;">Topik</th>
-                                    <td style="padding: 5px;">
-                                        <select class="form-control" name="id_topik" required>
-                                            <option value="">-- Pilih Topik --</option>
-                                            @foreach ($topiks as $topik)
-                                                <option value="{{ $topik->id_topik }}">
-                                                    {{ $topik->nama_topik }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th style="padding: 5px;">Trainer</th>
-                                    <td style="padding: 5px;">
-                                        <select class="form-control" name="id_trainer" required>
-                                            <option value="">-- Pilih Trainer --</option>
-                                            @foreach ($trainers as $trainer)
-                                                <option value="{{ $trainer->id_trainer }}">
-                                                    {{ $trainer->nama_trainer }}
-                                                </option>
+                                        <select class="form-control" name="id_materi" required>
+                                            @foreach ($materis as $materi)
+                                            <option hidden value="{{ $materi->id_materi }}" {{ request('id_materi') == $materi->id_materi ? 'selected' : '' }}>{{ $materi->nama_materi }}</option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -69,7 +47,7 @@
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.materi.index') }}" class="btn btn-danger">Batal</a>
+                            <a href="{{ route('pengajar.isimateri.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>

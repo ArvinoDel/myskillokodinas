@@ -1,105 +1,92 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
 
+<style>
+    .table td {
+        word-wrap: break-word;
+        white-space: normal;
+    }
+</style>
+
 <div class="row">
     <div class="col">
-        <div class="card card-shadow">
-            <!-- Card header -->
+        <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="mb-0">Manajemen Users</h3>
-                <a href="{{ route('administrator.manajemenuser.create') }}" class="btn btn-primary btn-sm">Tambahkan Data</a>
+                <h3 class="mb-0">Isi Materi</h3>
+                <a href="{{ route('pengajar.isimateri.create', ['id_materi' => request('id_materi')]) }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
+            <!-- Tambahkan form pencarian -->
             <div class="card-body">
-                <form action="{{ route('administrator.manajemenuser.index') }}" method="GET" class="mb-1">
+                <form action="{{ route('pengajar.isimateri.index') }}" method="GET" class="mb-1">
+                    <input type="hidden" name="id_materi" value="{{ request('id_materi') }}"> <!-- Tambahkan ini -->
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
-                            <select class="form-control" name="level">
-                                <option value="">Pilih Level User</option>
-                                @foreach ($levels as $level)
-                                    <option value="{{ $level->level }}" {{ request('level') == $level->level ? 'selected' : '' }}>
-                                        {{ $level->level }}
-                                    </option>
-                                @endforeach  
-                            </select>
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-primary" type="submit">Filter</button>
-                            </div>
+                            <a href="{{ route('pengajar.materi.index') }}" class="btn btn-primary btn-lg">Back Materi</a>
                         </div>
                         <div class="input-group" style="max-width: 300px;">
-                            <input type="text" class="form-control" placeholder="Cari User..." name="search" value="{{ request('search') }}">
+                            <input type="text" class="form-control" placeholder="Cari Isi Materi..." name="search" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Cari</button>
                             </div>
                         </div>
                     </div>
-                    @if(request('search') || request('level'))
-                    <div class="mt-2 d-flex justify-content-center">
-                        <a href="{{ route('administrator.manajemenuser.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
-                    </div>
-                    @endif
                 </form>
 
                 <div class="table-responsive py-4">
                     <table class="table table-bordered" id="datatable-basic">
                         <thead class="thead-light">
                             <tr>
-                                <th>No</th>
-                                <th>Username</th>
-                                <th>Nama Lengkap</th>
-                                <th>Email</th>
-                                <th>Foto</th>
-                                <th>Blokir</th>
-                                <th>Level</th>
-                                <th>Status Berlangganan</th> <!-- Kolom baru -->
+                                <th class="text-center">No</th>
+                                <th class="text-center">URL Materi</th>
+                                <th class="text-center">Judul File</th>
+                                <th class="text-center">File</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $index => $user)
+                            @foreach ($isi_materis as $index => $isi_materi)
                             <tr>
-                                <td>{{ $loop->iteration + $users->firstItem() - 1 }}</td>
-                                <td>{{ $user->username }}</td>
-                                <td>{{ $user->nama_lengkap }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $loop->iteration + $isi_materis->firstItem() - 1 }}</td>
+                                <td>{{ $isi_materi->judul_file }}</td>
+                                <td>{{ $isi_materi->url }}</td>
                                 <td>
-                                    @if($user->foto != NULL)
-                                        <img style='width:32px; height:32px' src="{{ url('foto_user/'.$user->foto )}}">
+                                    @if (strpos($isi_materi->file, '.mp4') !== false || strpos($isi_materi->file, '.avi') !== false || strpos($isi_materi->file, '.mpeg') !== false)
+                                        <video width="100" controls>
+                                            <source src="{{ asset('files/' . $isi_materi->file) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @elseif (strpos($isi_materi->file, '.jpg') !== false || strpos($isi_materi->file, '.jpeg') !== false || strpos($isi_materi->file, '.png') !== false || strpos($isi_materi->file, '.gif') !== false)
+                                        <img src="{{ asset('files/' . $isi_materi->file) }}" alt="Image" width="100">
+                                    @elseif (strpos($isi_materi->file, '.pdf') !== false)
+                                        <a href="{{ asset('files/' . $isi_materi->file) }}" target="_blank">Lihat PDF</a>
                                     @else
-                                        <img style='width:32px; height:32px' src="{{ url('foto_user/default.png') }}">
-                                    @endif
-                                </td>
-                                <td>{{ $user->blokir }}</td>
-                                <td>{{ $user->level }}</td>
-                                <td>
-                                    @if($user->payment && $user->payment->berlangganan_id)
-                                        Berlangganan (ID: {{ $user->payment->berlangganan_id }})
-                                    @else
-                                        Tidak Berlangganan
+                                        <span>Tidak ada preview</span>
                                     @endif
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('administrator.manajemenuser.edit', $user->id) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
-                                    <button data-url="{{ route('administrator.manajemenuser.destroy', $user->id) }}"
-                                        type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ route('pengajar.isimateri.edit', $isi_materi->id_isi_materi) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                            <i class="fa fa-edit"></i>
+                                        </a>
+                                        <button data-url="{{ route('pengajar.isimateri.destroy', $isi_materi->id_isi_materi) }}"
+                                            type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </div>
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                     <br>
-                    {{ $users->links('vendor.pagination.bootstrap-4') }}
+                    {{ $isi_materis->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 @endsection
 
 @section('script')
@@ -169,13 +156,13 @@
                             });
                         }
                     });
-                } 
+                }
             });
         });
 
         // Fungsi untuk memperbarui nomor urut
         function updateRowNumbers() {
-            let startingIndex = {{ $users->firstItem() - 1 }};
+            let startingIndex = {{ $isi_materis->firstItem() - 1 }};
             $('table tbody tr').each(function(index) {
                 $(this).find('td:first-child').text(startingIndex + index + 1);
             });

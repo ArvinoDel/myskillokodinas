@@ -43,10 +43,23 @@ if($trainers->gambar != NULL){
                                     </div>
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="padding: 5px;">Pengajar</th>
+                                <td style="padding: 5px;">
+                                    <select class="form-control" name="id" required>
+                                    <option value="">-- Pilih Pengajar --</option>
+                                        @foreach ($manajemenusers as $users)
+                                            <option value="{{ $users->id }}" {{ $users->id == $trainers->id ? 'selected' : '' }}>
+                                                {{ $users->username }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Perbarui</button>
+                        <button type="submit" class="btn btn-primary">Update</button>
                         <a href="{{ route('administrator.trainer.index')}}" class="btn btn-danger">Batal</a>
                     </div>
                 </form>

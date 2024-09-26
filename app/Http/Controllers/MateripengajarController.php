@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Materi;
 use App\Models\Payment;
-use App\Models\Program;
 use App\Models\Isimateri;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
@@ -20,7 +19,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Log; // Tambahkan ini untuk mengatasi undefined type Log
 
-class MateriController extends Controller
+class MateripengajarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -29,11 +28,23 @@ class MateriController extends Controller
     {
         $search = $request->search;
         $nama_materi = $request->nama_materi;
-        $id_kategori_program = $request->id_kategori_program; // Tambahkan ini
-        $id_topik = $request->id_topik; // Tambahkan ini
+        $id_kategori_program = $request->id_kategori_program;
+        $id_topik = $request->id_topik;
 
-        $query = Materi::query(); // Tambahkan eager loading
+        // Ambil ID pengajar yang sedang login
+        if (Auth::user()->level == 'pengajar') {
+            $id_pengajar = Auth::user()->id;
+        } else {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        }
 
+        // Query untuk mengambil materi berdasarkan id_pengajar (filter via Trainer)
+        $query = Materi::with(['trainer', 'kategoriprogram', 'topik']) // Eager load relasi
+            ->whereHas('trainer', function ($q) use ($id_pengajar) {
+                $q->where('id', $id_pengajar); // Filter berdasarkan id_pengajar
+            });
+
+        // Filter tambahan berdasarkan input
         if (!empty($search)) {
             $query->where('nama_materi', 'like', "%$search%");
         }
@@ -42,11 +53,11 @@ class MateriController extends Controller
             $query->where('nama_materi', $nama_materi);
         }
 
-        if (!empty($id_kategori_program)) { // Tambahkan ini
+        if (!empty($id_kategori_program)) {
             $query->where('id_kategori_program', $id_kategori_program);
         }
 
-        if (!empty($id_topik)) { // Tambahkan ini
+        if (!empty($id_topik)) {
             $query->where('id_topik', $id_topik);
         }
 
@@ -54,13 +65,14 @@ class MateriController extends Controller
         $kategoriprograms = Kategoriprogram::all();
         $topiks = Topik::all();
 
-        // Ambil semua data kategori program
-        // dd($kategoriprograms);
         $nama_materis = Materi::select('nama_materi')
+            ->whereHas('trainer', function ($q) use ($id_pengajar) {
+                $q->where('id', $id_pengajar); // Filter untuk nama_materis
+            })
             ->groupBy('nama_materi')
             ->get();
 
-        return view('administrator.materi.index', compact(['materis', 'nama_materis', 'kategoriprograms', 'topiks']));
+        return view('pengajar.materi.index', compact(['materis', 'nama_materis', 'kategoriprograms', 'topiks']));
     }
 
 
@@ -73,7 +85,7 @@ class MateriController extends Controller
         $kategoriprograms = Kategoriprogram::all();
         $topiks = Topik::all();
         // dd($programs); // Debugging // Mengambil semua data program
-        return view('administrator.materi.create', compact('trainers', 'kategoriprograms', 'topiks'));
+        return view('pengajar.materi.create', compact('trainers', 'kategoriprograms', 'topiks'));
     }
 
     /**
@@ -109,7 +121,7 @@ class MateriController extends Controller
         ]);
 
         return response()->json([
-            'url' => route('administrator.materi.index'),
+            'url' => route('pengajar.materi.index'),
             'success' => true,
             'message' => 'Data Materi Berhasil Ditambah'
         ]);
@@ -167,7 +179,7 @@ class MateriController extends Controller
         $trainers = Trainer::all();
         $kategoriprograms = Kategoriprogram::all();
         $topiks = Topik::all();
-        return view('administrator.materi.edit', compact('trainers', 'materis', 'kategoriprograms', 'topiks'));
+        return view('pengajar.materi.edit', compact('trainers', 'materis', 'kategoriprograms', 'topiks'));
     }
 
     /**
@@ -204,7 +216,7 @@ class MateriController extends Controller
         $materis->update($updateData);
 
         return response()->json([
-            'url' => route('administrator.materi.index'),
+            'url' => route('pengajar.materi.index'),
             'success' => true,
             'message' => 'Data Materi Berhasil Diperbarui'
         ]);
@@ -228,35 +240,4 @@ class MateriController extends Controller
         return response()->json(['message' => 'Data berhasil dihapus.']);
     }
 
-    // MateriController.php
-    public function rate(Request $request, $id_materi)
-    {
-        $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-        ]);
-
-        $materi = Materi::findOrFail($id_materi);
-        $user_id = auth()->id(); // Ambil ID user yang sedang login
-
-        // Cek apakah user sudah memberikan rating
-        if ($materi->rated_users && in_array($user_id, json_decode($materi->rated_users))) {
-            return redirect()->back()->with('error', 'Anda sudah memberikan rating sebelumnya.');
-        }
-
-        // Tambahkan rating ke total rating
-        $materi->rating += $request->input('rating');
-
-        // Tambah jumlah user yang memberikan rating
-        $materi->rating_count += 1;
-
-        // Simpan user yang sudah memberikan rating
-        $rated_users = json_decode($materi->rated_users, true) ?? [];
-        $rated_users[] = $user_id;
-        $materi->rated_users = json_encode($rated_users);
-
-        // Simpan perubahan
-        $materi->save();
-
-        return redirect()->back()->with('success', 'Rating berhasil dikirim');
-    }
 }

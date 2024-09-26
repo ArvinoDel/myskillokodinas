@@ -9,7 +9,8 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo.png') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+
 
     <title>Pandai Digital || {{ ucfirst(Route::currentRouteName()) }}</title>
 

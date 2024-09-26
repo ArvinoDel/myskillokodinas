@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Manajemenmodul;
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\UserModul;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\Manajemenmodul;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
 class ManajemenuserController extends Controller
@@ -80,11 +81,14 @@ class ManajemenuserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validasi input
+        // dd($request->all());
         $validated = $request->validate([
             "username" => 'required|string|max:255',
             "email" => 'required|string|email|max:255',
-            'password' => 'required|string|min:6'
+            'password' => 'required|string|min:6',
+            'is_subscribed' => 'required|boolean', // Validasi untuk is_subscribed
+            'paket_langganan' => 'nullable|string', // Validasi untuk paket_langganan
         ]);
 
         $validated['password'] = bcrypt($validated['password']);
@@ -108,6 +112,7 @@ class ManajemenuserController extends Controller
             $nama_modul = '';
         }
 
+        // Simpan data ke database
         User::create([
             "username" => $username,
             "nama_lengkap" => $request->nama_lengkap,
@@ -119,16 +124,9 @@ class ManajemenuserController extends Controller
             "nama_modul" => $nama_modul,
             "blokir" => 'N',
             "id_session" => md5($username . '-' . date('YmdHis')),
+            "is_subscribed" => $validated['is_subscribed'], // Menggunakan data yang sudah divalidasi
+            "paket_langganan" => $request->paket_langganan // Menggunakan paket_langganan dari request
         ]);
-
-        // $mod=count($this->input->post('modul'));
-        //       $modul=$this->input->post('modul');
-        //       $sess = md5($this->input->post('a')).'-'.date('YmdHis');
-        //       for($i=0;$i<$mod;$i++){
-        //         $datam = array('id_session'=>$sess,
-        //                       'id_modul'=>$modul[$i]);
-        //         $this->model_app->insert('users_modul',$datam);
-        //       }
 
         $mod = count($request->modul);
         $modul = $request->modul;
@@ -139,16 +137,6 @@ class ManajemenuserController extends Controller
                 'id_modul' => $modul[$i]
             ]);
         }
-
-        // if ($request->has('modul')) {
-        //     foreach ($request->modul as $modulId) {
-        //         UserModul::create([
-        //             'id_session' => $user->id_session,
-        //             'id_modul' => $modulId
-        //         ]);
-        //     }
-        // }
-
 
         return response()->json([
             'url' => route('administrator.manajemenuser.index'),
@@ -196,8 +184,9 @@ class ManajemenuserController extends Controller
 
         $moduls = Manajemenmodul::all();
         $akses_user = $akses->pluck('id_modul')->toArray();
+        $subscription_packages = Payment::pluck('berlangganan_id', 'id');
 
-        return view('administrator.manajemenuser.edit', compact('users', 'akses', 'moduls', 'akses_user'));
+        return view('administrator.manajemenuser.edit', compact('users', 'akses', 'moduls', 'akses_user', 'subscription_packages'));
     }
 
     /**
@@ -207,6 +196,7 @@ class ManajemenuserController extends Controller
     {
         //
         // dd($request);
+        \Log::info($request->all());
 
         $validated = $request->validate([
             "username" => 'required|string|max:255',
@@ -236,7 +226,7 @@ class ManajemenuserController extends Controller
         if ($request->hasFile('foto')) {
             $foto = $request->file("foto");
             Log::info('File foto diterima: ', [$foto]); // Log file untuk debugging
-    
+
             $fotoName = time() . '_' . $foto->getClientOriginalName();
             $foto->move("./foto_user/", $fotoName);
             $users->foto = $fotoName; // Simpan nama file baru
@@ -260,7 +250,10 @@ class ManajemenuserController extends Controller
             "no_telp" => $no_telp,
             "blokir" => 'N',
             "id_session" => md5($username . '-' . date('YmdHis')),
+            "is_subscribed" => $request->is_subscribed ?? false,
+            "paket_langganan" => $request->paket_langganan
         ]);
+
 
         if (isset($validated['password'])) {
             $users->update(['password' => $validated['password']]);

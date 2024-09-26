@@ -1,4 +1,4 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
     <div class="row">
@@ -8,7 +8,7 @@
                     <h3 class="mb-0">Tambah Materi</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrator.materi.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('pengajar.materi.store') }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
                         @csrf
                         <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
@@ -56,11 +56,12 @@
                                     <th style="padding: 5px;">Trainer</th>
                                     <td style="padding: 5px;">
                                         <select class="form-control" name="id_trainer" required>
-                                            <option value="">-- Pilih Trainer --</option>
                                             @foreach ($trainers as $trainer)
-                                                <option value="{{ $trainer->id_trainer }}">
-                                                    {{ $trainer->nama_trainer }}
-                                                </option>
+                                                @if ($trainer->id == auth()->user()->id) <!-- Menambahkan filter berdasarkan id pengguna -->
+                                                    <option value="{{ $trainer->id_trainer }}">
+                                                        {{ $trainer->nama_trainer }}
+                                                    </option>
+                                                @endif
                                             @endforeach
                                         </select>
                                     </td>
@@ -69,7 +70,7 @@
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.materi.index') }}" class="btn btn-danger">Batal</a>
+                            <a href="{{ route('pengajar.materi.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>

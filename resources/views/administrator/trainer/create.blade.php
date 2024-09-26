@@ -31,6 +31,19 @@
                                     <input type="text" class="form-control" id="link" name="link" placeholder="Masukkan Link" required>
                                 </td>
                             </tr>
+                            <tr>
+                                <th style="padding: 5px;">User Pengajar</th>
+                                <td style="padding: 5px;">
+                                    <select class="form-control" name="id" required>
+                                        <option value="">-- Pilih Pengajar --</option>
+                                        @foreach ($manajemenusers as $users)
+                                            <option value="{{ $users->id }}">
+                                                {{ $users->username }} (id = {{ $users->id }} )
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <div class="mt-4 d-flex justify-content-between">

@@ -29,7 +29,7 @@ class CheckUserModul
         Log::info('Akses ditemukan di middleware: ' . $akses);
 
         // Ubah perbandingan dari $akses < 1 menjadi $akses->isEmpty()
-        if ($akses->isEmpty() && $user->level != 'admin') {
+        if ($akses->isEmpty() && $user->level != 'admin' && $user->level != 'pengajar') {
             // Jika pengguna tidak memiliki akses dan bukan admin, redirect ke halaman error atau halaman lain
             Log::info('Tidak memiliki akses untuk modul: ' . $modul);
 
