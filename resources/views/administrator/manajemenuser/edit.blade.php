@@ -65,8 +65,8 @@ if($users->foto != NULL){
                                         <label class="form-check-label" for="user">user</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="level" id="level" value="kontributor" required @checked($users->level == 'kontributor')>
-                                        <label class="form-check-label" for="kontributor">kontributor</label>
+                                        <input class="form-check-input" type="radio" name="level" id="level" value="pengajar" required @checked($users->level == 'pengajar')>
+                                        <label class="form-check-label" for="pengajar">pengajar</label>
                                     </div>
                                 </td>
                             </tr>
