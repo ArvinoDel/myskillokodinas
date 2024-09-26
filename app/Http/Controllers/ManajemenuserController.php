@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendUserMessage;
 use App\Models\User;
 use App\Models\Payment;
 use App\Models\UserModul;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
@@ -53,9 +55,9 @@ class ManajemenuserController extends Controller
             ->groupBy('level')
             ->get();
 
-            foreach ($users as $user) {
-                $user->latestPayment = Payment::where('username', $user->username)->latest()->first();
-            }
+        foreach ($users as $user) {
+            $user->latestPayment = Payment::where('username', $user->username)->latest()->first();
+        }
 
 
         return view('administrator.manajemenuser.index', compact(['users', 'levels',]));
@@ -156,6 +158,20 @@ class ManajemenuserController extends Controller
     public function show(string $id)
     {
         //   
+        $users = User::all();
+
+        foreach ($users as $user) {
+            // Detail pesan yang akan dikirimkan
+            $details = [
+                'title' => 'Halo, Ini Pesan Dari Kami!',
+                'body' => 'Kami ingin menginformasikan sesuatu yang penting untuk Anda.'
+            ];
+
+            // Kirim email ke setiap user
+            Mail::to($user->email)->send(new SendUserMessage($details));
+        }
+
+        return redirect()->route('administrator.manajemenuser.index')->with('success', 'Emails sent to all users successfully.');
     }
 
     /**
@@ -201,7 +217,7 @@ class ManajemenuserController extends Controller
     {
         //
         // dd($request);
-        \Log::info($request->all());
+        Log::info($request->all());
 
         $validated = $request->validate([
             "username" => 'required|string|max:255',
