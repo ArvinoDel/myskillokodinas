@@ -65,8 +65,8 @@ if($users->foto != NULL){
                                         <label class="form-check-label" for="user">user</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="level" id="level" value="kontributor" required @checked($users->level == 'kontributor')>
-                                        <label class="form-check-label" for="kontributor">kontributor</label>
+                                        <input class="form-check-input" type="radio" name="level" id="level" value="pengajar" required @checked($users->level == 'pengajar')>
+                                        <label class="form-check-label" for="pengajar">pengajar</label>
                                     </div>
                                 </td>
                             </tr>
@@ -127,15 +127,15 @@ if($users->foto != NULL){
                             <tr id="subscription_package_row" style="{{ old('is_subscribed', $users->is_subscribed) ? '' : 'display:none;' }}">
                                 <th style="padding: 5px; border: 1px solid #ddd;">Paket Langganan</th>
                                 <td style="padding: 5px; border: 1px solid #ddd;">
-                                    <select name="berlangganan_id" id="berlangganan_id" class="form-control">
+                                    <select name="program_name" id="program_name" class="form-control">
                                         <option value="">Pilih Paket</option> <!-- Opsi default -->
-                                        @foreach($subscription_packages as $id => $berlangganan_id)
-                                            <option value="{{ $id }}" {{ old('berlangganan_id', $users->paket_berlangganan) == $id ? 'selected' : '' }}>
-                                                {{ $berlangganan_id }}
+                                        @foreach($subscription_packages as $id => $program_name)
+                                            <option value="{{ $id }}" {{ old('program_name', $users->paket_langganan) == $id ? 'selected' : '' }}>
+                                                {{ $program_name }}
                                             </option>
                                         @endforeach
                                     </select>
-                                </td>
+                                </td>                                
                             </tr>                                                
                         </tbody>
                     </table>

@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Isimateri extends Model
+class Tugas extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
-    protected $primaryKey = 'id_isi_materi';
-    protected $table = 'isi_materi';
-    protected $fillable = ['id_isi_materi', 'url', 'judul_file', 'file', 'id_materi'];
+    public $timestamps = true;
+    protected $primaryKey = 'id_tugas';
+    protected $table = 'tugas';
+    protected $fillable = ['id_tugas', 'url', 'judul_tugas', 'deskripsi', 'file', 'id_materi', 'status'];
 
 
     public function materi()

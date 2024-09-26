@@ -66,10 +66,12 @@ use App\Http\Controllers\SensorkomentarController;
 use App\Http\Controllers\KategoriprogramController;
 use App\Http\Controllers\TemplatewebsiteController;
 use App\Http\Controllers\IdentitaswebsiteController;
+use App\Http\Controllers\IsimateripengajarController;
+use App\Http\Controllers\MateripengajarController;
 use App\Http\Controllers\MetodepembayaranController;
 use App\Http\Controllers\ProgramcvController;
 use App\Http\Controllers\TopikController;
-
+use App\Http\Controllers\TugasController;
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -92,6 +94,17 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 // Route::get('administrator/dashboard', [DashboardController::class, "dashboard"]);
+
+Route::prefix('pengajar')->name('pengajar.')->group(function () {
+    Route::resource('materi', MateripengajarController::class)
+        ->middleware('checkModul:materi');
+
+    Route::resource('isimateri', IsimateripengajarController::class)
+        ->middleware('checkModul:isimateri');
+
+    Route::resource('tugas', TugasController::class)
+        ->middleware('checkModul:tugas');
+});
 
 Route::prefix('administrator')->name('administrator.')->group(function () {
     // Route::resource('halamanbaru', HalamanbaruController::class);
@@ -388,4 +401,4 @@ Route::get('/e-learning/materi/{id_materi}', [MateriController::class, 'show'])-
 Route::post('/materi/{id_materi}/rate', [MateriController::class, 'rate'])->name('materi.rate')->middleware('auth');
 Route::get('/bootcamp/digital-marketing/{id_bootcamp}', [BootcampController::class, 'show'])->name('bootcamp.show');
 Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
-Route::post('/payment/complete/{id}', [PaymentController::class, 'completePayment'])->name('payment.complete');
+Route::post('/payment/complete/{id}', [PaymentController::class, 'completePayment'])->name('administrator.payment.approve');

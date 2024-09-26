@@ -53,7 +53,12 @@ class ManajemenuserController extends Controller
             ->groupBy('level')
             ->get();
 
-        return view('administrator.manajemenuser.index', compact(['users', 'levels']));
+            foreach ($users as $user) {
+                $user->latestPayment = Payment::where('username', $user->username)->latest()->first();
+            }
+
+
+        return view('administrator.manajemenuser.index', compact(['users', 'levels',]));
     }
 
     public function delete_akses(string $id_umod, string $user_id): RedirectResponse
@@ -184,7 +189,7 @@ class ManajemenuserController extends Controller
 
         $moduls = Manajemenmodul::all();
         $akses_user = $akses->pluck('id_modul')->toArray();
-        $subscription_packages = Payment::pluck('berlangganan_id', 'id');
+        $subscription_packages = Payment::pluck('program_name', 'id');
 
         return view('administrator.manajemenuser.edit', compact('users', 'akses', 'moduls', 'akses_user', 'subscription_packages'));
     }

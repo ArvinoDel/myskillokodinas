@@ -143,14 +143,25 @@ class PaymentController extends Controller
 
     public function approve($id)
     {
+        // Temukan pembayaran berdasarkan ID
         $payment = Payment::findOrFail($id);
 
-        // Ubah status menjadi approved
-        $payment->status = 'completed'; // Atau bisa menggunakan 'approved' sesuai kebutuhan
+        // Perbarui status pembayaran
+        $payment->status = 'completed';
         $payment->save();
 
-        return redirect()->back()->with('success', 'Pembayaran berhasil disetujui!');
+        // Temukan pengguna yang terkait dengan pembayaran
+        $user = User::where('username', $payment->username)->first(); // atau sesuai dengan cara Anda menyimpan referensi pengguna
+
+        // Perbarui program_name pengguna jika ada
+        if ($user) {
+            $user->program_name = $payment->program_name; // atau sesuai dengan nama kolom di tabel pengguna
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', 'Pembayaran berhasil disetujui dan program pengguna diperbarui!');
     }
+
 
     public function cancel($id)
     {

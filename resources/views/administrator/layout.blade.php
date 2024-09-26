@@ -67,100 +67,100 @@
                             <div class="collapse" id="menu-utama">
                                 <ul class="nav nav-sm flex-column">
                                     @php
-                                        $UserModul = new \App\Models\UserModul();
-                                        $cekIdentitaswebsite = $UserModul->umenu_akses(
-                                            'identitaswebsite',
-                                            session('id_session'),
-                                        );
-                                        $cekMenuwebsite = $UserModul->umenu_akses('menuwebsite', session('id_session'));
-                                        $cekHalamanbaru = $UserModul->umenu_akses('halamanbaru', session('id_session'));
+                                    $UserModul = new \App\Models\UserModul();
+                                    $cekIdentitaswebsite = $UserModul->umenu_akses(
+                                    'identitaswebsite',
+                                    session('id_session'),
+                                    );
+                                    $cekMenuwebsite = $UserModul->umenu_akses('menuwebsite', session('id_session'));
+                                    $cekHalamanbaru = $UserModul->umenu_akses('halamanbaru', session('id_session'));
                                     @endphp
 
                                     @if (
-                                        $cekIdentitaswebsite == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/identitaswebsite') }}"><i
-                                                    class='ni ni-diamond text-blue'></i> Identitas Website</a></li>
+                                    $cekIdentitaswebsite == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/identitaswebsite') }}"><i
+                                                class='ni ni-diamond text-blue'></i> Identitas Website</a></li>
                                     @endif
                                     @if (
-                                        $cekMenuwebsite == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/menuwebsite') }}"><i
-                                                    class='ni ni-bullet-list-67 text-orange'></i> Menu Website</a></li>
+                                    $cekMenuwebsite == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/menuwebsite') }}"><i
+                                                class='ni ni-bullet-list-67 text-orange'></i> Menu Website</a></li>
                                     @endif
                                     @if (
-                                        $cekHalamanbaru == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/halamanbaru') }}"><i
-                                                    class='ni ni-book-bookmark text-purple'></i> Halaman Baru</a></li>
+                                    $cekHalamanbaru == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/halamanbaru') }}"><i
+                                                class='ni ni-book-bookmark text-purple'></i> Halaman Baru</a></li>
                                     @endif
                                 </ul>
                             </div>
                         </li>
                         @php
-                            $UserModul = new \App\Models\UserModul();
-                            $hasAccess = false;
+                        $UserModul = new \App\Models\UserModul();
+                        $hasAccess = false;
 
-                            $cekBerita = $UserModul->umenu_akses('berita', session('id_session'));
-                            $cekKategoriBerita = $UserModul->umenu_akses('kategoriberita', session('id_session'));
-                            $cekTagBerita = $UserModul->umenu_akses('tagberita', session('id_session'));
+                        $cekBerita = $UserModul->umenu_akses('berita', session('id_session'));
+                        $cekKategoriBerita = $UserModul->umenu_akses('kategoriberita', session('id_session'));
+                        $cekTagBerita = $UserModul->umenu_akses('tagberita', session('id_session'));
 
-                            if (
-                                $cekBerita == 1 ||
-                                $cekKategoriBerita == 1 ||
-                                $cekTagBerita == 1 ||
-                                session('level') == 'admin' ||
-                                session('level') == 'user' ||
-                                session('level') == 'kontributor'
-                            ) {
-                                $hasAccess = true;
-                            }
+                        if (
+                        $cekBerita == 1 ||
+                        $cekKategoriBerita == 1 ||
+                        $cekTagBerita == 1 ||
+                        session('level') == 'admin' ||
+                        session('level') == 'user' ||
+                        session('level') == 'kontributor'
+                        ) {
+                        $hasAccess = true;
+                        }
                         @endphp
 
                         @if ($hasAccess)
-                            <li class="nav-item">
-                                <a class="nav-link" href="#modul-berita" data-toggle="collapse" role="button"
-                                    aria-expanded="false" aria-controls="modul-berita">
-                                    <i class="ni ni-ungroup text-orange"></i>
-                                    <span class="nav-link-text">Modul Berita</span>
-                                </a>
-                                <div class="collapse" id="modul-berita">
-                                    <ul class="nav nav-sm flex-column">
-                                        @if ($cekBerita == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                            <li class="nav-item"><a class="nav-link"
-                                                    href="{{ url('administrator/berita') }}"><i
-                                                        class='ni ni-paper-diploma text-blue'></i> Berita</a></li>
-                                        @endif
-                                        @if (
-                                            $cekKategoriBerita == 1 ||
-                                                session('level') == 'admin' ||
-                                                session('level') == 'user' ||
-                                                session('level') == 'kontributor')
-                                            <li class="nav-item"><a class="nav-link"
-                                                    href="{{ url('administrator/kategoriberita') }}"><i
-                                                        class='ni ni-box-2 text-orange'></i> Kategori Berita</a></li>
-                                        @endif
-                                        @if (
-                                            $cekTagBerita == 1 ||
-                                                session('level') == 'admin' ||
-                                                session('level') == 'user' ||
-                                                session('level') == 'kontributor')
-                                            <li class="nav-item"><a class="nav-link"
-                                                    href="{{ url('administrator/tagberita') }}"><i
-                                                        class='ni ni-ruler-pencil text-purple'></i> Tag Berita</a></li>
-                                        @endif
-                                    </ul>
-                                </div>
-                            </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#modul-berita" data-toggle="collapse" role="button"
+                                aria-expanded="false" aria-controls="modul-berita">
+                                <i class="ni ni-ungroup text-orange"></i>
+                                <span class="nav-link-text">Modul Berita</span>
+                            </a>
+                            <div class="collapse" id="modul-berita">
+                                <ul class="nav nav-sm flex-column">
+                                    @if ($cekBerita == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/berita') }}"><i
+                                                class='ni ni-paper-diploma text-blue'></i> Berita</a></li>
+                                    @endif
+                                    @if (
+                                    $cekKategoriBerita == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/kategoriberita') }}"><i
+                                                class='ni ni-box-2 text-orange'></i> Kategori Berita</a></li>
+                                    @endif
+                                    @if (
+                                    $cekTagBerita == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/tagberita') }}"><i
+                                                class='ni ni-ruler-pencil text-purple'></i> Tag Berita</a></li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
                         @endif
 
                         <li class="nav-item">
@@ -172,33 +172,33 @@
                             <div class="collapse" id="modul-video">
                                 <ul class="nav nav-sm flex-column">
                                     @php
-                                        $UserModul = new \App\Models\UserModul();
-                                        $cekPlaylistvideo = $UserModul->umenu_akses(
-                                            'playlistvideo',
-                                            session('id_session'),
-                                        );
-                                        $cekVideo = $UserModul->umenu_akses('video', session('id_session'));
-                                        $cekTagvideo = $UserModul->umenu_akses('tagvideo', session('id_session'));
+                                    $UserModul = new \App\Models\UserModul();
+                                    $cekPlaylistvideo = $UserModul->umenu_akses(
+                                    'playlistvideo',
+                                    session('id_session'),
+                                    );
+                                    $cekVideo = $UserModul->umenu_akses('video', session('id_session'));
+                                    $cekTagvideo = $UserModul->umenu_akses('tagvideo', session('id_session'));
                                     @endphp
 
                                     @if (
-                                        $cekPlaylistvideo == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/playlistvideo') }}"><i
-                                                    class='ni ni-folder-17 text-blue'></i> Playlist Video</a></li>
+                                    $cekPlaylistvideo == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/playlistvideo') }}"><i
+                                                class='ni ni-folder-17 text-blue'></i> Playlist Video</a></li>
                                     @endif
                                     @if ($cekVideo == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/video') }}"><i
-                                                    class='ni ni-camera-compact text-orange'></i> Video</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/video') }}"><i
+                                                class='ni ni-camera-compact text-orange'></i> Video</a></li>
                                     @endif
                                     @if ($cekTagvideo == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/tagvideo') }}"><i
-                                                    class='ni ni-tag text-purple'></i> Tag Video</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/tagvideo') }}"><i
+                                                class='ni ni-tag text-purple'></i> Tag Video</a></li>
                                     @endif
                                 </ul>
                             </div>
@@ -212,45 +212,45 @@
                             <div class="collapse" id="modul-banner">
                                 <ul class="nav nav-sm flex-column">
                                     @php
-                                        $UserModul = new \App\Models\UserModul();
-                                        $cekBannerslider = $UserModul->umenu_akses(
-                                            'bannerslider',
-                                            session('id_session'),
-                                        );
-                                        $cekBannerhome = $UserModul->umenu_akses('bannerhome', session('id_session'));
-                                        $cekIklansidebar = $UserModul->umenu_akses(
-                                            'iklansidebar',
-                                            session('id_session'),
-                                        );
+                                    $UserModul = new \App\Models\UserModul();
+                                    $cekBannerslider = $UserModul->umenu_akses(
+                                    'bannerslider',
+                                    session('id_session'),
+                                    );
+                                    $cekBannerhome = $UserModul->umenu_akses('bannerhome', session('id_session'));
+                                    $cekIklansidebar = $UserModul->umenu_akses(
+                                    'iklansidebar',
+                                    session('id_session'),
+                                    );
                                     @endphp
 
                                     @if (
-                                        $cekBannerslider == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/bannerslider') }}"><i
-                                                    class='ni ni-image text-blue'></i> Banner Slider</a></li>
+                                    $cekBannerslider == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/bannerslider') }}"><i
+                                                class='ni ni-image text-blue'></i> Banner Slider</a></li>
                                     @endif
                                     @if (
-                                        $cekBannerhome == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/bannerhome') }}"><i
-                                                    class='ni ni-shop text-orange'></i> Banner Home</a></li>
+                                    $cekBannerhome == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/bannerhome') }}"><i
+                                                class='ni ni-shop text-orange'></i> Banner Home</a></li>
                                     @endif
                                     @if (
-                                        $cekIklansidebar == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/iklansidebar') }}"><i
-                                                    class='ni ni-notification-70 text-purple'></i> Iklan Sidebar</a>
-                                        </li>
+                                    $cekIklansidebar == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/iklansidebar') }}"><i
+                                                class='ni ni-notification-70 text-purple'></i> Iklan Sidebar</a>
+                                    </li>
                                     @endif
 
                                 </ul>
@@ -265,165 +265,165 @@
                             <div class="collapse" id="modul-web">
                                 <ul class="nav nav-sm flex-column">
                                     @php
-                                        $UserModul = new \App\Models\UserModul();
-                                        $cekLogowebsite = $UserModul->umenu_akses('logowebsite', session('id_session'));
-                                        $cekBenefit = $UserModul->umenu_akses('benefit', session('id_session'));
-                                        $cekTemplatewebsite = $UserModul->umenu_akses(
-                                            'templatewebsite',
-                                            session('id_session'),
-                                        );
-                                        $cekTestimoni = $UserModul->umenu_akses('testimoni', session('id_session'));
-                                        $cekTrainer = $UserModul->umenu_akses('trainer', session('id_session'));
-                                        $cekProgram = $UserModul->umenu_akses('program', session('id_session'));
-                                        $cekMateri = $UserModul->umenu_akses('materi', session('id_session'));
-                                        $cekMetode = $UserModul->umenu_akses('metode', session('id_session'));
-                                        $cekPayment = $UserModul->umenu_akses('payment', session('id_session'));
-                                        $cekTopik = $UserModul->umenu_akses('member', session('id_session'));
-                                        $cekMember = $UserModul->umenu_akses('member', session('id_session'));
-                                        $cekRating = $UserModul->umenu_akses('rating', session('id_session'));
-                                        $cekKategoriprogram = $UserModul->umenu_akses(
-                                            'kategoriprogram',
-                                            session('id_session'),
-                                        );
-                                        $cekLogo = $UserModul->umenu_akses('metodepembayaran', session('id_session'));
-                                        $cekMitra = $UserModul->umenu_akses('mitra', session('id_session'));
-                                        $cekBerlangganan = $UserModul->umenu_akses(
-                                            'berlangganan',
-                                            session('id_session'),
-                                        );
-                                        $cekProgramcv = $UserModul->umenu_akses('programcv', session('id_session'));
-                                        $cekBootcamps = $UserModul->umenu_akses('bootcamps', session('id_session'));
-                                        $cekBenefitbootcamp = $UserModul->umenu_akses(
-                                            'benefitbootcamp',
-                                            session('id_session'),
-                                        );
+                                    $UserModul = new \App\Models\UserModul();
+                                    $cekLogowebsite = $UserModul->umenu_akses('logowebsite', session('id_session'));
+                                    $cekBenefit = $UserModul->umenu_akses('benefit', session('id_session'));
+                                    $cekTemplatewebsite = $UserModul->umenu_akses(
+                                    'templatewebsite',
+                                    session('id_session'),
+                                    );
+                                    $cekTestimoni = $UserModul->umenu_akses('testimoni', session('id_session'));
+                                    $cekTrainer = $UserModul->umenu_akses('trainer', session('id_session'));
+                                    $cekProgram = $UserModul->umenu_akses('program', session('id_session'));
+                                    $cekMateri = $UserModul->umenu_akses('materi', session('id_session'));
+                                    $cekMetode = $UserModul->umenu_akses('metode', session('id_session'));
+                                    $cekPayment = $UserModul->umenu_akses('payment', session('id_session'));
+                                    $cekTopik = $UserModul->umenu_akses('member', session('id_session'));
+                                    $cekMember = $UserModul->umenu_akses('member', session('id_session'));
+                                    $cekRating = $UserModul->umenu_akses('rating', session('id_session'));
+                                    $cekKategoriprogram = $UserModul->umenu_akses(
+                                    'kategoriprogram',
+                                    session('id_session'),
+                                    );
+                                    $cekLogo = $UserModul->umenu_akses('metodepembayaran', session('id_session'));
+                                    $cekMitra = $UserModul->umenu_akses('mitra', session('id_session'));
+                                    $cekBerlangganan = $UserModul->umenu_akses(
+                                    'berlangganan',
+                                    session('id_session'),
+                                    );
+                                    $cekProgramcv = $UserModul->umenu_akses('programcv', session('id_session'));
+                                    $cekBootcamps = $UserModul->umenu_akses('bootcamps', session('id_session'));
+                                    $cekBenefitbootcamp = $UserModul->umenu_akses(
+                                    'benefitbootcamp',
+                                    session('id_session'),
+                                    );
                                     @endphp
 
                                     @if (
-                                        $cekLogowebsite == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/logowebsite') }}"><i
-                                                    class='ni ni-badge text-blue'></i> Logo Website</a></li>
+                                    $cekLogowebsite == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/logowebsite') }}"><i
+                                                class='ni ni-badge text-blue'></i> Logo Website</a></li>
                                     @endif
                                     @if (
-                                        $cekTemplatewebsite == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/templatewebsite') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Template
-                                                Website</a></li>
+                                    $cekTemplatewebsite == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/templatewebsite') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Template
+                                            Website</a></li>
                                     @endif
                                     @if (
-                                        $cekTestimoni == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/testimoni') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Testimoni</a></li>
+                                    $cekTestimoni == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/testimoni') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Testimoni</a></li>
                                     @endif
                                     @if ($cekTrainer == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/trainer') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Trainer</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/trainer') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Trainer</a></li>
                                     @endif
                                     @if ($cekProgram == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/program') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Program</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/program') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Program</a></li>
                                     @endif
                                     @if ($cekMateri == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/materi') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Materi</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/materi') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Materi</a></li>
                                     @endif
                                     @if ($cekMetode == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/metode') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Metode</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/metode') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Metode</a></li>
                                     @endif
                                     @if ($cekBenefit == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/benefit') }}"><i
-                                                    class='ni ni-badge text-blue'></i>Benefit</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/benefit') }}"><i
+                                                class='ni ni-badge text-blue'></i>Benefit</a></li>
                                     @endif
                                     @if (
-                                        $cekBenefitbootcamp == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/benefitbootcamp') }}"><i
-                                                    class='ni ni-badge text-blue'></i>Benefit Bootcamp</a></li>
+                                    $cekBenefitbootcamp == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/benefitbootcamp') }}"><i
+                                                class='ni ni-badge text-blue'></i>Benefit Bootcamp</a></li>
                                     @endif
                                     @if ($cekTopik == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/topik') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Topik</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/topik') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Topik</a></li>
                                     @endif
                                     @if ($cekRating == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/rating') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Rating</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/rating') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Rating</a></li>
                                     @endif
                                     @if (
-                                        $cekBerlangganan == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/berlangganan') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a>
-                                        </li>
+                                    $cekBerlangganan == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/berlangganan') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a>
+                                    </li>
                                     @endif
                                     @if (
-                                        $cekKategoriprogram == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/kategoriprogram') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Kategori
-                                                Program</a></li>
+                                    $cekKategoriprogram == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/kategoriprogram') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Kategori
+                                            Program</a></li>
                                     @endif
                                     @if ($cekLogo == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/metodepembayaran') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Logo Bawah</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/metodepembayaran') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Logo Bawah</a></li>
                                     @endif
                                     @if ($cekMitra == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/mitra') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/mitra') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
                                     @endif
 
                                     @if (
-                                        $cekProgramcv == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/programcv') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Program CV</a></li>
+                                    $cekProgramcv == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/programcv') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Program CV</a></li>
                                     @endif
                                     @if (
-                                        $cekBootcamps == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/bootcamps') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Bootcamp</a></li>
+                                    $cekBootcamps == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/bootcamps') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Bootcamp</a></li>
                                     @endif
                                     @if ($cekPayment == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/payment') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Payment</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/payment') }}"><i
+                                                class='ni ni-settings-gear-65 text-orange'></i> Payment</a></li>
                                     @endif
                                 </ul>
                             </div>
@@ -437,61 +437,61 @@
                             <div class="collapse" id="modul-interaksi">
                                 <ul class="nav nav-sm flex-column">
                                     @php
-                                        $UserModul = new \App\Models\UserModul();
-                                        $cekAgenda = $UserModul->umenu_akses('agenda', session('id_session'));
-                                        $cekSekilasinfo = $UserModul->umenu_akses('sekilasinfo', session('id_session'));
-                                        $cekJejakpendapat = $UserModul->umenu_akses(
-                                            'jejakpendapat',
-                                            session('id_session'),
-                                        );
-                                        $cekDownloadarea = $UserModul->umenu_akses(
-                                            'downloadarea',
-                                            session('id_session'),
-                                        );
-                                        $cekPesanmasuk = $UserModul->umenu_akses('pesanmasuk', session('id_session'));
+                                    $UserModul = new \App\Models\UserModul();
+                                    $cekAgenda = $UserModul->umenu_akses('agenda', session('id_session'));
+                                    $cekSekilasinfo = $UserModul->umenu_akses('sekilasinfo', session('id_session'));
+                                    $cekJejakpendapat = $UserModul->umenu_akses(
+                                    'jejakpendapat',
+                                    session('id_session'),
+                                    );
+                                    $cekDownloadarea = $UserModul->umenu_akses(
+                                    'downloadarea',
+                                    session('id_session'),
+                                    );
+                                    $cekPesanmasuk = $UserModul->umenu_akses('pesanmasuk', session('id_session'));
                                     @endphp
 
                                     @if ($cekAgenda == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/agenda') }}"><i
-                                                    class='ni ni-collection text-blue'></i> Agenda</a></li>
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/agenda') }}"><i
+                                                class='ni ni-collection text-blue'></i> Agenda</a></li>
                                     @endif
                                     @if (
-                                        $cekSekilasinfo == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/sekilasinfo') }}"><i
-                                                    class='ni ni-single-copy-04 text-orange'></i> Sekilas Info</a></li>
+                                    $cekSekilasinfo == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/sekilasinfo') }}"><i
+                                                class='ni ni-single-copy-04 text-orange'></i> Sekilas Info</a></li>
                                     @endif
                                     @if (
-                                        $cekJejakpendapat == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/jejakpendapat') }}"><i
-                                                    class='ni ni-chart-bar-32 text-purple'></i> Jejak Pendapat</a></li>
+                                    $cekJejakpendapat == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/jejakpendapat') }}"><i
+                                                class='ni ni-chart-bar-32 text-purple'></i> Jejak Pendapat</a></li>
                                     @endif
                                     @if (
-                                        $cekDownloadarea == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/downloadarea') }}"><i
-                                                    class='ni ni-cloud-download-95 text-blue'></i> Download Area</a>
-                                        </li>
+                                    $cekDownloadarea == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/downloadarea') }}"><i
+                                                class='ni ni-cloud-download-95 text-blue'></i> Download Area</a>
+                                    </li>
                                     @endif
                                     @if (
-                                        $cekPesanmasuk == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/pesanmasuk') }}"><i
-                                                    class='ni ni-chat-round text-orange'></i> Pesan Masuk</a></li>
+                                    $cekPesanmasuk == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/pesanmasuk') }}"><i
+                                                class='ni ni-chat-round text-orange'></i> Pesan Masuk</a></li>
                                     @endif
                                 </ul>
                             </div>
@@ -505,34 +505,34 @@
                             <div class="collapse" id="modul-users">
                                 <ul class="nav nav-sm flex-column">
                                     @php
-                                        $UserModul = new \App\Models\UserModul();
-                                        $cekManajemenuser = $UserModul->umenu_akses(
-                                            'manajemenuser',
-                                            session('id_session'),
-                                        );
-                                        $cekManajemenmodul = $UserModul->umenu_akses(
-                                            'manajemenmodul',
-                                            session('id_session'),
-                                        );
+                                    $UserModul = new \App\Models\UserModul();
+                                    $cekManajemenuser = $UserModul->umenu_akses(
+                                    'manajemenuser',
+                                    session('id_session'),
+                                    );
+                                    $cekManajemenmodul = $UserModul->umenu_akses(
+                                    'manajemenmodul',
+                                    session('id_session'),
+                                    );
                                     @endphp
 
                                     @if (
-                                        $cekManajemenuser == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/manajemenuser') }}"><i
-                                                    class='ni ni-folder-17 text-blue'></i> Manajemen User</a></li>
+                                    $cekManajemenuser == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/manajemenuser') }}"><i
+                                                class='ni ni-folder-17 text-blue'></i> Manajemen User</a></li>
                                     @endif
                                     @if (
-                                        $cekManajemenmodul == 1 ||
-                                            session('level') == 'admin' ||
-                                            session('level') == 'user' ||
-                                            session('level') == 'kontributor')
-                                        <li class="nav-item"><a class="nav-link"
-                                                href="{{ url('administrator/manajemenmodul') }}"><i
-                                                    class='ni ni-folder-17 text-orange'></i> Manajemen Modul</a></li>
+                                    $cekManajemenmodul == 1 ||
+                                    session('level') == 'admin' ||
+                                    session('level') == 'user' ||
+                                    session('level') == 'kontributor')
+                                    <li class="nav-item"><a class="nav-link"
+                                            href="{{ url('administrator/manajemenmodul') }}"><i
+                                                class='ni ni-folder-17 text-orange'></i> Manajemen Modul</a></li>
                                     @endif
                                 </ul>
                             </div>
@@ -549,12 +549,50 @@
         </div>
     </nav>
 
-
-
     <div class="main-content" id="panel">
         <nav class="navbar navbar-top navbar-expand navbar-light bg-secondary border-bottom">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="form-group mb-0 navbar-search navbar-search-dark form-inline mr-sm-3" id="navbar-search-main">
+                        <div class="input-group input-group-alternative input-group-merge">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control"  id="searchBox" placeholder="Search links..." onkeyup="liveSearch()">
+                        </div>
+                    </div>
+                    <div id="search-results" class="dropdown-menu dropdown-menu-right"></div>
+
+                    <script>
+                        function liveSearch() {
+                            var input = document.getElementById('searchBox');
+                            var filter = input.value.toLowerCase();
+                            var navItems = document.querySelectorAll('.navbar-nav > li, .navbar-nav > li > ul > li,.navbar-nav'); // Ubah selector untuk navbar
+
+                            navItems.forEach(function(item) {
+                                var a = item.getElementsByTagName('a')[0];
+                                var txtValue = a.textContent || a.innerText;
+                                if (filter === "") {
+                                    item.style.display = ""; // Tampilkan item jika filter kosong
+                                } else if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                                    item.style.display = ""; // Tampilkan item
+                                } else {
+                                    var subItems = item.querySelectorAll('ul > li, ul > li > ul > li');
+                                    var found = false;
+                                    subItems.forEach(function(subItem) {
+                                        var subA = subItem.getElementsByTagName('a')[0];
+                                        var subTxtValue = subA.textContent || subA.innerText;
+                                        if (subTxtValue.toLowerCase().indexOf(filter) > -1) {
+                                            subItem.style.display = ""; // Tampilkan sub-item
+                                            found = true;
+                                        } 
+                                    });
+                                    item.style.display = found ? "" : "none"; // Tampilkan atau sembunyikan item berdasarkan sub-item
+                                }
+                            });
+                        }
+                    </script>
+
                     <ul class="navbar-nav align-items-center ml-md-auto">
                         <li class="nav-item d-xl-none">
                             <div class="pr-3 sidenav-toggler sidenav-toggler-light" data-action="sidenav-pin"
@@ -585,27 +623,27 @@
                                 </div>
                                 <div class="list-group list-group-flush">
                                     @foreach ($latestMessages as $message)
-                                        <a href="{{ route('administrator.detailpesanmasuk.show', $message->id_hubungi) }}"
-                                            class="list-group-item list-group-item-action">
-                                            <div class="row align-items-center">
-                                                <div class="col-auto">
-                                                    <img alt="Image placeholder"
-                                                        src="../../assets/img/theme/team-1.jpg"
-                                                        class="avatar rounded-circle">
-                                                </div>
-                                                <div class="col ml--2">
-                                                    <div class="d-flex justify-content-between align-items-center">
-                                                        <div>
-                                                            <h4 class="mb-0 text-sm">{{ $message->nama }}</h4>
-                                                        </div>
-                                                        <div class="text-right text-muted">
-                                                            <small>{{ $message->tanggal }}</small>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-sm mb-0">{{ Str::limit($message->pesan, 50) }}</p>
-                                                </div>
+                                    <a href="{{ route('administrator.detailpesanmasuk.show', $message->id_hubungi) }}"
+                                        class="list-group-item list-group-item-action">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                                <img alt="Image placeholder"
+                                                    src="../../assets/img/theme/team-1.jpg"
+                                                    class="avatar rounded-circle">
                                             </div>
-                                        </a>
+                                            <div class="col ml--2">
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <div>
+                                                        <h4 class="mb-0 text-sm">{{ $message->nama }}</h4>
+                                                    </div>
+                                                    <div class="text-right text-muted">
+                                                        <small>{{ $message->tanggal }}</small>
+                                                    </div>
+                                                </div>
+                                                <p class="text-sm mb-0">{{ Str::limit($message->pesan, 50) }}</p>
+                                            </div>
+                                        </div>
+                                    </a>
                                     @endforeach
                                 </div>
                                 <a href="{{ route('administrator.pesanmasuk.index') }}"
@@ -620,19 +658,19 @@
                                 <div class="media align-items-center">
                                     <span class="avatar avatar-sm rounded-circle">
                                         @if (Auth::check() && Auth::user()->foto)
-                                            <img alt="Image placeholder"
-                                                src="{{ url('foto_user/' . Auth::user()->foto) }}">
+                                        <img alt="Image placeholder"
+                                            src="{{ url('foto_user/' . Auth::user()->foto) }}">
                                         @else
-                                            <img alt="Image placeholder"
-                                                src="{{ asset('assets/img/theme/team-4.jpg') }}">
+                                        <img alt="Image placeholder"
+                                            src="{{ asset('assets/img/theme/team-4.jpg') }}">
                                         @endif
                                     </span>
                                     <div class="media-body ml-2 d-none d-lg-block">
                                         <span class="mb-0 text-sm  font-weight-bold">
                                             @if (Auth::check())
-                                                {{ Auth::user()->username }}
+                                            {{ Auth::user()->username }}
                                             @else
-                                                Pengguna belum login
+                                            Pengguna belum login
                                             @endif
                                         </span>
                                     </div>
@@ -664,12 +702,12 @@
         </div>
         <div class="container-fluid mt--6">
             @if (session()->has('pesan'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('pesan') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('pesan') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             @endif
             @yield('content')
         </div>
@@ -725,28 +763,6 @@
         CKEDITOR.replace('isi_agenda');
     </script>
 
-
-
-    {{-- <script>
-    $(function() {
-      $('input[name="datefilter"]').daterangepicker({
-        autoUpdateInput: false,
-        locale: {
-          cancelLabel: 'Bersihkan',
-          applyLabel: 'Terapkan',
-          format: 'DD/MM/YYYY'
-        }
-      });
-
-      $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-        $(this).val(picker.startDate.format('DD/MM/YYYY') + ' - ' + picker.endDate.format('DD/MM/YYYY'));
-      });
-
-      $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-        $(this).val('');
-      });
-    });
-  </script> --}}
 </body>
 
 </html>

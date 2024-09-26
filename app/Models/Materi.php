@@ -24,6 +24,12 @@ class Materi extends Model
     {
         return $this->hasMany(Isimateri::class, 'id_materi', 'id_materi');
     }
+
+    public function tugas()
+    {
+        return $this->hasMany(Tugas::class, 'id_materi', 'id_materi');
+    }
+
     public function ratings()
     {
         return $this->hasMany(Rating::class);

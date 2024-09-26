@@ -19,8 +19,8 @@ class User extends Authenticatable
         'menu_access' => 'array',
     ];
 
-     public $timestamps = false;
-     protected $primaryKey = 'id';
+    public $timestamps = false;
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'username', // Tambahkan baris ini
@@ -32,8 +32,8 @@ class User extends Authenticatable
         'no_telp',
         'id_session',
         'password',
-        'is_subscribed', 
-        'paket_langganan' 
+        'is_subscribed',
+        'paket_langganan'
     ];
 
     /**
@@ -64,22 +64,6 @@ class User extends Authenticatable
         return $this->belongsTo(UserModul::class, 'id_session', 'id_session');
     }
 
-    // public function hasAccessTo($modulName)
-    // {
-    //     // Cek apakah pengguna adalah admin
-    //     if ($this->level == 'admin') {
-    //         return true;
-    //     }
-
-    //     // Cek apakah pengguna memiliki akses ke modul tertentu
-    //     $modul = Manajemenmodul::where('nama_modul', $modulName)->first();
-    //     if ($modul && in_array($modul->id_modul, $this->menu_access)) {
-    //         return true;
-    //     }
-
-    //     return false;
-    // }
-
     public function ratings()
     {
         return $this->hasMany(Rating::class, 'id', 'id');
@@ -87,6 +71,10 @@ class User extends Authenticatable
 
     public function pengajar()
     {
-        return $this->hasMany(Trainer::class, 'id');
+        return $this->hasMany(Trainer::class, 'id', 'id');
+    }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 }
