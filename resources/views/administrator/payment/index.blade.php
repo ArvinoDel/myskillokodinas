@@ -94,7 +94,7 @@ if ($payment->status === 'pending') {
                                         <td>
                                             <div class="d-flex justify-content-center">
                                                 <!-- Tombol Complete -->
-                                                <form action="{{ route('payment.complete', $payment->id) }}"
+                                                <form action="{{ route('administrator.payment.approve', $payment->id) }}"
                                                     method="POST" style="display:inline;">
                                                     @csrf
                                                     <button type="submit"

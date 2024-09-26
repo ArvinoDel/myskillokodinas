@@ -388,4 +388,4 @@ Route::get('/e-learning/materi/{id_materi}', [MateriController::class, 'show'])-
 Route::post('/materi/{id_materi}/rate', [MateriController::class, 'rate'])->name('materi.rate')->middleware('auth');
 Route::get('/bootcamp/digital-marketing/{id_bootcamp}', [BootcampController::class, 'show'])->name('bootcamp.show');
 Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
-Route::post('/payment/complete/{id}', [PaymentController::class, 'completePayment'])->name('payment.complete');
+Route::post('/payment/complete/{id}', [PaymentController::class, 'completePayment'])->name('administrator.payment.approve');

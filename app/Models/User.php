@@ -19,8 +19,8 @@ class User extends Authenticatable
         'menu_access' => 'array',
     ];
 
-     public $timestamps = false;
-     protected $primaryKey = 'id';
+    public $timestamps = false;
+    protected $primaryKey = 'id';
 
     protected $fillable = [
         'username', // Tambahkan baris ini
@@ -32,8 +32,8 @@ class User extends Authenticatable
         'no_telp',
         'id_session',
         'password',
-        'is_subscribed', 
-        'paket_langganan' 
+        'is_subscribed',
+        'paket_langganan'
     ];
 
     /**
@@ -88,5 +88,9 @@ class User extends Authenticatable
     public function pengajar()
     {
         return $this->hasMany(Trainer::class, 'id');
+    }
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
     }
 }
