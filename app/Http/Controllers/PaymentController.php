@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bannerslider;
+use App\Models\User;
 use App\Models\Metode;
 use App\Models\Payment;
+use App\Models\Bootcamp;
 use App\Models\Programcv;
+use App\Models\Bannerslider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Berlangganan; // Pastikan ini benar
-use App\Models\Bootcamp;
 
 class PaymentController extends Controller
 {
@@ -212,6 +213,48 @@ class PaymentController extends Controller
             // Mengirim pesan error ke view
             // dd($request);
             return redirect()->back()->with('error', 'Pembayaran gagal: ' . $e->getMessage());
+        }
+    }
+    // Tambahkan ini jika belum ada
+
+    public function completePayment($id)
+    {
+        // Ambil data payment berdasarkan ID
+        $payment = Payment::findOrFail($id);
+
+        // Cari user yang cocok dengan username dan email dari tabel payment
+        $user = User::where('username', $payment->username)
+            ->where('email', $payment->contact) // Menggunakan field 'contact' dari payment untuk mencocokkan dengan email
+            ->first();
+
+        if ($user) {
+            // Ambil semua payments terkait dengan user
+            $payments = Payment::where('username', $user->username)
+                ->where('contact', $user->email) // Mencocokkan username dan email dengan payments
+                ->where('status', 'completed') // Hanya ambil yang sudah completed
+                ->pluck('program_name') // Mengambil array program_name
+                ->toArray(); // Ubah menjadi array
+
+            // Debug untuk melihat data
+            // dd($payments); // Cek apakah data program_name ada atau kosong
+
+            // Pastikan array tidak kosong sebelum menyimpannya
+            if (!empty($payments)) {
+                // Update kolom paket_langganan di tabel user
+                $user->paket_langganan = json_encode($payments); // Simpan array program_name sebagai JSON
+                $user->is_subscribed = 1; // Menandai user sebagai berlangganan
+                $user->save();
+
+                // Ubah status payment menjadi completed
+                $payment->status = 'completed';
+                $payment->save();
+
+                return redirect()->back()->with('success', 'Payment completed and subscription updated successfully.');
+            } else {
+                return redirect()->back()->with('error', 'No valid programs found for this user.');
+            }
+        } else {
+            return redirect()->back()->with('error', 'User not found.');
         }
     }
 }
