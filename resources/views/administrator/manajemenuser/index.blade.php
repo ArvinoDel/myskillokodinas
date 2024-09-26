@@ -74,7 +74,7 @@
                                 <td>{{ $user->level }}</td>
                                 <td>
                                     @if($user->payment && $user->payment->berlangganan_id)
-                                        Berlangganan (ID: {{ $user->payment->berlangganan_id }})
+                                        Berlangganan (Name: {{ $user->payment->program_name }})
                                     @else
                                         Tidak Berlangganan
                                     @endif
