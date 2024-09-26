@@ -177,7 +177,7 @@
                 <!-- Carousel Container -->
                 {{-- DISINI IMAGE NYA FULL SETENGAH CARDS --}}
                 <div class="overflow-x-auto pb-2 no-scrollbar mb-5">
-                    <div id="card-container" class="flex space-x-4">
+                    <div id="card-container" class="flex space-x-2">
                         @foreach ($materis as $materi)
                             <a href="{{ url('/e-learning/materi/' . $materi->id_materi) }}">
                                 <div id="card-{{ $materi->kategoriprogram->id_kategori_program }}"
@@ -257,7 +257,7 @@
                                         alt="{{ $category->nama_kategori }}"
                                         class="w-full h-full object-contain rounded-lg mb-2">
                                 </div>
-                                <h3 class="font-bold text-sm mb-4">{{ $category->nama_kategori }}</h3>
+                                <h3 class="font-bold text-sm mt-5">{{ $category->nama_kategori }}</h3>
                                 <div class="flex items-center text-xs text-gray-500">
                                 </div>
                                 <div class="flex items-center mt-2">
@@ -305,11 +305,17 @@
 
                                         @endphp
 
-                                        <span class="mr-2">📅 {{ $topiks }} Topik - {{ $materiCount }}
-                                            Materi</span>
+                                        <span class="mr-2">
+                                            @if ($topiks > 0 || $materiCount > 0)
+                                                📅 {{ $topiks }} Topik - {{ $materiCount }} Materi
+                                            @else
+                                                Tidak ada topik, tidak ada materi
+                                            @endif
+                                        </span>
+
                                     </div>
                                 </div>
-                                <div class="flex items-center mt-2">
+                                <div class="flex items-start mt-2 flex-col sm:flex-row">
                                     <span class="text-yellow-400 text-sm">
                                         @for ($i = 1; $i <= 5; $i++)
                                             @if ($i <= round($rataRatingKeseluruhan))
@@ -319,15 +325,19 @@
                                             @endif
                                         @endfor
                                     </span>
-                                    <span
-                                        class="ml-1 text-xs text-gray-600">{{ number_format($rataRatingKeseluruhan, 1) }}/5</span>
+                                    <span class="ml-1 text-xs mb-1 text-gray-600">
+                                        @if ($rataRatingKeseluruhan > 0)
+                                            {{ number_format($rataRatingKeseluruhan, 1) }}/5
+                                        @else
+                                            Belum ada rating
+                                        @endif
+                                        <span
+                                            class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">{{ $category->id_kategori_program }}</span>
+                                    </span>
 
-
-                                    <span
-                                        class="ml-1 text-xs bg-blue-100 text-blue-800 px-1 rounded">{{ $category->id_kategori_program }}</span>
                                 </div>
-                            </div>
 
+                            </div>
                         </a>
                     @endforeach
                 </div>

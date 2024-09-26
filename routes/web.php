@@ -279,7 +279,7 @@ Route::get('/company-profile', [AppController::class, 'companyprofile']);
 Route::get('/', [MainController::class, 'index']);
 
 // routes/web.php
-Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
+// Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
 
 Route::get('/my-profile', function () {
     return view('./myskill/pages/profile/my-profile');
