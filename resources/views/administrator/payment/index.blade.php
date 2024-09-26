@@ -82,20 +82,19 @@
                                         <td
                                             class="@php
 if ($payment->status === 'pending') {
-        echo 'text-warning'; // Kelas Bootstrap untuk teks merah
+        echo 'text-warning';
     } elseif ($payment->status === 'completed') {
-        echo 'text-success'; // Kelas Bootstrap untuk teks hijau
+        echo 'text-success';
     } elseif ($payment->status === 'canceled') {
-        echo 'text-danger'; // Kelas Bootstrap untuk teks merah
+        echo 'text-danger';
     } @endphp">
                                             {{ $payment->status }}
                                         </td>
 
-
                                         <td>
                                             <div class="d-flex justify-content-center">
-                                                <!-- Tombol Approve -->
-                                                <form action="{{ route('administrator.payment.approve', $payment->id) }}"
+                                                <!-- Tombol Complete -->
+                                                <form action="{{ route('payment.complete', $payment->id) }}"
                                                     method="POST" style="display:inline;">
                                                     @csrf
                                                     <button type="submit"
@@ -117,7 +116,6 @@ if ($payment->status === 'pending') {
                                                     </button>
                                                 </form>
                                             </div>
-
                                         </td>
                                     </tr>
                                 @endforeach
