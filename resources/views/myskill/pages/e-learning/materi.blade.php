@@ -77,9 +77,9 @@
                             10.000+ Orang Telah Bergabung Setiap Bulan!</h3>
                     </div>
 
-                    <div class="grid grid-rows-1 md:mx-12">
+                    <div class="grid grid-rows-1 md:mx-0 lg:mx-12">
                         <div id="divMateri" class="mx-4 md:mx-8 max-lg:mx-12">
-                            <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Materi</h3>
+                            <h3 class="text-gray-500 font-semibold py-4 mx-0 md:mx-7 md:mt-1.5 lg:mx-6">Materi</h3>
                             @foreach ($materi->isimateri as $isi)
                             <button
                                 onclick="openFile('{{ asset('../files/' . $isi->file) }}', '{{ $isi->file }}')"
@@ -89,7 +89,7 @@
                                         class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow max-lg:space-x-1">
                                         <i
                                             class="fa-regular fa-circle-play text-sm md:text-lg max-lg:text-base"></i>
-                                        <h3 class="text-sm md:text-base max-lg:text-base">
+                                        <h3 class="text-sm md:text-base max-lg:text-base text-nowrap">
                                             {{ $isi->judul_file }}
                                         </h3>
                                     </div>
@@ -102,19 +102,24 @@
                             @endforeach
                         </div>
                         <div id="tugasDiv" class="hidden mx-4 md:mx-8 max-lg:mx-12">
-                            <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Tugas</h3>
+                            <h3 class="text-gray-500 font-semibold py-4 mx-0 md:mx-7 lg:mx-6">Tugas</h3>
                             @foreach ($tugas as $index => $task)
-                            <button class="w-full" onclick="openTaskModal('{{ $task->judul_tugas }}', '{{ $task->deskripsi }}', '{{ asset('../files_tugas/' . $task->file) }}')">
+                            <button class="w-full"
+                                onclick="openTaskModal('{{ $task->judul_tugas }}', '{{ $task->deskripsi }}', '{{ asset('../files_tugas/' . $task->file) }}')">
                                 <div class="py-2 flex items-center justify-between max-lg:py-3">
-                                    <div class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow max-lg:space-x-1">
-                                        <span class="text-sm md:text-lg max-lg:text-base">{{ $index + 1 }}.</span>
-                                        <h3 class="text-sm md:text-base max-lg:text-base cursor-pointer">
+                                    <div
+                                        class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow max-lg:space-x-1">
+                                        <span
+                                            class="text-sm md:text-lg max-lg:text-base">{{ $index + 1 }}.</span>
+                                        <h3
+                                            class="text-sm md:text-base max-lg:text-base cursor-pointer">
                                             {{ $task->judul_tugas }}
                                         </h3>
                                     </div>
                                     <div class="ml-auto">
                                         <i class="fa-solid fa-upload text-lg md:text-xl max-lg:text-lg cursor-pointer"
-                                            onclick="event.stopPropagation(); toggleModal(true)"></i> <!-- Tambahkan event.stopPropagation() -->
+                                            onclick="event.stopPropagation(); toggleModal(true)"></i>
+                                        <!-- Tambahkan event.stopPropagation() -->
                                     </div>
                                 </div>
                             </button>
@@ -140,58 +145,22 @@
                         </div>
 
                         <!-- Modal Kirim Foto -->
-                        <div id="photoUploadModal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-50">
-                            <div class="container w-full mx-auto items-center lg:py-16 md:py-8 max-sm:py-4 max-w-sm bg-white rounded-lg shadow-md overflow-hidden relative">
-                                <button onclick="toggleModal(false)" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        <div id="photoUploadModal"
+                            class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-50">
+                            <div
+                                class="container w-full mx-auto items-center lg:py-16 md:py-8 max-sm:py-4 max-w-sm bg-white rounded-lg shadow-md overflow-hidden relative">
+                                <!-- Cancel Icon -->
+                                <button onclick="toggleModal(false)"
+                                    class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                 </button>
-                                <!-- Modal Kirim Foto -->
-                                <div id="photoUploadModal"
-                                    class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-50">
-                                    <div
-                                        class="container w-full mx-auto items-center lg:py-16 md:py-8 max-sm:py-4 max-w-sm bg-white rounded-lg shadow-md overflow-hidden relative">
-                                        <!-- Cancel Icon -->
-                                        <button onclick="toggleModal(false)"
-                                            class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none"
-                                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
 
-                                        <div class="px-4 py-6">
-                                            <p class="text-start text-xl font-semibold mb-3">Form Pengiriman Tugas</p>
-                                            <div id="file-preview" class="max-w-sm p-6 mb-4 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg items-center mx-auto text-center cursor-pointer">
-                                                <input id="fileInput" type="file" class="hidden" accept="image/*,application/pdf,video/*" onchange="previewFile()" />
-                                                <label for="fileInput" class="cursor-pointer">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-700 mx-auto mb-4">
-                                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-                                                    </svg>
-                                                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-700">Tambahkan file</h5>
-                                                    <p class="font-normal text-sm text-gray-400 md:px-6">Format file harus berupa <b class="text-gray-600">JPG, PNG, PDF, atau Video</b></p>
-                                                    <span id="filename" class="text-gray-500 bg-gray-200 z-50"></span>
-                                                </label>
-                                            </div>
-                                            <div class="mb-4">
-                                                <textarea id="commentArea" class="w-full border border-gray-300 p-2 rounded" rows="4" placeholder="Tambahkan komentar..."></textarea>
-                                            </div>
-                                            <div class="flex items-center justify-center">
-                                                <div class="w-full">
-                                                    <button onclick="submitFile(); Swal.fire({
-                                                title: 'Tugas Terkirim!',
-                                                icon: 'success'
-                                            });" class="w-full text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center justify-center">
-                                                        <span class="text-center ml-2">Kirim</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="px-4 py-6">
+                                <div class="px-4 py-2">
+                                    <p class="text-start text-xl font-semibold mb-3">Form Pengiriman Tugas</p>
                                     <div id="file-preview"
                                         class="max-w-sm p-6 mb-4 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg items-center mx-auto text-center cursor-pointer">
                                         <input id="fileInput" type="file" class="hidden"
@@ -199,7 +168,8 @@
                                             onchange="previewFile()" />
                                         <label for="fileInput" class="cursor-pointer">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                viewBox="0 0 24 24" stroke-width="1.5"
+                                                stroke="currentColor"
                                                 class="w-8 h-8 text-gray-700 mx-auto mb-4">
                                                 <path stroke-linecap="round" stroke-linejoin="round"
                                                     d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
@@ -219,12 +189,18 @@
                                             placeholder="Tambahkan komentar..."></textarea>
                                     </div>
                                     <div class="flex items-center justify-center">
+
                                         <div class="w-full">
-                                            <button onclick="submitFile()"
+                                            <button
+                                                onclick="submitFile(); Swal.fire({
+                                                                    title: 'Tugas Terkirim!',
+                                                                    icon: 'success'
+                                                                });"
                                                 class="w-full text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center justify-center">
                                                 <span class="text-center ml-2">Kirim</span>
                                             </button>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -232,7 +208,7 @@
 
 
                         <button id="lihatTugasBtn"
-                            class="bg-orange-400 text-white font-semibold mx-10 md:mx-14 px-10 py-2 max-sm:mb-3 rounded-xl">
+                            class="bg-orange-400 text-white font-semibold mx-10 md:mx-14 md:mb-2 px-10 py-2 max-sm:mb-3 rounded-xl">
                             Lihat Tugas
                         </button>
                     </div>

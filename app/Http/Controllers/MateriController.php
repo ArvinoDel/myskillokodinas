@@ -154,7 +154,9 @@ class MateriController extends Controller
         }
 
         // Ambil tugas yang terhubung dengan materi
-        $tugas = Tugas::where('id_materi', $id_materi)->get(); // Tambahkan ini
+        $tugas = Tugas::where('id_materi', $id_materi)
+        ->where('status', true) // Tambahkan kondisi ini
+        ->get(); // Tambahkan ini
 
         return view('myskill.pages.e-learning.materi', compact('materi', 'materis', 'vidActive', 'tugas')); // Update ini
     }
