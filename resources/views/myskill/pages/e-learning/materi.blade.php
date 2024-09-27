@@ -123,7 +123,6 @@
                         <!-- Modal Kirim Foto -->
                         <div id="photoUploadModal" class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-50">
                             <div class="container w-full mx-auto items-center lg:py-16 md:py-8 max-sm:py-4 max-w-sm bg-white rounded-lg shadow-md overflow-hidden relative">
-                                <!-- Cancel Icon -->
                                 <button onclick="toggleModal(false)" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -131,6 +130,7 @@
                                 </button>
 
                                 <div class="px-4 py-6">
+                                    <p class="text-start text-xl font-semibold mb-3">Form Pengiriman Tugas</p>
                                     <div id="file-preview" class="max-w-sm p-6 mb-4 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg items-center mx-auto text-center cursor-pointer">
                                         <input id="fileInput" type="file" class="hidden" accept="image/*,application/pdf,video/*" onchange="previewFile()" />
                                         <label for="fileInput" class="cursor-pointer">
@@ -147,7 +147,10 @@
                                     </div>
                                     <div class="flex items-center justify-center">
                                         <div class="w-full">
-                                            <button onclick="submitFile()" class="w-full text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center justify-center">
+                                            <button onclick="submitFile(); Swal.fire({
+                                                title: 'Tugas Terkirim!',
+                                                icon: 'success'
+                                            });" class="w-full text-white bg-orange-500 hover:bg-orange-600 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center justify-center">
                                                 <span class="text-center ml-2">Kirim</span>
                                             </button>
                                         </div>
