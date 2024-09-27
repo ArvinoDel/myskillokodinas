@@ -103,23 +103,24 @@
                                         </div>
                                         <div id="tugasDiv" class="hidden mx-4 md:mx-8 max-lg:mx-12">
                                             <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Tugas</h3>
-                                            @foreach ($tugas as $task)
-                                            <button class="w-full">
-                                                <div class="py-2 flex items-center justify-between max-lg:py-3">
-                                                    <div
-                                                        class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow max-lg:space-x-1">
-                                                        <i
-                                                            class="fa-regular fa-circle-play text-sm md:text-lg max-lg:text-base"></i>
-                                                        <h3 class="text-sm md:text-base max-lg:text-base">
-                                                            {{ $task->judul_tugas }}
-                                                        </h3>
+                                            @foreach ($tugas as $index => $task)
+                                                <button class="w-full"
+                                                    onclick="openTaskModal('{{ $task->judul_tugas }}', '{{ $task->deskripsi }}', '{{ asset('../files_tugas/' . $task->file) }}')">
+                                                    <div class="py-2 flex items-center justify-between max-lg:py-3">
+                                                        <div
+                                                            class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow max-lg:space-x-1">
+                                                            <span
+                                                                class="text-sm md:text-lg max-lg:text-base">{{ $index + 1 }}.</span>
+                                                            <h3 class="text-sm md:text-base max-lg:text-base">
+                                                                {{ $task->judul_tugas }}</h3>
+                                                        </div>
                                                     </div>
+                                                </button>
+                                                <button>
                                                     <div class="ml-auto">
-                                                        <i
-                                                            class="fa-solid fa-upload text-lg md:text-xl max-lg:text-lg"></i>
+                                                        <i class="fa-solid fa-upload text-lg md:text-xl max-lg:text-lg"></i>
                                                     </div>
-                                                </div>
-                                            </button>
+                                                </button>
                                             @endforeach
                                         </div>
                                         <button id="lihatTugasBtn"
@@ -167,10 +168,12 @@
                                                                 {{ $isi->judul_file }}
                                                             </h3>
                                                         </div>
-                                                        <div class="ml-auto">
-                                                            <i
-                                                                class="fa-regular fa-square text-lg md:text-xl max-lg:text-lg"></i>
-                                                        </div>
+                                                    </div>
+                                                </button>
+                                                <button>
+                                                    <div class="ml-auto">
+                                                        <i
+                                                            class="fa-regular fa-square text-lg md:text-xl max-lg:text-lg"></i>
                                                     </div>
                                                 </button>
                                             @endforeach
@@ -180,6 +183,20 @@
                             @endif
                         @endif
                     </div>
+
+                    <!-- Modal untuk Tugas -->
+                    <div id="taskModal"
+                        class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                        <div class="bg-white p-5 rounded-lg max-w-md w-full">
+                            <div class="grid grid-cols-2">
+                                <span class="close" onclick="closeTaskModal()">&times;</span>
+                                <h3 id="taskTitle" class="font-bold text-lg -ml-44"></h3>
+                            </div>
+                            <img id="taskFileImage" src="" frameborder="0" class="my-6"></img>
+                            <span id="taskDescription"></span>
+                        </div>
+                    </div>
+
                     <!-- Modal untuk video -->
                     <div id="videoModal"
                         class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center pt-16">
@@ -586,6 +603,21 @@
         </section>
 
         <script>
+            function openTaskModal(taskTitle, taskDescription, taskFile) {
+                console.log("Modal tugas dibuka dengan judul:", taskTitle);
+                document.getElementById('taskTitle').innerText = taskTitle;
+                document.getElementById('taskDescription').innerText = taskDescription; // Set deskripsi
+                document.getElementById('taskFileImage').src = taskFile; // Set gambar jika ada
+                document.getElementById('taskModal').classList.remove('hidden');
+
+                // Tambahkan log untuk memeriksa apakah modal terlihat
+                console.log("Modal tugas sekarang:", document.getElementById('taskModal').classList);
+            }
+
+            function closeTaskModal() {
+                document.getElementById('taskModal').classList.add('hidden');
+            }
+
             document.getElementById('lihatTugasBtn').addEventListener('click', function() {
                 const tugasDiv = document.getElementById('tugasDiv');
                 const divMateri = document.getElementById('divMateri');
