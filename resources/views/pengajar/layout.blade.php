@@ -96,7 +96,56 @@
         <nav class="navbar navbar-top navbar-expand navbar-light bg-secondary border-bottom">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                
+                <div class="form-group mb-0 navbar-search navbar-search-dark form-inline mr-sm-3" id="navbar-search-main">
+                        <div class="input-group input-group-alternative input-group-merge">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="searchBox" placeholder="Search links...">
+                            
+                                <button class="close" type="button" data-action="search-close" data-target="#navbar-search-main" aria-label="Close"><span aria-hidden="close">x</span></button>
+                            
+                        </div>
+                    </div>
+                    <div id="search-results" class="dropdown-menu dropdown-menu-right"></div>
+
+                    <script>
+                        function liveSearch() {
+                            var input = document.getElementById('searchBox');
+                            var filter = input.value.toLowerCase();
+                            var navItems = document.querySelectorAll('.navbar-nav > li, .navbar-nav > li > ul > li,.navbar-nav'); // Ubah selector untuk navbar
+
+                            navItems.forEach(function(item) {
+                                var a = item.getElementsByTagName('a')[0];
+                                var txtValue = a.textContent || a.innerText;
+                                if (filter === "") {
+                                    item.style.display = ""; // Tampilkan item jika filter kosong
+                                } else if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                                    item.style.display = ""; // Tampilkan item
+                                } else {
+                                    var subItems = item.querySelectorAll('ul > li, ul > li > ul > li');
+                                    var found = false;
+                                    subItems.forEach(function(subItem) {
+                                        var subA = subItem.getElementsByTagName('a')[0];
+                                        var subTxtValue = subA.textContent || subA.innerText;
+                                        if (subTxtValue.toLowerCase().indexOf(filter) > -1) {
+                                            subItem.style.display = ""; // Tampilkan sub-item
+                                            found = true;
+                                        } 
+                                    });
+                                    item.style.display = found ? "" : "none"; // Tampilkan atau sembunyikan item berdasarkan sub-item
+                                }
+                            });
+
+                            // Jika dalam posisi mobile, buka nav sidebar setelah pencarian
+                            if (window.innerWidth <= 768) {
+                                document.querySelector('.sidenav-toggler').click();
+                            }
+                        }
+
+                        // Tambahkan event listener untuk mendeteksi perubahan input pada versi mobile
+                        document.getElementById('searchBox').addEventListener('input', liveSearch);
+                    </script>
                 <div id="search-results" class="dropdown-menu dropdown-menu-right" style="display: none;"></div>
                     <ul class="navbar-nav align-items-center ml-md-auto">
                         <li class="nav-item d-xl-none">
