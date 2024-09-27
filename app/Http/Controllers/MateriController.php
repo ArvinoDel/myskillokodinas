@@ -9,6 +9,7 @@ use App\Models\Isimateri;
 use Illuminate\View\View;
 use Illuminate\Support\Str;
 use App\Models\Berlangganan;
+use App\Models\Tugas;
 use Illuminate\Http\Request;
 use App\Models\Kategoriprogram;
 use App\Models\Topik;
@@ -151,8 +152,11 @@ class MateriController extends Controller
         } else {
             $vidActive = false;
         }
-        // Pass the fetched materi to the view
-        return view('myskill.pages.e-learning.materi', compact('materi', 'materis', 'vidActive'));
+
+        // Ambil tugas yang terhubung dengan materi
+        $tugas = Tugas::where('id_materi', $id_materi)->get(); // Tambahkan ini
+
+        return view('myskill.pages.e-learning.materi', compact('materi', 'materis', 'vidActive', 'tugas')); // Update ini
     }
 
 
