@@ -109,7 +109,7 @@ Route::prefix('pengajar')->name('pengajar.')->group(function () {
     Route::resource('pengumpulantugas', PengumpulantugasController::class)
         ->middleware('checkModul:pengumpulantugas');
 
-    Route::get('/pengumpulantugas/{id_pengumpulan}/edit', [PengumpulantugasController::class, 'edit'])->name('pengumpulantugas.edit');
+    // Route::get('/pengumpulantugas/{id_pengumpulan}/edit', [PengumpulantugasController::class, 'edit'])->name('pengumpulantugas.edit');
 });
 
 Route::prefix('administrator')->name('administrator.')->group(function () {

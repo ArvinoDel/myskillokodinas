@@ -22,9 +22,10 @@
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
                             <select class="form-control" name="nama_lengkap">
-                                @foreach ($nama_lengkaps as $user) <!-- Ubah dari judultugass ke nama_lengkaps -->
-                                    <option value="{{ $user->nama_lengkap }}" {{ request('nama_lengkap') == $user->nama_lengkap ? 'selected' : '' }}>
-                                        {{ $user->nama_lengkap }}
+                                <option value="">Pilih Email</option>
+                                @foreach ($emails as $user) <!-- Ubah dari judultugass ke nama_lengkaps -->
+                                    <option value="{{ $user->email }}" {{ request('email') == $user->email ? 'selected' : '' }}>
+                                        {{ $user->email }}
                                     </option>
                                 @endforeach
                             </select>
@@ -39,7 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    @if(request('search') || request('nama_lengkap') || request('nama_lengkap'))
+                    @if(request('search') || request('email') || request('email'))
                     <div class="mt-2 d-flex justify-content-center">
                         <a href="{{ route('pengajar.pengumpulantugas.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
                     </div>
@@ -51,7 +52,8 @@
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Nama Lengkap</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Username</th>
                                 <th class="text-center">Judul Tugas</th>
                                 <th class="text-center">File</th>
                                 <th class="text-center">Nilai</th>
@@ -63,7 +65,8 @@
                             @foreach ($pengumpulantugass as $index => $kumpultugas)
                             <tr>
                                 <td>{{ $loop->iteration + $pengumpulantugass->firstItem() - 1 }}</td>
-                                <td>{{ $kumpultugas->user->nama_lengkap ?? 'belum ada data' }}</td> <!-- Menampilkan nama lengkap user -->
+                                <td>{{ $kumpultugas->user->email ?? 'belum ada data' }}</td> <!-- Menampilkan nama lengkap user -->
+                                <td>{{ $kumpultugas->user->username ?? 'belum ada data' }}</td> <!-- Menampilkan nama lengkap user -->
                                 <td>{{ $kumpultugas->tugas->judul_tugas ?? 'N/A' }}</td> <!-- Menampilkan judul tugas -->
                                 <td>
                                     @if (strpos($kumpultugas->file, '.mp4') !== false || strpos($kumpultugas->file, '.avi') !== false || strpos($kumpultugas->file, '.mpeg') !== false)

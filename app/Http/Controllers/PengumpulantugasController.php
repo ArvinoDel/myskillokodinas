@@ -15,7 +15,7 @@ class PengumpulantugasController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
-        $nama_lengkap = $request->nama_lengkap; // Ubah dari judul_tugas ke nama_lengkap
+        $email = $request->email; // Ubah dari judul_tugas ke nama_lengkap
         $id_tugas = $request->id_tugas;
 
         $query = Pengumpulantugas::query();
@@ -24,9 +24,9 @@ class PengumpulantugasController extends Controller
             $query->where('deskripsi', 'like', "%$search%");
         }
 
-        if (!empty($nama_lengkap)) {
-            $query->whereHas('user', function ($q) use ($nama_lengkap) {
-                $q->where('nama_lengkap', $nama_lengkap); // Filter berdasarkan nama lengkap user
+        if (!empty($emails)) {
+            $query->whereHas('user', function ($q) use ($email) {
+                $q->where('email', $email); // Filter berdasarkan nama lengkap user
             });
         }
 
@@ -34,13 +34,13 @@ class PengumpulantugasController extends Controller
             $query->where('id_tugas', $id_tugas);
         }
 
-        $nama_lengkaps = User::select('nama_lengkap')
-            ->groupBy('nama_lengkap')
+        $emails = User::select('email')
+            ->groupBy('email')
             ->get(); // Mendapatkan daftar nama_lengkap dari user
 
         $pengumpulantugass = $query->with(['tugas', 'user'])->paginate(10);
 
-        return view('pengajar.pengumpulantugas.index', compact(['pengumpulantugass', 'nama_lengkaps']));
+        return view('pengajar.pengumpulantugas.index', compact(['pengumpulantugass', 'emails']));
     }
 
 
