@@ -158,13 +158,27 @@ class ManajemenuserController extends Controller
     public function show(string $id)
     {
         //
+
         $users = User::all();
 
         foreach ($users as $user) {
+            // Decode paket langganan dari JSON ke array
+            $paketLangganan = json_decode($user->paket_langganan, true);
+
+            // Siapkan daftar paket yang ingin ditampilkan
+            $paketList = '';
+            if (is_array($paketLangganan) && !empty($paketLangganan)) {
+                foreach ($paketLangganan as $paket) {
+                    $paketList .= '- ' . $paket . "\n"; // Setiap paket ditampilkan dalam baris baru
+                }
+            } else {
+                $paketList = 'Tidak ada paket langganan';
+            }
+
             // Detail pesan yang akan dikirimkan
             $details = [
                 'title' => 'Halo, Ini Pesan Dari Kami!',
-                'body' => 'Kami ingin menginformasikan sesuatu yang penting untuk Anda.'
+                'body' => 'Kami ingin menginformasikan sesuatu yang penting untuk Anda. Berikut adalah paket langganan Anda: ' . "\n\n" . $paketList
             ];
 
             // Kirim email ke setiap user
@@ -207,7 +221,11 @@ class ManajemenuserController extends Controller
         $akses_user = $akses->pluck('id_modul')->toArray();
         $subscription_packages = Payment::pluck('program_name', 'id');
 
-        return view('administrator.manajemenuser.edit', compact('users', 'akses', 'moduls', 'akses_user', 'subscription_packages'));
+        // Decode paket langganan dari JSON ke array
+        $userPaketLangganan = json_decode($users->paket_langganan, true) ?? [];
+        // dd($userPaketLangganan);
+
+        return view('administrator.manajemenuser.edit', compact('users', 'akses', 'moduls', 'akses_user', 'subscription_packages', 'userPaketLangganan'));
     }
 
     /**
@@ -215,67 +233,58 @@ class ManajemenuserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        // dd($request);
         Log::info($request->all());
 
+        // Validasi data yang diterima
         $validated = $request->validate([
             "username" => 'required|string|max:255',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png',
             "email" => 'required|string|email|max:255',
             'password' => 'nullable|string|min:6',
-            'level' => 'required|string|in:admin,user,pengajar'
+            'level' => 'required|string|in:admin,user,pengajar',
+            'program_name' => 'array', // Pastikan ini adalah array
         ]);
 
-        // $validated['password'] = bcrypt($validated['password']);
+        // Temukan pengguna berdasarkan ID
+        $users = User::findOrFail($id);
 
-        // Jika password diisi, enkripsi password baru
+        // Simpan paket langganan sebagai JSON
+        $users->paket_langganan = json_encode($request->input('program_name', [])); // Simpan data paket langganan
+
+        // Enkripsi password jika diisi
         if ($request->filled('password')) {
             $validated['password'] = bcrypt($request->password);
         } else {
-            // Jika password tidak diisi, gunakan password lama
-            unset($validated['password']);
+            unset($validated['password']); // Hapus password jika tidak diisi
         }
 
-        $users = User::findOrFail($id);
-
-        $username = $request->username;
-        $no_telp = $request->no_telp;
-
-        $fotoName = $users->foto;
-
+        // Proses foto jika ada
+        $fotoName = $users->foto; // Simpan nama foto lama
         if ($request->hasFile('foto')) {
             $foto = $request->file("foto");
-            Log::info('File foto diterima: ', [$foto]); // Log file untuk debugging
+            Log::info('File foto diterima: ', [$foto]);
 
             $fotoName = time() . '_' . $foto->getClientOriginalName();
             $foto->move("./foto_user/", $fotoName);
-            $users->foto = $fotoName; // Simpan nama file baru
         } else {
-            Log::info('Tidak ada file foto yang diterima.'); // Log jika tidak ada file
+            Log::info('Tidak ada file foto yang diterima.');
         }
 
-        if ($request->nama_modul != '') {
-            $link = $request->nama_modul;
-            $nama_modul = implode(',', $link);
-        } else {
-            $nama_modul = '';
-        }
-
+        // Update data pengguna
         $users->update([
-            "username" => $username,
+            "username" => $validated['username'],
             "nama_lengkap" => $request->nama_lengkap,
-            "email" => $request->email,
+            "email" => $validated['email'],
             "level" => $validated['level'],
             "foto" => $fotoName,
-            "no_telp" => $no_telp,
+            "no_telp" => $request->no_telp,
             "blokir" => 'N',
-            "id_session" => md5($username . '-' . date('YmdHis')),
+            "id_session" => md5($validated['username'] . '-' . date('YmdHis')),
             "is_subscribed" => $request->is_subscribed ?? false,
-            "paket_langganan" => $request->paket_langganan
+            "paket_langganan" => $users->paket_langganan, // Menggunakan data paket langganan yang sudah di-encode
         ]);
 
-
+        // Update password jika ada
         if (isset($validated['password'])) {
             $users->update(['password' => $validated['password']]);
         }
@@ -299,6 +308,7 @@ class ManajemenuserController extends Controller
             'message' => 'Data User Berhasil Diperbarui'
         ]);
     }
+
 
     /**
      * Remove the specified resource from storage.

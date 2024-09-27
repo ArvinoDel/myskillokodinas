@@ -79,19 +79,20 @@
                                 <td>{{ $user->level }}</td>
 
                                 @php
-                                // Dekode JSON menjadi array
-                                $paketLangganan = json_decode($user->paket_langganan, true);
+                                // Dekode JSON menjadi array, dan jika gagal akan mengembalikan array kosong
+                                $paketLangganan = json_decode($user->paket_langganan, true) ?? [];
                                 @endphp
 
                                 <td>
-                                    @if ($user->is_subscribed)
-                                    @foreach (json_decode($user->paket_langganan, true) as $paket)
+                                    @if ($user->is_subscribed && !empty($paketLangganan))
+                                    @foreach ($paketLangganan as $paket)
                                     - {{ $paket }} <br>
                                     @endforeach
                                     @else
                                     Tidak Berlangganan
                                     @endif
                                 </td>
+
                                 </td>
                                 <td class="text-center">
                                     <a href="{{ route('administrator.manajemenuser.show', $user->id) }}" class="btn btn-primary">

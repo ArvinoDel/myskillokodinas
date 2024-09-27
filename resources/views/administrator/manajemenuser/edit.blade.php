@@ -3,7 +3,7 @@
 @section('content')
 <?php
 $foto = "profile.png";
-if($users->foto != NULL){
+if ($users->foto != NULL) {
     $foto = $users->foto;
 }
 ?>
@@ -77,76 +77,79 @@ if($users->foto != NULL){
                                         {{-- @foreach($moduls as $modul)
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="{{ $modul->id_modul }}"
-                                                   id="modul_{{ $modul->id_modul }}" name="modul[]"
-                                                   @if(in_array($modul->id_modul, $akses_user ?? [])) checked @endif>
-                                            <label class="form-check-label" for="modul_{{ $modul->id_modul }}">
-                                                {{ $modul->nama_modul }}
-                                            </label>
-                                        </div>
-                                            @endforeach --}}
-                                        @foreach($moduls as $modul)  
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="{{ $modul->id_modul }}"
-                                                   id="modul_{{ $modul->id_modul }}" name="modul[]"
-                                                   @if(in_array($modul->id_modul, $akses_user)) checked @endif>
-                                            <label class="form-check-label" for="modul_{{ $modul->id_modul }}">
-                                                {{ $modul->nama_modul }}
-                                            </label>
-                                        </div>
-                                        @endforeach
+                                        id="modul_{{ $modul->id_modul }}" name="modul[]"
+                                        @if(in_array($modul->id_modul, $akses_user ?? [])) checked @endif>
+                                        <label class="form-check-label" for="modul_{{ $modul->id_modul }}">
+                                            {{ $modul->nama_modul }}
+                                        </label>
                                     </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="padding: 5px; border: 1px solid #ddd;">Hak Akses</th>
-                                <td style="padding: 5px; border: 1px solid #ddd;">
-                                    <div style="max-height: 200px; overflow-y: auto;">
-                                        <div style="max-height: 200px; overflow-y: auto;">
-                                            @foreach($akses as $aks)
-                                                <span style='display:block'>
-                                                    <a class='text-danger' href="{{ route('administrator.manajemenuser.delete_akses', ['id_umod' => $aks->id_umod, 'user_id' => $users->id]) }}">
-                                                        <i class='fas fa-times'></i>
-                                                    </a>
-                                                    <span class='glyphicon glyphicon-remove'></span></a>{{ $aks->nama_modul }}</span>
-                                                </span>
-                                            @endforeach
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th style="padding: 5px; border: 1px solid #ddd;">Status Berlangganan</th>
-                                <td style="padding: 5px; border: 1px solid #ddd;">
+                                    @endforeach --}}
+                                    @foreach($moduls as $modul)
                                     <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="is_subscribed" name="is_subscribed" value="1" 
-                                        {{ old('is_subscribed', $users->is_subscribed) ? 'checked' : '' }}>
-                                        <label class="form-check-label" for="is_subscribed">Berlangganan</label>
+                                        <input class="form-check-input" type="checkbox" value="{{ $modul->id_modul }}"
+                                            id="modul_{{ $modul->id_modul }}" name="modul[]"
+                                            @if(in_array($modul->id_modul, $akses_user)) checked @endif>
+                                        <label class="form-check-label" for="modul_{{ $modul->id_modul }}">
+                                            {{ $modul->nama_modul }}
+                                        </label>
                                     </div>
-                                </td>
-                            </tr>
-                            <tr id="subscription_package_row" style="{{ old('is_subscribed', $users->is_subscribed) ? '' : 'display:none;' }}">
-                                <th style="padding: 5px; border: 1px solid #ddd;">Paket Langganan</th>
-                                <td style="padding: 5px; border: 1px solid #ddd;">
-                                    <select name="program_name" id="program_name" class="form-control">
-                                        <option value="">Pilih Paket</option> <!-- Opsi default -->
-                                        @foreach($subscription_packages as $id => $program_name)
-                                            <option value="{{ $id }}" {{ old('program_name', $users->paket_langganan) == $id ? 'selected' : '' }}>
-                                                {{ $program_name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </td>                                
-                            </tr>                                                
-                        </tbody>
-                    </table>
-                    <div class="mt-4 d-flex justify-content-between">
-                        <button type="submit" class="btn btn-primary">Perbarui</button>
-                        <a href="{{ route('administrator.manajemenuser.index') }}" class="btn btn-danger">Batal</a>
-                    </div>
-                </form>
+                                    @endforeach
             </div>
+            </td>
+            </tr>
+            <tr>
+                <th style="padding: 5px; border: 1px solid #ddd;">Hak Akses</th>
+                <td style="padding: 5px; border: 1px solid #ddd;">
+                    <div style="max-height: 200px; overflow-y: auto;">
+                        <div style="max-height: 200px; overflow-y: auto;">
+                            @foreach($akses as $aks)
+                            <span style='display:block'>
+                                <a class='text-danger' href="{{ route('administrator.manajemenuser.delete_akses', ['id_umod' => $aks->id_umod, 'user_id' => $users->id]) }}">
+                                    <i class='fas fa-times'></i>
+                                </a>
+                                <span class='glyphicon glyphicon-remove'></span></a>{{ $aks->nama_modul }}</span>
+                            </span>
+                            @endforeach
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th style="padding: 5px; border: 1px solid #ddd;">Status Berlangganan</th>
+                <td style="padding: 5px; border: 1px solid #ddd;">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="is_subscribed" name="is_subscribed" value="1"
+                            {{ old('is_subscribed', $users->is_subscribed) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="is_subscribed">Berlangganan</label>
+                    </div>
+                </td>
+            </tr>
+            <tr id="subscription_package_row" style="{{ old('is_subscribed', $users->is_subscribed) ? '' : 'display:none;' }}">
+                <th style="padding: 5px; border: 1px solid #ddd;">Paket Langganan</th>
+                <td style="padding: 5px; border: 1px solid #ddd;">
+                    <div class="form-check">
+                        @foreach($subscription_packages as $program_name)
+                        <input class="form-check-input" type="checkbox" name="program_name[]"
+                            value="{{ $program_name }}" id="program_name{{ $program_name }}"
+                            {{ in_array($program_name, old('program_name', $userPaketLangganan)) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="program_name{{ $program_name }}">
+                            {{ $program_name }}
+                        </label> <br>
+                        @endforeach
+
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            </table>
+            <div class="mt-4 d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary">Perbarui</button>
+                <a href="{{ route('administrator.manajemenuser.index') }}" class="btn btn-danger">Batal</a>
+            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 
 <script>
@@ -155,7 +158,7 @@ if($users->foto != NULL){
         var file = event.target.files[0];
         var reader = new FileReader();
 
-        reader.onload = function(){
+        reader.onload = function() {
             preview.src = reader.result;
         }
 
