@@ -129,10 +129,14 @@
                                                     <span class="close" onclick="closeTaskModal()">&times;</span>
                                                     <h3 id="taskTitle" class="font-bold text-lg -ml-44"></h3>
                                                 </div>
-                                                <img id="taskFileImage" src="" frameborder="0" class="my-6"></img>
+                                                <div class="my-6">
+                                                    <img id="taskImage" src="" frameborder="0" class="hidden">
+                                                    <iframe id="taskPdf" src="" frameborder="0"
+                                                        class="hidden"></iframe>
+                                                    <video id="taskVideo" src="" class="hidden"></video>
+                                                </div>
                                                 <span id="taskDescription"></span>
                                             </div>
-
                                         </div>
 
                                         <!-- Modal Kirim Foto -->
@@ -656,15 +660,34 @@
 
         <script>
 
-function openTaskModal(taskTitle, taskDescription, taskFile) {
+            function openTaskModal(taskTitle, taskDescription, taskFile) {
                 console.log("Modal tugas dibuka dengan judul:", taskTitle);
                 document.getElementById('taskTitle').innerText = taskTitle;
                 document.getElementById('taskDescription').innerText = taskDescription; // Set deskripsi
-                document.getElementById('taskFileImage').src = taskFile; // Set gambar jika ada
-                document.getElementById('taskModal').classList.remove('hidden');
 
-                // Tambahkan log untuk memeriksa apakah modal terlihat
-                console.log("Modal tugas sekarang:", document.getElementById('taskModal').classList);
+                const fileExtension = taskFile.split('.').pop().toLowerCase();
+                const imageExtensions = ['png', 'jpg', 'jpeg', 'gif'];
+                const videoExtensions = ['mp4', 'avi', 'mpeg'];
+                const documentExtensions = ['pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'txt'];
+
+                // Sembunyikan semua elemen
+                document.getElementById('taskImage').classList.add('hidden');
+                document.getElementById('taskPdf').classList.add('hidden');
+                document.getElementById('taskVideo').classList.add('hidden');
+
+                // Tampilkan elemen yang sesuai
+                if (imageExtensions.includes(fileExtension)) {
+                    document.getElementById('taskImage').src = taskFile;
+                    document.getElementById('taskImage').classList.remove('hidden');
+                } else if (videoExtensions.includes(fileExtension)) {
+                    document.getElementById('taskVideo').src = taskFile;
+                    document.getElementById('taskVideo').classList.remove('hidden');
+                } else if (documentExtensions.includes(fileExtension)) {
+                    document.getElementById('taskPdf').src = taskFile;
+                    document.getElementById('taskPdf').classList.remove('hidden');
+                }
+
+                document.getElementById('taskModal').classList.remove('hidden');
             }
 
             function closeTaskModal() {
