@@ -77,9 +77,9 @@
                             10.000+ Orang Telah Bergabung Setiap Bulan!</h3>
                     </div>
 
-                    <div class="grid grid-rows-1 md:mx-12">
+                    <div class="grid grid-rows-1 md:mx-0 lg:mx-12">
                         <div id="divMateri" class="mx-4 md:mx-8 max-lg:mx-12">
-                            <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Materi</h3>
+                            <h3 class="text-gray-500 font-semibold py-4 mx-0 md:mx-7 md:mt-1.5 lg:mx-6">Materi</h3>
                             @foreach ($materi->isimateri as $isi)
                             <button
                                 onclick="openFile('{{ asset('../files/' . $isi->file) }}', '{{ $isi->file }}')"
@@ -89,7 +89,7 @@
                                         class="flex items-center space-x-2 mx-2 md:mx-6 flex-grow max-lg:space-x-1">
                                         <i
                                             class="fa-regular fa-circle-play text-sm md:text-lg max-lg:text-base"></i>
-                                        <h3 class="text-sm md:text-base max-lg:text-base">
+                                        <h3 class="text-sm md:text-base max-lg:text-base text-nowrap">
                                             {{ $isi->judul_file }}
                                         </h3>
                                     </div>
@@ -102,7 +102,7 @@
                             @endforeach
                         </div>
                         <div id="tugasDiv" class="hidden mx-4 md:mx-8 max-lg:mx-12">
-                            <h3 class="text-gray-500 font-semibold py-4 mx-0 lg:mx-6">Tugas</h3>
+                            <h3 class="text-gray-500 font-semibold py-4 mx-0 md:mx-7 lg:mx-6">Tugas</h3>
                             @foreach ($tugas as $index => $task)
                             <button class="w-full"
                                 onclick="openTaskModal('{{ $task->judul_tugas }}', '{{ $task->deskripsi }}', '{{ asset('../files_tugas/' . $task->file) }}')">
@@ -208,7 +208,7 @@
 
 
                         <button id="lihatTugasBtn"
-                            class="bg-orange-400 text-white font-semibold mx-10 md:mx-14 px-10 py-2 max-sm:mb-3 rounded-xl">
+                            class="bg-orange-400 text-white font-semibold mx-10 md:mx-14 md:mb-2 px-10 py-2 max-sm:mb-3 rounded-xl">
                             Lihat Tugas
                         </button>
                     </div>
