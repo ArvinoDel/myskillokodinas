@@ -109,7 +109,7 @@ Route::prefix('pengajar')->name('pengajar.')->group(function () {
     Route::resource('pengumpulantugas', PengumpulantugasController::class)
         ->middleware('checkModul:pengumpulantugas');
 
-    Route::get('/pengumpulantugas/{id_pengumpulan}/edit', [PengumpulantugasController::class, 'edit'])->name('pengumpulantugas.edit');
+    // Route::get('/pengumpulantugas/{id_pengumpulan}/edit', [PengumpulantugasController::class, 'edit'])->name('pengumpulantugas.edit');
 });
 
 Route::prefix('administrator')->name('administrator.')->group(function () {
@@ -291,6 +291,13 @@ Route::get('/home', [MainController::class, 'index'])->name('home');
 Route::get('/bootcamp', [MainController::class, 'bootcamp'])->name('Program & Bootcamp');
 Route::get('/review', [MainController::class, 'review'])->name('Review');
 Route::get('/e-learning', [MainController::class, 'learning'])->name('E-Learning');
+
+// Route untuk penyimpanan tugas
+Route::post('/e-learning/materi', [PengumpulanTugasController::class, 'store']);
+
+// Route untuk halaman e-learning materi
+Route::get('/e-learning/materi', [MateriController::class, 'index'])->name('e-learning.materi');
+
 
 Route::get('/company-profile', [AppController::class, 'companyprofile']);
 

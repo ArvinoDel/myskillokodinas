@@ -45,6 +45,9 @@
                 </form>
 
                 <div class="table-responsive py-4">
+                    <a href="{{ route('administrator.manajemenuser.show', $users->id) }}" class="btn btn-primary">
+                        Send Messages
+                    </a>
                     <table class="table table-bordered" id="datatable-basic">
                         <thead class="thead-light">
                             <tr>
@@ -95,9 +98,7 @@
 
                                 </td>
                                 <td class="text-center">
-                                    <a href="{{ route('administrator.manajemenuser.show', $user->id) }}" class="btn btn-primary">
-                                        Send Messages
-                                    </a>
+                                   
 
                                     <a href="{{ route('administrator.manajemenuser.edit', $user->id) }}"
                                         class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center"

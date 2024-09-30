@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Pengumpulantugas;
 use App\Models\Tugas;
 use App\Models\User;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PengumpulantugasController extends Controller
 {
@@ -15,7 +17,7 @@ class PengumpulantugasController extends Controller
     public function index(Request $request)
     {
         $search = $request->search;
-        $nama_lengkap = $request->nama_lengkap; // Ubah dari judul_tugas ke nama_lengkap
+        $email = $request->email; // Ubah dari judul_tugas ke nama_lengkap
         $id_tugas = $request->id_tugas;
 
         $query = Pengumpulantugas::query();
@@ -24,9 +26,9 @@ class PengumpulantugasController extends Controller
             $query->where('deskripsi', 'like', "%$search%");
         }
 
-        if (!empty($nama_lengkap)) {
-            $query->whereHas('user', function ($q) use ($nama_lengkap) {
-                $q->where('nama_lengkap', $nama_lengkap); // Filter berdasarkan nama lengkap user
+        if (!empty($emails)) {
+            $query->whereHas('user', function ($q) use ($email) {
+                $q->where('email', $email); // Filter berdasarkan nama lengkap user
             });
         }
 
@@ -34,13 +36,13 @@ class PengumpulantugasController extends Controller
             $query->where('id_tugas', $id_tugas);
         }
 
-        $nama_lengkaps = User::select('nama_lengkap')
-            ->groupBy('nama_lengkap')
+        $emails = User::select('email')
+            ->groupBy('email')
             ->get(); // Mendapatkan daftar nama_lengkap dari user
 
         $pengumpulantugass = $query->with(['tugas', 'user'])->paginate(10);
 
-        return view('pengajar.pengumpulantugas.index', compact(['pengumpulantugass', 'nama_lengkaps']));
+        return view('pengajar.pengumpulantugas.index', compact(['pengumpulantugass', 'emails']));
     }
 
 
@@ -57,7 +59,37 @@ class PengumpulantugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'file' => 'nullable|file|mimes:jpeg,png,jpg,gif,webp,mp4,avi,mov,pdf|max:2048',
+            'deskripsi' => 'nullable',
+        ]);
+
+        $fileName = null;
+
+        if ($request->hasFile('file')) {
+            $file = $request->file("file");
+            // $gambarName = $gambar->getClientOriginalName(); // Menggunakan nama file asli
+            $fileName = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $file->getClientOriginalName());
+            $file->move("./files_pengumpulantugas/", $fileName);
+        }
+
+        $user = User::where('username', session('username'))->first();
+        // Log::info(json_encode($_FILES));
+
+        Pengumpulantugas::create([
+            'file' => $request->file,
+            'id_tugas' => $request->judul_tugas,
+            'id' => $user->id,
+            'deskripsi' => $validated['deskripsi'],
+            'nilai' => 0,
+            'file' => $fileName
+        ]);
+
+        return response()->json([
+            'url' => url('e-learning/materi'),
+            'success' => true,
+            'message' => 'Data Tugas Berhasil Diupload'
+        ]);
     }
 
     /**
