@@ -59,7 +59,8 @@
     <script src="../../js/buttons.js"></script>
     <script src="../../js/e-learning.js"></script>
     <script src="../../js/navbar.js"></script> -->
-
+    <script src="{{ url('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ url('assets/js/sweetalert2.js') }}"></script>
     <script src="https://rawcdn.githack.com/ArvinoDel/MySkill/db1485d305b176ef2fc16baac98bcef23eb790fd/resources/js/app.js"
         defer></script>
     <script

@@ -292,6 +292,13 @@ Route::get('/bootcamp', [MainController::class, 'bootcamp'])->name('Program & Bo
 Route::get('/review', [MainController::class, 'review'])->name('Review');
 Route::get('/e-learning', [MainController::class, 'learning'])->name('E-Learning');
 
+// Route untuk penyimpanan tugas
+Route::post('/e-learning/materi', [PengumpulanTugasController::class, 'store']);
+
+// Route untuk halaman e-learning materi
+Route::get('/e-learning/materi', [MateriController::class, 'index'])->name('e-learning.materi');
+
+
 Route::get('/company-profile', [AppController::class, 'companyprofile']);
 
 
