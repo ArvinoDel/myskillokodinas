@@ -41,9 +41,11 @@
     .navbar ul li a {
       color: #ffc732 !important;
     }
-    .navbar ul li.parent-menu > a {
+
+    .navbar ul li.parent-menu>a {
       color: #ffc732 !important;
     }
+
     @media (max-width: 1279px) {
       .mobile-nav-toggle {
         color: #ffc732 !important;
@@ -58,55 +60,55 @@
   <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-    <a href="/company-profile" class="logo d-flex align-items-center">
+      <a href="/company-profile" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{{ asset('logo/' . $logo->gambar) }}" alt="">
         <!-- <h1>UpConstruction<span>.</span></h1> -->
-    </a>
+      </a>
 
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list" id="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x" id="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
-        <ul style="color: #ffc732;">
+        <ul style="background-color: white !important ;">
           <li class="parent-menu"><a href="{{ url('/company-profile')}}" class="active">Home</a></li>
           @foreach($menus as $menu)
           <li class="nav-item dropdown parent-menu">
-              <a class="dropdown-toggle nav-link" href="{{ $menu->link }}" id="navbarDropdown{{ $menu->id_menu }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color:black;">
-                  {{ $menu->nama_menu }}
-              </a>
-              @if($menu->children->count() > 0)
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ $menu->id_menu }}">
-                  @foreach($menu->children as $child)
+            <a class="dropdown-toggle nav-link" href="{{ $menu->link }}" id="navbarDropdown{{ $menu->id_menu }}" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="text-decoration: none; color:black;">
+              {{ $menu->nama_menu }}
+            </a>
+            @if($menu->children->count() > 0)
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ $menu->id_menu }}">
+              @foreach($menu->children as $child)
+              <li class="dropdown">
+                <a href="{{ $child->link }}" class="dropdown-item page-scroll dropdown-toggle" id="navbarDropdownChild{{ $child->id_menu }}" role="button" aria-expanded="false">
+                  {{ $child->nama_menu }}
+                </a>
+                @if($child->children->count() > 0)
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownChild{{ $child->id_menu }}">
+                  @foreach($child->children as $subChild)
                   <li class="dropdown">
-                      <a href="{{ $child->link }}" class="dropdown-item page-scroll dropdown-toggle" id="navbarDropdownChild{{ $child->id_menu }}" role="button" aria-expanded="false">
-                          {{ $child->nama_menu }}
-                      </a>
-                      @if($child->children->count() > 0)
-                      <ul class="dropdown-menu" aria-labelledby="navbarDropdownChild{{ $child->id_menu }}">
-                          @foreach($child->children as $subChild)
-                          <li class="dropdown">
-                              <a href="{{ $subChild->link }}" class="dropdown-item page-scroll dropdown-toggle" id="navbarDropdownSubChild{{ $subChild->id_menu }}" role="button" aria-expanded="false">
-                                  <i class="fa fa-chevron-right justify-content-end"></i> {{ $subChild->nama_menu }}
-                              </a>
-                              @if($subChild->children->count() > 0)
-                              <ul class="dropdown-menu" aria-labelledby="navbarDropdownSubChild{{ $subChild->id_menu }}">
-                                  @foreach($subChild->children as $subSubChild)
-                                  <li>
-                                      <a href="{{ $subSubChild->link }}" class="dropdown-item page-scroll">
-                                          {{ $subSubChild->nama_menu }}
-                                      </a>
-                                  </li>
-                                  @endforeach
-                              </ul>
-                              @endif
-                          </li>
-                          @endforeach
-                      </ul>
-                      @endif
+                    <a href="{{ $subChild->link }}" class="dropdown-item page-scroll dropdown-toggle" id="navbarDropdownSubChild{{ $subChild->id_menu }}" role="button" aria-expanded="false">
+                      <i class="fa fa-chevron-right justify-content-end"></i> {{ $subChild->nama_menu }}
+                    </a>
+                    @if($subChild->children->count() > 0)
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownSubChild{{ $subChild->id_menu }}">
+                      @foreach($subChild->children as $subSubChild)
+                      <li>
+                        <a href="{{ $subSubChild->link }}" class="dropdown-item page-scroll">
+                          {{ $subSubChild->nama_menu }}
+                        </a>
+                      </li>
+                      @endforeach
+                    </ul>
+                    @endif
                   </li>
                   @endforeach
-              </ul>
-              @endif
+                </ul>
+                @endif
+              </li>
+              @endforeach
+            </ul>
+            @endif
           </li>
           @endforeach
           <li class="parent-menu"><a href="#contact">Contact</a></li>
@@ -174,26 +176,26 @@
 
     // Tampilkan menu saat ikon menu diklik
     mobileNavToggle.addEventListener('click', function() {
-        document.body.classList.add('mobile-nav-active');
+      document.body.classList.add('mobile-nav-active');
     });
 
     // Sembunyikan menu saat ikon close diklik
     mobileNavHide.addEventListener('click', function() {
-        document.body.classList.remove('mobile-nav-active');
+      document.body.classList.remove('mobile-nav-active');
     });
 
     // Tambahkan event listener untuk semua tautan navbar
     const navLinks = document.querySelectorAll('.navbar a');
 
     navLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            const hasDropdown = link.nextElementSibling; // Cek apakah ada submenu
-            if (!hasDropdown) {
-                document.body.classList.remove('mobile-nav-active'); // Tutup navbar jika tidak ada submenu
-            }
-        });
+      link.addEventListener('click', function() {
+        const hasDropdown = link.nextElementSibling; // Cek apakah ada submenu
+        if (!hasDropdown) {
+          document.body.classList.remove('mobile-nav-active'); // Tutup navbar jika tidak ada submenu
+        }
+      });
     });
-</script>
+  </script>
 
 
   <!-- Vendor JS Files -->
