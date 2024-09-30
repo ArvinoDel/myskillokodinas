@@ -1,6 +1,8 @@
 @extends('dinas-2.layout')
 
 @section('content')
+<br>
+<br>
 <div class="container mt-5 pt-5">
     <div class="row">
         <div class="col-lg-12">

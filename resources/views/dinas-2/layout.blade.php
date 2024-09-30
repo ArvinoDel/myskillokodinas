@@ -39,19 +39,54 @@
   ======================================================== -->
   <style>
     .navbar ul li a {
-      color: #ffc732 !important;
+      color: black !important;
     }
 
     .navbar ul li.parent-menu>a {
+      color: black !important;
+    }
+
+    .header.scrolled .navbar ul li a {
+      color: #ffc732 !important;
+    }
+
+    .header.scrolled .navbar ul li.parent-menu>a {
       color: #ffc732 !important;
     }
 
     @media (max-width: 1279px) {
-      .mobile-nav-toggle {
-        color: #ffc732 !important;
+      .header.scrolled .navbar ul li a {
+        color: black !important;
+      }
+
+      .header.scrolled .navbar ul li.parent-menu>a {
+        color: black !important;
       }
     }
   </style>
+
+    <style>        
+    .header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 9999;
+        background-color: #ffc732;
+        transition: background-color 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    .header.scrolled {
+        background-color: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(10px);
+    }
+
+    @media (max-width: 768px) {
+        .header.scrolled {
+            backdrop-filter: none;
+            background-color: #ffc732;
+        }
+    }
+    </style>
 </head>
 
 <body>
@@ -59,17 +94,13 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-
       <a href="/company-profile" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
         <img src="{{ asset('logo/' . $logo->gambar) }}" alt="">
-        <!-- <h1>UpConstruction<span>.</span></h1> -->
       </a>
-
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list" id="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x" id="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
       <nav id="navbar" class="navbar">
-        <ul style="background-color: white !important ;">
+        <ul>
           <li class="parent-menu"><a href="{{ url('/company-profile')}}" class="active">Home</a></li>
           @foreach($menus as $menu)
           <li class="nav-item dropdown parent-menu">
@@ -92,7 +123,7 @@
                     </a>
                     @if($subChild->children->count() > 0)
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownSubChild{{ $subChild->id_menu }}">
-                      @foreach($subChild->children as $subSubChild)
+                      @foreach($subSubChild->children as $subSubChild)
                       <li>
                         <a href="{{ $subSubChild->link }}" class="dropdown-item page-scroll">
                           {{ $subSubChild->nama_menu }}
@@ -114,10 +145,9 @@
           <li class="parent-menu"><a href="#contact">Contact</a></li>
           <li class="parent-menu"><a href="{{ url('/')}}">Pandai Digital</a></li>
         </ul>
-      </nav><!-- .navbar -->
-
+      </nav>
     </div>
-  </header><!-- End Header -->
+  </header>
 
   @yield('content')
 
@@ -169,6 +199,35 @@
 
   <div id="preloader"></div>
 
+  {{-- <script>
+    const header = document.querySelector('#header');
+    function onScroll() {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', onScroll);
+  </script> --}}
+
+  <script>
+    const header = document.querySelector('#header');
+    const mobileNav = document.querySelector('.mobile-nav-toggle.mobile-nav-show');
+    const navbar = document.querySelector('.navbar');
+
+    mobileNav.addEventListener('click', () => {
+        navbar.classList.toggle('mobile-nav-active');
+    });
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+  </script>
 
   <script>
     const mobileNavToggle = document.querySelector('.mobile-nav-toggle.mobile-nav-show');
@@ -212,18 +271,6 @@
 
   <!-- Template Main JS File -->
   <script src="{{ url('template/UpCons/assets/js/main.js') }}"></script>
-
-  <script>
-    window.addEventListener('scroll', function() {
-      const header = document.querySelector('.header');
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-  </script>
-
 </body>
 
 </html>

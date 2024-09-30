@@ -1,6 +1,9 @@
 @extends('dinas-2.layout')
 
 @section('content')
+<br>
+<br>
+<br>
 <div class="container mt-5 pt-5">
     <h1>Album</h1>
     <hr>

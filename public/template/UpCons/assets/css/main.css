@@ -43,7 +43,7 @@ a {
 }
 
 a:hover {
-  color: #ffc732;
+  color: white;
   text-decoration: none;
 }
 
@@ -438,114 +438,115 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Mobile Navigation
+# Mobile Navigation (max-width: 1279px)
 --------------------------------------------------------------*/
 @media (max-width: 1279px) {
-    .navbar {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 100%;
-      max-width: 400px;
-      bottom: 0;
-      transition: 0.3s;
-      z-index: 9998;
-    }
-
-    .navbar ul {
-      position: absolute;
-      inset: 0;
-      padding: 50px 0 10px 0;
-      margin: 0;
-      background: #222428;
-      overflow-y: auto;
-      transition: 0.3s;
-      z-index: 9995;
-    }
-
-    .navbar a,
-    .navbar a:focus {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 20px;
-      font-family: var(--font-primary);
-      font-size: 15px;
-      font-weight: 500;
-      color: #ffc732 !important;
-      white-space: nowrap;
-      text-transform: uppercase;
-      transition: 0.3s;
-    }
-
-    .navbar a i,
-    .navbar a:focus i {
-      font-size: 12px;
-      line-height: 0;
-      margin-left: 5px;
-    }
-
-    .navbar a:hover,
-    .navbar .active,
-    .navbar .active:focus,
-    .navbar li:hover>a {
-      color: white !important;
-    }
-
-    .navbar .dropdown ul,
-    .navbar .dropdown .dropdown ul {
-      position: static;
-      display: none;
-      padding: 10px 0;
-      margin: 10px 20px;
-      transition: all 0.5s ease-in-out;
-      border: 1px solid #ffc732;
-    }
-
-    .navbar .dropdown>.dropdown-active,
-    .navbar .dropdown .dropdown>.dropdown-active {
-      display: block;
-    }
-
-    .mobile-nav-show {
-      position: relative;
-      color: #222428;
-      font-size: 28px;
-      cursor: pointer;
-      line-height: 0;
-      transition: 0.5s;
-      z-index: 9999;
-      padding-right: 10px;
-    }
-
-    .mobile-nav-hide {
-      color: #222428;
-      font-size: 32px;
-      cursor: pointer;
-      line-height: 0;
-      transition: 0.5s;
-      position: fixed;
-      right: 20px;
-      top: 20px;
-      z-index: 9999;
-    }
-
-    .mobile-nav-active {
-      overflow: hidden;
-    }
-
-    .mobile-nav-active .navbar {
-      right: 0;
-    }
-
-    .mobile-nav-active .navbar:before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 9991; /* Pastikan ini lebih rendah dari navbar */
-    }
+  .navbar {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    max-width: 400px;
+    height: 100%;
+    background: #ffc732;
+    transition: right 0.3s ease-in-out;
+    z-index: 9998;
   }
+
+  .navbar ul {
+    position: absolute;
+    inset: 0;
+    padding: 50px 0 10px 0;
+    margin: 0;
+    background: #ffc732; /* Semi transparan */
+    overflow-y: auto;
+    transition: 0.3s;
+    z-index: 9995;
+  }
+
+  /* Warna link di navbar mobile */
+  .navbar a,
+  .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-family: var(--font-primary);
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffc732 !important;
+    white-space: nowrap;
+    text-transform: uppercase;
+    transition: 0.3s;
+  }
+
+  /* Hover effect di mobile navbar */
+  .navbar a:hover,
+  .navbar .active,
+  .navbar .active:focus,
+  .navbar li:hover>a {
+    color: white !important;
+  }
+
+  /* Dropdown di mobile */
+  .navbar .dropdown ul,
+  .navbar .dropdown .dropdown ul {
+    position: static;
+    display: none;
+    padding: 10px 0;
+    margin: 10px 20px;
+    transition: all 0.5s ease-in-out;
+    border: 1px solid white;
+  }
+
+  .navbar .dropdown>.dropdown-active,
+  .navbar .dropdown .dropdown>.dropdown-active {
+    display: block;
+  }
+
+  /* Mobile navbar toggle buttons */
+  .mobile-nav-show {
+    position: relative;
+    color: #222428;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 0;
+    transition: 0.5s;
+    z-index: 9999; /* Tambahkan z-index lebih tinggi */
+    padding-right: 10px;
+  }
+
+  .mobile-nav-hide {
+    color: #222428;
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 0;
+    transition: 0.5s;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 10000; /* Tambahkan z-index lebih tinggi */
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .navbar {
+    right: 0;
+    backdrop-filter: blur(10px); /* Blur saat sidebar terbuka */
+    background: rgba(0, 0, 0, 0.5); /* Background transparan dengan sedikit warna */
+  }
+
+  /* Overlay di mobile navigation */
+  .mobile-nav-active .navbar:before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Get Started Section
@@ -2433,11 +2434,6 @@ section {
   font-weight: bold;
 }
 
-.blog .sidebar .recent-posts h4 a {
-  color: var(--color-secondary);
-  transition: 0.3s;
-}
-
 .blog .sidebar .recent-posts h4 a:hover {
   color: var(--color-primary);
 }
@@ -2777,15 +2773,6 @@ section {
 .polling .container .row button[type=submit]:hover {
   background: rgba(254, 185, 0, 0.8);
 }
-.polling .container .row button[type=button] {
-  background: var(--color-primary);
-  border: 0;
-  padding: 10px 35px;
-  color: #fff;
-  transition: 0.4s;
-  border-radius: 5px;
-}
-
 .polling .container .row button[type=button]:hover {
   background: rgba(254, 185, 0, 0.8);
 }
