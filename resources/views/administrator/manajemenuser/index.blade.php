@@ -45,9 +45,6 @@
                 </form>
 
                 <div class="table-responsive py-4">
-                    <a href="{{ route('administrator.manajemenuser.show', $users->id) }}" class="btn btn-primary">
-                        Send Messages
-                    </a>
                     <table class="table table-bordered" id="datatable-basic">
                         <thead class="thead-light">
                             <tr>
@@ -71,21 +68,19 @@
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @if ($user->foto != null)
-                                    <img style='width:32px; height:32px'
-                                        src="{{ url('foto_user/' . $user->foto) }}">
+                                    <img style='width:32px; height:32px' src="{{ url('foto_user/' . $user->foto) }}">
                                     @else
-                                    <img style='width:32px; height:32px'
-                                        src="{{ url('foto_user/default.png') }}">
+                                    <img style='width:32px; height:32px' src="{{ url('foto_user/default.png') }}">
                                     @endif
                                 </td>
                                 <td>{{ $user->blokir }}</td>
                                 <td>{{ $user->level }}</td>
-
+                
                                 @php
                                 // Dekode JSON menjadi array, dan jika gagal akan mengembalikan array kosong
                                 $paketLangganan = json_decode($user->paket_langganan, true) ?? [];
                                 @endphp
-
+                
                                 <td>
                                     @if ($user->is_subscribed && !empty($paketLangganan))
                                     @foreach ($paketLangganan as $paket)
@@ -95,14 +90,17 @@
                                     Tidak Berlangganan
                                     @endif
                                 </td>
-
-                                </td>
+                
                                 <td class="text-center">
-                                   
-
+                                    <a href="{{ route('administrator.manajemenuser.show', $user->id) }}" 
+                                        class="btn btn-primary btn-sm d-inline-flex align-items-center justify-content-center me-2"
+                                        style="width: 32px; height: 32px;" title="Send Messages">
+                                        <i class="fas fa-paper-plane"></i> <!-- Pastikan font awesome sudah diimport jika menggunakan ikon -->
+                                     </a>
+                                     
                                     <a href="{{ route('administrator.manajemenuser.edit', $user->id) }}"
-                                        class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center"
-                                        style="width: 32px; height: 32px;">
+                                       class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center"
+                                       style="width: 32px; height: 32px;">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     <button
@@ -119,7 +117,7 @@
                     </table>
                     <br>
                     {{ $users->links('vendor.pagination.bootstrap-4') }}
-                </div>
+                </div>                
             </div>
         </div>
     </div>

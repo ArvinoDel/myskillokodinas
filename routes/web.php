@@ -353,7 +353,7 @@ Route::get('/payment/review/{id}', [PaymentController::class, 'review'])->name('
 
 Route::post('/payment/store', [PaymentController::class, 'store'])->name('payment.store');
 
-Route::post('/payment/{id}/approve', [PaymentController::class, 'approve'])->name('administrator.payment.approve');
+Route::post('/payment/approve/{id}', [PaymentController::class, 'approve'])->name('administrator.payment.approve');
 Route::post('/payment/{id}/cancel', [PaymentController::class, 'cancel'])->name('administrator.payment.cancel');
 
 //profile
@@ -414,4 +414,4 @@ Route::get('/e-learning/materi/{id_materi}', [MateriController::class, 'show'])-
 Route::post('/materi/{id_materi}/rate', [MateriController::class, 'rate'])->name('materi.rate')->middleware('auth');
 Route::get('/bootcamp/digital-marketing/{id_bootcamp}', [BootcampController::class, 'show'])->name('bootcamp.show');
 Route::get('/e-learning/program/{id}', [ProgramController::class, 'show'])->name('program.show');
-Route::post('/payment/complete/{id}', [PaymentController::class, 'completePayment'])->name('administrator.payment.approve');
+// Route::post('/payment/complete/{id}', [PaymentController::class, 'completePayment'])->name('administrator.payment.approve');

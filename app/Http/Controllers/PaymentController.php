@@ -155,7 +155,9 @@ class PaymentController extends Controller
 
         // Perbarui program_name pengguna jika ada
         if ($user) {
-            $user->program_name = $payment->program_name; // atau sesuai dengan nama kolom di tabel pengguna
+            $current_packages = json_decode($user->paket_langganan, true);
+            $current_packages[] = $payment->program_name; // Tambah paket baru ke array
+            $user->paket_langganan = json_encode($current_packages);
             $user->save();
         }
 
