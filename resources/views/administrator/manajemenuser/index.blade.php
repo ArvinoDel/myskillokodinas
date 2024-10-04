@@ -64,7 +64,13 @@
                             <tr>
                                 <td>{{ $loop->iteration + $users->firstItem() - 1 }}</td>
                                 <td>{{ $user->username }}</td>
-                                <td>{{ $user->nama_lengkap }}</td>
+                                <td>
+                                    @if ($user->nama_lengkap)
+                                        {{ $user->nama_lengkap }}
+                                    @else
+                                        Nama belum tersedia
+                                    @endif
+                                </td>
                                 <td>{{ $user->email }}</td>
                                 <td>
                                     @if ($user->foto != null)

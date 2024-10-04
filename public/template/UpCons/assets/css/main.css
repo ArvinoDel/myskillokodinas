@@ -19,13 +19,17 @@
 /* Colors */
 :root {
   --color-default: #364d59;
-  --color-primary: #feb900;
+  --color-primary: black;
   --color-secondary: #52565e;
 }
 
 /* Smooth scroll behavior */
 :root {
   scroll-behavior: smooth;
+}
+
+.scrolled {
+    --color-primary: #ffc732; /* Warna saat di-scroll */
 }
 
 /*--------------------------------------------------------------
@@ -360,7 +364,7 @@ section {
   .navbar li:hover>a {
     color: black;
   }
-  
+
 
   .navbar .dropdown ul {
     display: block;

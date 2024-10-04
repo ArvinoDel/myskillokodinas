@@ -60,7 +60,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#materi" data-toggle="collapse" role="button"
                                 aria-expanded="false" aria-controls="materi">
-                                <i class="ni ni-ungroup text-orange"></i>
+                                <i class="ni ni-archive-2 text-blue"></i>
                                 <span class="nav-link-text">Materi</span>
                             </a>
                             <div class="collapse" id="materi">
@@ -74,12 +74,12 @@
                                     @if ($cekMateri == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                         <li class="nav-item"><a class="nav-link"
                                                 href="{{ url('pengajar/materi') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Materi</a></li>
+                                                    class='ni ni-archive-2 text-orange'></i> Materi</a></li>
                                     @endif
                                     @if ($cekPengumpulantugas == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                         <li class="nav-item"><a class="nav-link"
                                                 href="{{ url('pengajar/pengumpulantugas') }}"><i
-                                                    class='ni ni-settings-gear-65 text-orange'></i> Pengumpulan Tugas</a></li>
+                                                    class='ni ni-folder-17 text-purple'></i> Pengumpulan Tugas</a></li>
                                     @endif
                                 </ul>
                             </div>

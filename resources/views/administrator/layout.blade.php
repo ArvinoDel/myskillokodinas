@@ -272,13 +272,11 @@
                                     );
                                     $cekTestimoni = $UserModul->umenu_akses('testimoni', session('id_session'));
                                     $cekTrainer = $UserModul->umenu_akses('trainer', session('id_session'));
-                                    $cekProgram = $UserModul->umenu_akses('program', session('id_session'));
                                     $cekMateri = $UserModul->umenu_akses('materi', session('id_session'));
                                     $cekMetode = $UserModul->umenu_akses('metode', session('id_session'));
                                     $cekPayment = $UserModul->umenu_akses('payment', session('id_session'));
                                     $cekTopik = $UserModul->umenu_akses('member', session('id_session'));
                                     $cekMember = $UserModul->umenu_akses('member', session('id_session'));
-                                    $cekRating = $UserModul->umenu_akses('rating', session('id_session'));
                                     $cekKategoriprogram = $UserModul->umenu_akses(
                                     'kategoriprogram',
                                     session('id_session'),
@@ -323,32 +321,27 @@
                                     session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/testimoni') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Testimoni</a></li>
+                                                class='ni ni-chat-round text-blue'></i> Testimoni</a></li>
                                     @endif
                                     @if ($cekTrainer == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/trainer') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Trainer</a></li>
-                                    @endif
-                                    @if ($cekProgram == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
-                                    <li class="nav-item"><a class="nav-link"
-                                            href="{{ url('administrator/program') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Program</a></li>
+                                                class='ni ni-single-02 text-orange'></i> Trainer</a></li>
                                     @endif
                                     @if ($cekMateri == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/materi') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Materi</a></li>
+                                                class='ni ni-books text-blue'></i> Materi</a></li>
                                     @endif
                                     @if ($cekMetode == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/metode') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Metode</a></li>
+                                                class='ni ni-ruler-pencil text-orange'></i> Metode</a></li>
                                     @endif
                                     @if ($cekBenefit == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/benefit') }}"><i
-                                                class='ni ni-badge text-blue'></i>Benefit</a></li>
+                                                class='ni ni-diamond text-blue'></i>Benefit</a></li>
                                     @endif
                                     @if (
                                     $cekBenefitbootcamp == 1 ||
@@ -357,17 +350,12 @@
                                     session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/benefitbootcamp') }}"><i
-                                                class='ni ni-badge text-blue'></i>Benefit Bootcamp</a></li>
+                                                class='ni ni-diamond text-blue'></i>Benefit Bootcamp</a></li>
                                     @endif
                                     @if ($cekTopik == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/topik') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Topik</a></li>
-                                    @endif
-                                    @if ($cekRating == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
-                                    <li class="nav-item"><a class="nav-link"
-                                            href="{{ url('administrator/rating') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Rating</a></li>
+                                                class='ni ni-bullet-list-67 text-orange'></i> Topik</a></li>
                                     @endif
                                     @if (
                                     $cekBerlangganan == 1 ||
@@ -376,7 +364,7 @@
                                     session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/berlangganan') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Berlangganan</a>
+                                                class='ni ni-credit-card text-blue'></i> Berlangganan</a>
                                     </li>
                                     @endif
                                     @if (
@@ -386,18 +374,18 @@
                                     session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/kategoriprogram') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Kategori
+                                                class='ni ni-collection text-orange'></i> Kategori
                                             Program</a></li>
                                     @endif
                                     @if ($cekLogo == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/metodepembayaran') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Logo Bawah</a></li>
+                                                class='ni ni-image text-blue'></i> Logo Bawah</a></li>
                                     @endif
                                     @if ($cekMitra == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/mitra') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Mitra</a></li>
+                                                class='ni ni-briefcase-24 text-orange'></i> Mitra</a></li>
                                     @endif
 
                                     @if (
@@ -407,7 +395,7 @@
                                     session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/programcv') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Program CV</a></li>
+                                                class='ni ni-single-copy-04 text-blue'></i> Program CV</a></li>
                                     @endif
                                     @if (
                                     $cekBootcamps == 1 ||
@@ -416,12 +404,12 @@
                                     session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/bootcamps') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Bootcamp</a></li>
+                                                class='ni ni-hat-3 text-orange'></i> Bootcamp</a></li>
                                     @endif
                                     @if ($cekPayment == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                     <li class="nav-item"><a class="nav-link"
                                             href="{{ url('administrator/payment') }}"><i
-                                                class='ni ni-settings-gear-65 text-orange'></i> Payment</a></li>
+                                                class='ni ni-money-coins text-blue'></i> Payment</a></li>
                                     @endif
                                 </ul>
                             </div>
@@ -557,9 +545,9 @@
                                 <span class="input-group-text"><i class="fas fa-search"></i></span>
                             </div>
                             <input type="text" class="form-control" id="searchBox" placeholder="Search links...">
-                            
+
                                 <button class="close" type="button" data-action="search-close" data-target="#navbar-search-main" aria-label="Close"><span aria-hidden="close">x</span></button>
-                            
+
                         </div>
                     </div>
                     <div id="search-results" class="dropdown-menu dropdown-menu-right"></div>
@@ -586,7 +574,7 @@
                                         if (subTxtValue.toLowerCase().indexOf(filter) > -1) {
                                             subItem.style.display = ""; // Tampilkan sub-item
                                             found = true;
-                                        } 
+                                        }
                                     });
                                     item.style.display = found ? "" : "none"; // Tampilkan atau sembunyikan item berdasarkan sub-item
                                 }

@@ -65,7 +65,7 @@
     }
   </style>
 
-    <style>        
+    <style>
     .header {
         position: fixed;
         width: 100%;
@@ -95,7 +95,7 @@
   <header id="header" class="header d-flex align-items-center">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
       <a href="/company-profile" class="logo d-flex align-items-center">
-        <img src="{{ asset('logo/' . $logo->gambar) }}" alt="">
+        <img src="{{ asset('logo/' . $logo->gambar) }}" alt="Logo">
       </a>
       <i class="mobile-nav-toggle mobile-nav-show bi bi-list" id="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x" id="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
