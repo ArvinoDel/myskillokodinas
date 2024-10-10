@@ -1,7 +1,11 @@
 @extends('./myskill/layouts.main')
 @section('container')
 @if (Auth::check())
-@if ($isSubscribed)
+<!--@php-->
+<!--dd($isSubscribed)-->
+<!--@endphp-->
+@if($isSubscribed)
+<!-- content 1 -->
 <div class="container mx-auto">
     <div class="flex items-center bg-pink-200 p-6">
         <!-- Image Section -->
@@ -25,84 +29,48 @@
     </div>
 
     <!-- content 2 -->
-
-    <section class="container mx-auto px-4 mt-10">
-        <h2 class="text-3xl font-bold text-center my-5">Jadwal Live Class <span class="text-orange-500">Pandai Digital</span></h2>
-
-        <div class="flex flex-col md:flex-row lg:mx-10 shadow-xl my-20 py-10 rounded-2xl gap-8">
-            <!-- Left side - Thumbnail -->
-            <div class="w-full md:w-1/2 lg:ml-10">
-                <div id="thumbnail-container" class="bg-white p-4">
-                    <img id="materi-thumbnail" src="/path/to/default/image.jpg" alt="Thumbnail Materi"
-                        class="rounded-lg mx-auto"
-                        style="width: 370px; height: 210px;">
-                    <h3 id="materi-title" class="text-xl font-semibold mt-4">
-                        {{ $materis->first()->judul_file ?? 'Pilih Materi' }}
-                    </h3>
-                    <p id="materi-details" class="text-gray-600 mt-2">
-                        {{ $materis->first()->live_date ? \Carbon\Carbon::parse($materis->first()->live_date)->format('d F Y H:i') : 'Jadwal belum ditentukan' }}
-                    </p>
-                    <p class="my-3 font-bold"> - </p>
-                    <div class="font-semibold text-xl my-1 p-1">
-                        <i class='bx bxl-zoom'></i> Zoom
-                    </div>
-                    <div class="font-semibold text-xl my-1 p-1">
-                        <i class='bx bxs-id-card'></i> Khusus Member
-                    </div>
-                    <a id="materi-url" href="#" target="_blank"
-                        class="mt-4 bg-purple-600 text-white text-xl my-3 py-4 px-4 rounded-full hover:bg-purple-700 transition duration-300 inline-block">
-                        <i class='bx bx-play-circle'></i> Tonton Video
-                    </a>
+    <div class="container mx-auto py-10 px-20 bg-pink-200">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold">
+                Jadwal Live Class <span class="text-orange-500">Pandai Digital</span>
+            </h1>
+        </div>
+        <div class="bg-white shadow-lg rounded-lg p-6 flex">
+            <div class="w-2/3">
+                <div class="bg-gray-200 p-4 rounded-lg">
+                    <img id="courseThumbnail" src="" alt="Video Thumbnail" class="w-full rounded-lg" />
                 </div>
+                <h2 id="courseTitle" class="mt-4 text-2xl font-semibold">
+                    Subtest Penalaran Deduktif
+                </h2>
+                <p id="courseDate" class="mt-2 text-gray-600"></p>
+                <p id="courseTime" class="text-gray-600"></p>
+                <p id="instructorName" class="mt-2 text-gray-700"></p>
+                <button class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-lg mt-4">
+                    Upgrade Premium
+                </button>
             </div>
-
-            <!-- Right side - List of materials -->
-            <div class="w-full md:w-1/2">
-                <div class="bg-white p-4">
-                    <div class="flex justify-between items-center mb-10">
-                        <h4 class="text-lg font-semibold">Pilih Bulan</h4>
-                        <div class="flex items-center">
-                            <button id="prev-month" class="text-gray-600 hover:text-purple-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M15 19l-7-7 7-7"></path>
-                                </svg>
-                            </button>
-                            <span id="current-month" class="mx-2 font-medium"></span>
-                            <button id="next-month" class="text-gray-600 hover:text-purple-600">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M9 5l7 7-7 7"></path>
-                                </svg>
-                            </button>
-                        </div>
+            <div class="w-1/3 pl-8">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-semibold">Pilih Bulan</h3>
+                    <div class="flex space-x-2">
+                        <button id="prev-month" class="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-1 px-2 rounded-lg">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span id="current-month" class="font-medium text-gray-700 bg-gray-200 py-1 px-3 rounded-md">
+                            OKTOBER 2024
+                        </span>
+                        <button id="next-month" class="bg-gray-300 hover:bg-gray-400 text-gray-700 font-bold py-1 px-2 rounded-lg">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                    <ul id="materi-list" class="space-y-2 overflow-y-auto max-h-96">
-                        @foreach ($materis as $materi)
-                        <li class="flex items-center bg-white border rounded-lg p-3 shadow-sm hover:shadow-md transition duration-300 cursor-pointer hover:bg-gray-50"
-                            data-materi-id="{{ $materi->id_materi_bootcamp }}"
-                            data-url="{{ $materi->url }}" data-title="{{ $materi->judul_file }}"
-                            data-file="{{ $materi->file }}" data-date="{{ $materi->live_date }}">
-                            <div class="flex-shrink-0 w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center mr-3">
-                                <i class='bx bx-play-circle'></i>
-                            </div>
-                            <div class="flex-grow">
-                                <h5 class="font-medium">{{ $materi->judul_file }}</h5>
-                                <p class="text-sm text-gray-600">
-                                    {{ \Carbon\Carbon::parse($materi->live_date)->format('d F Y H:i') }}
-                                </p>
-                            </div>
-                        </li>
-                        @endforeach
-                    </ul>
-
+                </div>
+                <div id="courseList" class="mt-6 space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                    <!-- Course items will be dynamically added here -->
                 </div>
             </div>
         </div>
-    </section>
-
+    </div>
 
     <!-- content 3 -->
     <div class="container mx-auto py-10 px-20">
@@ -141,8 +109,7 @@
                 <!-- Card 3 -->
                 <div class="bg-white shadow-lg rounded-lg p-4 flex items-center space-x-4 tutor-card"
                     data-name="Siti Fatimah Nur Azmah">
-                    <img class="w-16 h-16 rounded-full" src="https://via.placeholder.com/150"
-                        alt="Tutor 3" />
+                    <img class="w-16 h-16 rounded-full" src="https://via.placeholder.com/150" alt="Tutor 3" />
                     <div>
                         <h2 class="text-xl font-bold">Siti Fatimah Nur Azmah</h2>
                         <p class="text-gray-500">UIN Syarif Hidayatullah Jakarta</p>
@@ -161,6 +128,7 @@
                     </svg>
                     Prev
                 </button>
+                <p>Halaman 1 - 8</p>
                 <button class="flex items-center px-4 py-2 bg-gray-200 text-gray-600 rounded-lg">
                     <span>Next</span>
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20"
@@ -186,8 +154,7 @@
         <div class="space-y-4">
             <!-- Pertanyaan 1 -->
             <div class="border rounded-lg shadow-sm overflow-hidden">
-                <button
-                    class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
+                <button class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
                     onclick="toggleDropdown(1)">
                     Selain bimbel SNBT, apakah ada bimbel SKD Kedinasan dan bimbel SIMAMA?
                 </button>
@@ -198,8 +165,7 @@
 
             <!-- Pertanyaan 2 -->
             <div class="border rounded-lg shadow-sm overflow-hidden">
-                <button
-                    class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
+                <button class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
                     onclick="toggleDropdown(2)">
                     Mengapa Harus Mengikuti Bimbel SKD Kedinasan?
                 </button>
@@ -210,8 +176,7 @@
 
             <!-- Pertanyaan 3 -->
             <div class="border rounded-lg shadow-sm overflow-hidden">
-                <button
-                    class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
+                <button class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
                     onclick="toggleDropdown(3)">
                     Berapa kali pertemuan tiap minggunya?
                 </button>
@@ -222,8 +187,7 @@
 
             <!-- Pertanyaan 4 -->
             <div class="border rounded-lg shadow-sm overflow-hidden">
-                <button
-                    class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
+                <button class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
                     onclick="toggleDropdown(4)">
                     Apakah bisa menonton ulang bimbel yang terlewat?
                 </button>
@@ -234,8 +198,7 @@
 
             <!-- Pertanyaan 5 -->
             <div class="border rounded-lg shadow-sm overflow-hidden">
-                <button
-                    class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
+                <button class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
                     onclick="toggleDropdown(5)">
                     Bagaimana cara mengikuti bimbel di Simbus PTN?
                 </button>
@@ -246,8 +209,7 @@
 
             <!-- Pertanyaan 6 -->
             <div class="border rounded-lg shadow-sm overflow-hidden">
-                <button
-                    class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
+                <button class="w-full text-left py-4 px-6 bg-white text-gray-700 font-semibold focus:outline-none"
                     onclick="toggleDropdown(6)">
                     Apakah harus premium untuk mengikuti bimbel?
                 </button>
@@ -259,108 +221,122 @@
     </div>
 
     <script>
-        // Select all list items
-        const materiItems = document.querySelectorAll('#materi-list li');
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let currentMonthIndex = 9; // October
+        let currentYear = 2024;
 
-        materiItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // Remove 'active' class from all items
-                materiItems.forEach(i => i.classList.remove('active', 'bg-white', 'border-[#7E3AF2]'));
+        function updateMonth() {
+            document.getElementById('current-month').textContent = `${monthNames[currentMonthIndex]} ${currentYear}`;
+        }
 
-                // Add 'active' class to the clicked item
-                this.classList.add('active', 'bg-white', 'border-[#7E3AF2]');
+        function loadCourses() {
+            // Simulating an AJAX call
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve([{
+                            id: 1,
+                            title: "Subtest Literasi dalam Bahasa Inggris",
+                            date: "9 Oktober 2024",
+                            time: "19:00",
+                            instructor: "Dinda Sifah Chania Fahnevi, S.T.",
+                            thumbnail: "https://yapindo-cdn.b-cdn.net/bimbel/1943/1728457491313.webp",
+                        },
+                        {
+                            id: 2,
+                            title: "Subtest Pengetahuan dan Pemahaman Umum",
+                            date: "16 Oktober 2024",
+                            time: "19:00",
+                            instructor: "Dr. Ahmad Rizali, M.Pd.",
+                            thumbnail: "https://yapindo-cdn.b-cdn.net/bimbel/1943/1728457491313.webp",
+                        },
+                        // Add more courses as needed
+                    ]);
+                }, 500); // Simulating network delay
             });
-        });
+        }
 
-        // resources/js/jadwal-live-class.js
-        document.addEventListener('DOMContentLoaded', function() {
-            const thumbnailContainer = document.getElementById('thumbnail-container');
-            const materiList = document.getElementById('materi-list');
-            const currentMonthSpan = document.getElementById('current-month');
-            const prevMonthBtn = document.getElementById('prev-month');
-            const nextMonthBtn = document.getElementById('next-month');
+        function createCourseElement(course, isActive = false) {
+            const element = document.createElement("div");
+            element.className = `bg-white border ${
+        isActive ? "border-[#7E3AF2]" : "border-gray-200"
+    } rounded-lg p-3 shadow-sm hover:shadow-md transition duration-300 cursor-pointer hover:bg-gray-50`;
+            element.innerHTML = `
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <svg class="w-5 h-5 ${
+                    isActive ? "text-[#7E3AF2]" : "text-green-500"
+                }" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                </svg>
+                <div>
+                    <h4 class="font-semibold text-gray-800">${course.title}</h4>
+                    <p class="text-sm text-gray-600">${course.date}</p>
+                </div>
+            </div>
+            <span class="text-sm font-medium text-gray-600">${course.time}</span>
+        </div>
+    `;
+            element.addEventListener("click", () => updateCourseDetails(course));
+            return element;
+        }
 
-            let currentMonth = new Date().getMonth();
-            let currentYear = new Date().getFullYear();
+        function updateCourseDetails(course) {
+            document.getElementById("courseThumbnail").src = course.thumbnail;
+            document.getElementById("courseTitle").textContent = course.title;
+            document.getElementById("courseDate").textContent = course.date;
+            document.getElementById("courseTime").textContent = `Pukul ${course.time} WIB`;
+            document.getElementById("instructorName").textContent = course.instructor;
 
-            function updateMonth() {
-                const monthNames = ["Januari", "Februari", "Maret", "April", "Mei", "Juni",
-                    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-                ];
-                currentMonthSpan.textContent = `${monthNames[currentMonth]} ${currentYear}`;
-            }
-
-            function filterMaterials() {
-                const items = materiList.querySelectorAll('li');
-                items.forEach(item => {
-                    const date = new Date(item.dataset.date);
-                    if (date.getMonth() === currentMonth && date.getFullYear() === currentYear) {
-                        item.style.display = '';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            }
-
-            function updateThumbnail(material) {
-                document.getElementById('materi-thumbnail').src = `/files_materibootcamps/${material.dataset.file}`;
-                document.getElementById('materi-title').textContent = material.dataset.title;
-                const liveDate = new Date(material.dataset.date);
-                document.getElementById('materi-details').textContent = liveDate.toLocaleString('id-ID', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                });
-                document.getElementById('materi-url').href = material.dataset.url;
-            }
-
-            materiList.addEventListener('click', function(e) {
-                const listItem = e.target.closest('li');
-                if (listItem) {
-                    updateThumbnail(listItem);
-                    // Remove 'active' class from all items
-                    materiList.querySelectorAll('li').forEach(item => item.classList.remove(
-                        'bg-purple-100'));
-                    // Add 'active' class to clicked item
-                    listItem.classList.add('bg-purple-100');
-                }
-            });
-
-            prevMonthBtn.addEventListener('click', () => {
-                if (currentMonth === 0) {
-                    currentMonth = 11;
-                    currentYear--;
+            // Update active course in the list
+            const courseItems = document.querySelectorAll("#courseList > div");
+            courseItems.forEach((item, index) => {
+                if (index === Array.from(courseItems).findIndex((el) => el.querySelector("h4").textContent === course.title)) {
+                    item.classList.add("border-[#7E3AF2]");
+                    item.querySelector("svg").classList.add("text-[#7E3AF2]");
+                    item.querySelector("svg").classList.remove("text-green-500");
                 } else {
-                    currentMonth--;
+                    item.classList.remove("border-[#7E3AF2]");
+                    item.querySelector("svg").classList.remove("text-[#7E3AF2]");
+                    item.querySelector("svg").classList.add("text-green-500");
                 }
-                updateMonth();
-                filterMaterials();
             });
+        }
 
-            nextMonthBtn.addEventListener('click', () => {
-                if (currentMonth === 11) {
-                    currentMonth = 0;
-                    currentYear++;
-                } else {
-                    currentMonth++;
-                }
-                updateMonth();
-                filterMaterials();
+        async function initializeCourses() {
+            const courses = await loadCourses();
+            const courseList = document.getElementById("courseList");
+            courseList.innerHTML = "";
+            courses.forEach((course, index) => {
+                courseList.appendChild(createCourseElement(course, index === 0));
             });
+            updateCourseDetails(courses[0]);
+        }
 
+        document.getElementById("prev-month").addEventListener("click", function() {
+            if (currentMonthIndex > 0) {
+                currentMonthIndex--;
+            } else {
+                currentMonthIndex = 11;
+                currentYear--;
+            }
             updateMonth();
-            filterMaterials();
-
-            // Initialize with the first item
-            const firstItem = materiList.querySelector('li');
-            if (firstItem) {
-                updateThumbnail(firstItem);
-                firstItem.classList.add('bg-purple-100');
-            }
+            initializeCourses();
         });
 
+        document.getElementById("next-month").addEventListener("click", function() {
+            if (currentMonthIndex < 11) {
+                currentMonthIndex++;
+            } else {
+                currentMonthIndex = 0;
+                currentYear++;
+            }
+            updateMonth();
+            initializeCourses();
+        });
+
+        // Initialize the page
+        updateMonth();
+        initializeCourses();
 
 
         // fitur search tutor
@@ -493,8 +469,7 @@
                 <div class="mt-4">
                     <div class="flex bg-yellow-100 px-5 py-3 rounded-xl">
                         <i class="fa-solid fa-triangle-exclamation me-2 py-2" style="color: #FAB13A;"></i>
-                        <p class="text-sm text-stone-600">Sebelum mendaftar bootcamp, yuk cek kembali data
-                            profil
+                        <p class="text-sm text-stone-600">Sebelum mendaftar bootcamp, yuk cek kembali data profil
                             yang
                             akan
                             digunakan di sertifikatmu nanti.</p>
@@ -508,15 +483,13 @@
                                 placeholder="Masukan Nama Lengkap">
                         </div>
                         <div class="mt-4">
-                            <label for="email"
-                                class="block text-sm font-medium text-gray-700">Email</label>
+                            <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
                             <input type="email" id="email"
                                 class="w-full mt-1 py-3 px-2  border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Masukan Email Anda">
                         </div>
                         <div class="mt-4">
-                            <label for="phone" class="block text-sm font-medium text-gray-700">No.
-                                HP</label>
+                            <label for="phone" class="block text-sm font-medium text-gray-700">No. HP</label>
                             <input type="text" id="phone"
                                 class="w-full mt-1 py-3 px-2  border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
                                 placeholder="Masukkan No. HP">
@@ -650,11 +623,9 @@
             <div>
                 <!-- prospek karir start -->
                 <p id="prospek"
-                    class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 font-bold md:ml-6 md:text-xl">
-                    <i class="fas fa-chevron-right text-orange-600 mr-3 md:ml-1 md:text-xl"></i>Prospek Karir
-                </p>
-                <p class="lg:mt-4 sm:mt-2 lg:ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Ikuti
-                    Intensive
+                    class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 font-bold md:ml-6 md:text-xl"><i
+                        class="fas fa-chevron-right text-orange-600 mr-3 md:ml-1 md:text-xl"></i>Prospek Karir</p>
+                <p class="lg:mt-4 sm:mt-2 lg:ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Ikuti Intensive
                     Bootcamp
                     dan dapatkan balik modal secara berlipat dari
                     gaji pertamamu. Berbagai pilihan profesi yang bisa dijalani saat memiliki skill digital
@@ -679,8 +650,7 @@
                     *Source: Glasdoor
                 </p>
                 <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">
-                    Pandai Digital percaya, kamu pun bisa belajar dari nol dan rintis karir impianmu meski
-                    awalnya
+                    Pandai Digital percaya, kamu pun bisa belajar dari nol dan rintis karir impianmu meski awalnya
                     terasa
                     sulit.
                     Maka, tak perlu diperumit dengan harus memikirkan biaya selangit. <b>Saat ini, para peserta
@@ -703,8 +673,7 @@
             </p>
             <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Upgrade skill mulai
                 dari
-                memahami konsep, analisa studi kasus, hingga praktik untuk mengoptimalkannya. Kuasai berbagai
-                skill
+                memahami konsep, analisa studi kasus, hingga praktik untuk mengoptimalkannya. Kuasai berbagai skill
                 dan
                 tools di bidang Digital Marketing untuk karier maupun bisnis kamu.
                 <b>Contoh Skill & Portfolio yang bisa kamu miliki:</b>
@@ -732,8 +701,7 @@
                 class="text-orange-600 lg:text-xl max-sm:text-base max-sm:ml-2 lg:mt-6 max-sm:mt-2 font-bold md:text-xl">
                 <i class="fas fa-chevron-right text-orange-600 mr-3 md:ml-6"></i>Benefit Bootcamp
             </p>
-            <p class="lg:mt-2 lg:mb-1 max-sm:ml-2 max-sm:mt-2 md:text-base md:ml-6 md:mt-2"><b>Materi
-                    Kelas:</b>
+            <p class="lg:mt-2 lg:mb-1 max-sm:ml-2 max-sm:mt-2 md:text-base md:ml-6 md:mt-2"><b>Materi Kelas:</b>
             </p>
             @foreach ($bootcamp->benefit() as $benefit)
             <span><br>
@@ -754,16 +722,14 @@
                     Pembayaran dilakukan terpisah, saat Bootcamp dimulai.
                 </p>
                 <b class="max-sm:mt-6 max-sm:ml-2 md:ml-6"><i>Final Fotofolio Project</i></b>
-                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6 md:mb-2">✅ Dibentuk
-                    team
+                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6 md:mb-2">✅ Dibentuk team
                     project
                     untuk pembuatan final portofolio. <br>
                     ✅ Portfolio dibuat komprehensif sesuai standar melamar kerja. <br>
                     ✅ 3x sesi mentoring dan review untuk final portfolio project. <br>
                     ✅ Special award untuk tim terbaik.</p>
                 <b class="max-sm:mt-6 max-sm:ml-2 md:ml-6 "><i>Akselerasi Karir</i></b>
-                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">✅ Mendapat template
-                    CV
+                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">✅ Mendapat template CV
                     &
                     Surat
                     Lamaran kerja versi Bahasa Inggris & Bahasa Indonesia. <br>
@@ -805,8 +771,7 @@
                     📝 Raudah Sabila, Senior Talent Acquisition Specialist at Bukalapak <br>
                 </p>
                 <!-- jadwal kelas -->
-                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6"><b>Jadwal
-                        Kelas:</b>
+                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6"><b>Jadwal Kelas:</b>
                 </p>
 
                 @foreach ($bootcamp->batch as $batch)
@@ -822,8 +787,7 @@
 
                 <p class="lg:mt-4 max-sm:mt-6 ml-2 max-sm:mb-6 lg:text-base max-sm:text-sm md:ml-6"><b>
                         📌Notes: <br>
-                        Sesi On boarding ini bersifat opsional dan ditujukan untuk mengenal satu sama lain dan
-                        program
+                        Sesi On boarding ini bersifat opsional dan ditujukan untuk mengenal satu sama lain dan program
                         dengan
                         lebih baik. Bukan sesi materi.
                         <br>
@@ -1025,8 +989,7 @@
                     class="text-orange-600 max-sm:mt-6 lg:text-xl max-sm:text-base max-sm:ml-2 lg:mt-6 font-bold lg:mb-1 md:ml-6 md:text-xl">
                     <i class="fas fa-chevron-right text-orange-600 mr-3"></i>FAQ
                 </p>
-                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Masih bingung?
-                    Tenang
+                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Masih bingung? Tenang
                     :)
                 </p>
                 <!-- FAQ 1 -->
@@ -1040,13 +1003,11 @@
                     </button>
                     <div id="faq1"
                         class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0">
-                        Tentu bisa! Pada Intensive Bootcamp Digital Marketing akan diampu oleh tutor expert
-                        dibidangnya
+                        Tentu bisa! Pada Intensive Bootcamp Digital Marketing akan diampu oleh tutor expert dibidangnya
                         yang
                         akan menyampaikan materi dari level dasar (basic) hingga level lanjut (advance) yang mudah
                         dipahami
-                        sehingga kamu tidak perlu khawatir sulit memahami materi walaupun kamu tidak memiliki
-                        background
+                        sehingga kamu tidak perlu khawatir sulit memahami materi walaupun kamu tidak memiliki background
                         digital
                         marketing sebelumnya.
                     </div>
@@ -1056,8 +1017,7 @@
                     <button
                         class="w-full text-left bg-white p-2 rounded flex justify-between items-center max-sm:text-xs"
                         onclick="toggleDropdown('faq2', this)">
-                        <p class="font-semibold"> Bagaimana jika saya tidak bisa menghadiri kelas, apakah saya
-                            masih
+                        <p class="font-semibold"> Bagaimana jika saya tidak bisa menghadiri kelas, apakah saya masih
                             bisa
                             mengikuti materi ? </p>
                         <i class="fas fa-chevron-down" id="arrow2"></i>
@@ -1066,8 +1026,7 @@
                         class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0 max-sm:text-xs">
                         Tentu saja! Jika kamu tidak dapat hadir pada sesi kelas, kamu bisa mengikuti materi melalui
                         video
-                        recording setiap sesinya sehingga kamu tidak tertinggal materi yang telah disampaikan di
-                        sesi
+                        recording setiap sesinya sehingga kamu tidak tertinggal materi yang telah disampaikan di sesi
                         kelas.
                     </div>
                 </div>
@@ -1076,16 +1035,14 @@
                     <button
                         class="w-full text-left bg-white p-2 rounded flex justify-between items-center max-sm:text-xs"
                         onclick="toggleDropdown('faq3', this)">
-                        <p class="font-semibold md:w-11/12"> Bagaimana jika saya mengalami kesulitan untuk
-                            mengerjakan
+                        <p class="font-semibold md:w-11/12"> Bagaimana jika saya mengalami kesulitan untuk mengerjakan
                             team
                             project untuk portofolio saya ? </p>
                         <i class="fas fa-chevron-down" id="arrow2"></i>
                     </button>
                     <div id="faq3"
                         class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0 max-sm:text-xs">
-                        <p>Jangan khawatir! Kamu akan didampingi oleh <i>learning asisstant (mentor)</i> selama
-                            proses
+                        <p>Jangan khawatir! Kamu akan didampingi oleh <i>learning asisstant (mentor)</i> selama proses
                             pengerjaan final team project, bersama mentor kamu bisa berdiskusi secara intensif dan
                             interaktif
                         </p>
@@ -1096,21 +1053,17 @@
                     <button
                         class="w-full text-left bg-white p-2 rounded flex justify-between items-center max-sm:text-xs"
                         onclick="toggleDropdown('faq4', this)">
-                        <p class="font-semibold">Apakah final project portofolio, bisa saya gunakan untuk melamar
-                            kerja
+                        <p class="font-semibold">Apakah final project portofolio, bisa saya gunakan untuk melamar kerja
                             ?
                         </p>
                         <i class="fas fa-chevron-down" id="arrow2"></i>
                     </button>
                     <div id="faq4"
                         class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0 max-sm:text-xs">
-                        Final project portofolio tentu bisa digunakan sebagai portofolio untuk melamar pekerjaan.
-                        Kamu
+                        Final project portofolio tentu bisa digunakan sebagai portofolio untuk melamar pekerjaan. Kamu
                         akan
-                        mengerjakan final project secara real case secara end to end process sehingga sangat cukup
-                        untuk
-                        mendukung kamu dari segi pemahaman dan praktik pada pekerjaaan bidang Digital Marketing.
-                        Dengan
+                        mengerjakan final project secara real case secara end to end process sehingga sangat cukup untuk
+                        mendukung kamu dari segi pemahaman dan praktik pada pekerjaaan bidang Digital Marketing. Dengan
                         final
                         project yang dikerjakan terbukti Pandai Digital sudah membantu banyak alumni dalam mencari
                         pekerjaan.
@@ -1136,16 +1089,14 @@
                     <button
                         class="w-full text-left bg-white p-2 rounded flex justify-between items-center max-sm:text-xs"
                         onclick="toggleDropdown('faq6', this)">
-                        <p class="font-semibold"> Seperti apa bentuk final project yang akan dikerjakan peserta ?
-                        </p>
+                        <p class="font-semibold"> Seperti apa bentuk final project yang akan dikerjakan peserta ? </p>
                         <i class="fas fa-chevron-down" id="arrow2"></i>
                     </button>
                     <div id="faq6"
                         class="hidden p-2 font-regular bg-white transition-opacity duration-300 ease-in-out opacity-0 max-sm:text-xs">
                         Kamu akan diminta mempraktikkan semua materi yang telah dipelajari, dengan cara menghandle
                         secara
-                        langsung sebuah bisnis UMKM. Kamu akan berperan aktif dalam membuat strategi, eksekusi,
-                        hingga
+                        langsung sebuah bisnis UMKM. Kamu akan berperan aktif dalam membuat strategi, eksekusi, hingga
                         evaluasi
                         pada berbagai aspek.
                     </div>
@@ -1190,8 +1141,7 @@
                     </p>
                 </a>
                 @endif
-                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6 md:mb-2">Ayo,
-                    persiapkan
+                <p class="lg:mt-4 sm:mt-2 ml-2 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6 md:mb-2">Ayo, persiapkan
                     dirimu
                     untuk mulai #RintisKarirImpian</p>
 
@@ -1216,8 +1166,7 @@
     </div>
     <!-- second content -->
     <p class="font-semibold text-3xl lg:ml-12 max-sm:ml-4 md:ml-6">Ikuti Juga Bootcamp Lainnya</p>
-    <p class="lg:mt-1 sm:mt-2 lg:ml-12 max-sm:ml-4 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Lanjut
-        pelajari
+    <p class="lg:mt-1 sm:mt-2 lg:ml-12 max-sm:ml-4 max-sm:mb-1 lg:text-base max-sm:text-sm md:ml-6">Lanjut pelajari
         skill
         bersama tutor terbaik berpengalaman di bidangnya.</p>
     <!-- scrollbar horizontal 3 -->
@@ -1271,8 +1220,7 @@
             <a href="/bootcamp">
                 <div
                     class="bg-gray-100 rounded-lg shadow-md lg:p-4 lg:w-64 lg:h-80 max-sm:w-40 max-sm:h-56 md:w-80 md:h-full flex flex-col justify-center items-center md:p-4">
-                    <p class="lg:text-4xl max-sm:text-center max-sm:text-2xl md:text-6xl text-gray-400 mb-4">+
-                    </p>
+                    <p class="lg:text-4xl max-sm:text-center max-sm:text-2xl md:text-6xl text-gray-400 mb-4">+</p>
                     <p class="text-gray-500 max-sm:text-center">lihat bootcamp lainnya...</p>
                 </div>
             </a>
@@ -1288,8 +1236,7 @@
         <div class="flex justify-between items-center p-3 border-t-2 border-gray-300">
             <div class="flex flex-col text-left">
                 <p class="text-red-500 font-bold text-sm">Kuota Terbatas!</p>
-                <p class="text-black font-bold text-sm">Rp. {{ number_format($bootcamp->harga, 0, ',', '.') }}
-                </p>
+                <p class="text-black font-bold text-sm">Rp. {{ number_format($bootcamp->harga, 0, ',', '.') }}</p>
             </div>
             @php
             // Ambil batch terakhir
@@ -1304,8 +1251,6 @@
                 </p>
             </a>
             @endif
-
-
         </div>
     </footer>
 
