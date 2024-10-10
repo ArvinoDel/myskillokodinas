@@ -411,6 +411,9 @@ Route::get('/preview', function () {
 })->name('Tentang');
 
 
+Route::get('/subscription', function () {
+    return view('./myskill/pages/program/subscription-bootcamp');
+})->name('subs');
 
 
 // Add a route for displaying a specific materi
