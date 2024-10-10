@@ -406,6 +406,10 @@ Route::get('/about', function () {
     return view('./myskill/pages/lainnya/about');
 })->name('Tentang');
 
+Route::get('/preview', function () {
+    return view('./myskill/pages/program/preview_video');
+})->name('Tentang');
+
 
 
 
