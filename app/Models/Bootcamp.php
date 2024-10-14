@@ -16,7 +16,7 @@ class Bootcamp extends Model
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $fillable = ['id_bootcamp', 'judul_bootcamp', 'thumbnail', 'harga', 'harga_diskon', 'deskripsi', 'id_benefitcamps'];
+    protected $fillable = ['id_bootcamp', 'judul_bootcamp', 'thumbnail', 'harga', 'harga_diskon', 'deskripsi', 'id_benefitcamps', 'id_trainer'];
 
     protected $casts = [
         'id_benefitcamps' => 'array', // Cast id_benefits to an array
@@ -34,5 +34,20 @@ class Bootcamp extends Model
     public function batch()
     {
         return $this->hasMany(Batch::class, 'id_bootcamp', 'id_bootcamp');
+    }
+
+    public function materibootcamp()
+    {
+        return $this->hasMany(Materibootcamp::class, 'id_bootcamp', 'id_bootcamp');
+    }
+
+    public function tugasbootcamp()
+    {
+        return $this->hasMany(Tugasbootcamp::class, 'id_bootcamp', 'id_bootcamp');
+    }
+
+    public function trainer()
+    {
+        return $this->belongsTo(Trainer::class, 'id_trainer', 'id_trainer');
     }
 }

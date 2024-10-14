@@ -1,4 +1,4 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
     <div class="row">
@@ -8,7 +8,7 @@
                     <h3 class="mb-0">Materi Bootcamp</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrator.materibootcamp.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('pengajar.materibootcamp.store') }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
                         @csrf
                         <div class="table-responsive">
@@ -49,7 +49,7 @@
                         </div>
                         <div class="mt-4 d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.materibootcamp.index') }}" class="btn btn-danger">Batal</a>
+                            <a href="{{ route('pengajar.materibootcamp.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>

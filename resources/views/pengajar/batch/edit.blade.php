@@ -1,23 +1,24 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card card-shadow">
                 <div class="card-header">
-                    <h3 class="mb-0">Batch</h3>
+                    <h3 class="mb-0">Edit Batch</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrator.batch.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('pengajar.batch.update', $batchs->id_batch) }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
                         @csrf
+                        @method('PUT')
                         <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                             <tbody>
                                 <tr>
                                     <th style="padding: 5px;">Nama Sesi</th>
                                     <td style="padding: 5px;">
-                                        <input type="text" class="form-control" id="nama_sesi" name="nama_sesi"
-                                            placeholder="Masukkan Batch" required>
+                                        <input type="text" class="form-control" id="url" name="nama_sesi"
+                                            placeholder="Masukkan Batch" value="{{ $batchs->nama_sesi }}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -25,30 +26,23 @@
                                     <td style="padding: 5px;">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" id="tanggal_mulai" name="tanggal_mulai" placeholder="Tanggal Mulai">
+                                                <input type="text" class="form-control" id="tanggal_mulai" name="tanggal_mulai" value="{{ $batchs->tanggal_mulai }}">
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" id="tanggal_selesai" name="tanggal_selesai" placeholder="Tanggal Selesai">
+                                                <input type="text" class="form-control" id="tanggal_selesai" name="tanggal_selesai" value="{{ $batchs->tanggal_selesai }}">
                                             </div>
                                         </div>
                                     </td>
                                 </tr>
-                                {{-- <tr>
-                                    <th style="padding: 5px;">Bootcamps</th>
+                                <tr>
+                                    <th style="padding: 5px;">Bootcamp</th>
                                     <td style="padding: 5px;">
                                         <select class="form-control" name="id_bootcamp" required>
+                                            <option value="">-- Pilih Bootcamp --</option>
                                             @foreach ($bootcamps as $bootcamp)
-                                            <option hidden value="{{ $bootcamp->id_bootcamp }}">{{ $bootcamp->judul_bootcamp }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                </tr> --}}
-                                <tr>
-                                    <th style="padding: 5px;">Materi</th>
-                                    <td style="padding: 5px;">
-                                        <select class="form-control" name="id_materi" required>
-                                            @foreach ($bootcamps as $bootcamp)
-                                                <option hidden value="{{ $bootcamp->id_bootcamp }}" {{ request('id_bootcamp') == $bootcamp->id_bootcamp ? 'selected' : '' }}>{{ $bootcamp->judul_bootcamp }}</option>
+                                                <option value="{{ $bootcamp->id_bootcamp }}" {{ $batchs->id_bootcamp == $bootcamp->id_bootcamp ? 'selected' : '' }}>
+                                                    {{ $bootcamp->judul_bootcamp }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -56,8 +50,8 @@
                             </tbody>
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.batch.index') }}" class="btn btn-danger">Batal</a>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a href="{{ route('pengajar.batch.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>
@@ -74,14 +68,14 @@
                     firstDayOfWeek: 1
                 }
             });
-
+        
             flatpickr("#tanggal_selesai", {
                 dateFormat: "Y-m-d",
                 locale: {
                     firstDayOfWeek: 1
                 }
             });
-
+        
             document.querySelector('form').addEventListener('submit', function(e) {
                 var jamInput = document.getElementById('jam').value;
                 var jamPattern = /^([01]\d|2[0-3]):([0-5]\d) - ([01]\d|2[0-3]):([0-5]\d) WIB$/;
@@ -91,7 +85,8 @@
                 }
             });
         });
-        </script>
+    </script>
+
 @endsection
 
 @section('script')

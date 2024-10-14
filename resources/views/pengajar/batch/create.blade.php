@@ -1,4 +1,4 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
     <div class="row">
@@ -8,7 +8,7 @@
                     <h3 class="mb-0">Batch</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrator.batch.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('pengajar.batch.store') }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
                         @csrf
                         <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
@@ -44,9 +44,9 @@
                                     </td>
                                 </tr> --}}
                                 <tr>
-                                    <th style="padding: 5px;">Materi</th>
+                                    <th style="padding: 5px;">Bootcamps</th>
                                     <td style="padding: 5px;">
-                                        <select class="form-control" name="id_materi" required>
+                                        <select class="form-control" name="id_bootcamp" required>
                                             @foreach ($bootcamps as $bootcamp)
                                                 <option hidden value="{{ $bootcamp->id_bootcamp }}" {{ request('id_bootcamp') == $bootcamp->id_bootcamp ? 'selected' : '' }}>{{ $bootcamp->judul_bootcamp }}</option>
                                             @endforeach
@@ -57,7 +57,7 @@
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.batch.index') }}" class="btn btn-danger">Batal</a>
+                            <a href="{{ route('pengajar.batch.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>

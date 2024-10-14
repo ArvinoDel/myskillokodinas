@@ -10,7 +10,7 @@
                 <div class="card-body">
                     <form action="{{ route('administrator.isimateri.update', $isi_materis->id_isi_materi) }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
-                        @csrf
+                        @csrf  
                         @method('PUT')
                         <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                             <tbody>

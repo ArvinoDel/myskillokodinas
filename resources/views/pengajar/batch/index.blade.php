@@ -1,4 +1,4 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
 
@@ -14,16 +14,16 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="mb-0">Batch</h3>
-                <a href="{{ route('administrator.batch.create', ['id_bootcamp' => request('id_bootcamp')]) }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <a href="{{ route('pengajar.batch.create', ['id_bootcamp' => request('id_bootcamp')]) }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
             <!-- Tambahkan form pencarian -->
             <div class="card-body">
-                <form action="{{ route('administrator.batch.index') }}" method="GET" class="mb-1">
+                <form action="{{ route('pengajar.batch.index') }}" method="GET" class="mb-1">
                     <input type="hidden" name="id_bootcamp" value="{{ request('id_bootcamp') }}"> <!-- Tambahkan ini -->
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
-                            <a href="{{ route('administrator.bootcamps.index') }}" class="btn btn-primary btn-lg">Back Bootcamp</a>
+                            <a href="{{ route('pengajar.bootcamps.index') }}" class="btn btn-primary btn-lg">Back Bootcamp</a>
                         </div>
                         <div class="input-group" style="max-width: 300px;">
                             <input type="text" class="form-control" placeholder="Cari Sesi Batch..." name="search" value="{{ request('search') }}">
@@ -54,10 +54,10 @@
                                 <td>{{ $batch->tanggal_selesai }}</td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('administrator.batch.edit', $batch->id_batch) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                        <a href="{{ route('pengajar.batch.edit', $batch->id_batch) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button data-url="{{ route('administrator.batch.destroy', $batch->id_batch) }}"
+                                        <button data-url="{{ route('pengajar.batch.destroy', $batch->id_batch) }}"
                                             type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                             <i class="fa fa-trash"></i>
                                         </button>

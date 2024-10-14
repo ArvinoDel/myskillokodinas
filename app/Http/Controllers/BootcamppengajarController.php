@@ -6,20 +6,30 @@ use App\Models\Benefitbootcamp;
 use App\Models\Bootcamp;
 use App\Models\Trainer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
-class BootcampController extends Controller
+class BootcamppengajarController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        //
         $search = $request->search;
         $judul_bootcamp = $request->judul_bootcamp;
 
-        $query = Bootcamp::query();
+        if (Auth::user()->level == 'pengajar') {
+            $id_pengajar = Auth::user()->id;
+        } else {
+            return redirect()->back()->with('error', 'Anda tidak memiliki akses ke halaman ini.');
+        }
+
+        $query = Bootcamp::with(['trainer']) // Eager load relasi
+            ->whereHas('trainer', function ($q) use ($id_pengajar) {
+                $q->where('id', $id_pengajar); // Filter berdasarkan id_pengajar
+            });
 
         if (!empty($search)) {
             $query->where('judul_bootcamp', 'like', "%$search%");
@@ -29,20 +39,16 @@ class BootcampController extends Controller
             $query->where('judul_bootcamp', $judul_bootcamp);
         }
 
-        $bootcamps = $query->with('trainer')->paginate(10);
-
+        $bootcamps = $query->paginate(10);
 
         $judul_bootcamps = Bootcamp::select('judul_bootcamp')
+            ->whereHas('trainer', function ($q) use ($id_pengajar) {
+                $q->where('id', $id_pengajar); // Filter untuk nama_materis
+            })
             ->groupBy('judul_bootcamp')
             ->get();
 
-        foreach ($bootcamps as $bootcamp) {
-            $bootcamp->id_benefitcamps = json_decode($bootcamp->id_benefitcamps) ?? []; // Decode JSON dan berikan array kosong jika null
-        }
-
-        // dd($bootcamp);
-
-        return view('administrator.bootcamps.index', compact('bootcamps', 'judul_bootcamps'));
+        return view('pengajar.bootcamps.index', compact(['bootcamps', 'judul_bootcamps']));
     }
 
     /**
@@ -53,7 +59,7 @@ class BootcampController extends Controller
         //
         $benefits = Benefitbootcamp::all();
         $trainers = Trainer::all();
-        return view('administrator.bootcamps.create', compact('benefits', 'trainers'));
+        return view('pengajar.bootcamps.create', compact('benefits', 'trainers'));
     }
 
     /**
@@ -61,7 +67,6 @@ class BootcampController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $request->validate([
             'judul_bootcamp' => 'required|string|max:255',
             'harga' => 'required',
@@ -94,7 +99,7 @@ class BootcampController extends Controller
         ]);
 
         return response()->json([
-            'url' => route('administrator.bootcamps.index'),
+            'url' => route('pengajar.bootcamps.index'),
             'success' => true,
             'message' => 'Data Bootcamp Berhasil Ditambah'
         ]);
@@ -103,35 +108,23 @@ class BootcampController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id_bootcamp)
+    public function show(Bootcamp $bootcamp)
     {
-        // Fetch bootcamp by ID with its related 'batch'
-        $bootcamp = Bootcamp::with('batch')->findOrFail($id_bootcamp);
-
-        // Decode JSON for `id_benefitcamps` if it's not null, otherwise return an empty array
-        $bootcamp->id_benefitcamps = json_decode($bootcamp->id_benefitcamps) ?? [];
-
-        // Fetch all bootcamps
-        $bootcamps = Bootcamp::all();
-
-        // Pass the single bootcamp and all bootcamps to the view
-        return view('myskill.pages.program.digital-marketing', compact('bootcamp', 'bootcamps'));
+        //
     }
-
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id_bootcamp)
     {
-        //
         $bootcamps = Bootcamp::findOrFail($id_bootcamp);
         $bootcamps->id_benefitcamps = json_decode($bootcamps->id_benefitcamps) ?? []; // Decode JSON dan berikan array kosong jika null
 
         $benefits = Benefitbootcamp::all();
         $trainers = Trainer::all();
 
-        return view('administrator.bootcamps.edit', compact('bootcamps', 'benefits', 'trainers'));
+        return view('pengajar.bootcamps.edit', compact('bootcamps', 'benefits', 'trainers'));
     }
 
     /**
@@ -177,7 +170,7 @@ class BootcampController extends Controller
         // dd($request);
 
         return response()->json([
-            'url' => route('administrator.bootcamps.index'),
+            'url' => route('pengajar.bootcamps.index'),
             'success' => true,
             'message' => 'Data Bootcamp Berhasil Diperbarui'
         ]);
@@ -188,7 +181,6 @@ class BootcampController extends Controller
      */
     public function destroy(string $id)
     {
-        //
         $bootcamps = Bootcamp::findOrFail($id);
         if ($bootcamps->thumbnail) {
             $path = "./thumbnail_bootcamp/" . $bootcamps->thumbnail;

@@ -1,4 +1,4 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
 
@@ -14,11 +14,11 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="mb-0">Daftar Bootcamp</h3>
-                <a href="{{ route('administrator.bootcamps.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <a href="{{ route('pengajar.bootcamps.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
             <div class="card-body">
-                <form action="{{ route('administrator.bootcamps.index') }}" method="GET" class="mb-1">
+                <form action="{{ route('pengajar.bootcamps.index') }}" method="GET" class="mb-1">
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
                             <select class="form-control" name="judul_bootcamp">
@@ -44,7 +44,7 @@
                     </div>
                     @if (request('search') || request('judul_bootcamp'))
                         <div class="mt-2 d-flex justify-content-center">
-                            <a href="{{ route('administrator.bootcamp.index') }}"
+                            <a href="{{ route('pengajar.bootcamp.index') }}"
                                 class="btn btn-primary text-white shadow">Seluruh Data</a>
                         </div>
                     @endif
@@ -61,7 +61,7 @@
                                 <th class="text-right">Harga Diskon</th>
                                 <th class="text-center">Deskripsi</th>
                                 <th class="text-center">list benefits</th>
-                                <th class="text-center">Trainer</th>
+                                <th class="text-center">Nama Pengajar</th>
                                 <th class="text-center">Action</th>
                                 <th class="text-center">Materi Bootcamp</th>
                                 <th class="text-center">Tugas Bootcamp</th>
@@ -82,16 +82,16 @@
                                                 <span>{{ $benefi->nama_benefit }}</span> <br>
                                             @endforeach
                                         </td>
-                                    <td>{{ $bootcamp->trainer->nama_trainer ?? 'Belum diisi' }}</td>
+                                    <td>{{ $bootcamp->trainer->pengajar->username ?? 'kosong' }}</td>
                                     <td>
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{ route('administrator.bootcamps.edit', $bootcamp->id_bootcamp) }}"
+                                            <a href="{{ route('pengajar.bootcamps.edit', $bootcamp->id_bootcamp) }}"
                                                 class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2"
                                                 style="width: 32px; height: 32px;">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                             <button
-                                                data-url="{{ route('administrator.bootcamps.destroy', $bootcamp->id_bootcamp) }}"
+                                                data-url="{{ route('pengajar.bootcamps.destroy', $bootcamp->id_bootcamp) }}"
                                                 type="button"
                                                 class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center"
                                                 style="width: 32px; height: 32px;">
@@ -101,21 +101,21 @@
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{ route('administrator.materibootcamp.index', ['id_bootcamp' => $bootcamp->id_bootcamp]) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                            <a href="{{ route('pengajar.materibootcamp.index', ['id_bootcamp' => $bootcamp->id_bootcamp]) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                                 <i class="fa fa-plus"></i>
                                             </a>
                                         </div>
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{ route('administrator.tugasbootcamp.index', ['id_bootcamp' => $bootcamp->id_bootcamp]) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                            <a href="{{ route('pengajar.tugasbootcamp.index', ['id_bootcamp' => $bootcamp->id_bootcamp]) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                                 <i class="fa fa-plus"></i>
                                             </a>
                                         </div>
                                     </td>
                                     <td class="text-center">
                                         <div class="d-flex justify-content-center">
-                                            <a href="{{ route('administrator.batch.index', ['id_bootcamp' => $bootcamp->id_bootcamp]) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                            <a href="{{ route('pengajar.batch.index', ['id_bootcamp' => $bootcamp->id_bootcamp]) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                                 <i class="fa fa-plus"></i>
                                             </a>
                                         </div>

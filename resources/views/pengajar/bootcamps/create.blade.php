@@ -1,54 +1,77 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card card-shadow">
                 <div class="card-header">
-                    <h3 class="mb-0">Batch</h3>
+                    <h3 class="mb-0">Tambah Botcamp</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrator.batch.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('pengajar.bootcamps.store') }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
                         @csrf
                         <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                             <tbody>
                                 <tr>
-                                    <th style="padding: 5px;">Nama Sesi</th>
+                                    <th style="padding: 5px;">Judul Bootcamp</th>
                                     <td style="padding: 5px;">
-                                        <input type="text" class="form-control" id="nama_sesi" name="nama_sesi"
-                                            placeholder="Masukkan Batch" required>
+                                        <input type="text" class="form-control" id="judul_bootcamp"
+                                            name="judul_bootcamp" placeholder="Masukkan Judul Bootcamp" required>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th style="padding: 5px;">Tgl s/d Selesai</th>
+                                    <th style="padding: 5px;">Thumbnail</th>
                                     <td style="padding: 5px;">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <input type="text" class="form-control" id="tanggal_mulai" name="tanggal_mulai" placeholder="Tanggal Mulai">
-                                            </div>
-                                            <div class="col-md-6">
-                                                <input type="text" class="form-control" id="tanggal_selesai" name="tanggal_selesai" placeholder="Tanggal Selesai">
-                                            </div>
+                                        <input type="file" class="form-control" id="thumbnail" name="thumbnail" accept="image/*" required>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Harga</th>
+                                    <td style="padding: 5px;">
+                                        <input type="text" class="form-control" id="harga" name="harga"
+                                            placeholder="Masukkan Harga Bootcamp" required>
+                                        <small class="form-text text-muted">Masukkan harga tanpa tanda koma atau titik.</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Harga Diskon</th>
+                                    <td style="padding: 5px;">
+                                        <input type="text" class="form-control" id="harga_diskon" name="harga_diskon"
+                                            placeholder="Masukkan Harga Diskon">
+                                        <small class="form-text text-muted">Masukkan harga tanpa tanda koma atau titik.</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Deskripsi</th>
+                                    <td style="padding: 5px;">
+                                        <textarea class="form-control" name="deskripsi" required></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Benefits</th>
+                                    <td style="padding: 5px;">
+                                        <div class="form-check">
+                                            @foreach ($benefits as $benefit)
+                                                <input class="form-check-input" type="checkbox" name="id_benefitcamps[]"
+                                                    value="{{ $benefit->id_benefitcamp }}"
+                                                    id="benefit{{ $benefit->id_benefitcamp }}">
+                                                <label class="form-check-label" for="benefit{{ $benefit->id_benefitcamp }}">
+                                                    {{ $benefit->nama_benefit }}
+                                                </label> <br>
+                                            @endforeach
                                         </div>
                                     </td>
                                 </tr>
-                                {{-- <tr>
-                                    <th style="padding: 5px;">Bootcamps</th>
-                                    <td style="padding: 5px;">
-                                        <select class="form-control" name="id_bootcamp" required>
-                                            @foreach ($bootcamps as $bootcamp)
-                                            <option hidden value="{{ $bootcamp->id_bootcamp }}">{{ $bootcamp->judul_bootcamp }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                </tr> --}}
                                 <tr>
-                                    <th style="padding: 5px;">Materi</th>
+                                    <th style="padding: 5px;">Trainer</th>
                                     <td style="padding: 5px;">
-                                        <select class="form-control" name="id_materi" required>
-                                            @foreach ($bootcamps as $bootcamp)
-                                                <option hidden value="{{ $bootcamp->id_bootcamp }}" {{ request('id_bootcamp') == $bootcamp->id_bootcamp ? 'selected' : '' }}>{{ $bootcamp->judul_bootcamp }}</option>
+                                        <select class="form-control" name="id_trainer" required>
+                                            <option value="">-- Pilih Trainer --</option>
+                                            @foreach ($trainers as $trainer)
+                                                <option value="{{ $trainer->id_trainer }}">
+                                                    {{ $trainer->nama_trainer }}
+                                                </option>
                                             @endforeach
                                         </select>
                                     </td>
@@ -57,14 +80,13 @@
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
                             <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.batch.index') }}" class="btn btn-danger">Batal</a>
+                            <a href="{{ route('pengajar.bootcamps.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function() {
@@ -107,7 +129,7 @@
                 let btn = $(this);
                 Swal.fire({
                     icon: 'warning',
-                    text: 'Data yang sudah di hapus tidak dapat dikembalikan!',
+                    text: 'Data yang sudah dihapus tidak dapat dikembalikan!',
                     title: 'Apakah Anda yakin ingin menghapus data ini?',
                     showCancelButton: true,
                     confirmButtonColor: '#D33',
@@ -117,7 +139,7 @@
                     if (result.isConfirmed) {
                         Swal.fire({
                             title: "Deleted!",
-                            text: "Your file has been deleted.",
+                            text: "Data Anda telah dihapus.",
                             icon: "success"
                         });
                         document.location = btn.data('url');
@@ -130,11 +152,6 @@
                     e.preventDefault();
 
                     let form = $(this);
-
-                    // Menyinkronkan data dari CKEditor ke textarea
-                    for (var instance in CKEDITOR.instances) {
-                        CKEDITOR.instances[instance].updateElement();
-                    }
 
                     $.ajax({
                         url: form.prop('action'),

@@ -29,15 +29,17 @@
                                 <tr>
                                     <th style="padding: 5px;">Harga</th>
                                     <td style="padding: 5px;">
-                                        <input type="text" class="form-control" name="harga"
+                                        <input type="text" class="form-control" id="harga" name="harga"
                                             placeholder="Masukkan Harga Bootcamp" required>
+                                        <small class="form-text text-muted">Masukkan harga tanpa tanda koma atau titik.</small>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th style="padding: 5px;">Harga Diskon</th>
                                     <td style="padding: 5px;">
-                                        <input type="text" class="form-control" name="harga_diskon"
+                                        <input type="text" class="form-control" id="harga_diskon" name="harga_diskon"
                                             placeholder="Masukkan Harga Diskon">
+                                        <small class="form-text text-muted">Masukkan harga tanpa tanda koma atau titik.</small>
                                     </td>
                                 </tr>
                                 <tr>
@@ -61,6 +63,19 @@
                                         </div>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <th style="padding: 5px;">Trainer</th>
+                                    <td style="padding: 5px;">
+                                        <select class="form-control" name="id_trainer" required>
+                                            <option value="">-- Pilih Trainer --</option>
+                                            @foreach ($trainers as $trainer)
+                                                <option value="{{ $trainer->id_trainer }}">
+                                                    {{ $trainer->nama_trainer }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         <div class="mt-4 d-flex justify-content-between">
@@ -81,14 +96,14 @@
                     firstDayOfWeek: 1
                 }
             });
-        
+
             flatpickr("#tanggal_selesai", {
                 dateFormat: "Y-m-d",
                 locale: {
                     firstDayOfWeek: 1
                 }
             });
-        
+
             document.querySelector('form').addEventListener('submit', function(e) {
                 var jamInput = document.getElementById('jam').value;
                 var jamPattern = /^([01]\d|2[0-3]):([0-5]\d) - ([01]\d|2[0-3]):([0-5]\d) WIB$/;

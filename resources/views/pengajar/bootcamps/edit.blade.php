@@ -1,4 +1,4 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
 <div class="row">
@@ -8,7 +8,7 @@
                 <h3 class="mb-0">Edit Bootcamp</h3>
             </div>
             <div class="card-body">
-                <form action="{{ route('administrator.bootcamps.update', $bootcamps->id_bootcamp) }}"
+                <form action="{{ route('pengajar.bootcamps.update', $bootcamps->id_bootcamp) }}"
                     method="POST" enctype="multipart/form-data" class="form-ajax">
                     @csrf
                     @method('PUT')
@@ -94,7 +94,7 @@
                     </table>
                     <div class="mt-4 d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Update</button>
-                        <a href="{{ route('administrator.bootcamps.index') }}" class="btn btn-danger">Batal</a>
+                        <a href="{{ route('pengajar.bootcamps.index') }}" class="btn btn-danger">Batal</a>
                     </div>
                 </form>
             </div>

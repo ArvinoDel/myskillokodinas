@@ -6,7 +6,7 @@
             <div class="card card-shadow">
                 <div class="card-header">
                     <h3 class="mb-0">Isi Materi</h3>
-                </div>
+                </div>  
                 <div class="card-body">
                     <form action="{{ route('administrator.isimateri.store') }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">

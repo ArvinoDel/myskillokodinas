@@ -25,9 +25,19 @@ class Trainer extends Model
         return $this->hasMany(Materi::class, 'id_trainer');
     }
 
+    public function bootcamp()
+    {
+        return $this->hasMany(Bootcamp::class, 'id_trainer');
+    }
+
+    public function popups()
+    {
+        return $this->hasMany(Popup::class, 'id_trainer');
+    }
+
     public function pengajar()
     {
         return $this->belongsTo(User::class, 'id', 'id');
     }
-    
+
 }

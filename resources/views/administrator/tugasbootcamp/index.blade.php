@@ -13,25 +13,30 @@
     <div class="col">
         <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
-                <h3 class="mb-0">Batch</h3>
-                <a href="{{ route('administrator.batch.create', ['id_bootcamp' => request('id_bootcamp')]) }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                <h3 class="mb-0">Tugas Bootcamp</h3>
+                <a href="{{ route('administrator.tugasbootcamp.create', ['id_bootcamp' => request('id_bootcamp')]) }}" class="btn btn-primary btn-sm">Tambah Data</a>
             </div>
 
             <!-- Tambahkan form pencarian -->
             <div class="card-body">
-                <form action="{{ route('administrator.batch.index') }}" method="GET" class="mb-1">
+                <form action="{{ route('administrator.tugasbootcamp.index') }}" method="GET" class="mb-1">
                     <input type="hidden" name="id_bootcamp" value="{{ request('id_bootcamp') }}"> <!-- Tambahkan ini -->
                     <div class="d-flex justify-content-between">
                         <div class="input-group" style="max-width: 300px;">
                             <a href="{{ route('administrator.bootcamps.index') }}" class="btn btn-primary btn-lg">Back Bootcamp</a>
                         </div>
                         <div class="input-group" style="max-width: 300px;">
-                            <input type="text" class="form-control" placeholder="Cari Sesi Batch..." name="search" value="{{ request('search') }}">
+                            <input type="text" class="form-control" placeholder="Cari Tugas Bootcamp..." name="search" value="{{ request('search') }}">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary" type="submit">Cari</button>
                             </div>
                         </div>
                     </div>
+                    @if(request('search') || request('judul_tugas'))
+                    <div class="mt-2 d-flex justify-content-center">
+                        <a href="{{ route('administrator.tugasbootcamp.index') }}" class="btn btn-primary text-white shadow">Seluruh Data</a>
+                    </div>
+                    @endif
                 </form>
 
                 <div class="table-responsive py-4">
@@ -39,25 +44,42 @@
                         <thead class="thead-light">
                             <tr>
                                 <th class="text-center">No</th>
-                                <th class="text-center">Nama Sesi</th>
-                                <th class="text-center">Tanggal Mulai</th>
-                                <th class="text-center">Tanggal Selesai</th>
+                                <th class="text-center">Judul Tugas</th>
+                                <th class="text-center">URL Tugas</th>
+                                <th class="text-center">Status</th>
+                                <th class="text-center">Bootcamp</th>
+                                <th class="text-center">File</th>
                                 <th class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($batchs as $index => $batch)
+                            @foreach ($tugasbootcamps as $index => $tugasbootcamp)
                             <tr>
-                                <td>{{ $loop->iteration + $batchs->firstItem() - 1 }}</td>
-                                <td>{{ $batch->nama_sesi }}</td>
-                                <td>{{ $batch->tanggal_mulai }}</td>
-                                <td>{{ $batch->tanggal_selesai }}</td>
+                                <td>{{ $loop->iteration + $tugasbootcamps->firstItem() - 1 }}</td>
+                                <td>{{ $tugasbootcamp->judul_tugas }}</td>
+                                <td>{{ $tugasbootcamp->url }}</td>
+                                <td>{{ $tugasbootcamp->status ? 'Aktif' : 'Tidak Aktif' }}</td>
+                                <td>{{ $tugasbootcamp->bootcamp->judul_bootcamp ?? 'N/A' }}</td>
+                                <td>
+                                    @if (strpos($tugasbootcamp->file, '.mp4') !== false || strpos($tugasbootcamp->file, '.avi') !== false || strpos($tugasbootcamp->file, '.mpeg') !== false)
+                                        <video width="100" controls>
+                                            <source src="{{ asset('files_tugasbootcamps/' . $tugasbootcamp->file) }}" type="video/mp4">
+                                            Your browser does not support the video tag.
+                                        </video>
+                                    @elseif (strpos($tugasbootcamp->file, '.jpg') !== false || strpos($tugasbootcamp->file, '.jpeg') !== false || strpos($tugasbootcamp->file, '.png') !== false || strpos($tugasbootcamp->file, '.gif') !== false)
+                                        <img src="{{ asset('files_tugasbootcamps/' . $tugas->file) }}" alt="Image" width="100">
+                                    @elseif (strpos($tugasbootcamp->file, '.pdf') !== false)
+                                        <a href="{{ asset('files_tugasbootcamps/' . $tugasbootcamp->file) }}" target="_blank">Lihat PDF</a>
+                                    @else
+                                        <span>Tidak ada preview</span>
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('administrator.batch.edit', $batch->id_batch) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
+                                        <a href="{{ route('administrator.tugasbootcamp.edit', $tugasbootcamp->id_tugas_bootcamp) }}" class="btn btn-success btn-sm d-inline-flex align-items-center justify-content-center me-2" style="width: 32px; height: 32px;">
                                             <i class="fa fa-edit"></i>
                                         </a>
-                                        <button data-url="{{ route('administrator.batch.destroy', $batch->id_batch) }}"
+                                        <button data-url="{{ route('administrator.tugasbootcamp.destroy', $tugasbootcamp->id_tugas_bootcamp) }}"
                                             type="button" class="btn-delete btn btn-danger btn-sm d-inline-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
                                             <i class="fa fa-trash"></i>
                                         </button>
@@ -68,7 +90,7 @@
                         </tbody>
                     </table>
                     <br>
-                    {{ $batchs->links('vendor.pagination.bootstrap-4') }}
+                    {{ $tugasbootcamps->links('vendor.pagination.bootstrap-4') }}
                 </div>
             </div>
         </div>
@@ -149,7 +171,7 @@
 
         // Fungsi untuk memperbarui nomor urut
         function updateRowNumbers() {
-            let startingIndex = {{ $batchs->firstItem() - 1 }};
+            let startingIndex = {{ $tugasbootcamps->firstItem() - 1 }};
             $('table tbody tr').each(function(index) {
                 $(this).find('td:first-child').text(startingIndex + index + 1);
             });

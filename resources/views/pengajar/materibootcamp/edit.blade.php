@@ -1,16 +1,17 @@
-@extends('administrator.layout')
+@extends('pengajar.layout')
 
 @section('content')
     <div class="row">
         <div class="col">
             <div class="card card-shadow">
                 <div class="card-header">
-                    <h3 class="mb-0">Materi Bootcamp</h3>
+                    <h3 class="mb-0">Edit Materi Bootcamp</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('administrator.materibootcamp.store') }}" method="POST" enctype="multipart/form-data"
+                    <form action="{{ route('pengajar.materibootcamp.update', $materibootcamps->id_materi_bootcamp) }}" method="POST" enctype="multipart/form-data"
                         class="form-ajax">
                         @csrf
+                        @method('PUT')
                         <div class="table-responsive">
                             <table class="table" id="datatable-buttons" style="border: none; border-collapse: collapse;">
                                 <tbody>
@@ -18,38 +19,38 @@
                                         <th style="padding: 5px;">URL</th>
                                         <td style="padding: 5px;">
                                             <input type="text" class="form-control" id="url" name="url"
-                                                placeholder="Masukkan URL Materi" required>
+                                                placeholder="Masukkan URL Materi" value="{{ $materibootcamps->url }}">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th style="padding: 5px;">Judul File</th>
                                         <td style="padding: 5px;">
                                             <input type="text" class="form-control" id="judul_file" name="judul_file"
-                                                placeholder="Masukkan Judul File" required>
+                                                placeholder="Masukkan Judul File" required value="{{ $materibootcamps->judul_file }}">
                                         </td>
                                     </tr>
                                     <tr>
                                         <th style="padding: 5px;">File</th>
                                         <td style="padding: 5px;">
                                             <input type="file" class="form-control" id="file" name="file">
+                                            @if($materibootcamps->file)
+                                                <p>File Saat Ini: <a href="{{ asset('storage/' . $materibootcamps->file) }}" target="_blank">{{ $materibootcamps->file }}</a></p>
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th style="padding: 5px;">Bootcamp</th>
+                                        <th style="padding: 5px;">Materi Bootcamp</th>
                                         <td style="padding: 5px;">
-                                            <select class="form-control" name="id_bootcamp" required>
-                                                @foreach ($bootcamps as $bootcamp)
-                                                <option hidden value="{{ $bootcamp->id_bootcamp }}" {{ request('id_bootcamp') == $bootcamp->id_bootcamp ? 'selected' : '' }}>{{ $bootcamp->judul_bootcamp }}</option>
-                                                @endforeach
-                                            </select>
+                                            <input type="text" class="form-control" value="{{ $materibootcamps->bootcamp->judul_bootcamp }}" readonly>
+                                            <input type="hidden" name="id_bootcamp" value="{{ $materibootcamps->id_bootcamp }}">
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
                         <div class="mt-4 d-flex justify-content-between">
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                            <a href="{{ route('administrator.materibootcamp.index') }}" class="btn btn-danger">Batal</a>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                            <a href="{{ route('pengajar.materibootcamp.index') }}" class="btn btn-danger">Batal</a>
                         </div>
                     </form>
                 </div>

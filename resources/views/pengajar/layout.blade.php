@@ -67,14 +67,20 @@
                                 <ul class="nav nav-sm flex-column">
                                     @php
                                         $UserModul = new \App\Models\UserModul();
-                                       
+
                                         $cekMateri = $UserModul->umenu_akses('materi', session('id_session'));
+                                        $cekBootcamps = $UserModul->umenu_akses('bootcamps', session('id_session'));
                                         $cekPengumpulantugas = $UserModul->umenu_akses('pengumpulantugas', session('id_session'));
                                     @endphp
                                     @if ($cekMateri == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                         <li class="nav-item"><a class="nav-link"
                                                 href="{{ url('pengajar/materi') }}"><i
                                                     class='ni ni-archive-2 text-orange'></i> Materi</a></li>
+                                    @endif
+                                    @if ($cekBootcamps == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
+                                        <li class="nav-item"><a class="nav-link"
+                                                href="{{ url('pengajar/bootcamps') }}"><i
+                                                    class='ni ni-hat-3 text-orange'></i> Bootcamp</a></li>
                                     @endif
                                     @if ($cekPengumpulantugas == 1 || session('level') == 'admin' || session('level') == 'user' || session('level') == 'pengajar')
                                         <li class="nav-item"><a class="nav-link"
@@ -102,9 +108,9 @@
                                 <span class="input-group-text"><i class="fas fa-search"></i></span>
                             </div>
                             <input type="text" class="form-control" id="searchBox" placeholder="Search links...">
-                            
+
                                 <button class="close" type="button" data-action="search-close" data-target="#navbar-search-main" aria-label="Close"><span aria-hidden="close">x</span></button>
-                            
+
                         </div>
                     </div>
                     <div id="search-results" class="dropdown-menu dropdown-menu-right"></div>
@@ -131,7 +137,7 @@
                                         if (subTxtValue.toLowerCase().indexOf(filter) > -1) {
                                             subItem.style.display = ""; // Tampilkan sub-item
                                             found = true;
-                                        } 
+                                        }
                                     });
                                     item.style.display = found ? "" : "none"; // Tampilkan atau sembunyikan item berdasarkan sub-item
                                 }
@@ -285,6 +291,7 @@
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js"></script> --}}
     {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
     <script src="{{ url('assets/js/sweetalert2.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autonumeric/4.10.5/autoNumeric.min.js"></script>
     <script src="{{ url('assets/vendor/js-cookie/js.cookie.js') }}"></script>
     <script src="{{ url('assets/js/argon.js') }}"></script>
 
@@ -297,7 +304,25 @@
     <script src="{{ url('assets/js/components/charts/chart-bar.js') }}"></script>
     <script src="{{ url('assets/vendor/chart.js/dist/Chart.extension.js') }}"></script>
     @yield('script')
+    <script>
+        if($('#harga').length>0){
+            new AutoNumeric('#harga', {
+                decimalPlaces: 0,
+                unformatOnSubmit: true,
+                decimalCharacter : ',',
+                digitGroupSeparator : '.',
+            });
+        }
 
+        if($('#harga_diskon').length>0){
+            new AutoNumeric('#harga_diskon', {
+                decimalPlaces: 0,
+                unformatOnSubmit: true,
+                decimalCharacter : ',',
+                digitGroupSeparator : '.',
+            });
+        }
+    </script>
 
 
     {{-- <script>
